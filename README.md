@@ -1,6 +1,9 @@
 aipltest
 ========
 
+![APL logo](docs/img/600px-APL_logo.png)
+![Claude AI](docs/img/claude-ai-logo-d862.png)
+
 Collaborate with Claude.ai to develop a minimal testing framework that can be used for TDD (Test-Driven Development) on future Dyalog APL projects.
 
 Products
