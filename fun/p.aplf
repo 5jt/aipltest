@@ -1,0 +1,5 @@
+p←{
+   ⍝ partition: 'abc' 'def' ←→ '/'p'abc/def' ←→ p'abc def'
+	⍺←' '
+	⍺(≠⊆⊢)⍵
+}

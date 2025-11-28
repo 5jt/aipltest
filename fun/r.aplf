@@ -1,0 +1,5 @@
+r←{
+   ⍝ replace: 'abc/def/gh' ←→ '-/'r'abc-def-gh'
+	(o n)←⍺ ⍝ old new
+	n@(⍸⍵=o)⊢⍵
+}

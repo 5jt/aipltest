@@ -1,0 +1,5 @@
+j←{
+   ⍝ join: 'abc def' ←→ ' 'j'abc' 'def' ←→ j'abc' 'def'
+	⍺←' '
+	(≢⍺)↓∊⍺∘,¨⍵
+}
