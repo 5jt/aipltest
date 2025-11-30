@@ -1,0 +1,5 @@
+report←{
+    ⍵=0:'All tests passed'
+    ⍵=1:'1 test failed'
+    (⍕⍵),' tests failed'
+ }

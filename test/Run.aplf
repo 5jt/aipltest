@@ -1,0 +1,44 @@
+ Run←{
+    ⍝ Run all tests in tests/ directory
+    ⍝ Prints summary and writes detailed logs to tests/{fn}.log
+    ⍝ Returns counts: pass fail broke
+
+    ⍝ Constants
+     ROOTDIR←'/Users/sjt/Projects/aipltest/'
+     TESTDIR←ROOTDIR,'tests/'
+     LOGDIR←TESTDIR,'logs/'
+     TESTCTX←'##.fun.' ⍝ location of functions to test
+
+    ⍝ Find test files
+     files←⊃⎕NINFO⍠1⊢TESTDIR,'*.json'
+     0=≢files:0 0 0⊣⎕←'No test files found in ',TESTDIR
+
+     results←{
+         json←⎕JSON⊃⎕NGET ⍵
+        ⍝ executed tests
+         et←(TESTCTX,json.function)∘{
+             test←⍵
+             expn←'test.larg '/⍨×|test.⎕NC'larg'
+             expn,←⍺,' test.rarg'
+             ⎕←'[',⍺,'] ',test.description
+             test.(result dm)←test{0::(¯1 ⋄ ⎕DM) ⋄ (⍎⍵ ⋄ '')}expn
+             test.rc←{×≢⍵.dm:¯1 ⋄ ⍵.result≡⍵.expected}test ⍝ return code
+             test
+         }¨json.tests
+         log←(⎕UCS 13 10){(≢⍺)↓∊⍺∘,¨⍵}⊃,/{
+             r←⊂('BROKE' 'FAIL' 'PASS'⊃⍨¯1 0 1⍳⍵.rc),' - ',⍵.description
+             eg←(
+                 '    Expected: ',⍕⍵.expected
+                 '    Got: ',⍕⍵.result
+             )
+             r,(⊂⍵.dm ⋄ eg ⋄ '')⊃⍨¯1 0 1⍳⍵.rc
+         }¨et
+         et⊣log ⎕NPUT(LOGDIR,json.function,'.log' ⋄ 1)
+     }¨files
+
+     fns←2⊃¨⎕NPARTS files
+     pfb←+⌿table←↑{+/1 0 ¯1∘.=⍵}¨results.rc
+     ⎕←'' 'pass' 'fail' 'broke'⍪(fns,table)⍪(⊂'TOTAL'),pfb
+
+     pfb ⍝ pass fail broke
+ }

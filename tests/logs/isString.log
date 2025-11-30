@@ -1,0 +1,4 @@
+PASS - simple string
+PASS - empty string
+PASS - numeric vector
+PASS - empty numeric vector

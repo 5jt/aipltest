@@ -1,0 +1,9 @@
+catch←{
+    ⍝ trap an expected error and return 0 error count
+    ⍝ otherwise print msg, return error count of 1
+     en msg←⍵⍵ ⍝ error #, message
+     ⍺←⊢
+     0::1⊣⎕←'Wrong error: ',⎕DM[1],(⎕UCS 13),⎕DM[2]
+     en::0 ⍝ expected error
+     1⊣⎕←'Failed to trap: ',msg⊣⍺ ⍺⍺ ⍵
+ }

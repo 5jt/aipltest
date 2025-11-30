@@ -1,0 +1,25 @@
+{
+  "function": "isString",
+  "tests": [
+    {
+      "rarg": "hello",
+      "expected": 1,
+      "description": "simple string"
+    },
+    {
+      "rarg": "",
+      "expected": 1,
+      "description": "empty string"
+    },
+    {
+      "rarg": [1, 2, 3],
+      "expected": 0,
+      "description": "numeric vector"
+    },
+    {
+      "rarg": [],
+      "expected": 0,
+      "description": "empty numeric vector"
+    }
+  ]
+}
