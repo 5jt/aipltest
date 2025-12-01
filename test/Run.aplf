@@ -1,5 +1,6 @@
  Run←{
-    ⍝ Run all tests in ##.tests namespace
+    ⍝ Run tests in ##.tests namespace
+    ⍝ ⍵: function names to test (empty=all)
     ⍝ Prints summary and writes detailed logs to logs/{fn}.log
     ⍝ Returns counts: pass fail broke
 
@@ -10,7 +11,12 @@
      FUNNS←##.fun
 
     ⍝ Identify functions to test
-     fns←⊃∩/FUNNS TESTNS{⍺.⎕NL ⍵}¨-3 2
+     fns←(⊃∩/FUNNS TESTNS{⍺.⎕NL ⍵}¨-3 2){
+         0=≢⍵:⍺
+         _←{0=≢⍵:'' ⋄ ''⊣⎕←'Not found: ',⍕⍵}⍵~⍺
+         ⍺∩⍵
+     }⍵
+
      0=≢fns:0 0 0⊣⎕←'No tests found'
 
      execTest←{

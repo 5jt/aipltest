@@ -19,6 +19,9 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 - [x] Implement/fix functions as needed
 - [x] Run complete test suite
 - [x] Verify no regressions
+- [x] Create isStrung function
+- [x] Refactor isDict, isTable, isXref to use isStrung
+- [x] Enhance Run to accept optional list of function names to test
 
 ## Phase 2: Simple string manipulation
 
