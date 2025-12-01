@@ -3,5 +3,5 @@
      (v k)←⍵
      2 1≢≢¨s←⍴¨v k:0
      ≠/⊃∘⌽¨s:0
-     isStrings k
+     isStrung k
  }

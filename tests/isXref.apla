@@ -1,0 +1,157 @@
+(
+ (
+  description:'3x2 mixed type xref'
+  expected:1
+  rarg:(
+   [
+    21 'blue'
+    32 'green'
+    43 'brown'
+   ]
+   ('age' ⋄ 'eye')
+   ('Bob' ⋄ 'Ted' ⋄ 'Carol')
+  )
+ )
+ (
+  description:'2x2 numeric xref'
+  expected:1
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   ('col1' ⋄ 'col2')
+   ('row1' ⋄ 'row2')
+  )
+ )
+ (
+  description:'1x1 single cell xref'
+  expected:1
+  rarg:(
+   [
+    5
+   ]
+   ,⊂'value'
+   ,⊂'item'
+  )
+ )
+ (
+  description:'1x3 single row xref'
+  expected:1
+  rarg:(
+   [
+    1 2 3
+   ]
+   ('a' ⋄ 'b' ⋄ 'c')
+   ,⊂'row'
+  )
+ )
+ (
+  description:'3x1 single column xref'
+  expected:1
+  rarg:(
+   [
+    1
+    2
+    3
+   ]
+   ,⊂'col'
+   ('r1' ⋄ 'r2' ⋄ 'r3')
+  )
+ )
+ (
+  description:'string'
+  expected:0
+  rarg:'not an xref'
+ )
+ (
+  description:'numeric vector'
+  expected:0
+  rarg:1 2 3
+ )
+ (
+  description:'empty vector (not 3 elements)'
+  expected:0
+  rarg:⍬
+ )
+ (
+  description:'only 2 elements (missing row names)'
+  expected:0
+  rarg:(
+   [
+    1 2
+   ]
+   ('a' ⋄ 'b')
+  )
+ )
+ (
+  description:'4 elements (too many)'
+  expected:0
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   ('a' ⋄ 'b')
+   ('r1' ⋄ 'r2')
+   ,⊂'extra'
+  )
+ )
+ (
+  description:'first element is vector not matrix'
+  expected:0
+  rarg:(
+   1 2 3
+   ('a' ⋄ 'b' ⋄ 'c')
+   ('r1' ⋄ 'r2' ⋄ 'r3')
+  )
+ )
+ (
+  description:'column count mismatch (2 cols, 3 names)'
+  expected:0
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   ('a' ⋄ 'b' ⋄ 'c')
+   ('r1' ⋄ 'r2')
+  )
+ )
+ (
+  description:'row count mismatch (2 rows, 3 names)'
+  expected:0
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   ('a' ⋄ 'b')
+   ('r1' ⋄ 'r2' ⋄ 'r3')
+  )
+ )
+ (
+  description:'column names are numbers not strings'
+  expected:0
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   1 2
+   ('r1' ⋄ 'r2')
+  )
+ )
+ (
+  description:'row names are numbers not strings'
+  expected:0
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   ('c1' ⋄ 'c2')
+   1 2
+  )
+ )
+)

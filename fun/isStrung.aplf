@@ -1,0 +1,4 @@
+ isStrung←{
+     isString ⍵:1
+     isStrings ⍵
+ }

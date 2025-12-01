@@ -1,0 +1,28 @@
+(
+ (
+  description:'simple string'
+  expected:1
+  rarg:'hello'
+ )
+ (
+  description:'empty string'
+  expected:1
+  rarg:''
+ )
+ (
+  description:'numeric vector'
+  expected:0
+  rarg:1 2 3
+ )
+ (
+  description:'empty numeric vector'
+  expected:0
+  rarg:⍬
+ )
+ (
+  description:'dyadic call (left argument ignored)'
+  larg:'ignored'
+  expected:1
+  rarg:'hello'
+ )
+)

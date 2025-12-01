@@ -1,0 +1,5 @@
+PASS - simple string
+PASS - empty string
+PASS - numeric vector
+PASS - empty numeric vector
+PASS - dyadic call (left argument ignored)

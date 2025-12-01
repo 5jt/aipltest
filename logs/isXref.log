@@ -1,0 +1,15 @@
+PASS - 3x2 mixed type xref
+PASS - 2x2 numeric xref
+PASS - 1x1 single cell xref
+PASS - 1x3 single row xref
+PASS - 3x1 single column xref
+PASS - string
+PASS - numeric vector
+PASS - empty vector (not 3 elements)
+PASS - only 2 elements (missing row names)
+PASS - 4 elements (too many)
+PASS - first element is vector not matrix
+PASS - column count mismatch (2 cols, 3 names)
+PASS - row count mismatch (2 rows, 3 names)
+PASS - column names are numbers not strings
+PASS - row names are numbers not strings

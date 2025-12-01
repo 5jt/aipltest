@@ -1,151 +1,125 @@
 Test file format
 ================
 
-Test files use JSON format to define test cases for APL functions.
+Test files use Dyalog APL Array Notation (APLA format) to define test cases for APL functions.
 
 ## File location
 
-Test files are stored in `tests/` with `.json` extension, named after the function being tested:
-- `tests/isDict.json`
-- `tests/isString.json`
-- `tests/j.json`
+Test files are stored in `tests/` with `.apla` extension, named after the function being tested:
+- `tests/isDict.apla`
+- `tests/isString.apla`
+- `tests/j.apla`
 - etc.
 
 ## File structure
 
-Each JSON file contains:
-- **function**: Name of the function being tested (string)
-- **monadic**: Array of monadic test cases (optional)
-- **dyadic**: Array of dyadic test cases (optional)
+Each APLA file contains a vector of test objects (namespaces) enclosed in parentheses.
+Function name is derived from the filename.
 
-Ambivalent functions include both `monadic` and `dyadic` arrays.
+## Test object structure
 
-## Monadic test structure
-
-Each monadic test case object has:
+Each test object (namespace) has:
+- **description** - Test description (string)
+- **expected** - Expected result
 - **rarg** - Right argument (test input)
-- **expected** - Expected result
-- **description** - Test description (string)
+- **larg** - Left argument (optional; presence indicates dyadic test)
 
-### Example: isString.json
+Test objects use namespace syntax: `field:value`
 
-```json
-{
-  "function": "isString",
-  "monadic": [
-    {
-      "rarg": "hello",
-      "expected": 1,
-      "description": "simple string"
-    },
-    {
-      "rarg": "",
-      "expected": 1,
-      "description": "empty string"
-    },
-    {
-      "rarg": [1, 2, 3],
-      "expected": 0,
-      "description": "numeric vector"
-    },
-    {
-      "rarg": [],
-      "expected": 0,
-      "description": "empty numeric vector"
-    }
-  ]
-}
+### Example: isString.apla (monadic only)
+
+```apl
+(
+ (
+  description:'simple string'
+  expected:1
+  rarg:'hello'
+ )
+ (
+  description:'empty string'
+  expected:1
+  rarg:''
+ )
+ (
+  description:'numeric vector'
+  expected:0
+  rarg:1 2 3
+ )
+ (
+  description:'empty numeric vector'
+  expected:0
+  rarg:⍬
+ )
+)
 ```
 
-## Dyadic test structure
+### Example: j.apla (dyadic only)
 
-Each dyadic test case object has:
-- **larg** - Left argument
-- **rarg** - Right argument
-- **expected** - Expected result
-- **description** - Test description (string)
-
-### Example: j.json (dyadic only)
-
-```json
-{
-  "function": "j",
-  "dyadic": [
-    {
-      "larg": " ",
-      "rarg": ["abc", "def"],
-      "expected": "abc def",
-      "description": "join with space"
-    },
-    {
-      "larg": "-",
-      "rarg": ["abc", "def"],
-      "expected": "abc-def",
-      "description": "join with dash"
-    },
-    {
-      "larg": "::",
-      "rarg": ["a", "b", "c"],
-      "expected": "a::b::c",
-      "description": "join with multi-char separator"
-    }
-  ]
-}
+```apl
+(
+ (
+  description:'join with space'
+  larg:' '
+  expected:'abc def'
+  rarg:('abc'⋄)('def'⋄)
+ )
+ (
+  description:'join with dash'
+  larg:'-'
+  expected:'abc-def'
+  rarg:('abc'⋄)('def'⋄)
+ )
+ (
+  description:'join with multi-char separator'
+  larg:'::'
+  expected:'a::b::c'
+  rarg:('a'⋄)('b'⋄)('c'⋄)
+ )
+)
 ```
 
-## Ambivalent test structure
+### Example: p.apla (ambivalent - mixed monadic and dyadic)
 
-### Example: p.json (partition - ambivalent)
-
-```json
-{
-  "function": "p",
-  "monadic": [
-    {
-      "rarg": "quick brown fox",
-      "expected": ["quick", "brown", "fox"],
-      "description": "default space separator"
-    },
-    {
-      "rarg": "a::b::c",
-      "expected": ["a::b::c"],
-      "description": "no spaces to split on"
-    }
-  ],
-  "dyadic": [
-    {
-      "larg": "/",
-      "rarg": "path/to/file",
-      "expected": ["path", "to", "file"],
-      "description": "partition on slash"
-    },
-    {
-      "larg": "-",
-      "rarg": "a-b-c",
-      "expected": ["a", "b", "c"],
-      "description": "partition on dash"
-    }
-  ]
-}
+```apl
+(
+ (
+  description:'default space separator (monadic)'
+  expected:('quick'⋄)('brown'⋄)('fox'⋄)
+  rarg:'quick brown fox'
+ )
+ (
+  description:'partition on slash (dyadic)'
+  larg:'/'
+  expected:('path'⋄)('to'⋄)('file'⋄)
+  rarg:'path/to/file'
+ )
+ (
+  description:'partition on dash (dyadic)'
+  larg:'-'
+  expected:('a'⋄)('b'⋄)('c'⋄)
+  rarg:'a-b-c'
+ )
+)
 ```
 
-## JSON to APL conversion
+## Array Notation features
 
-The test runner converts JSON values to APL:
-- JSON strings → APL character vectors
-- JSON numbers → APL scalars/arrays
-- JSON arrays → APL vectors (numeric or nested)
-- Empty JSON array `[]` → APL `⍬` (zilde)
+Array Notation properly represents APL data structures:
+- **Matrices**: `[row1⋄row2⋄...]` notation
+- **Strings**: Character vectors like `'hello'`
+- **Nested vectors**: `('abc'⋄)('def'⋄)` for strings vector
+- **Empty numeric vector**: `⍬` (zilde)
+- **Scalars and vectors**: Direct notation `42`, `1 2 3`
 
 ## Test runner interpretation
 
 The test runner (`test/Run.aplf`) will:
-1. Load each `.json` file from `tests/` directory using `⎕JSON`
-2. Process `monadic` and/or `dyadic` test arrays
-3. For each test case:
-   - Convert JSON values to APL values
+1. Load each `.apla` file from `tests/` directory using `⎕VGET`
+2. Extract function name from filename
+3. For each test object:
+   - Check for `larg` field to determine if dyadic
    - Execute function monadically or dyadically as appropriate
    - Compare result with `expected` value
-4. Accumulate error counts
-5. Write detailed results to `tests/test.log`
-6. Print summary
+4. Accumulate error counts (pass, fail, broke)
+5. Write detailed results to `logs/{function}.log`
+6. Print summary table

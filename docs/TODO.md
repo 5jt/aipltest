@@ -5,20 +5,20 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 0: Test framework foundation
 
-- [ ] Copy TinyTest operators and function into test/
-- [ ] Design and document test file format
-- [ ] Create test/Run.aplf test runner
-- [ ] Write simple test file to verify framework works
-- [ ] Seek approval before Phase 1
+- [x] Copy TinyTest operators and function into test/
+- [x] Design and document test file format
+- [x] Create test/Run.aplf test runner
+- [x] Write simple test file to verify framework works
+- [x] Seek approval before Phase 1
 
 ## Phase 1: Datatype functions
 
-- [ ] Review existing function drafts in fun/
-- [ ] Write tests for isDict, isString, isStrings, isTable, isXref
-- [ ] Seek approval for tests
-- [ ] Implement/fix functions as needed
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Review existing function drafts in fun/
+- [x] Write tests for isDict, isString, isStrings, isTable, isXref
+- [x] Seek approval for tests
+- [x] Implement/fix functions as needed
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 2: Simple string manipulation
 

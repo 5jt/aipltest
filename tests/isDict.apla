@@ -1,0 +1,67 @@
+(
+ (
+  description:'numeric values, string keys'
+  expected:1
+  rarg:(1 2 3 ⋄ ('a' ⋄ 'b' ⋄ 'c'))
+ )
+ (
+  description:'string values, numeric keys'
+  expected:1
+  rarg:(('cow' ⋄ 'sheep' ⋄ 'dog') ⋄ 12 23 34)
+ )
+ (
+  description:'string keys and values'
+  expected:1
+  rarg:(('a' ⋄ 'b' ⋄ 'c') ⋄ ('x' ⋄ 'y' ⋄ 'z'))
+ )
+ (
+  description:'empty dictionary (two empty vectors)'
+  expected:1
+  rarg:(⍬ ⋄ ⍬)
+ )
+ (
+  description:'single key-value pair'
+  expected:1
+  rarg:(,1 ⋄ ,⊂'a')
+ )
+ (
+  description:'string (vector but not 2-element)'
+  expected:0
+  rarg:'not a dict'
+ )
+ (
+  description:'numeric vector (not 2-element nested)'
+  expected:0
+  rarg:1 2 3
+ )
+ (
+  description:'empty vector (not 2 elements)'
+  expected:0
+  rarg:⍬
+ )
+ (
+  description:'3-element nested vector'
+  expected:0
+  rarg:(1 2 ⋄ 3 4 ⋄ 5 6)
+ )
+ (
+  description:'1-element vector'
+  expected:0
+  rarg:,1
+ )
+ (
+  description:'scalar number'
+  expected:0
+  rarg:42
+ )
+ (
+  description:'first element is matrix not vector'
+  expected:0
+  rarg:([1 2⋄3 4] ⋄ ('a' ⋄ 'b'))
+ )
+ (
+  description:'second element is nested not simple vector'
+  expected:0
+  rarg:(1 2 ⋄ (3 4⋄))
+ )
+)

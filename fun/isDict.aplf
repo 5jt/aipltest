@@ -1,4 +1,7 @@
  isDict←{
      2≠≢⍵:0
-     1 1≡≢∘⍴¨⍵
+     (v k)←⍵
+     1 1≢≢∘⍴¨v k:0  ⍝ vectors
+     isStrung k:1
+     83=⎕DR k       ⍝ ints
  }

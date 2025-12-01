@@ -1,0 +1,133 @@
+(
+ (
+  description:'2x3 numeric table'
+  expected:1
+  rarg:(
+   [
+    1 2 3
+    4 5 6
+   ]
+   (
+    'col1'
+    'col2'
+    'col3'
+   )
+  )
+ )
+ (
+  description:'mixed type table'
+  expected:1
+  rarg:(
+   [
+    'Bob' 21 'blue'
+    'Ted' 32 'green'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+ )
+ (
+  description:'single column table'
+  expected:1
+  rarg:(
+   [
+    1
+    2
+    3
+   ]
+   (
+    'value'
+   )
+  )
+ )
+ (
+  description:'single row table'
+  expected:1
+  rarg:(
+   [
+    1 2 3
+   ]
+   ('a' ⋄ 'b' ⋄ 'c')
+  )
+ )
+ (
+  description:'empty table'
+  expected:1
+  rarg:(
+   [
+    ⍬
+   ]
+   ''
+  )
+ )
+ (
+  description:'string'
+  expected:0
+  rarg:'not a table'
+ )
+ (
+  description:'numeric vector'
+  expected:0
+  rarg:1 2 3
+ )
+ (
+  description:'empty vector (not 2 elements)'
+  expected:0
+  rarg:⍬
+ )
+ (
+  description:'first element is vector not matrix'
+  expected:0
+  rarg:(
+   1 2 3
+   ('a' ⋄ 'b')
+  )
+ )
+ (
+  description:'second element is string not strings'
+  expected:0
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   'cols'
+  )
+ )
+ (
+  description:'dimension mismatch (3 cols, 2 names)'
+  expected:0
+  rarg:(
+   [
+    1 2 3
+    4 5 6
+   ]
+   ('a' ⋄ 'b')
+  )
+ )
+ (
+  description:'dimension mismatch (2 cols, 3 names)'
+  expected:0
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   ('a' ⋄ 'b' ⋄ 'c')
+  )
+ )
+ (
+  description:'column names are numbers not strings'
+  expected:0
+  rarg:(
+   [
+    1 2 3
+    4 5 6
+   ]
+   1 2 3
+  )
+ )
+)

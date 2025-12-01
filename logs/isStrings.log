@@ -1,0 +1,12 @@
+PASS - multiple strings
+PASS - single string in vector
+PASS - multiple empty strings
+PASS - mix of empty and non-empty strings
+PASS - three strings
+PASS - single string (not nested)
+PASS - empty string (not nested)
+PASS - empty numeric vector
+PASS - numeric vector
+PASS - nested numeric vectors
+PASS - scalar number
+PASS - mixed types (string and number)

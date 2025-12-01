@@ -1,43 +1,46 @@
  Run←{
-    ⍝ Run all tests in tests/ directory
-    ⍝ Prints summary and writes detailed logs to tests/{fn}.log
+    ⍝ Run all tests in ##.tests namespace
+    ⍝ Prints summary and writes detailed logs to logs/{fn}.log
     ⍝ Returns counts: pass fail broke
 
     ⍝ Constants
      ROOTDIR←'/Users/sjt/Projects/aipltest/'
-     TESTDIR←ROOTDIR,'tests/'
-     LOGDIR←TESTDIR,'logs/'
-     TESTCTX←'##.fun.' ⍝ location of functions to test
+     LOGDIR←ROOTDIR,'logs/'
+     TESTNS←##.tests
+     FUNNS←##.fun
 
-    ⍝ Find test files
-     files←⊃⎕NINFO⍠1⊢TESTDIR,'*.json'
-     0=≢files:0 0 0⊣⎕←'No test files found in ',TESTDIR
+    ⍝ Identify functions to test
+     fns←⊃∩/FUNNS TESTNS{⍺.⎕NL ⍵}¨-3 2
+     0=≢fns:0 0 0⊣⎕←'No tests found'
 
-     results←{
-         json←⎕JSON⊃⎕NGET ⍵
-        ⍝ executed tests
-         et←(TESTCTX,json.function)∘{
-             test←⍵
-             expn←'test.larg '/⍨×|test.⎕NC'larg'
-             expn,←⍺,' test.rarg'
-             ⎕←'[',⍺,'] ',test.description
-             test.(result dm)←test{0::(¯1 ⋄ ⎕DM) ⋄ (⍎⍵ ⋄ '')}expn
-             test.rc←{×≢⍵.dm:¯1 ⋄ ⍵.result≡⍵.expected}test ⍝ return code
-             test
-         }¨json.tests
-         log←(⎕UCS 13 10){(≢⍺)↓∊⍺∘,¨⍵}⊃,/{
-             r←⊂('BROKE' 'FAIL' 'PASS'⊃⍨¯1 0 1⍳⍵.rc),' - ',⍵.description
-             eg←(
-                 '    Expected: ',⍕⍵.expected
-                 '    Got: ',⍕⍵.result
-             )
-             r,(⊂⍵.dm ⋄ eg ⋄ '')⊃⍨¯1 0 1⍳⍵.rc
-         }¨et
-         et⊣log ⎕NPUT(LOGDIR,json.function,'.log' ⋄ 1)
-     }¨files
+     execTest←{
+         (fn tst)←⍺ ⍵
+         expn←'tst.larg '/⍨×|tst.⎕NC'larg' ⍝ dyadic?
+         expn,←'FUNNS.',fn,' tst.rarg'
+         ⎕←'[',fn,'] ',tst.description
+         tst.(result dm)←tst{0::(¯1 ⋄ ⎕DM) ⋄ (⍎⍵ ⋄ '')}expn
+         tst.rc←{×≢⍵.dm:¯1 ⋄ ⍵.result≡⍵.expected}tst ⍝ return code
+         tst
+     }
 
-     fns←2⊃¨⎕NPARTS files
-     pfb←+⌿table←↑{+/1 0 ¯1∘.=⍵}¨results.rc
+     et←(⊂¨fns)execTest¨¨TESTNS ⎕VGET fns ⍝ executed tests
+
+     reportTest←{
+         eg←(
+             '    Expected: ',⍕⍵.expected
+             '    Got: ',⍕⍵.result
+         )
+         bfp←¯1 0 1⍳⍵.rc
+         _←bfp⊃'BROKE' 'FAIL' 'PASS'
+         r←⊂_,' - ',⍵.description
+         r,←bfp⊃(⊂⍵.dm ⋄ eg ⋄ '')
+         ∊r,¨⊂⎕UCS 13 10
+     }
+
+     logs←⊃∘(,/)¨reportTest¨¨et
+     _←logs ⎕NPUT¨LOGDIR∘{(⍺,⍵,'.log' ⋄ 1)}¨fns
+
+     pfb←+⌿table←↑{+/1 0 ¯1∘.=⍵}¨et.rc
      ⎕←'' 'pass' 'fail' 'broke'⍪(fns,table)⍪(⊂'TOTAL'),pfb
 
      pfb ⍝ pass fail broke

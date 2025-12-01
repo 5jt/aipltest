@@ -1,0 +1,62 @@
+(
+ (
+  description:'multiple strings'
+  expected:1
+  rarg:('abc'⋄ 'def' ⋄ 'ghi')
+ )
+ (
+  description:'single string in vector'
+  expected:1
+  rarg:,('hello'⋄)
+ )
+ (
+  description:'multiple empty strings'
+  expected:1
+  rarg:('' ⋄ '' ⋄ '')
+ )
+ (
+  description:'mix of empty and non-empty strings'
+  expected:1
+  rarg:('abc' ⋄ '' ⋄ 'def')
+ )
+ (
+  description:'three strings'
+  expected:1
+  rarg:('quick' ⋄ 'brown' ⋄ 'fox')
+ )
+ (
+  description:'single string (not nested)'
+  expected:0
+  rarg:'abc'
+ )
+ (
+  description:'empty string (not nested)'
+  expected:0
+  rarg:''
+ )
+ (
+  description:'empty numeric vector'
+  expected:0
+  rarg:⍬
+ )
+ (
+  description:'numeric vector'
+  expected:0
+  rarg:1 2 3
+ )
+ (
+  description:'nested numeric vectors'
+  expected:0
+  rarg:(1 2 ⋄ 3 4)
+ )
+ (
+  description:'scalar number'
+  expected:0
+  rarg:42
+ )
+ (
+  description:'mixed types (string and number)'
+  expected:0
+  rarg:('abc'⋄ 123)
+ )
+)

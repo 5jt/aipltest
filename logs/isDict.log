@@ -1,0 +1,13 @@
+PASS - numeric values, string keys
+PASS - string values, numeric keys
+PASS - string keys and values
+PASS - empty dictionary (two empty vectors)
+PASS - single key-value pair
+PASS - string (vector but not 2-element)
+PASS - numeric vector (not 2-element nested)
+PASS - empty vector (not 2 elements)
+PASS - 3-element nested vector
+PASS - 1-element vector
+PASS - scalar number
+PASS - first element is matrix not vector
+PASS - second element is nested not simple vector
