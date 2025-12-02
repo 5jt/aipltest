@@ -4,6 +4,7 @@ PASS - multiple empty strings
 PASS - mix of empty and non-empty strings
 PASS - three strings
 PASS - single string (not nested)
+PASS - empty list of strings
 PASS - empty string (not nested)
 PASS - empty numeric vector
 PASS - numeric vector

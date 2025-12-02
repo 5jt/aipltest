@@ -50,17 +50,29 @@
    [
     1 2 3
    ]
-   ('a' ⋄ 'b' ⋄ 'c')
+   'abc'
   )
  )
  (
-  description:'empty table'
+  description:'empty table, strings key'
   expected:1
   rarg:(
    [
     ⍬
    ]
-   ''
+   0⌿(
+    ''
+   )
+  )
+ )
+ (
+  description:'empty table, string key'
+  expected:0
+  rarg:(
+   [
+    ⍬
+   ]
+    ''
   )
  )
  (
@@ -83,7 +95,7 @@
   expected:0
   rarg:(
    1 2 3
-   ('a' ⋄ 'b')
+   'ab'
   )
  )
  (
@@ -105,7 +117,7 @@
     1 2 3
     4 5 6
    ]
-   ('a' ⋄ 'b')
+   'ab'
   )
  )
  (
@@ -116,7 +128,7 @@
     1 2
     3 4
    ]
-   ('a' ⋄ 'b' ⋄ 'c')
+   'abc'
   )
  )
  (

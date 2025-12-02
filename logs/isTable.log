@@ -2,7 +2,10 @@ PASS - 2x3 numeric table
 PASS - mixed type table
 PASS - single column table
 PASS - single row table
-PASS - empty table
+PASS - empty table, strings key
+FAIL - empty table, string key
+    Expected: 0
+    Got: 1
 PASS - string
 PASS - numeric vector
 PASS - empty vector (not 2 elements)

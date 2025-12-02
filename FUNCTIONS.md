@@ -196,7 +196,7 @@ String manipulation
 
 Syntax: `Z ← [X] j Y`
 
-Where `X` is an optional string (defaults to `' '`) `Z` is a string 
+Where  `Y` is a string or strings and `X` is an optional string (defaults to `' '`) `Z` is a string 
 
 ```apl
 Y[1],X,Y[2],X,Y[3] ...
@@ -204,9 +204,13 @@ Y[1],X,Y[2],X,Y[3] ...
 
 Examples:
 ```apl
-      'abc def' ≡ j 'abc def'
+      'a b c' ≡ j 'abc'
 1
-      'abc-def' ≡ '-' j 'abc def'
+      'a-b-c' ≡ '-' j 'abc'
+1
+      'abc def' ≡ j 'abc' 'def'
+1
+      'abc-def' ≡ '-' j 'abc' 'def'
 1
       ≢j ''
 0

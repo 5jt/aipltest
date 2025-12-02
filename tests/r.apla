@@ -1,0 +1,80 @@
+(
+ (
+  description:'replace space with dash'
+  larg:' -'
+  expected:'abc-def-ghi'
+  rarg:'abc def ghi'
+ )
+ (
+  description:'replace slash with dash'
+  larg:'/-'
+  expected:'path-to-file'
+  rarg:'path/to/file'
+ )
+ (
+  description:'replace dash with underscore'
+  larg:'-_'
+  expected:'my_file_name'
+  rarg:'my-file-name'
+ )
+ (
+  description:'replace with same character (no change)'
+  larg:'aa'
+  expected:'abc'
+  rarg:'abc'
+ )
+ (
+  description:'replace character not in string'
+  larg:'xz'
+  expected:'abc'
+  rarg:'abc'
+ )
+ (
+  description:'replace all occurrences'
+  larg:'oe'
+  expected:'helleee'
+  rarg:'hellooo'
+ )
+ (
+  description:'replace in empty string'
+  larg:'ab'
+  expected:''
+  rarg:''
+ )
+ (
+  description:'replace first char with last char'
+  larg:'az'
+  expected:'zbcdefghy'
+  rarg:'abcdefghy'
+ )
+ (
+  description:'domain error: left argument not a string'
+  larg:12
+  rarg:'abc'
+  breaks:11
+ )
+ (
+  description:'domain error: left argument single character'
+  larg:'a'
+  rarg:'abc'
+  breaks:11
+ )
+ (
+  description:'domain error: left argument more than 2 characters'
+  larg:'abc'
+  rarg:'test'
+  breaks:11
+ )
+ (
+  description:'domain error: right argument not a string'
+  larg:'ab'
+  rarg:('abc' ⋄ 'def')
+  breaks:11
+ )
+ (
+  description:'domain error: right argument is numeric'
+  larg:'ab'
+  rarg:1 2 3
+  breaks:11
+ )
+)

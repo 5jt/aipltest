@@ -1,0 +1,29 @@
+PASS - partition with default space separator (monadic)
+PASS - partition on space (dyadic)
+PASS - partition on slash
+FAIL - partition on dash
+    Expected: abc
+    Got:  a  b  c 
+PASS - partition with no separator found
+FAIL - partition empty string
+    Expected: 
+    Got: 
+FAIL - partition with multiple consecutive separators
+    Expected: a  b
+    Got:  a  b 
+FAIL - partition leading separator
+    Expected:    abc 
+    Got:  abc 
+FAIL - partition trailing separator
+    Expected:  abc   
+    Got:  abc 
+FAIL - domain error: separator not a string
+    Expected: DOMAIN ERROR
+    Got:  abc def 
+FAIL - domain error: separator not single character
+    Expected: DOMAIN ERROR
+    Got: LENGTH ERROR
+PASS - domain error: right argument not a string
+FAIL - domain error: right argument is numeric
+    Expected: DOMAIN ERROR
+    Got:  1 2 3 

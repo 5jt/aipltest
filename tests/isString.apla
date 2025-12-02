@@ -5,6 +5,30 @@
   rarg:'hello'
  )
  (
+  description:'simple strings'
+  expected:0
+  rarg:(
+   'hello'
+   'there'
+  )
+ )
+ (
+  description:'160 strings'
+  expected:0
+  rarg:(
+   'hello'
+   'there≢'
+  )
+ )
+ (
+  description:'320 strings'
+  expected:0
+  rarg:(
+   'hello'
+   'there≢ 👍'
+  )
+ )
+ (
   description:'empty string'
   expected:1
   rarg:''
@@ -21,8 +45,20 @@
  )
  (
   description:'dyadic call (left argument ignored)'
-  larg:'ignored'
   expected:1
+  larg:'ignored'
   rarg:'hello'
+ )
+ (
+  description:'dataype 160'
+  expected:1
+  larg:'ignored'
+  rarg:'hello ≢'
+ )
+ (
+  description:'dataype 320'
+  expected:1
+  larg:'ignored'
+  rarg:'hello 👍'
  )
 )

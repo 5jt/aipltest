@@ -4,6 +4,8 @@
     ⍝ Prints summary and writes detailed logs to logs/{fn}.log
     ⍝ Returns counts: pass fail broke
 
+     ⍺←0
+     verbose←⍺
     ⍝ Constants
      ROOTDIR←'/Users/sjt/Projects/aipltest/'
      LOGDIR←ROOTDIR,'logs/'
@@ -15,39 +17,39 @@
          0=≢⍵:⍺
          _←{0=≢⍵:'' ⋄ ''⊣⎕←'Not found: ',⍕⍵}⍵~⍺
          ⍺∩⍵
-     }⍵
+     },¨⍵
 
      0=≢fns:0 0 0⊣⎕←'No tests found'
 
      execTest←{
-         (fn tst)←⍺ ⍵
+         tst←(breaks:0)⎕VSET{(n←⍵.⎕NL 2 ⋄ ⍵ ⎕VGET n)}⍵
          expn←'tst.larg '/⍨×|tst.⎕NC'larg' ⍝ dyadic?
-         expn,←'FUNNS.',fn,' tst.rarg'
-         ⎕←'[',fn,'] ',tst.description
-         tst.(result dm)←tst{0::(¯1 ⋄ ⎕DM) ⋄ (⍎⍵ ⋄ '')}expn
-         tst.rc←{×≢⍵.dm:¯1 ⋄ ⍵.result≡⍵.expected}tst ⍝ return code
+         expn,←'FUNNS.',⍺,' tst.rarg'
+         _←verbose{⍺:⎕←⍵ ⋄ ⍬}'[',⍺,'] ',⍵.description
+         tst.(result dm en)←tst{0::(¯1 ⋄ ⎕DM ⋄ ⎕EN) ⋄ (⍎⍵ ⋄ '' ⋄ 0)}expn
+         tst.pass←{
+             ×⍵.breaks:=/⍵.(breaks en) ⍝ broke as expected?
+             ×⍵.en:0 ⍝ broke unexpectedly
+             ⍵.result≡⍵.expected
+         }tst ⍝ return code
          tst
      }
 
      et←(⊂¨fns)execTest¨¨TESTNS ⎕VGET fns ⍝ executed tests
 
      reportTest←{
-         eg←(
-             '    Expected: ',⍕⍵.expected
-             '    Got: ',⍕⍵.result
-         )
-         bfp←¯1 0 1⍳⍵.rc
-         _←bfp⊃'BROKE' 'FAIL' 'PASS'
-         r←⊂_,' - ',⍵.description
-         r,←bfp⊃(⊂⍵.dm ⋄ eg ⋄ '')
+         exp←'    Expected: ',⍕{×⍵.breaks:⎕EM ⍵.breaks ⋄ ⍵.expected}⍵
+         got←'    Got: ',⍕(⍵.result ⋄ ⊃⍵.dm)⊃⍨1+×⍵.en
+         r←⊂('FAIL' 'PASS'⊃⍨1+⍵.pass),' - ',⍵.description
+         r,←⍵.pass{⍺:'' ⋄ ⍵}exp got
          ∊r,¨⊂⎕UCS 13 10
      }
 
      logs←⊃∘(,/)¨reportTest¨¨et
      _←logs ⎕NPUT¨LOGDIR∘{(⍺,⍵,'.log' ⋄ 1)}¨fns
 
-     pfb←+⌿table←↑{+/1 0 ¯1∘.=⍵}¨et.rc
-     ⎕←'' 'pass' 'fail' 'broke'⍪(fns,table)⍪(⊂'TOTAL'),pfb
+     pf←+⌿table←↑{+/1 0∘.=⍵}¨et.pass
+     ⎕←'' 'pass' 'fail'⍪(fns,table)⍪(⊂'TOTAL'),pf
 
-     pfb ⍝ pass fail broke
+     pf ⍝ pass fail counts
  }

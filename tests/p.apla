@@ -1,0 +1,79 @@
+(
+ (
+  description:'partition with default space separator (monadic)'
+  expected:('quick' ⋄ 'brown' ⋄ 'fox')
+  rarg:'quick brown fox'
+ )
+ (
+  description:'partition on space (dyadic)'
+  larg:' '
+  expected:('abc' ⋄ 'def')
+  rarg:'abc def'
+ )
+ (
+  description:'partition on slash'
+  larg:'/'
+  expected:('path' ⋄ 'to' ⋄ 'file')
+  rarg:'path/to/file'
+ )
+ (
+  description:'partition on dash'
+  larg:'-'
+  expected:('a' ⋄ 'b' ⋄ 'c')
+  rarg:'a-b-c'
+ )
+ (
+  description:'partition with no separator found'
+  larg:'/'
+  expected:,⊂'no-separator-here'
+  rarg:'no-separator-here'
+ )
+ (
+  description:'partition empty string'
+  larg:' '
+  expected:⍬
+  rarg:''
+ )
+ (
+  description:'partition with multiple consecutive separators'
+  larg:'/'
+  expected:('a' ⋄ '' ⋄ 'b')
+  rarg:'a//b'
+ )
+ (
+  description:'partition leading separator'
+  larg:'-'
+  expected:('' ⋄ 'abc')
+  rarg:'-abc'
+ )
+ (
+  description:'partition trailing separator'
+  larg:'-'
+  expected:('abc' ⋄ '')
+  rarg:'abc-'
+ )
+ (
+  description:'domain error: separator not a string'
+  larg:123
+  rarg:'abc def'
+  breaks:11
+ )
+ (
+  description:'domain error: separator not single character'
+  larg:'//'
+  rarg:'path//to//file'
+  breaks:11
+ )
+ (
+  description:'domain error: right argument not a string'
+  larg:' '
+  rarg:('abc' ⋄ 'def')
+  breaks:11
+ )
+ (
+  description:'domain error: right argument is numeric'
+  larg:' '
+  rarg:1 2 3
+  breaks:11
+ )
+)
