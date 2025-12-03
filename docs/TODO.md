@@ -25,12 +25,12 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 2: Simple string manipulation
 
-- [ ] Review existing drafts for j, p, r
-- [ ] Write tests for j, p (single-char separator), r (2-char args)
-- [ ] Seek approval for tests
-- [ ] Implement robust versions with domain error signaling
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Review existing drafts for j, p, r
+- [x] Write tests for j, p (single-char separator), r (2-char args)
+- [x] Seek approval for tests
+- [x] Implement robust versions with domain error signaling
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 3: String interpolation
 

@@ -2,83 +2,116 @@
  (
   description:'join with default space separator (monadic)'
   expected:'abc def'
-  rarg:('abc' ⋄ 'def')
+  rarg:(
+   'abc'
+   'def'
+  )
  )
  (
   description:'join with space separator (dyadic)'
-  larg:' '
   expected:'abc def'
-  rarg:('abc' ⋄ 'def')
+  larg:' '
+  rarg:(
+   'abc'
+   'def'
+  )
  )
  (
   description:'join with dash separator'
-  larg:'-'
   expected:'abc-def'
-  rarg:('abc' ⋄ 'def')
+  larg:'-'
+  rarg:(
+   'abc'
+   'def'
+  )
  )
  (
   description:'join with multi-char separator'
-  larg:'::'
   expected:'a::b::c'
-  rarg:('a' ⋄ 'b' ⋄ 'c')
+  larg:'::'
+  rarg:'abc'
  )
  (
   description:'join three strings'
-  larg:' '
   expected:'quick brown fox'
-  rarg:('quick' ⋄ 'brown' ⋄ 'fox')
+  larg:' '
+  rarg:(
+   'quick'
+   'brown'
+   'fox'
+  )
  )
  (
   description:'join with empty string'
-  larg:''
   expected:'abcdef'
-  rarg:('abc' ⋄ 'def')
+  larg:''
+  rarg:(
+   'abc'
+   'def'
+  )
  )
  (
+  breaks:11
   description:'join with zilde'
   larg:⍬
-  rarg:('abc' ⋄ 'def')
-  breaks:11
+  rarg:(
+   'abc'
+   'def'
+  )
  )
  (
   description:'join single string'
-  larg:'-'
   expected:'alone'
-  rarg:,⊂'alone'
+  larg:'-'
+  rarg:(
+   'alone'
+  )
  )
  (
-  description:'join empty strings vector'
+  breaks:11
+  description:'join empty numeric vector'
   larg:'-'
-  expected:''
   rarg:⍬
  )
  (
+  description:'join empty strings vector'
+  expected:''
+  larg:'-'
+  rarg:''
+ )
+ (
+  breaks:11
   description:'domain error: separator not a string'
   larg:123
-  rarg:('abc' ⋄ 'def')
-  breaks:11
+  rarg:(
+   'abc'
+   'def'
+  )
  )
  (
   description:'string right argument'
-  rarg:'abc'
   expected:'a b c'
+  rarg:'abc'
  )
  (
   description:'string right argument'
+  expected:'a--b--c'
   larg:'--'
   rarg:'abc'
-  expected:'a--b--c'
  )
  (
+  breaks:11
   description:'domain error: right argument is numeric vector'
   larg:' '
   rarg:1 2 3
-  breaks:11
  )
  (
+  breaks:11
   description:'domain error: right argument mixed types'
   larg:' '
-  rarg:('abc' ⋄ 123)
-  breaks:11
+  rarg:(
+   'abc'
+   123
+  )
  )
 )

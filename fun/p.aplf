@@ -1,5 +1,6 @@
-p←{
+ p←{
    ⍝ partition: 'abc' 'def' ←→ '/'p'abc/def' ←→ p'abc def'
-	⍺←' '
-	⍺(≠⊆⊢)⍵
-}
+     ⍺←' '
+     _←⎕SIGNAL 11/⍨(1=≢⍺)⍲isStrings ⍺ ⍵
+     ⍺(≠⊆⊢)⍵
+ }

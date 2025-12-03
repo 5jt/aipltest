@@ -1,79 +1,130 @@
 (
  (
   description:'partition with default space separator (monadic)'
-  expected:('quick' ⋄ 'brown' ⋄ 'fox')
+  expected:(
+   'quick'
+   'brown'
+   'fox'
+  )
   rarg:'quick brown fox'
  )
  (
   description:'partition on space (dyadic)'
+  expected:(
+   'abc'
+   'def'
+  )
   larg:' '
-  expected:('abc' ⋄ 'def')
   rarg:'abc def'
  )
  (
   description:'partition on slash'
+  expected:(
+   'path'
+   'to'
+   'file'
+  )
   larg:'/'
-  expected:('path' ⋄ 'to' ⋄ 'file')
   rarg:'path/to/file'
  )
  (
   description:'partition on dash'
+  expected:(
+   ('a'⋄)
+   ('b'⋄)
+   ('c'⋄)
+  )
   larg:'-'
-  expected:('a' ⋄ 'b' ⋄ 'c')
   rarg:'a-b-c'
  )
  (
   description:'partition with no separator found'
+  expected:(
+   'no-separator-here'
+  )
   larg:'/'
-  expected:,⊂'no-separator-here'
   rarg:'no-separator-here'
  )
  (
   description:'partition empty string'
+  expected:0⌿(
+   ''
+  )
   larg:' '
-  expected:⍬
   rarg:''
  )
  (
   description:'partition with multiple consecutive separators'
+  expected:(
+   'abc'
+   'def'
+  )
   larg:'/'
-  expected:('a' ⋄ '' ⋄ 'b')
-  rarg:'a//b'
+  rarg:'abc//def'
  )
  (
   description:'partition leading separator'
+  expected:(
+   ''
+   'abc'
+  )
   larg:'-'
-  expected:('' ⋄ 'abc')
   rarg:'-abc'
  )
  (
-  description:'partition trailing separator'
+  description:'partition leading separators'
+  expected:(
+   ''
+   ''
+   'abc'
+  )
   larg:'-'
-  expected:('abc' ⋄ '')
+  rarg:'--abc'
+ )
+ (
+  description:'partition trailing separator'
+  expected:(
+   'abc'
+   ''
+  )
+  larg:'-'
   rarg:'abc-'
  )
  (
+  description:'partition trailing separators'
+  expected:(
+   'abc'
+   ''
+   ''
+  )
+  larg:'-'
+  rarg:'abc--'
+ )
+ (
+  breaks:11
   description:'domain error: separator not a string'
   larg:123
   rarg:'abc def'
-  breaks:11
  )
  (
+  breaks:11
   description:'domain error: separator not single character'
   larg:'//'
   rarg:'path//to//file'
-  breaks:11
  )
  (
+  breaks:11
   description:'domain error: right argument not a string'
   larg:' '
-  rarg:('abc' ⋄ 'def')
-  breaks:11
+  rarg:(
+   'abc'
+   'def'
+  )
  )
  (
+  breaks:11
   description:'domain error: right argument is numeric'
   larg:' '
   rarg:1 2 3
-  breaks:11
  )
 )

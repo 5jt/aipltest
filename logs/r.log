@@ -6,16 +6,8 @@ PASS - replace character not in string
 PASS - replace all occurrences
 PASS - replace in empty string
 PASS - replace first char with last char
-FAIL - domain error: left argument not a string
-    Expected: DOMAIN ERROR
-    Got: abc
-FAIL - domain error: left argument single character
-    Expected: DOMAIN ERROR
-    Got: abc
-FAIL - domain error: left argument more than 2 characters
-    Expected: DOMAIN ERROR
-    Got: LENGTH ERROR
+PASS - domain error: left argument not a string
+PASS - domain error: left argument single character
+PASS - domain error: left argument more than 2 characters
 PASS - domain error: right argument not a string
-FAIL - domain error: right argument is numeric
-    Expected: DOMAIN ERROR
-    Got: 1 2 3
+PASS - domain error: right argument is numeric

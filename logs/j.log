@@ -4,19 +4,12 @@ PASS - join with dash separator
 PASS - join with multi-char separator
 PASS - join three strings
 PASS - join with empty string
-FAIL - join with zilde
-    Expected: DOMAIN ERROR
-    Got: abcdef
+PASS - join with zilde
 PASS - join single string
+PASS - join empty numeric vector
 PASS - join empty strings vector
-FAIL - domain error: separator not a string
-    Expected: DOMAIN ERROR
-    Got: abc 123 def
+PASS - domain error: separator not a string
 PASS - string right argument
 PASS - string right argument
-FAIL - domain error: right argument is numeric vector
-    Expected: DOMAIN ERROR
-    Got: 1   2   3
-FAIL - domain error: right argument mixed types
-    Expected: DOMAIN ERROR
-    Got: abc  123
+PASS - domain error: right argument is numeric vector
+PASS - domain error: right argument mixed types

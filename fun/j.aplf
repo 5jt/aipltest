@@ -1,5 +1,6 @@
 j←{
    ⍝ join: 'abc def' ←→ ' 'j'abc' 'def' ←→ j'abc' 'def'
 	⍺←' '
+	_←⎕SIGNAL 11/⍨(isString ⍺)⍲isStrung ⍵
 	(≢⍺)↓∊⍺∘,¨⍵
 }
