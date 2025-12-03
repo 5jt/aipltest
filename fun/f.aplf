@@ -1,11 +1,14 @@
  f←{
     ⍝ string interpolation: 'a is 42' ←→ f'a is ${a}' ⊢ a←42
-     ⍺←⊃⎕NSI
-     (
-         '\$\{\d+(;\d+)*\}'
-         '\$\{(''[^'']*''|[^}])*\}'
-     )⎕R(⍺∘{
-         ⍵.PatternNum:⍕⍺⍎2↓¯1↓⍵.Match
-         ⍕⍺⌷⍨⊃⌽';'⎕VFI 2↓¯1↓⍵.Match
+    ⍝                       'a is 42' ←→ (a:42)f'a is ${a}'
+    ⍝                       'a is 42' ←→ 42 f'a is ${1}'
+     ⍺←⍎⊃⎕NSI
+     alpha←,∘⊂⍣(isString ⍺)⊢⍺ ⍝ string → strings
+     patterns←('\$\{\d+\}' ⋄ '\$\{(''[^'']*''|[^}])*\}')
+     patterns ⎕R(alpha∘{
+         0::⍵.Match
+         xpn←2↓¯1↓⍵.Match
+         ⍵.PatternNum:⍕⍺⍎xpn
+         ⍕⍺⊃⍨⊃⌽⎕VFI xpn
      })⍵
  }

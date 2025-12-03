@@ -260,12 +260,11 @@ String interpolation with `f`
 -----------------------------
 
 Emulates Python string interpolation. 
-Function `f` has two uses:
+Function `f` has syntax:
 
-1.  `Z ← [ns] f str`
-1.  `Z ← str f values`
+      Z ← [ns|values] f str
 
-In both uses string `str` may contain executable expressions embraced with curly braces prefixed with a dollar sign, e.g.
+String `str` may contain executable expressions embraced with curly braces prefixed with a dollar sign, e.g.
 
     'My luv is like a ${colour}, ${colour} ${flower} in ${season}.'
     'The quick, brown ${1} jumps over the lazy ${2}'
@@ -278,12 +277,15 @@ In both uses string `str` may contain executable expressions embraced with curly
 1 1 0
        f'My luv is like a ${colour}, ${colour} ${flower} in ${season}.'
 My luv is like a red, red rose in ${season}.
+       ns←(colour:'pink' ⋄ flower:'pansy')
+       ns f'My luv is like a ${colour}, ${colour} ${flower} in ${season}.'
+My luv is like a pink, pink pansy in ${season}.
 ```
 
-In the second use, where an escaped expression evaluates successfully to an integer in the range `⍳≢values` it is replaced by the corresponding item of `values`, also formatted.
+Where the left argument is a list of values, each escaped expressions must be an integer in the range `⍳≢values`: it is replaced by the corresponding item of `values`, also formatted.
 
 ```apl
-      'The quick, brown ${+/1 1} jumps ${7-4} the lazy ${1}.' f 'dog' 'fox'
-The quick, brown fox jumps ${7-4} the lazy dog.
+      'dog' 'fox'f'The quick, brown ${2} jumps ${3} the lazy ${1}.'
+The quick, brown fox jumps ${3} the lazy dog.
 ```
 

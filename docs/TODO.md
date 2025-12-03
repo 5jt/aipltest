@@ -34,12 +34,12 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 3: String interpolation
 
-- [ ] Review existing f draft
-- [ ] Write tests for f (both uses)
-- [ ] Seek approval for tests
-- [ ] Implement/fix f as needed
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Review existing f draft
+- [x] Write tests for f (both uses)
+- [x] Seek approval for tests
+- [x] Implement/fix f as needed
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 4: Full string manipulation
 

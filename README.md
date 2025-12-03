@@ -25,7 +25,7 @@ A folder `fun` of APLF files defining functions:
 	p            partition string ⍵ on scalar separator ⍺ (default ' ')
 	r            `(o n) r s`: replace characters `o` in string `s` with char `n`
 
-See Data Structures below and also [FUNCTIONS.md](FUNCTIONS.md).
+See Data Structures below and also [FUNCTIONS.md](docs/FUNCTIONS.md).
 
 ### A testing framework
 

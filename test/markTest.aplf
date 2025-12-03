@@ -1,0 +1,5 @@
+ markTest←{
+     ×⍵.breaks:=/⍵.(breaks en) ⍝ broke as expected?
+     ×⍵.en:0 ⍝ broke unexpectedly
+     ⍵.result≡⍵.expected
+ }

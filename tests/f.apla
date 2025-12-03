@@ -1,0 +1,118 @@
+(
+ (
+  description:'no interpolation needed'
+  expected:'hello world'
+  rarg:'hello world'
+ )
+ (
+  larg:(
+   x:42
+  )
+  description:'single variable substitution'
+  expected:'value is 42'
+  rarg:'value is ${x}'
+ )
+ (
+  larg:(
+   x:10
+   y:20
+  )
+  description:'multiple variable substitutions'
+  expected:'x is 10, y is 20'
+  rarg:'x is ${x}, y is ${y}'
+ )
+ (
+  larg:(
+   x:10
+  )
+  description:'undefined variable remains unchanged'
+  expected:'x is 10, z is ${z}'
+  rarg:'x is ${x}, z is ${z}'
+ )
+ (
+  description:'bare expression evaluation'
+  expected:'product is 42'
+  rarg:'product is ${6×7}'
+ )
+ (
+  larg:(
+   x:10
+   y:20
+  )
+  description:'expression evaluation with variables'
+  expected:'sum is 30'
+  rarg:'sum is ${x+y}'
+ )
+ (
+  larg:(
+   name:'Alice'
+  )
+  description:'string variable substitution'
+  expected:'name is Alice'
+  rarg:'name is ${name}'
+ )
+ (
+  larg:(
+   x:10
+   z:0
+  )
+  description:'failed expression remains unchanged'
+  expected:'result is ${x÷z}'
+  rarg:'result is ${x÷z}'
+ )
+ (
+  description:'index-based: single substitution'
+  expected:'The lazy dog'
+  larg:(
+   'dog'
+   'fox'
+  )
+  rarg:'The lazy ${1}'
+ )
+ (
+  description:'index-based: multiple substitutions'
+  expected:'The fox jumps over the dog'
+  larg:(
+   'dog'
+   'fox'
+  )
+  rarg:'The ${2} jumps over the ${1}'
+ )
+ (
+  description:'index-based: no expression evaluation'
+  expected:'The ${+/1 1} jumps over the dog'
+  larg:(
+   'dog'
+   'fox'
+  )
+  rarg:'The ${+/1 1} jumps over the ${1}'
+ )
+ (
+  description:'index-based: out of range remains unchanged'
+  expected:'The dog and ${3}'
+  larg:(
+   'dog'
+   'fox'
+  )
+  rarg:'The ${1} and ${3}'
+ )
+ (
+  description:'index-based: single string larg treated as 1-item strings'
+  expected:'The lazy dog'
+  larg:'dog'
+  rarg:'The lazy ${1}'
+ )
+ (
+  description:'empty string with no substitutions'
+  expected:''
+  rarg:''
+ )
+ (
+  larg:(
+   result:'value'
+  )
+  description:'nested braces in quotes'
+  expected:'result is value'
+  rarg:'result is ${result}'
+ )
+)

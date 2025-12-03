@@ -1,11 +1,9 @@
  Run←{
-    ⍝ Run tests in ##.tests namespace
+    ⍝ Run tests in ##.tests for functions in ##.fun
     ⍝ ⍵: function names to test (empty=all)
     ⍝ Prints summary and writes detailed logs to logs/{fn}.log
     ⍝ Returns counts: pass fail broke
 
-     ⍺←0
-     verbose←⍺
     ⍝ Constants
      ROOTDIR←'/Users/sjt/Projects/aipltest/'
      LOGDIR←ROOTDIR,'logs/'
@@ -21,29 +19,7 @@
 
      0=≢fns:0 0 0⊣⎕←'No tests found'
 
-     execTest←{
-         tst←(breaks:0)⎕VSET{(n←⍵.⎕NL 2 ⋄ ⍵ ⎕VGET n)}⍵
-         expn←'tst.larg '/⍨×|tst.⎕NC'larg' ⍝ dyadic?
-         expn,←'FUNNS.',⍺,' tst.rarg'
-         _←verbose{⍺:⎕←⍵ ⋄ ⍬}'[',⍺,'] ',⍵.description
-         tst.(result dm en)←tst{0::(¯1 ⋄ ⎕DM ⋄ ⎕EN) ⋄ (⍎⍵ ⋄ '' ⋄ 0)}expn
-         tst.pass←{
-             ×⍵.breaks:=/⍵.(breaks en) ⍝ broke as expected?
-             ×⍵.en:0 ⍝ broke unexpectedly
-             ⍵.result≡⍵.expected
-         }tst ⍝ return code
-         tst
-     }
-
      et←(⊂¨fns)execTest¨¨TESTNS ⎕VGET fns ⍝ executed tests
-
-     reportTest←{
-         exp←'    Expected: ',⍕{×⍵.breaks:⎕EM ⍵.breaks ⋄ ⍵.expected}⍵
-         got←'    Got: ',⍕(⍵.result ⋄ ⊃⍵.dm)⊃⍨1+×⍵.en
-         r←⊂('FAIL' 'PASS'⊃⍨1+⍵.pass),' - ',⍵.description
-         r,←⍵.pass{⍺:'' ⋄ ⍵}exp got
-         ∊r,¨⊂⎕UCS 13 10
-     }
 
      logs←⊃∘(,/)¨reportTest¨¨et
      _←logs ⎕NPUT¨LOGDIR∘{(⍺,⍵,'.log' ⋄ 1)}¨fns
