@@ -44,8 +44,22 @@
   )
  )
  (
-  description:'single row table'
+  description:'single row table; strings key'
   expected:1
+  rarg:(
+   [
+    1 2 3
+   ]
+   (
+    ('a'⋄)
+    ('b'⋄)
+    ('c'⋄)
+   )
+  )
+ )
+ (
+  description:'single row table; string key'
+  expected:0
   rarg:(
    [
     1 2 3
@@ -72,7 +86,7 @@
    [
     ⍬
    ]
-    ''
+   ''
   )
  )
  (
