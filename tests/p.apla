@@ -127,4 +127,84 @@
   larg:' '
   rarg:1 2 3
  )
+ (
+  description:'partition with tab separator'
+  expected:(
+   'first'
+   'second'
+   'third'
+  )
+  larg:⎕UCS 9
+  rarg:'first',(⎕UCS 9),'second',(⎕UCS 9),'third'
+ )
+ (
+  description:'partition with newline separator'
+  expected:(
+   'line1'
+   'line2'
+   'line3'
+  )
+  larg:⎕UCS 10
+  rarg:'line1',(⎕UCS 10),'line2',(⎕UCS 10),'line3'
+ )
+ (
+  description:'partition with unicode separator (bullet)'
+  expected:(
+   'item1'
+   'item2'
+   'item3'
+  )
+  larg:'•'
+  rarg:'item1•item2•item3'
+ )
+ (
+  description:'partition string containing emoji'
+  expected:(
+   'hello'
+   ('👍'⋄)
+   'world'
+  )
+  larg:' '
+  rarg:'hello 👍 world'
+ )
+ (
+  description:'partition with emoji as separator'
+  expected:(
+   'part1'
+   'part2'
+   'part3'
+  )
+  larg:'🔸'
+  rarg:'part1🔸part2🔸part3'
+ )
+ (
+  description:'partition with special chars in data'
+  expected:(
+   'x=1'
+   'y=2'
+   'z=3'
+  )
+  larg:';'
+  rarg:'x=1;y=2;z=3'
+ )
+ (
+  description:'partition with punctuation separator'
+  expected:(
+   'hello'
+   ' world'
+   ' how are you'
+  )
+  larg:','
+  rarg:'hello, world, how are you'
+ )
+ (
+  description:'partition preserves unicode in result'
+  expected:(
+   'café'
+   'naïve'
+   'résumé'
+  )
+  larg:' '
+  rarg:'café naïve résumé'
+ )
 )

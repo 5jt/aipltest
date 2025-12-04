@@ -1,32 +1,32 @@
 (
  (
   description:'no interpolation needed'
-  expected:'hello world'
-  rarg:'hello world'
+  expected:'hullo world'
+  rarg:'hullo world'
  )
  (
+  description:'single variable substitution'
+  expected:'value is 42'
   larg:(
    x:42
   )
-  description:'single variable substitution'
-  expected:'value is 42'
   rarg:'value is ${x}'
  )
  (
+  description:'multiple variable substitutions'
+  expected:'x is 10, y is 20'
   larg:(
    x:10
    y:20
   )
-  description:'multiple variable substitutions'
-  expected:'x is 10, y is 20'
   rarg:'x is ${x}, y is ${y}'
  )
  (
+  description:'undefined variable remains unchanged'
+  expected:'x is 10, z is ${z}'
   larg:(
    x:10
   )
-  description:'undefined variable remains unchanged'
-  expected:'x is 10, z is ${z}'
   rarg:'x is ${x}, z is ${z}'
  )
  (
@@ -35,29 +35,29 @@
   rarg:'product is ${6×7}'
  )
  (
+  description:'expression evaluation with variables'
+  expected:'sum is 30'
   larg:(
    x:10
    y:20
   )
-  description:'expression evaluation with variables'
-  expected:'sum is 30'
   rarg:'sum is ${x+y}'
  )
  (
+  description:'string variable substitution'
+  expected:'name is Alice'
   larg:(
    name:'Alice'
   )
-  description:'string variable substitution'
-  expected:'name is Alice'
   rarg:'name is ${name}'
  )
  (
+  description:'failed expression remains unchanged'
+  expected:'result is ${x÷z}'
   larg:(
    x:10
    z:0
   )
-  description:'failed expression remains unchanged'
-  expected:'result is ${x÷z}'
   rarg:'result is ${x÷z}'
  )
  (
@@ -108,11 +108,11 @@
   rarg:''
  )
  (
+  description:'nested braces in quotes'
+  expected:'result is value'
   larg:(
    result:'value'
   )
-  description:'nested braces in quotes'
-  expected:'result is value'
   rarg:'result is ${result}'
  )
 )

@@ -21,3 +21,11 @@ PASS - domain error: separator not a string
 PASS - domain error: separator not single character
 PASS - domain error: right argument not a string
 PASS - domain error: right argument is numeric
+PASS - partition with tab separator
+PASS - partition with newline separator
+PASS - partition with unicode separator (bullet)
+PASS - partition string containing emoji
+PASS - partition with emoji as separator
+PASS - partition with special chars in data
+PASS - partition with punctuation separator
+PASS - partition preserves unicode in result

@@ -11,3 +11,13 @@ PASS - domain error: left argument single character
 PASS - domain error: left argument more than 2 characters
 PASS - domain error: right argument not a string
 PASS - domain error: right argument is numeric
+PASS - replace tab with space
+PASS - replace newline with space
+PASS - replace with unicode character
+PASS - replace unicode character
+PASS - replace in string with emoji
+PASS - replace emoji with character
+PASS - replace character with emoji
+PASS - replace preserves other unicode
+PASS - replace special character with alphanumeric
+PASS - replace in string with mixed unicode

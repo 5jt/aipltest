@@ -77,4 +77,64 @@
   rarg:1 2 3
   breaks:11
  )
+ (
+  description:'replace tab with space'
+  larg:(⎕UCS 9),' '
+  expected:'hello world test'
+  rarg:'hello',(⎕UCS 9),'world',(⎕UCS 9),'test'
+ )
+ (
+  description:'replace newline with space'
+  larg:(⎕UCS 10),' '
+  expected:'line1 line2 line3'
+  rarg:'line1',(⎕UCS 10),'line2',(⎕UCS 10),'line3'
+ )
+ (
+  description:'replace with unicode character'
+  larg:'-•'
+  expected:'item1•item2•item3'
+  rarg:'item1-item2-item3'
+ )
+ (
+  description:'replace unicode character'
+  larg:'é*'
+  expected:'caf*'
+  rarg:'café'
+ )
+ (
+  description:'replace in string with emoji'
+  larg:' -'
+  expected:'hello-👍-world'
+  rarg:'hello 👍 world'
+ )
+ (
+  description:'replace emoji with character'
+  larg:'👍+'
+  expected:'hello+world'
+  rarg:'hello👍world'
+ )
+ (
+  description:'replace character with emoji'
+  larg:'*🔸'
+  rarg:'a*b*c'
+  expected:'a🔸b🔸c'
+ )
+ (
+  description:'replace preserves other unicode'
+  larg:'e_'
+  expected:'café naïv_ résumé'
+  rarg:'café naïve résumé'
+ )
+ (
+  description:'replace special character with alphanumeric'
+  larg:'@a'
+  expected:'emailaexample.com'
+  rarg:'email@example.com'
+ )
+ (
+  description:'replace in string with mixed unicode'
+  larg:' |'
+  expected:'Hello|世界|🌍'
+  rarg:'Hello 世界 🌍'
+ )
 )
