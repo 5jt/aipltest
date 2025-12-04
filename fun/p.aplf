@@ -1,6 +1,15 @@
  p←{
-   ⍝ partition: 'abc' 'def' ←→ '/'p'abc/def' ←→ p'abc def'
+   ⍝ partition: 'abc' 'def' ←→
+   ⍝    p'abc def'
+   ⍝    '-'p'abc-def'
+   ⍝    '//'p'abc//def'
      ⍺←' '
-     _←⎕SIGNAL 11/⍨(1=≢⍺)⍲isStrings ⍺ ⍵
-     ⍺(≠⊆⊢)⍵
+     _←⎕SIGNAL 11/⍨~isStrings ⍺ ⍵
+     0=≢⍺:⍵                         ⍝ empty ⍺: no-op
+     0=≢⍵:0⍴⊂''                     ⍝ empty ⍵
+     ⍺≡⎕UCS 10:⍺(≠⊆⊢)⍵              ⍝ special case
+     aw←⍺,⍵
+     os←1+∊⍺ ⎕S{⍵.Offsets}⊢aw
+     b←1@os⊢0⍴⍨≢aw
+     (≢⍺)↓¨b⊂aw
  }

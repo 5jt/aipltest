@@ -63,6 +63,7 @@
   description:'partition with multiple consecutive separators'
   expected:(
    'abc'
+   ''
    'def'
   )
   larg:'/'

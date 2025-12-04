@@ -4,22 +4,12 @@ PASS - partition on slash
 PASS - partition on dash
 PASS - partition with no separator found
 PASS - partition empty string
-FAIL - partition with empty separator (no-op)
-    Expected: abc def ghi
-    Got: ⍎DOMAIN ERROR
+PASS - partition with empty separator (no-op)
 PASS - partition with multiple consecutive separators
-FAIL - partition leading separator
-    Expected:    abc 
-    Got:  abc 
-FAIL - partition leading separators
-    Expected:      abc 
-    Got:  abc 
-FAIL - partition trailing separator
-    Expected:  abc   
-    Got:  abc 
-FAIL - partition trailing separators
-    Expected:  abc     
-    Got:  abc 
+PASS - partition leading separator
+PASS - partition leading separators
+PASS - partition trailing separator
+PASS - partition trailing separators
 PASS - domain error: separator not a string
 PASS - domain error: right argument not a string
 PASS - domain error: right argument is numeric
@@ -31,33 +21,13 @@ PASS - partition with emoji as separator
 PASS - partition with special chars in data
 PASS - partition with punctuation separator
 PASS - partition preserves unicode in result
-FAIL - Phase 4: partition on two-character separator
-    Expected:  path  to  file 
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition on multi-char separator
-    Expected:  abc  def  ghi 
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition on word separator
-    Expected:  one  two  three 
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition empty string with multi-char separator
-    Expected: 
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition no separator found (multi-char)
-    Expected:  no-separator-here 
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition with consecutive multi-char separators
-    Expected:  abc    def 
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition leading multi-char separator
-    Expected:    abc 
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition trailing multi-char separator
-    Expected:  abc   
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition with unicode multi-char separator
-    Expected:  item1  item2  item3 
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: partition with emoji multi-char separator
-    Expected:  part1  part2 
-    Got: ⍎DOMAIN ERROR
+PASS - Phase 4: partition on two-character separator
+PASS - Phase 4: partition on multi-char separator
+PASS - Phase 4: partition on word separator
+PASS - Phase 4: partition empty string with multi-char separator
+PASS - Phase 4: partition no separator found (multi-char)
+PASS - Phase 4: partition with consecutive multi-char separators
+PASS - Phase 4: partition leading multi-char separator
+PASS - Phase 4: partition trailing multi-char separator
+PASS - Phase 4: partition with unicode multi-char separator
+PASS - Phase 4: partition with emoji multi-char separator
