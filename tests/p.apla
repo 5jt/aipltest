@@ -54,6 +54,12 @@
   rarg:''
  )
  (
+  description:'partition with empty separator (no-op)'
+  expected:'abc def ghi'
+  larg:''
+  rarg:'abc def ghi'
+ )
+ (
   description:'partition with multiple consecutive separators'
   expected:(
    'abc'
@@ -105,12 +111,6 @@
   description:'domain error: separator not a string'
   larg:123
   rarg:'abc def'
- )
- (
-  breaks:11
-  description:'domain error: separator not single character'
-  larg:'//'
-  rarg:'path//to//file'
  )
  (
   breaks:11
@@ -206,5 +206,98 @@
   )
   larg:' '
   rarg:'café naïve résumé'
+ )
+ (
+  description:'Phase 4: partition on two-character separator'
+  expected:(
+   'path'
+   'to'
+   'file'
+  )
+  larg:'//'
+  rarg:'path//to//file'
+ )
+ (
+  description:'Phase 4: partition on multi-char separator'
+  expected:(
+   'abc'
+   'def'
+   'ghi'
+  )
+  larg:'<>'
+  rarg:'abc<>def<>ghi'
+ )
+ (
+  description:'Phase 4: partition on word separator'
+  expected:(
+   'one'
+   'two'
+   'three'
+  )
+  larg:' and '
+  rarg:'one and two and three'
+ )
+ (
+  description:'Phase 4: partition empty string with multi-char separator'
+  expected:0⌿(
+   ''
+  )
+  larg:'//'
+  rarg:''
+ )
+ (
+  description:'Phase 4: partition no separator found (multi-char)'
+  expected:(
+   'no-separator-here'
+  )
+  larg:'//'
+  rarg:'no-separator-here'
+ )
+ (
+  description:'Phase 4: partition with consecutive multi-char separators'
+  expected:(
+   'abc'
+   ''
+   'def'
+  )
+  larg:'::'
+  rarg:'abc::::def'
+ )
+ (
+  description:'Phase 4: partition leading multi-char separator'
+  expected:(
+   ''
+   'abc'
+  )
+  larg:'--'
+  rarg:'--abc'
+ )
+ (
+  description:'Phase 4: partition trailing multi-char separator'
+  expected:(
+   'abc'
+   ''
+  )
+  larg:'--'
+  rarg:'abc--'
+ )
+ (
+  description:'Phase 4: partition with unicode multi-char separator'
+  expected:(
+   'item1'
+   'item2'
+   'item3'
+  )
+  larg:'••'
+  rarg:'item1••item2••item3'
+ )
+ (
+  description:'Phase 4: partition with emoji multi-char separator'
+  expected:(
+   'part1'
+   'part2'
+  )
+  larg:'🔸🔸'
+  rarg:'part1🔸🔸part2'
  )
 )

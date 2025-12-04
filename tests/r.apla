@@ -42,6 +42,18 @@
   rarg:''
  )
  (
+  description:'replace with empty string (no-op)'
+  larg:''
+  expected:'hello world'
+  rarg:'hello world'
+ )
+ (
+  description:'replace with empty pair (no-op)'
+  larg:('' ⋄ '')
+  expected:'hello world'
+  rarg:'hello world'
+ )
+ (
   description:'replace first char with last char'
   larg:'az'
   expected:'zbcdefghy'
@@ -54,13 +66,13 @@
   breaks:11
  )
  (
-  description:'domain error: left argument single character'
+  description:'domain error: left argument not a pair (single character)'
   larg:'a'
   rarg:'abc'
   breaks:11
  )
  (
-  description:'domain error: left argument more than 2 characters'
+  description:'domain error: left argument not a pair (3+ characters)'
   larg:'abc'
   rarg:'test'
   breaks:11
@@ -136,5 +148,83 @@
   larg:' |'
   expected:'Hello|世界|🌍'
   rarg:'Hello 世界 🌍'
+ )
+ (
+  description:'Phase 4: replace string with string'
+  larg:('//' ⋄ '/')
+  expected:'path/to/file'
+  rarg:'path//to//file'
+ )
+ (
+  description:'Phase 4: replace multi-char with multi-char'
+  larg:('old' ⋄ 'new')
+  expected:'Make it new'
+  rarg:'Make it old'
+ )
+ (
+  description:'Phase 4: replace word with different word'
+  larg:(' and ' ⋄ ' or ')
+  expected:'cats or dogs or birds'
+  rarg:'cats and dogs and birds'
+ )
+ (
+  description:'Phase 4: replace HTML tag'
+  larg:('<br>' ⋄ '<br/>')
+  expected:'line1<br/>line2<br/>line3'
+  rarg:'line1<br>line2<br>line3'
+ )
+ (
+  description:'Phase 4: replace empty string (no change)'
+  larg:('' ⋄ 'x')
+  expected:'abc'
+  rarg:'abc'
+ )
+ (
+  description:'Phase 4: replace with empty string (removal)'
+  larg:('OLD' ⋄ '')
+  expected:'This is  text'
+  rarg:'This is OLD text'
+ )
+ (
+  description:'Phase 4: replace string not found'
+  larg:('xyz' ⋄ 'abc')
+  expected:'hello world'
+  rarg:'hello world'
+ )
+ (
+  description:'Phase 4: replace overlapping pattern'
+  larg:('aaa' ⋄ 'b')
+  expected:'baaaa'
+  rarg:'aaaaa'
+ )
+ (
+  description:'Phase 4: replace single char with multi-char'
+  larg:('-' ⋄ ' - ')
+  expected:'one - two - three'
+  rarg:'one-two-three'
+ )
+ (
+  description:'Phase 4: replace multi-char with single char'
+  larg:('  ' ⋄ ' ')
+  expected:'hello world test'
+  rarg:'hello  world  test'
+ )
+ (
+  description:'Phase 4: replace unicode string'
+  larg:('café' ⋄ 'coffee')
+  expected:'I like coffee'
+  rarg:'I like café'
+ )
+ (
+  description:'Phase 4: replace emoji string'
+  larg:('👍👍' ⋄ '✓')
+  expected:'done✓'
+  rarg:'done👍👍'
+ )
+ (
+  description:'Phase 4: replace in empty string'
+  larg:('old' ⋄ 'new')
+  expected:''
+  rarg:''
  )
 )
