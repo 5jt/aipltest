@@ -1,6 +1,6 @@
  reportTest←{
      exp←'    Expected: ',⍕{×⍵.breaks:⎕EM ⍵.breaks ⋄ ⍵.expected}⍵
-     got←'    Got: ',⍕(⍵.result ⋄ ⊃⍵.dm)⊃⍨1+×⍵.en
+     got←'    Got: ',⍕(⍵.result ⋄ 1↓⊃⍵.dm)⊃⍨1+×⍵.en
      r←⊂('FAIL' 'PASS'⊃⍨1+⍵.pass),' - ',⍵.description
      r,←⍵.pass{⍺:'' ⋄ ⍵}exp got
      ∊r,¨⊂⎕UCS 13 10
