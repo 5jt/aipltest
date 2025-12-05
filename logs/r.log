@@ -36,3 +36,28 @@ PASS - Phase 4: replace multi-char with single char
 PASS - Phase 4: replace unicode string
 PASS - Phase 4: replace emoji string
 PASS - Phase 4: replace in empty string
+PASS - RegEx metachar: replace period (literal)
+PASS - RegEx metachar: replace asterisk (literal)
+PASS - RegEx metachar: replace plus sign (literal)
+PASS - RegEx metachar: replace question mark (literal)
+PASS - RegEx metachar: replace square bracket (literal)
+PASS - RegEx metachar: replace closing bracket (literal)
+PASS - RegEx metachar: replace curly braces (literal)
+PASS - RegEx metachar: replace closing brace (literal)
+PASS - RegEx metachar: replace parentheses (literal)
+PASS - RegEx metachar: replace closing paren (literal)
+PASS - RegEx metachar: replace caret (literal)
+PASS - RegEx metachar: replace dollar sign (literal)
+PASS - RegEx metachar: replace pipe (literal)
+PASS - RegEx metachar: replace backslash (literal)
+PASS - RegEx metachar: replace dot in multi-char string
+PASS - RegEx metachar: replace asterisk in multi-char string
+PASS - RegEx metachar: replace pattern with brackets
+PASS - RegEx metachar: replace pattern with parens
+PASS - RegEx metachar: replace pattern with braces
+PASS - RegEx metachar: replace complex pattern with metachars
+PASS - RegEx metachar: replace mixed metachars in source
+PASS - RegEx metachar: replace regex-like pattern
+PASS - RegEx metachar: backslash escapes in multi-char
+PASS - RegEx metachar: dot-star pattern literal
+PASS - RegEx metachar: replace all regex operators

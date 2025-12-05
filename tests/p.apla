@@ -46,7 +46,14 @@
   rarg:'no-separator-here'
  )
  (
-  description:'partition empty string'
+  description:'partition empty string (monadic)'
+  expected:0⌿(
+   ''
+  )
+  rarg:''
+ )
+ (
+  description:'partition empty string (dyadic)'
   expected:0⌿(
    ''
   )
@@ -199,6 +206,15 @@
   rarg:'hello, world, how are you'
  )
  (
+  description:'partition with overlapping separator occurences'
+  expected:(
+   ''
+   'aa'
+  )
+  larg:'aaa'
+  rarg:'aaaaa'
+ )
+ (
   description:'partition preserves unicode in result'
   expected:(
    'café'
@@ -300,5 +316,258 @@
   )
   larg:'🔸🔸'
   rarg:'part1🔸🔸part2'
+ )
+ (
+  description:'RegEx metachar: partition on period (literal)'
+  expected:(
+   'file'
+   'txt'
+  )
+  larg:'.'
+  rarg:'file.txt'
+ )
+ (
+  description:'RegEx metachar: partition on asterisk (literal)'
+  expected:(
+   ('2' ⋄)
+   ('3' ⋄)
+   ('4' ⋄)
+  )
+  larg:'*'
+  rarg:'2*3*4'
+ )
+ (
+  description:'RegEx metachar: partition on plus sign (literal)'
+  expected:(
+   ('a' ⋄)
+   ('b' ⋄)
+   ('c' ⋄)
+  )
+  larg:'+'
+  rarg:'a+b+c'
+ )
+ (
+  description:'RegEx metachar: partition on question mark (literal)'
+  expected:(
+   'What'
+   'Who'
+   'When'
+  )
+  larg:'?'
+  rarg:'What?Who?When'
+ )
+ (
+  description:'RegEx metachar: partition on square bracket (literal)'
+  expected:(
+   'arr'
+   ('0'⋄)
+  )
+  larg:'['
+  rarg:'arr[0'
+ )
+ (
+  description:'RegEx metachar: partition on closing bracket (literal)'
+  expected:(
+   'list'
+   ('1'⋄)
+   ''
+  )
+  larg:']'
+  rarg:'list]1]'
+ )
+ (
+  description:'RegEx metachar: partition on curly brace (literal)'
+  expected:(
+   'set'
+   'a,b'
+   ''
+  )
+  larg:'{'
+  rarg:'set{a,b{'
+ )
+ (
+  description:'RegEx metachar: partition on closing brace (literal)'
+  expected:(
+   'obj'
+   'key'
+  )
+  larg:'}'
+  rarg:'obj}key'
+ )
+ (
+  description:'RegEx metachar: partition on parenthesis (literal)'
+  expected:(
+   'func'
+   'arg)'
+  )
+  larg:'('
+  rarg:'func(arg)'
+ )
+ (
+  description:'RegEx metachar: partition on closing paren (literal)'
+  expected:(
+   'call(x'
+   ''
+  )
+  larg:')'
+  rarg:'call(x)'
+ )
+ (
+  description:'RegEx metachar: partition on caret (literal)'
+  expected:(
+   ('2'⋄)
+   ('8'⋄)
+  )
+  larg:'^'
+  rarg:'2^8'
+ )
+ (
+  description:'RegEx metachar: partition on dollar sign (literal)'
+  expected:(
+   'Price:'
+   '100'
+  )
+  larg:'$'
+  rarg:'Price:$100'
+ )
+ (
+  description:'RegEx metachar: partition on pipe (literal)'
+  expected:(
+   ('a'⋄)
+   ('b'⋄)
+   ('c'⋄)
+  )
+  larg:'|'
+  rarg:'a|b|c'
+ )
+ (
+  description:'RegEx metachar: partition on backslash (literal)'
+  expected:(
+   'C:'
+   'path'
+   'file'
+  )
+  larg:'\'
+  rarg:'C:\path\file'
+ )
+ (
+  description:'RegEx metachar: partition on multi-char with dots'
+  expected:(
+   'one'
+   'two'
+   'three'
+  )
+  larg:'...'
+  rarg:'one...two...three'
+ )
+ (
+  description:'RegEx metachar: partition on multi-char with asterisks'
+  expected:(
+   'begin'
+   'middle'
+   'end'
+  )
+  larg:'***'
+  rarg:'begin***middle***end'
+ )
+ (
+  description:'RegEx metachar: partition on bracket pair'
+  expected:(
+   'before'
+   'after'
+  )
+  larg:'[]'
+  rarg:'before[]after'
+ )
+ (
+  description:'RegEx metachar: partition on paren pair'
+  expected:(
+   'start'
+   'finish'
+  )
+  larg:'()'
+  rarg:'start()finish'
+ )
+ (
+  description:'RegEx metachar: partition on brace pair'
+  expected:(
+   'pre'
+   'post'
+  )
+  larg:'{}'
+  rarg:'pre{}post'
+ )
+ (
+  description:'RegEx metachar: partition on regex-like pattern'
+  expected:(
+   'text'
+   'more'
+  )
+  larg:'[a-z]+'
+  rarg:'text[a-z]+more'
+ )
+ (
+  description:'RegEx metachar: partition on complex pattern with metachars'
+  expected:(
+   'before'
+   'after'
+  )
+  larg:'$(.*?)'
+  rarg:'before$(.*?)after'
+ )
+ (
+  description:'RegEx metachar: partition on dot-star'
+  expected:(
+   'start'
+   'end'
+  )
+  larg:'.*'
+  rarg:'start.*end'
+ )
+ (
+  description:'RegEx metachar: partition on backslash-n'
+  expected:(
+   'line1'
+   'line2'
+  )
+  larg:'\\n'
+  rarg:'line1\\nline2'
+ )
+ (
+  description:'RegEx metachar: partition on all operators'
+  expected:(
+   ('A'⋄)
+   ('B'⋄)
+  )
+  larg:'.+*?[]{}()^$|\\'
+  rarg:'A.+*?[]{}()^$|\\B'
+ )
+ (
+  description:'RegEx metachar: consecutive metachars as separators'
+  expected:(
+   ('x'⋄)
+   ''
+   ('y'⋄)
+  )
+  larg:'*'
+  rarg:'x**y'
+ )
+ (
+  description:'RegEx metachar: leading metachar separator'
+  expected:(
+   ''
+   'data'
+  )
+  larg:'+'
+  rarg:'+data'
+ )
+ (
+  description:'RegEx metachar: trailing metachar separator'
+  expected:(
+   'data'
+   ''
+  )
+  larg:'?'
+  rarg:'data?'
  )
 )

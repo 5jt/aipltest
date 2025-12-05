@@ -3,7 +3,8 @@ PASS - partition on space (dyadic)
 PASS - partition on slash
 PASS - partition on dash
 PASS - partition with no separator found
-PASS - partition empty string
+PASS - partition empty string (monadic)
+PASS - partition empty string (dyadic)
 PASS - partition with empty separator (no-op)
 PASS - partition with multiple consecutive separators
 PASS - partition leading separator
@@ -20,6 +21,7 @@ PASS - partition string containing emoji
 PASS - partition with emoji as separator
 PASS - partition with special chars in data
 PASS - partition with punctuation separator
+PASS - partition with overlapping separator occurences
 PASS - partition preserves unicode in result
 PASS - Phase 4: partition on two-character separator
 PASS - Phase 4: partition on multi-char separator
@@ -31,3 +33,30 @@ PASS - Phase 4: partition leading multi-char separator
 PASS - Phase 4: partition trailing multi-char separator
 PASS - Phase 4: partition with unicode multi-char separator
 PASS - Phase 4: partition with emoji multi-char separator
+PASS - RegEx metachar: partition on period (literal)
+PASS - RegEx metachar: partition on asterisk (literal)
+PASS - RegEx metachar: partition on plus sign (literal)
+PASS - RegEx metachar: partition on question mark (literal)
+PASS - RegEx metachar: partition on square bracket (literal)
+PASS - RegEx metachar: partition on closing bracket (literal)
+PASS - RegEx metachar: partition on curly brace (literal)
+PASS - RegEx metachar: partition on closing brace (literal)
+PASS - RegEx metachar: partition on parenthesis (literal)
+PASS - RegEx metachar: partition on closing paren (literal)
+PASS - RegEx metachar: partition on caret (literal)
+PASS - RegEx metachar: partition on dollar sign (literal)
+PASS - RegEx metachar: partition on pipe (literal)
+PASS - RegEx metachar: partition on backslash (literal)
+PASS - RegEx metachar: partition on multi-char with dots
+PASS - RegEx metachar: partition on multi-char with asterisks
+PASS - RegEx metachar: partition on bracket pair
+PASS - RegEx metachar: partition on paren pair
+PASS - RegEx metachar: partition on brace pair
+PASS - RegEx metachar: partition on regex-like pattern
+PASS - RegEx metachar: partition on complex pattern with metachars
+PASS - RegEx metachar: partition on dot-star
+PASS - RegEx metachar: partition on backslash-n
+PASS - RegEx metachar: partition on all operators
+PASS - RegEx metachar: consecutive metachars as separators
+PASS - RegEx metachar: leading metachar separator
+PASS - RegEx metachar: trailing metachar separator

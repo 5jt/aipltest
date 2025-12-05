@@ -7,5 +7,5 @@
      0=≢old:⍵ ⍝ no-op
      old≡new:⍵ ⍝ no-op
      isString ⍺:new@(⍸⍵=old)⊢⍵
-     old ⎕R new⊢⍵
+     old ⎕R new⍠'Regex' 0⊢⍵
  }

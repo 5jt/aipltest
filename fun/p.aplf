@@ -4,12 +4,12 @@
    ⍝    '-'p'abc-def'
    ⍝    '//'p'abc//def'
      ⍺←' '
-     _←⎕SIGNAL 11/⍨~isStrings ⍺ ⍵
+     ~isStrings ⍺ ⍵:⎕SIGNAL 11
      0=≢⍺:⍵                         ⍝ empty ⍺: no-op
      0=≢⍵:0⍴⊂''                     ⍝ empty ⍵
      ⍺≡⎕UCS 10:⍺(≠⊆⊢)⍵              ⍝ special case
      aw←⍺,⍵
-     os←1+∊⍺ ⎕S{⍵.Offsets}⊢aw
+     os←1+∊⍺ ⎕S{⍵.Offsets}⍠'Regex' 0⊢aw
      b←1@os⊢0⍴⍨≢aw
      (≢⍺)↓¨b⊂aw
  }

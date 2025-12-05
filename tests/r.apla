@@ -227,4 +227,154 @@
   expected:''
   rarg:''
  )
+ (
+  description:'RegEx metachar: replace period (literal)'
+  larg:('.' ⋄ ',')
+  expected:'one,two,three'
+  rarg:'one.two.three'
+ )
+ (
+  description:'RegEx metachar: replace asterisk (literal)'
+  larg:('*' ⋄ 'x')
+  expected:'2 x 3 = 6'
+  rarg:'2 * 3 = 6'
+ )
+ (
+  description:'RegEx metachar: replace plus sign (literal)'
+  larg:('+' ⋄ '-')
+  expected:'a-b-c'
+  rarg:'a+b+c'
+ )
+ (
+  description:'RegEx metachar: replace question mark (literal)'
+  larg:('?' ⋄ '!')
+  expected:'Really!'
+  rarg:'Really?'
+ )
+ (
+  description:'RegEx metachar: replace square bracket (literal)'
+  larg:('[' ⋄ '(')
+  expected:'item(1]'
+  rarg:'item[1]'
+ )
+ (
+  description:'RegEx metachar: replace closing bracket (literal)'
+  larg:(']' ⋄ ')')
+  expected:'arr)0)'
+  rarg:'arr]0)'
+ )
+ (
+  description:'RegEx metachar: replace curly braces (literal)'
+  larg:('{' ⋄ '<')
+  expected:'<set<'
+  rarg:'{set{'
+ )
+ (
+  description:'RegEx metachar: replace closing brace (literal)'
+  larg:('}' ⋄ '>')
+  expected:'obj.val>'
+  rarg:'obj.val}'
+ )
+ (
+  description:'RegEx metachar: replace parentheses (literal)'
+  larg:('(' ⋄ '[')
+  expected:'func[arg]'
+  rarg:'func(arg]'
+ )
+ (
+  description:'RegEx metachar: replace closing paren (literal)'
+  larg:(')' ⋄ ']')
+  expected:'call[x]'
+  rarg:'call[x)'
+ )
+ (
+  description:'RegEx metachar: replace caret (literal)'
+  larg:('^' ⋄ 'ˆ')
+  expected:'2ˆ8 = 256'
+  rarg:'2^8 = 256'
+ )
+ (
+  description:'RegEx metachar: replace dollar sign (literal)'
+  larg:('$' ⋄ 'USD')
+  expected:'Price: USD100'
+  rarg:'Price: $100'
+ )
+ (
+  description:'RegEx metachar: replace pipe (literal)'
+  larg:('|' ⋄ '/')
+  expected:'a/b/c'
+  rarg:'a|b|c'
+ )
+ (
+  description:'RegEx metachar: replace backslash (literal)'
+  larg:('\' ⋄ '/')
+  expected:'C:/path/file'
+  rarg:'C:\path\file'
+ )
+ (
+  description:'RegEx metachar: replace dot in multi-char string'
+  larg:('...' ⋄ '…')
+  expected:'Wait…'
+  rarg:'Wait...'
+ )
+ (
+  description:'RegEx metachar: replace asterisk in multi-char string'
+  larg:('***' ⋄ '—')
+  expected:'Section — End'
+  rarg:'Section *** End'
+ )
+ (
+  description:'RegEx metachar: replace pattern with brackets'
+  larg:('[0]' ⋄ '[1]')
+  expected:'arr[1] + arr[1]'
+  rarg:'arr[0] + arr[0]'
+ )
+ (
+  description:'RegEx metachar: replace pattern with parens'
+  larg:('(x)' ⋄ '(y)')
+  expected:'f(y) = (y)*2'
+  rarg:'f(x) = (x)*2'
+ )
+ (
+  description:'RegEx metachar: replace pattern with braces'
+  larg:('{a}' ⋄ '{b}')
+  expected:'var{b} = {b}val'
+  rarg:'var{a} = {a}val'
+ )
+ (
+  description:'RegEx metachar: replace complex pattern with metachars'
+  larg:('$(.*?)' ⋄ 'VALUE')
+  expected:'str = VALUE'
+  rarg:'str = $(.*?)'
+ )
+ (
+  description:'RegEx metachar: replace mixed metachars in source'
+  larg:('.*' ⋄ 'X')
+  expected:'file X txt'
+  rarg:'file .* txt'
+ )
+ (
+  description:'RegEx metachar: replace regex-like pattern'
+  larg:('[a-z]+' ⋄ 'WORD')
+  expected:'match WORD here'
+  rarg:'match [a-z]+ here'
+ )
+ (
+  description:'RegEx metachar: backslash escapes in multi-char'
+  larg:('\\n' ⋄ 'NEWLINE')
+  expected:'text NEWLINEmore'
+  rarg:'text \\nmore'
+ )
+ (
+  description:'RegEx metachar: dot-star pattern literal'
+  larg:('.*?' ⋄ 'ANY')
+  expected:'regex: ANY is lazy'
+  rarg:'regex: .*? is lazy'
+ )
+ (
+  description:'RegEx metachar: replace all regex operators'
+  larg:('.+*?[]{}()^$|\\' ⋄ 'ALL')
+  expected:'Special: ALL chars'
+  rarg:'Special: .+*?[]{}()^$|\\ chars'
+ )
 )
