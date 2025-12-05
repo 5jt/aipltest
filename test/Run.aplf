@@ -4,28 +4,34 @@
     ⍝ Prints summary and writes detailed logs to logs/{fn}.log
     ⍝ Returns counts: pass fail broke
 
+     ⍺←0
+     verbose←⍺
+
     ⍝ Constants
      ROOTDIR←'/Users/sjt/Projects/aipltest/'
      LOGDIR←ROOTDIR,'logs/'
      TESTNS←##.tests
      FUNNS←##.fun
 
-    ⍝ Identify functions to test
+    ⍝ Identify functions with tests
      fns←(⊃∩/FUNNS TESTNS{⍺.⎕NL ⍵}¨-3 2){
          0=≢⍵:⍺
-         _←{0=≢⍵:'' ⋄ ''⊣⎕←'Not found: ',⍕⍵}⍵~⍺
+         _←{0=≢⍵:'' ⋄ ''⊣⎕←'Incomplete: ',⍕⍵}⍵~⍺
          ⍺∩⍵
      },¨⍵
 
-     0=≢fns:0 0 0⊣⎕←'No tests found'
+     0=≢fns:0 0⊣⎕←'No tests found'
 
      et←(⊂¨fns)execTest¨¨TESTNS ⎕VGET fns ⍝ executed tests
 
+    ⍝ report results to logfiles
      logs←⊃∘(,/)¨reportTest¨¨et
      _←logs ⎕NPUT¨LOGDIR∘{(⍺,⍵,'.log' ⋄ 1)}¨fns
 
-     pf←+⌿table←↑{+/1 0∘.=⍵}¨et.pass
-     ⎕←'' 'pass' 'fail'⍪(fns,table)⍪(⊂'TOTAL'),pf
+    ⍝ summarise results
+     table←↑{+/1 0∘.=⍵}¨et.pass
 
-     pf ⍝ pass fail counts
+     _←verbose{⍺=0:'' ⋄ ''⊢⎕←⍵}'' 'pass' 'fail'⍪fns,table
+
+     +⌿table ⍝ return pass fail counts
  }
