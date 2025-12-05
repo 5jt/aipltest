@@ -2,6 +2,8 @@
      2≠≢⍵:0
      (v k)←⍵
      1 1≢≢∘⍴¨v k:0  ⍝ vectors
+     nv nk←≢¨v k
+     ~nv∊nk,nk+1:0  ⍝ N or N+1 values for N keys
      isStrung k:1
      83=⎕DR k       ⍝ ints
  }

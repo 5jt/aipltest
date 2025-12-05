@@ -28,13 +28,19 @@ return `sel`, a selection of values from `X`, as follows:
 
 ### Dictionary `X`:
 
-`Y` is one or more keys to `X`; `sel` is one or more corresponding values, e.g.
+A dictionary is a 2-element vector `(values ⋄ keys)` where:
+- `values` is a vector with N or N+1 elements (if N+1, the last element is the default for outrange keys)
+- `keys` is a vector with N elements (strings or integers)
+
+`Y` is one or more keys to `X`; `sel` is the corresponding values with the same shape as `Y`, e.g.
 
 ```apl
       d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
-      23 ≡ d at 'sheep'
+      23 ≡ d at 'sheep'  ⍝ scalar key → scalar result
 1
-      23 12 ≡ d at 'sheep' 'cow'
+      23 12 ≡ d at 'sheep' 'cow'  ⍝ vector keys → vector result
+1
+      (2 2⍴23 12 34 23) ≡ d at 2 2⍴'sheep' 'cow' 'dog' 'sheep'  ⍝ matrix keys → matrix result
 1
 ```
 

@@ -64,4 +64,74 @@
   expected:0
   rarg:(1 2 ⋄ (3 4⋄))
  )
+ (
+  description:'3 string keys, 3 values (valid N:N)'
+  expected:1
+  rarg:(12 23 34 ⋄ 'cow' 'sheep' 'dog')
+ )
+ (
+  description:'3 string keys, 4 values (valid N:N+1 with default)'
+  expected:1
+  rarg:(12 23 34 99 ⋄ 'cow' 'sheep' 'dog')
+ )
+ (
+  description:'3 numeric keys, 3 values (valid N:N)'
+  expected:1
+  rarg:('a' 'b' 'c' ⋄ 10 20 30)
+ )
+ (
+  description:'3 numeric keys, 4 values (valid N:N+1 with default)'
+  expected:1
+  rarg:('a' 'b' 'c' 'd' ⋄ 10 20 30)
+ )
+ (
+  description:'1 string key, 1 value (valid N:N)'
+  expected:1
+  rarg:(42 ⋄ 'answer')
+ )
+ (
+  description:'1 string key, 2 values (valid N:N+1 with default)'
+  expected:1
+  rarg:(42 99 ⋄ 'answer')
+ )
+ (
+  description:'1 numeric key, 1 value (valid N:N)'
+  expected:1
+  rarg:('x' ⋄ 5)
+ )
+ (
+  description:'1 numeric key, 2 values (valid N:N+1 with default)'
+  expected:1
+  rarg:('x' 'y' ⋄ 5)
+ )
+ (
+  description:'3 string keys, 2 values (invalid: too few values)'
+  expected:0
+  rarg:(12 23 ⋄ 'cow' 'sheep' 'dog')
+ )
+ (
+  description:'3 numeric keys, 2 values (invalid: too few values)'
+  expected:0
+  rarg:('a' 'b' ⋄ 10 20 30)
+ )
+ (
+  description:'3 string keys, 5 values (invalid: too many values)'
+  expected:0
+  rarg:(12 23 34 99 100 ⋄ 'cow' 'sheep' 'dog')
+ )
+ (
+  description:'2 numeric keys, 4 values (invalid: N+2 values)'
+  expected:0
+  rarg:(1 2 3 4 ⋄ 10 20)
+ )
+ (
+  description:'0 keys, 0 values (valid empty dictionary)'
+  expected:1
+  rarg:(⍬ ⋄ ⍬)
+ )
+ (
+  description:'0 keys, 1 value (invalid: empty keys with default)'
+  expected:0
+  rarg:(99 ⋄ ⍬)
+ )
 )

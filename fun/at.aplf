@@ -1,0 +1,14 @@
+ at←{
+     ⍝ Functional indexing for dictionaries
+     ⍝ later: objects, tables, and xrefs
+     ⍝ Syntax: sel ← dict at keys
+     ⍝ Returns values for keys; outrange keys return default or ⊃0⍴⊃⊃dict
+     is1KeyOf←{0=≢⍴⍺:1 ⋄ (isString ⍺)∧isStrings ⍵}
+     isDict ⍺:⍺{
+         (v k)←⍺
+         s←⍵ is1KeyOf k ⍝ single?
+         dv←⊃0⍴⊃v ⍝ default value
+         ⊃⍣s⊢(v,⊆dv)[k⍳⊆⍵]
+     }⍵
+     'not a dictionary'⎕SIGNAL 11
+ }

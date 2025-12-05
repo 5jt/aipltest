@@ -43,11 +43,11 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 4: Full string manipulation
 
-- [ ] Write tests for p and r with multi-character arguments
-- [ ] Seek approval for tests
-- [ ] Implement extended versions using ⎕R and/or ⎕S
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Write tests for p and r with multi-character arguments
+- [x] Seek approval for tests
+- [x] Implement extended versions using ⎕R and/or ⎕S
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 5: Index dictionaries
 
