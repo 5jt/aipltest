@@ -5,12 +5,8 @@ PASS - replace with same character (no change)
 PASS - replace character not in string
 PASS - replace all occurrences
 PASS - replace in empty string
-FAIL - replace with empty string (no-op)
-    Expected: hello world
-    Got: ⍎DOMAIN ERROR
-FAIL - replace with empty pair (no-op)
-    Expected: hello world
-    Got: ⍎DOMAIN ERROR
+PASS - replace with empty string (no-op)
+PASS - replace with empty pair (no-op)
 PASS - replace first char with last char
 PASS - domain error: left argument not a string
 PASS - domain error: left argument not a pair (single character)
@@ -27,42 +23,16 @@ PASS - replace character with emoji
 PASS - replace preserves other unicode
 PASS - replace special character with alphanumeric
 PASS - replace in string with mixed unicode
-FAIL - Phase 4: replace string with string
-    Expected: path/to/file
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace multi-char with multi-char
-    Expected: Make it new
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace word with different word
-    Expected: cats or dogs or birds
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace HTML tag
-    Expected: line1<br/>line2<br/>line3
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace empty string (no change)
-    Expected: abc
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace with empty string (removal)
-    Expected: This is  text
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace string not found
-    Expected: hello world
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace overlapping pattern
-    Expected: baaaa
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace single char with multi-char
-    Expected: one - two - three
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace multi-char with single char
-    Expected: hello world test
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace unicode string
-    Expected: I like coffee
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace emoji string
-    Expected: done✓
-    Got: ⍎DOMAIN ERROR
-FAIL - Phase 4: replace in empty string
-    Expected: 
-    Got: ⍎DOMAIN ERROR
+PASS - Phase 4: replace string with string
+PASS - Phase 4: replace multi-char with multi-char
+PASS - Phase 4: replace word with different word
+PASS - Phase 4: replace HTML tag
+PASS - Phase 4: replace empty string (no change)
+PASS - Phase 4: replace with empty string (removal)
+PASS - Phase 4: replace string not found
+PASS - Phase 4: replace overlapping pattern
+PASS - Phase 4: replace single char with multi-char
+PASS - Phase 4: replace multi-char with single char
+PASS - Phase 4: replace unicode string
+PASS - Phase 4: replace emoji string
+PASS - Phase 4: replace in empty string

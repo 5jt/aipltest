@@ -194,7 +194,7 @@
  (
   description:'Phase 4: replace overlapping pattern'
   larg:('aaa' ⋄ 'b')
-  expected:'baaaa'
+  expected:'baa'
   rarg:'aaaaa'
  )
  (

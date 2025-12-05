@@ -1,6 +1,11 @@
  r←{
    ⍝ replace: 'abc/def/gh' ←→ '-/'r'abc-def-gh'
-    _←⎕SIGNAL 11/⍨(2=≢⍺)⍲isStrings ⍺ ⍵
-     (o n)←⍺ ⍝ old new
-     n@(⍸⍵=o)⊢⍵
+     (isStrung ⍺)⍲isString ⍵:⎕SIGNAL 11
+     0∊≢¨⍺ ⍵:⍵ ⍝ no-op
+     2≠≢⍺:'not an old/new pair'⎕SIGNAL 11
+     (old new)←⍺
+     0=≢old:⍵ ⍝ no-op
+     old≡new:⍵ ⍝ no-op
+     isString ⍺:new@(⍸⍵=old)⊢⍵
+     old ⎕R new⊢⍵
  }
