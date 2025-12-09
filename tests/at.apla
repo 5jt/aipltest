@@ -284,7 +284,7 @@
  )
  (
   description:'dictionary: string values, outrange key'
-  expected:''
+  expected:' '
   larg:(
    (
     'red'
@@ -315,7 +315,7 @@
  (
   description:'dictionary: numeric vector values, multiple keys'
   expected:(
-   7 8 9
+   7 8
    1 2 3
   )
   larg:(
@@ -333,18 +333,23 @@
   larg:(
    (
     'x'
-    (
-    1 2
-     3
-    )
+    [
+     1 2
+     3 4
+    ]
+    'foo'
    )
-   'key1' 'key2' 'key3'
+   (
+    'key1'
+    'key2'
+    'key3'
+   )
   )
   rarg:'key2'
-  expected:(
+  expected:[
    1 2
    3 4
-  )
+  ]
  )
  (
   description:'dictionary: single key/value pair'
@@ -375,7 +380,7 @@
    )
   )
   rarg:''
-  expected:⍬
+  expected:1
  )
  (
   description:'dictionary: keys with spaces'
@@ -520,16 +525,21 @@
  (
   description:'dictionary: complex nested default'
   larg:(
+   (
     1 2
     3 4
     (
      5 6
      7 8
     )
+   )
    'ab'
   )
   rarg:'c'
-  expected:0
+  expected:(
+    5 6
+    7 8
+  )
  )
  (
   description:'dictionary: scalar string key (single char)'

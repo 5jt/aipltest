@@ -51,9 +51,9 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 5: Index dictionaries
 
-- [ ] Write tests for at with dictionaries
-- [ ] Seek approval for tests
-- [ ] Implement at for dictionaries
+- [x] Write tests for at with dictionaries
+- [x] Seek approval for tests
+- [x] Implement at for dictionaries
 - [ ] Run complete test suite
 - [ ] Verify no regressions
 

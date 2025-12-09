@@ -8,7 +8,7 @@ Datatype tests
 
 	isDict       whether ⍵ is a dictionary
 	isString     whether ⍵ is a string
-	isStrings    whether ⍵ is strings
+	isStrings    whether ⍵ is strings (returns scalar Boolean; ⍵ may be vector or matrix)
 	isTable      whether ⍵ is a table
 	isXref       whether ⍵ is an xref
 
