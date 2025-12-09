@@ -11,27 +11,14 @@ PASS - numeric vector
 PASS - nested numeric vectors
 PASS - scalar number
 PASS - mixed types (string and number)
-FAIL - 2x3 matrix of strings
-    Expected: 1
-    Got: 1 1
-FAIL - 3x2 matrix of strings with empty strings
-    Expected: 1
-    Got: 1 1 1
-FAIL - 1x3 matrix of strings (single row)
-    Expected: 1
-    Got: 1
-FAIL - 3x1 matrix of strings (single column)
-    Expected: 1
-    Got: 1 1 1
-FAIL - 2x2 matrix with mixed types
-    Expected: 0
-    Got: 0 0
-FAIL - empty matrix (0x0)
-    Expected: 1
-    Got: 0
-FAIL - 0x3 matrix (no rows)
-    Expected: 1
-    Got: 0
-FAIL - 3x0 matrix (no columns)
-    Expected: 1
-    Got: 0
+PASS - 2x3 matrix of strings
+PASS - 3x2 matrix of strings with empty strings
+PASS - 1x3 matrix of strings (single row)
+PASS - 3x1 matrix of strings (single column)
+PASS - 2x2 matrix with mixed types
+PASS - empty char matrix (0x0)
+PASS - empty char matrix (0x3)
+PASS - empty char matrix (3x0)
+PASS - empty string matrix (0x0)
+PASS - empty string matrix (0x3)
+PASS - empty string matrix (3x0)

@@ -38,32 +38,16 @@ PASS - dictionary: string default value
 PASS - dictionary: complex nested default
 PASS - dictionary: scalar string key (single char)
 PASS - dictionary: multiple single-char keys
-FAIL - dictionary: matrix keys produce matrix result
-    Expected: 
-23 12
-34 23
-    Got: OMAIN ERROR
+PASS - dictionary: matrix keys produce matrix result
 PASS - dictionary: 3x3 matrix keys
-FAIL - dictionary: matrix with outrange keys
-    Expected: 
-23 0 34
-12 0 23
-    Got: OMAIN ERROR
-FAIL - dictionary: matrix with default value
-    Expected: 
-23 99
-34 99
-    Got: OMAIN ERROR
+PASS - dictionary: matrix with outrange keys
+PASS - dictionary: matrix with default value
 PASS - dictionary: scalar key produces scalar result
 PASS - dictionary: rank-3 array keys
 PASS - dictionary: vector of length 1
 PASS - dictionary: numeric keys (coerced to strings)
 PASS - dictionary: long keys
-FAIL - domain error: right argument not a string
-    Expected: DOMAIN ERROR
-    Got: ERROR 911
-FAIL - domain error: right argument is numeric vector
-    Expected: DOMAIN ERROR
-    Got: ERROR 911
+PASS - domain error: right argument not a string
+PASS - domain error: right argument is numeric vector
 PASS - domain error: left argument not a dictionary
 PASS - domain error: left argument is not a dictionary

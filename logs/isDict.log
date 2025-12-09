@@ -11,3 +11,17 @@ PASS - 1-element vector
 PASS - scalar number
 PASS - first element is matrix not vector
 PASS - second element is nested not simple vector
+PASS - 3 string keys, 3 values (valid N:N)
+PASS - 3 string keys, 4 values (valid N:N+1 with default)
+PASS - 3 numeric keys, 3 values (valid N:N)
+PASS - 3 numeric keys, 4 values (valid N:N+1 with default)
+PASS - 1 string key, 1 value (valid N:N)
+PASS - 1 string key, 2 values (valid N:N+1 with default)
+PASS - 1 numeric key, 1 value (valid N:N)
+PASS - 1 numeric key, 2 values (valid N:N+1 with default)
+PASS - 3 string keys, 2 values (invalid: too few values)
+PASS - 3 numeric keys, 2 values (invalid: too few values)
+PASS - 3 string keys, 5 values (invalid: too many values)
+PASS - 2 numeric keys, 4 values (invalid: N+2 values)
+PASS - 0 keys, 0 values (valid empty dictionary)
+PASS - 0 keys, 1 value (invalid: empty keys with default)

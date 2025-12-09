@@ -2,27 +2,46 @@
  (
   description:'numeric values, string keys'
   expected:1
-  rarg:(1 2 3 ⋄ ('a' ⋄ 'b' ⋄ 'c'))
+  rarg:(
+   1 2 3
+   'abc'
+  )
  )
  (
   description:'string values, numeric keys'
   expected:1
-  rarg:(('cow' ⋄ 'sheep' ⋄ 'dog') ⋄ 12 23 34)
+  rarg:(
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+   12 23 34
+  )
  )
  (
   description:'string keys and values'
   expected:1
-  rarg:(('a' ⋄ 'b' ⋄ 'c') ⋄ ('x' ⋄ 'y' ⋄ 'z'))
+  rarg:(
+   'abc'
+   'xyz'
+  )
  )
  (
   description:'empty dictionary (two empty vectors)'
   expected:1
-  rarg:(⍬ ⋄ ⍬)
+  rarg:(
+   ⍬
+   ⍬
+  )
  )
  (
   description:'single key-value pair'
   expected:1
-  rarg:(,1 ⋄ ,⊂'a')
+  rarg:(
+   (1⋄)
+   ('a'⋄)
+  )
  )
  (
   description:'string (vector but not 2-element)'
@@ -42,12 +61,16 @@
  (
   description:'3-element nested vector'
   expected:0
-  rarg:(1 2 ⋄ 3 4 ⋄ 5 6)
+  rarg:(
+   1 2
+   3 4
+   5 6
+  )
  )
  (
   description:'1-element vector'
   expected:0
-  rarg:,1
+  rarg:(1⋄)
  )
  (
   description:'scalar number'
@@ -57,81 +80,154 @@
  (
   description:'first element is matrix not vector'
   expected:0
-  rarg:([1 2⋄3 4] ⋄ ('a' ⋄ 'b'))
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   'ab'
+  )
  )
  (
   description:'second element is nested not simple vector'
   expected:0
-  rarg:(1 2 ⋄ (3 4⋄))
+  rarg:(
+   1 2
+   (
+    3 4
+   )
+  )
  )
  (
   description:'3 string keys, 3 values (valid N:N)'
   expected:1
-  rarg:(12 23 34 ⋄ 'cow' 'sheep' 'dog')
+  rarg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
  )
  (
   description:'3 string keys, 4 values (valid N:N+1 with default)'
   expected:1
-  rarg:(12 23 34 99 ⋄ 'cow' 'sheep' 'dog')
+  rarg:(
+   12 23 34 99
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
  )
  (
   description:'3 numeric keys, 3 values (valid N:N)'
   expected:1
-  rarg:('a' 'b' 'c' ⋄ 10 20 30)
+  rarg:(
+   'abc'
+   10 20 30
+  )
  )
  (
   description:'3 numeric keys, 4 values (valid N:N+1 with default)'
   expected:1
-  rarg:('a' 'b' 'c' 'd' ⋄ 10 20 30)
+  rarg:(
+   'abcd'
+   10 20 30
+  )
  )
  (
   description:'1 string key, 1 value (valid N:N)'
   expected:1
-  rarg:(42 ⋄ 'answer')
+  rarg:(
+   (42⋄)
+   (
+    'answer'
+   )
+  )
  )
  (
   description:'1 string key, 2 values (valid N:N+1 with default)'
   expected:1
-  rarg:(42 99 ⋄ 'answer')
+  rarg:(
+   42 99
+   (
+    'answer'
+   )
+  )
  )
  (
   description:'1 numeric key, 1 value (valid N:N)'
   expected:1
-  rarg:('x' ⋄ 5)
+  rarg:(
+   ('x'⋄)
+   (5⋄)
+  )
  )
  (
   description:'1 numeric key, 2 values (valid N:N+1 with default)'
   expected:1
-  rarg:('x' 'y' ⋄ 5)
+  rarg:(
+   'xy'
+   (5⋄)
+  )
  )
  (
   description:'3 string keys, 2 values (invalid: too few values)'
   expected:0
-  rarg:(12 23 ⋄ 'cow' 'sheep' 'dog')
+  rarg:(
+   12 23
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
  )
  (
   description:'3 numeric keys, 2 values (invalid: too few values)'
   expected:0
-  rarg:('a' 'b' ⋄ 10 20 30)
+  rarg:(
+   'ab'
+   10 20 30
+  )
  )
  (
   description:'3 string keys, 5 values (invalid: too many values)'
   expected:0
-  rarg:(12 23 34 99 100 ⋄ 'cow' 'sheep' 'dog')
+  rarg:(
+   12 23 34 99 100
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
  )
  (
   description:'2 numeric keys, 4 values (invalid: N+2 values)'
   expected:0
-  rarg:(1 2 3 4 ⋄ 10 20)
+  rarg:(
+   1 2 3 4
+   10 20
+  )
  )
  (
   description:'0 keys, 0 values (valid empty dictionary)'
   expected:1
-  rarg:(⍬ ⋄ ⍬)
+  rarg:(
+   ⍬
+   ⍬
+  )
  )
  (
   description:'0 keys, 1 value (invalid: empty keys with default)'
   expected:0
-  rarg:(99 ⋄ ⍬)
+  rarg:(
+   99
+   ⍬
+  )
  )
 )

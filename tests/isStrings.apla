@@ -138,26 +138,61 @@
   ]
  )
  (
-  description:'empty matrix (0x0)'
-  expected:1
+  description:'empty char matrix (0x0)'
+  expected:0
   rarg:0⌿[
    ''
   ]
  )
  (
-  description:'0x3 matrix (no rows)'
-  expected:1
+  description:'empty char matrix (0x3)'
+  expected:0
   rarg:0⌿[
    '   '
   ]
  )
  (
-  description:'3x0 matrix (no columns)'
+  description:'empty char matrix (3x0)'
+  expected:0
+  rarg:0⌿[
+   ''
+   ''
+   ''
+  ]
+ )
+ (
+  description:'empty string matrix (0x0)'
+  expected:1
+  rarg:0⌿[
+   0⌿(
+    ''
+   )
+  ]
+ )
+ (
+  description:'empty string matrix (0x3)'
+  expected:1
+  rarg:0⌿[
+   (
+    ''
+    ''
+    ''
+   )
+  ]
+ )
+ (
+  description:'empty string matrix (3x0)'
   expected:1
   rarg:[
-   ''
-   ''
-   ''
+   0⌿(
+    ''
+   )
+   0⌿(
+    ''
+   )
+   0⌿(
+    ''
+   )
   ]
  )
 )

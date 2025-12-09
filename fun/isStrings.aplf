@@ -1,1 +1,4 @@
-isStrings←{326≠⎕DR ⍵:0 ⋄ ∧/80 160 320∊⍨⎕DR¨⍵}
+ isStrings←{
+     326≠⎕DR ⍵:0
+     ∧/isString¨⊃⍣(0∊⍴⍵)⊢,⍵
+ }

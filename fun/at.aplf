@@ -3,12 +3,11 @@
      ⍝ later: objects, tables, and xrefs
      ⍝ Syntax: sel ← dict at keys
      ⍝ Returns values for keys; outrange keys return default or ⊃0⍴⊃⊃dict
-     911::'invalid key/s'⎕SIGNAL 11
      isDict ⍺:⍺{
          (v k)←⍺
          dv←⊃0⍴⊃v ⍝ default value
          83∧.=⎕DR¨k ⍵:(v,dv)[k⍳⍵]
-         ⍲/isStrung¨k ⍵:⎕SIGNAL 911
+        ⍲/isStrung¨k ⍵:'invalid key/s'⎕SIGNAL 11
          s←k{0=≢⍴⍵:1 ⋄ (isStrings ⍺)∧isString ⍵}⍵
          ⊃⍣s⊢(v,⊂dv)[k⍳⊆⍣s⊢⍵]
      }⍵
