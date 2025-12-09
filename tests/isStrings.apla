@@ -90,4 +90,74 @@
    123
   )
  )
+ (
+  description:'2x3 matrix of strings'
+  expected:1
+  rarg:[
+    'abc' 'def' 'ghi'
+    'jkl' 'mno' 'pqr'
+ ]
+ )
+ (
+  description:'3x2 matrix of strings with empty strings'
+  expected:1
+  rarg:[
+   'hello' ''
+   'world' 'foo'
+   '' 'bar'
+  ]
+ )
+ (
+  description:'1x3 matrix of strings (single row)'
+  expected:1
+  rarg:[
+    'alpha' 'beta' 'gamma'
+  ]
+ )
+ (
+  description:'3x1 matrix of strings (single column)'
+  expected:1
+  rarg:[
+   (
+    'one'
+   )
+   (
+    'two'
+   )
+   (
+    'three'
+   )
+  ]
+ )
+ (
+  description:'2x2 matrix with mixed types'
+  expected:0
+  rarg:[
+    'abc' 123
+    'def' 456
+  ]
+ )
+ (
+  description:'empty matrix (0x0)'
+  expected:1
+  rarg:0⌿[
+   ''
+  ]
+ )
+ (
+  description:'0x3 matrix (no rows)'
+  expected:1
+  rarg:0⌿[
+   '   '
+  ]
+ )
+ (
+  description:'3x0 matrix (no columns)'
+  expected:1
+  rarg:[
+   ''
+   ''
+   ''
+  ]
+ )
 )
