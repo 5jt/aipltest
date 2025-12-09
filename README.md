@@ -17,6 +17,7 @@ A folder `fun` of APLF files defining functions:
 	at           indexes dictionary, object, table or xref (c.f. @ in q language)
 	f            interpolate string (c.f. Python)
 	isDict       whether ⍵ is a dictionary
+	isObj        whether ⍵ is an object
 	isString     whether ⍵ is a string
 	isStrings    whether ⍵ is strings
 	isTable      whether ⍵ is a table
@@ -83,7 +84,8 @@ Examples:
 Data structures
 ---------------
 
-The project functions support data structures that are not ‘first class’ in APL:
+The project functions support data structures that are not ‘first class’ in APL.
+Watch Out: terms such as *object* bear meanings that resemble common usage but are particular to this project.
 
 ### Dictionary
 

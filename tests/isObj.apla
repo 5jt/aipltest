@@ -1,0 +1,79 @@
+(
+ (
+  description:'simple object with scalar variables'
+  expected:1
+  rarg:(
+   x:42
+   y:99
+  )
+ )
+ (
+  description:'object with mixed types'
+  expected:1
+  rarg:(
+   count:5
+   label:'test'
+   values:1 2 3
+  )
+ )
+ (
+  description:'empty namespace'
+  expected:1
+  rarg:(
+  )
+ )
+ (
+  description:'object with single variable'
+  expected:1
+  rarg:(
+   flag:1
+  )
+ )
+ (
+  description:'object with nested namespace variable'
+  expected:0
+  rarg:(
+   inner:(
+    a:1
+    b:2
+   )
+   outer:3
+  )
+ )
+ (
+  description:'simple string'
+  expected:0
+  rarg:'not an object'
+ )
+ (
+  description:'numeric vector'
+  expected:0
+  rarg:1 2 3
+ )
+ (
+  description:'empty vector'
+  expected:0
+  rarg:⍬
+ )
+ (
+  description:'scalar number'
+  expected:0
+  rarg:42
+ )
+ (
+  description:'dictionary (2-element vector)'
+  expected:0
+  rarg:(
+   1 2 3
+   'abc'
+  )
+ )
+ (
+  description:'matrix'
+  expected:0
+  rarg:[
+   1 2
+   3 4
+  ]
+ )
+)

@@ -7,6 +7,7 @@ Datatype tests
 --------------
 
 	isDict       whether ⍵ is a dictionary
+      isObj        whether ⍵ is an object
 	isString     whether ⍵ is a string
 	isStrings    whether ⍵ is strings (returns scalar Boolean; ⍵ may be vector or matrix)
 	isTable      whether ⍵ is a table
