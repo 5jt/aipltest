@@ -1,5 +1,305 @@
 (
  (
+  description:'dictionary: single key lookup'
+  expected:23
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:'sheep'
+ )
+ (
+  description:'dictionary: first key lookup'
+  expected:12
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:'cow'
+ )
+ (
+  description:'dictionary: last key lookup'
+  expected:34
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:'dog'
+ )
+ (
+  description:'dictionary: multiple keys lookup'
+  expected:23 12
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'sheep'
+   'cow'
+  )
+ )
+ (
+  description:'dictionary: all keys in order'
+  expected:12 23 34
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'cow'
+   'sheep'
+   'dog'
+  )
+ )
+ (
+  description:'dictionary: all keys in reverse order'
+  expected:34 23 12
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'dog'
+   'sheep'
+   'cow'
+  )
+ )
+ (
+  description:'dictionary: duplicate keys in lookup'
+  expected:23 23 12
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'sheep'
+   'sheep'
+   'cow'
+  )
+ )
+ (
+  description:'dictionary: outrange key returns zero'
+  expected:0
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:'cat'
+ )
+ (
+  description:'dictionary: outrange keys return zeros'
+  expected:0 0
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'cat'
+   'mouse'
+  )
+ )
+ (
+  description:'dictionary: mixed valid and outrange keys'
+  expected:23 0
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'sheep'
+   'cat'
+  )
+ )
+ (
+  description:'dictionary: mixed outrange and valid keys'
+  expected:0 23
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'cat'
+   'sheep'
+  )
+ )
+ (
+  description:'dictionary: multiple mixed valid/outrange keys'
+  expected:0 23 0 34
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'cat'
+   'sheep'
+   'mouse'
+   'dog'
+  )
+ )
+ (
+  description:'dictionary: with default, valid key'
+  expected:23
+  larg:(
+   12 23 34 99
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:'sheep'
+ )
+ (
+  description:'dictionary: with default, outrange key returns default'
+  expected:99
+  larg:(
+   12 23 34 99
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:'cat'
+ )
+ (
+  description:'dictionary: with default, multiple outrange keys'
+  expected:99 99
+  larg:(
+   12 23 34 99
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'cat'
+   'mouse'
+  )
+ )
+ (
+  description:'dictionary: with default, mixed valid/outrange'
+  expected:23 99
+  larg:(
+   12 23 34 99
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:(
+   'sheep'
+   'cat'
+  )
+ )
+ (
+  description:'dictionary: string values'
+  expected:'green'
+  larg:(
+   (
+    'red'
+    'green'
+    'blue'
+   )
+   (
+    'stop'
+    'go'
+    'sky'
+   )
+  )
+  rarg:'go'
+ )
+ (
+  description:'dictionary: string values, multiple keys'
+  expected:(
+   'blue'
+   'red'
+  )
+  larg:(
+   (
+    'red'
+    'green'
+    'blue'
+   )
+   (
+    'stop'
+    'go'
+    'sky'
+   )
+  )
+  rarg:(
+   'sky'
+   'stop'
+  )
+ )
+ (
+  description:'dictionary: string values, outrange key'
+  expected:''
+  larg:(
+   (
+    'red'
+    'green'
+    'blue'
+   )
+   (
+    'stop'
+    'go'
+    'sky'
+   )
+  )
+  rarg:'caution'
+ )
+ (
   description:'dictionary: numeric vector values'
   expected:4 5 6
   larg:(
@@ -28,26 +328,432 @@
   )
   rarg:'ca'
  )
- (
+(
   description:'dictionary: nested array values'
-  expected:(
-   1 2
-   3 4
-  )
   larg:(
    (
     'x'
     (
-     1 2
+    1 2
      3
     )
    )
-   (
-    'key1'
-    'key2'
-    'key3'
-   )
+   'key1' 'key2' 'key3'
   )
   rarg:'key2'
+  expected:(
+   1 2
+   3 4
+  )
+ )
+ (
+  description:'dictionary: single key/value pair'
+  larg:(
+   (42 ⋄ )
+   ('answer'⋄ )
+   )
+  rarg:'answer'
+  expected:42
+ )
+ (
+  description:'dictionary: single key/value, outrange'
+  larg:(
+   (42⋄)
+   ('answer'⋄ )
+   )
+  rarg:'question'
+  expected:0
+ )
+ (
+  description:'dictionary: empty string key'
+  larg:(
+   1 2 3
+   (
+       ''
+       'a'
+       'b'
+   )
+  )
+  rarg:''
+  expected:⍬
+ )
+ (
+  description:'dictionary: keys with spaces'
+  larg:(
+   10 20 30
+   (
+       'first name'
+       'last name'
+       'age'
+   )
+  )
+  rarg:'last name'
+  expected:20
+ )
+ (
+  description:'dictionary: keys with special characters'
+  larg:(
+   1 2 3
+   'x.y' 'a/b' 'p*q'
+  )
+  rarg:'a/b'
+  expected:2
+ )
+ (
+  description:'dictionary: unicode keys'
+  larg:(
+   1 2 3
+   (
+       'café'
+       'naïve'
+       'résumé'
+   )
+  )
+  rarg:'naïve'
+  expected:2
+ )
+ (
+  description:'dictionary: emoji keys'
+  larg:(
+   1 2 3
+   '🐄🐑🐕'
+  )
+  rarg:'🐑'
+  expected:2
+ )
+ (
+  description:'dictionary: mixed unicode/emoji keys'
+  larg:(
+   10 20 30
+   (
+       'café'
+       '🍕'
+       'naïve'
+   )
+  )
+  rarg:(
+      '🍕'
+      'café'
+  )
+  expected:20 10
+ )
+ (
+  description:'dictionary: case-sensitive key lookup'
+  larg:(
+   1 2
+   (
+   'abc'
+   'ABC'
+   )
+  )
+  rarg:'abc'
+  expected:1
+ )
+(
+  description:'dictionary: case-sensitive different case'
+  larg:(
+   1 2
+   (
+    'abc'
+    'ABC'
+   )
+  )
+  rarg:'ABC'
+  expected:2
+ )
+ (
+  description:'dictionary: case-sensitive outrange'
+  larg:(
+   1 2
+   (
+    'abc'
+    'ABC'
+   )
+  )
+  rarg:'Abc'
+  expected:0
+ )
+ (
+  description:'dictionary: implicit zero default value'
+  larg:(
+   1 2 3
+   'abc'
+  )
+  rarg:'d'
+  expected:0
+ )
+ (
+  description:'dictionary: explicit zero default value'
+  larg:(
+   1 2 3 0
+   'abc'
+  )
+  rarg:'d'
+  expected:0
+ )
+ (
+  description:'dictionary: negative default value'
+  larg:(
+   1 2 3 ¯1
+   'abc'
+  )
+  rarg:'d'
+  expected:¯1
+ )
+ (
+  description:'dictionary: string default value'
+  larg:(
+   (
+    'red'
+    'green'
+    'blue'
+    'unknown'
+   )
+   (
+    'stop'
+    'go'
+    'sky')
+  )
+  rarg:'caution'
+  expected:'unknown'
+ )
+ (
+  description:'dictionary: complex nested default'
+  larg:(
+    1 2
+    3 4
+    (
+     5 6
+     7 8
+    )
+   'ab'
+  )
+  rarg:'c'
+  expected:0
+ )
+ (
+  description:'dictionary: scalar string key (single char)'
+  larg:(
+   10 20 30
+   'abc'
+  )
+  rarg:'b'
+  expected:20
+ )
+ (
+  description:'dictionary: multiple single-char keys'
+  larg:(
+   10 20 30
+   'abc'
+  )
+  rarg:'cab'
+  expected:30 10 20
+ )
+ (
+  description:'dictionary: matrix keys produce matrix result'
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:[
+   (
+    'sheep'
+    'cow'
+   )
+   (
+    'dog'
+    'sheep'
+   )
+  ]
+  expected:[
+   23 12
+   34 23
+  ]
+ )
+ (
+  description:'dictionary: 3x3 matrix keys'
+  larg:(
+   10 20 30
+   'abc'
+  )
+  rarg:[
+   'abc'
+   'bac'
+   'cab'
+   ]
+  expected:[
+   10 20 30
+   20 10 30
+   30 10 20
+  ]
+ )
+ (
+  description:'dictionary: matrix with outrange keys'
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:[
+   (
+    'sheep'
+    'cat'
+    'dog'
+   )
+   (
+    'cow'
+    'mouse'
+    'sheep'
+   )
+  ]
+  expected:[
+   23 0 34
+   12 0 23
+  ]
+ )
+ (
+  description:'dictionary: matrix with default value'
+  larg:(
+   12 23 34 99
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:[
+   (
+    'sheep'
+    'cat'
+   )
+   (
+    'dog'
+    'mouse'
+   )
+  ]
+  expected:[
+   23 99
+   34 99
+  ]
+ )
+ (
+  description:'dictionary: scalar key produces scalar result'
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:'sheep'
+  expected:23
+ )
+ (
+  description:'dictionary: rank-3 array keys'
+  larg:(
+   1 2 3
+   'abc'
+  )
+  rarg:[
+   [
+    'ab'
+    'ca'
+   ]
+   [
+    'bc'
+    'ab'
+   ]
+  ]
+  expected:[
+   [
+    1 2
+    3 1
+   ]
+   [
+    2 3
+    1 2
+   ]
+  ]
+ )
+ (
+  description:'dictionary: vector of length 1'
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:('sheep' ⋄)
+  expected:(23 ⋄)
+ )
+ (
+  description:'dictionary: numeric keys (coerced to strings)'
+  larg:(
+   100 200 300
+   '123'
+  )
+  rarg:'2'
+  expected:200
+ )
+ (
+  description:'dictionary: long keys'
+  larg:(
+   1 2 3
+   (
+    'very-long-key-name-one'
+    'very-long-key-name-two'
+    'very-long-key-name-three'
+   )
+  )
+  rarg:'very-long-key-name-two'
+  expected:2
+ )
+ (
+  breaks:11
+  description:'domain error: right argument not a string'
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:123
+ )
+ (
+  breaks:11
+  description:'domain error: right argument is numeric vector'
+  larg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+  rarg:1 2 3
+ )
+ (
+  breaks:11
+  description:'domain error: left argument not a dictionary'
+  larg:1 2 3
+  rarg:'a'
+ )
+ (
+  breaks:11
+  description:'domain error: left argument is not a dictionary'
+  larg:'abc'
+  rarg:'a'
  )
 )

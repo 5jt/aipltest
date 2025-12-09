@@ -1,0 +1,78 @@
+PASS - dictionary: single key lookup
+PASS - dictionary: first key lookup
+PASS - dictionary: last key lookup
+PASS - dictionary: multiple keys lookup
+PASS - dictionary: all keys in order
+PASS - dictionary: all keys in reverse order
+PASS - dictionary: duplicate keys in lookup
+PASS - dictionary: outrange key returns zero
+PASS - dictionary: outrange keys return zeros
+PASS - dictionary: mixed valid and outrange keys
+PASS - dictionary: mixed outrange and valid keys
+PASS - dictionary: multiple mixed valid/outrange keys
+PASS - dictionary: with default, valid key
+PASS - dictionary: with default, outrange key returns default
+PASS - dictionary: with default, multiple outrange keys
+PASS - dictionary: with default, mixed valid/outrange
+PASS - dictionary: string values
+PASS - dictionary: string values, multiple keys
+FAIL - dictionary: string values, outrange key
+    Expected: 
+    Got:  
+PASS - dictionary: numeric vector values
+FAIL - dictionary: numeric vector values, multiple keys
+    Expected:  7 8 9  1 2 3 
+    Got: 0
+FAIL - dictionary: nested array values
+    Expected:  1 2  3 4 
+    Got: not a dictionary
+PASS - dictionary: single key/value pair
+PASS - dictionary: single key/value, outrange
+FAIL - dictionary: empty string key
+    Expected: 
+    Got: 1
+PASS - dictionary: keys with spaces
+PASS - dictionary: keys with special characters
+PASS - dictionary: unicode keys
+PASS - dictionary: emoji keys
+PASS - dictionary: mixed unicode/emoji keys
+PASS - dictionary: case-sensitive key lookup
+PASS - dictionary: case-sensitive different case
+PASS - dictionary: case-sensitive outrange
+PASS - dictionary: implicit zero default value
+PASS - dictionary: explicit zero default value
+PASS - dictionary: negative default value
+PASS - dictionary: string default value
+FAIL - dictionary: complex nested default
+    Expected: 0
+    Got: not a dictionary
+PASS - dictionary: scalar string key (single char)
+FAIL - dictionary: multiple single-char keys
+    Expected: 30 10 20
+    Got: 0
+PASS - dictionary: matrix keys produce matrix result
+FAIL - dictionary: 3x3 matrix keys
+    Expected: 10 20 30
+20 10 30
+30 10 20
+    Got: 0
+PASS - dictionary: matrix with outrange keys
+PASS - dictionary: matrix with default value
+PASS - dictionary: scalar key produces scalar result
+FAIL - dictionary: rank-3 array keys
+    Expected: 1 2
+3 1
+2 3
+1 2
+    Got: 0
+PASS - dictionary: vector of length 1
+PASS - dictionary: numeric keys (coerced to strings)
+PASS - dictionary: long keys
+FAIL - domain error: right argument not a string
+    Expected: DOMAIN ERROR
+    Got: 0
+FAIL - domain error: right argument is numeric vector
+    Expected: DOMAIN ERROR
+    Got: 0
+PASS - domain error: left argument not a dictionary
+PASS - domain error: left argument is not a dictionary
