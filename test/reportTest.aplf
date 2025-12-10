@@ -1,7 +1,7 @@
  reportTest←{
      line←{1=≢⍴⍵:⍵ ⋄ ∊(⎕UCS 13 10)∘,¨↓⍵}∘⍕
      exp←'    Expected: ',line{×⍵.breaks:⎕EM ⍵.breaks ⋄ ⍵.expected}⍵
-     got←'    Got: ',line(⍵.result ⋄ 1↓⊃⍵.dm)⊃⍨1+×⍵.en
+     got←'    Got: ',line(⍵.result ⋄ {⍵↓⍨'⍎'=⊃⍵}⊃⍵.dm)⊃⍨1+×⍵.en
      r←⊂('FAIL' 'PASS'⊃⍨1+⍵.pass),' - ',⍵.description
      r,←⍵.pass{⍺:'' ⋄ ⍵}exp got
      ∊r,¨⊂⎕UCS 13 10
