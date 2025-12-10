@@ -51,24 +51,33 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 5: Index dictionaries
 
-- [x] Write tests for at with dictionaries
+- [x] Write tests for `at` with dictionaries
 - [x] Seek approval for tests
-- [x] Implement at for dictionaries
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Implement `at` for dictionaries
+- [x] Run complete test suite
+- [x] Verify no regressions
 
-## Phase 6: Index tables
+## Phase 6: Index objects
 
-- [ ] Write tests for at with tables
+- [ ] Write tests for `at` with objects
 - [ ] Seek approval for tests
-- [ ] Extend at for tables
+- [ ] Extend `at` for objects
 - [ ] Run complete test suite
 - [ ] Verify no regressions
 
-## Phase 7: Index xrefs
+## Phase 7: Index tables
 
-- [ ] Write tests for at with xrefs
+- [ ] Write tests for `at` with tables
 - [ ] Seek approval for tests
-- [ ] Extend at for xrefs
+- [ ] Extend `at` for tables
 - [ ] Run complete test suite
 - [ ] Verify no regressions
+
+## Phase 8: Index xrefs
+
+- [ ] Write tests for `at` with xrefs
+- [ ] Seek approval for tests
+- [ ] Extend `at` for xrefs
+- [ ] Run complete test suite
+- [ ] Verify no regressions
+

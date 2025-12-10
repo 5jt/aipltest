@@ -13,6 +13,30 @@ Datatype tests
 	isTable      whether ⍵ is a table
 	isXref       whether ⍵ is an xref
 
+
+Prototype of an array
+---------------------
+
+      pt           prototype of an array
+
+Indexing with `at` returns *outrange values* instead of signalling an error.
+
+Outrange values are derived from the prototype of their first item: 0 for numerics, space for character.
+
+```apl
+      0 ≡ pt ⍳3
+1
+      ' ' ≡ pt 'abc'
+1
+```
+
+For this, we enclose an array *along its leading axis*, reshape to length 0, and disclose to reveal its prototype.
+
+```apl
+{⊃0⍴⊂⍤(0⌈r-1)⊢⍵}
+```
+
+
 Indexing with `at`
 ------------------
 
@@ -59,6 +83,28 @@ Outrange examples:
       23 99 ≡ d at 'sheep' 'cat'
 1
 ```
+
+Where not supplied as N+1 value, the implicit outrange value is
+
+```apl
+{∊⍵⊣⎕ML←0}0⍴values
+```
+
+That is to say, the Type of the prototype of the values list.
+
+This aims to maximise consistency of a result that includes outrange values.
+
+
+### Object `X`:
+
+`sel` is an object with keys `Y` with values derived from corresponding keys in `X`.
+
+The outrange value is implicit and derived from the values list.
+The values list for an object is given by `{⍵ ⎕VGET ⍵.⎕NL 2}`.
+Note that the type of the outrange value is determined by the type of the value for the alphabetically lowest key.
+
+The outrange value for an empty object is `''`.
+
 
 ### Table `X`:
 
@@ -191,6 +237,21 @@ Example:
       x at ('Bob' ⋄ 'age')
 21
 ```
+
+
+### Array `X`:
+
+If `X` is  none of the above sythesised datatypes, it is just an array.
+
+`at` indexes along the leading axis and derives an implicit outrange value
+
+
+### Scalar `X`:
+
+If `X` has no dimensions, signal a rank error.
+
+
+
 
 String manipulation
 -------------------

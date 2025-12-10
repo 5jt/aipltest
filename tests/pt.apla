@@ -1,0 +1,257 @@
+(
+ (
+  description:'numeric vector'
+  expected:0
+  rarg:1 2 3
+ )
+ (
+  description:'numeric scalar'
+  expected:0
+  rarg:42
+ )
+ (
+  description:'empty numeric vector'
+  expected:0
+  rarg:⍬
+ )
+ (
+  description:'numeric matrix'
+  expected:0 0 0
+  rarg:[
+   1 2 3
+   4 5 6
+  ]
+ )
+ (
+  description:'numeric rank-3 array'
+  expected:[
+   0 0
+   0 0
+  ]
+  rarg:[
+   [
+    1 2
+    3 4
+   ]
+   [
+    5 6
+    7 8
+   ]
+  ]
+ )
+ (
+  description:'single element numeric vector'
+  expected:0
+  rarg:(42⋄)
+ )
+ (
+  description:'character vector (string)'
+  expected:' '
+  rarg:'hello'
+ )
+ (
+  description:'single character'
+  expected:' '
+  rarg:'x'
+ )
+ (
+  description:'empty string'
+  expected:' '
+  rarg:''
+ )
+ (
+  description:'character matrix'
+  expected:'   '
+  rarg:[
+   'abc'
+   'def'
+  ]
+ )
+ (
+  description:'character rank-3 array'
+  expected:[
+    '  '
+    '  '
+   ]
+  rarg:[
+   [
+    'ab'
+    'cd'
+   ]
+   [
+    'ef'
+    'gh'
+   ]
+  ]
+ )
+ (
+  description:'single element string'
+  expected:' '
+  rarg:('x'⋄)
+ )
+ (
+  description:'nested numeric vectors'
+  expected:⊂0 0 0
+  rarg:(
+   1 2 3
+   4 5 6
+   7 8
+  )
+ )
+ (
+  description:'nested single elements'
+  expected:⊂(0⋄)
+  rarg:(
+   (42⋄)
+   (99⋄)
+  )
+ )
+ (
+  description:'nested strings'
+  expected:⊂'   '
+  rarg:(
+   'red'
+   'green'
+   'blue'
+  )
+ )
+ (
+  description:'nested empty and non-empty'
+  expected:⊂⍬
+  rarg:(
+   ⍬
+   1 2 3
+  )
+ )
+ (
+  description:'vector of matrices'
+  expected:⊂[
+   0 0
+   0 0
+  ]
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   [
+    5 6
+    7 8
+   ]
+  )
+ )
+ (
+  description:'vector of strings of different lengths'
+  expected:' '
+  rarg:(
+   'a'
+   'ab'
+   'abc'
+  )
+ )
+ (
+  description:'matrix of vectors'
+  expected:(
+    0 0 0
+    0 0 0
+  )
+  rarg:[
+   (
+    1 2 3
+    4 5 6
+   )
+   (
+    7 8 9
+    10 11 12
+   )
+  ]
+ )
+ (
+  description:'negative numbers'
+  expected:0
+  rarg:¯1 ¯2 ¯3
+ )
+ (
+  description:'decimal numbers'
+  expected:0
+  rarg:1.5 2.7 3.9
+ )
+ (
+  description:'mixed positive and negative'
+  expected:0
+  rarg:¯5 0 5
+ )
+ (
+  description:'nested strings matrix'
+  expected:(
+   '   '
+   '   '
+  )
+  rarg:[
+   (
+    'one'
+    'two'
+   )
+   (
+    'three'
+    'four'
+   )
+  ]
+ )
+ (
+  description:'deeply nested numeric'
+  expected:⊂(
+ (
+  0 0
+  0 0
+ )
+ (
+  0 0
+  0 0
+ )
+)
+  rarg:(
+   (
+    (
+     1 2
+     3 4
+    )
+    (
+     5 6
+     7 8
+    )
+   )
+   (
+    (
+     9 10
+     11 12
+    )
+    (
+     13 14
+     15 16
+    )
+   )
+  )
+ )
+ (
+  description:'empty nested vector'
+  expected:⊂''
+  rarg:0⌿(
+   ''
+  )
+ )
+ (
+  description:'vector with single string'
+  expected:⊂'     '
+  rarg:(
+   'hello'
+  )
+ )
+ (
+  description:'vector with single number'
+  expected:0
+  rarg:(
+   42
+  )
+ )
+)

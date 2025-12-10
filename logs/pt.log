@@ -1,0 +1,27 @@
+PASS - numeric vector
+PASS - numeric scalar
+PASS - empty numeric vector
+PASS - numeric matrix
+PASS - numeric rank-3 array
+PASS - single element numeric vector
+PASS - character vector (string)
+PASS - single character
+PASS - empty string
+PASS - character matrix
+PASS - character rank-3 array
+PASS - single element string
+PASS - nested numeric vectors
+PASS - nested single elements
+PASS - nested strings
+PASS - nested empty and non-empty
+PASS - vector of matrices
+PASS - vector of strings of different lengths
+PASS - matrix of vectors
+PASS - negative numbers
+PASS - decimal numbers
+PASS - mixed positive and negative
+PASS - nested strings matrix
+PASS - deeply nested numeric
+PASS - empty nested vector
+PASS - vector with single string
+PASS - vector with single number
