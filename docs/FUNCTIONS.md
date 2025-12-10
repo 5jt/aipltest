@@ -14,6 +14,9 @@ Datatype tests
 	isXref       whether ⍵ is an xref
 
 
+An object here is a namespace containing only variables.
+
+
 Prototype of an array
 ---------------------
 
@@ -241,9 +244,9 @@ Example:
 
 ### Array `X`:
 
-If `X` is  none of the above sythesised datatypes, it is just an array.
+If `X` is  none of the above synthesised datatypes, it is just an array.
 
-`at` indexes along the leading axis and derives an implicit outrange value
+`at` indexes along the leading axis. The implicit outrange value is derived  by `pt`.
 
 
 ### Scalar `X`:
