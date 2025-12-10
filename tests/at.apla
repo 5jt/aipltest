@@ -284,7 +284,7 @@
  )
  (
   description:'dictionary: string values, outrange key'
-  expected:' '
+  expected:⊂'   '
   larg:(
    (
     'red'
@@ -765,5 +765,803 @@
   description:'domain error: left argument is not a dictionary'
   larg:'abc'
   rarg:'a'
+ )
+ (
+  description:'dictionary: empty (num, chars)'
+  larg:(
+   ⍬
+    ''
+  )
+  rarg:'anything'
+  expected:0 0 0 0 0 0 0 0
+ )
+ (
+  description:'dictionary: empty (num, strings)'
+  larg:(
+   ⍬
+   0⌿(
+    ''
+   )
+  )
+  rarg:'anything'
+  expected:0
+ )
+ (
+  description:'dictionary: empty (strings, chars)'
+  larg:(
+   0⌿(
+    ''
+   )
+    ''
+  )
+  rarg:'anything'
+  expected:(
+   ⊂''
+   ⊂''
+   ⊂''
+   ⊂''
+   ⊂''
+   ⊂''
+   ⊂''
+   ⊂''
+  )
+ )
+ (
+  description:'dictionary: empty (strings, strings)'
+  larg:(
+   0⌿(
+    ''
+   )
+   0⌿(
+    ''
+   )
+  )
+  rarg:'anything'
+  expected:⊂''
+ )
+ (
+  description:'dictionary: duplicate keys, first occurrence wins'
+  expected:10
+  larg:(
+   10 20 30
+   (
+    'a'
+    'b'
+    'a'
+   )
+  )
+  rarg:'a'
+ )
+ (
+  description:'dictionary: duplicate keys, multiple lookups'
+  expected:10 20 10
+  larg:(
+   10 20 30
+   (
+    'a'
+    'b'
+    'a'
+   )
+  )
+  rarg:(
+   'a'
+   'b'
+   'a'
+  )
+ )
+ (
+  description:'dictionary: all keys duplicated'
+  expected:10 20
+  larg:(
+   10 20 30 40
+   (
+    'x'
+    'y'
+    'x'
+    'y'
+   )
+  )
+  rarg:(
+   'x'
+   'y'
+  )
+ )
+ (
+  description:'dictionary: outrange with vector values, no default'
+  expected:⊂0 0 0
+  larg:(
+   (
+    1 2 3
+    4 5 6
+    7 8 9
+   )
+   'abc'
+  )
+  rarg:'d'
+ )
+ (
+  description:'dictionary: outrange with nested vector values'
+  expected:⊂(
+   0 0
+   0 0
+  )
+  larg:(
+   (
+    (
+     1 2
+     3 4
+    )
+    (
+     5 6
+     7 8
+    )
+   )
+   'ab'
+  )
+  rarg:'c'
+ )
+ (
+  description:'dictionary: outrange with string values, no default'
+  expected:⊂'   '
+  larg:(
+   (
+    'red'
+    'green'
+    'blue'
+   )
+   'abc'
+  )
+  rarg:'d'
+ )
+ (
+  description:'dictionary: outrange with nested strings, no default'
+  expected:⊂(
+   '   '
+   '   '
+  )
+  larg:(
+   (
+    (
+     'one'
+     'two'
+    )
+    (
+     'three'
+     'four'
+    )
+   )
+   'ab'
+  )
+  rarg:'c'
+ )
+ (
+  description:'dictionary: default preserves vector shape'
+  expected:⊂0 0 0
+  larg:(
+   (
+    1 2 3
+    4 5 6
+    99 99 99
+   )
+   'abc'
+  )
+  rarg:'d'
+ )
+ (
+  description:'dictionary: default preserves nested structure'
+  expected:⊂(
+   0 0
+   0 0
+  )
+  larg:(
+   (
+    (
+     1 2
+     3 4
+    )
+    (
+     5 6
+     7 8
+    )
+    (
+     99 99
+     99 99
+    )
+   )
+   'abc'
+  )
+  rarg:'d'
+ )
+ (
+  description:'dictionary: default preserves string type'
+  expected:'unknown'
+  larg:(
+   (
+    'red'
+    'green'
+    'blue'
+    'unknown'
+   )
+   'abc'
+  )
+  rarg:'d'
+ )
+ (
+  breaks:11
+  description:'domain error: keys/values length mismatch (more values)'
+  larg:(
+   1 2 3 4 5
+   'abc'
+  )
+  rarg:'a'
+ )
+ (
+  breaks:11
+  description:'domain error: keys/values length mismatch (more keys)'
+  larg:(
+   1 2
+   'abc'
+  )
+  rarg:'a'
+ )
+ (
+  breaks:11
+  description:'domain error: keys not strings'
+  larg:(
+   10 20 30
+   1 2 3
+  )
+  rarg:'a'
+ )
+ (
+  breaks:11
+  description:'domain error: keys is numeric scalar'
+  larg:(
+   10 20 30
+   42
+  )
+  rarg:'a'
+ )
+ (
+  breaks:11
+  description:'domain error: keys mixed types'
+  larg:(
+   1 2 3
+   (
+    'a'
+    42
+    'c'
+   )
+  )
+  rarg:'a'
+ )
+ (
+  breaks:11
+  description:'domain error: dictionary with matrix keys'
+  larg:(
+   1 2 3 4
+   [
+    'ab'
+    'cd'
+   ]
+  )
+  rarg:'a'
+ )
+ (
+  description:'object: single variable lookup'
+  expected:23
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:'sheep'
+ )
+ (
+  description:'object: first variable lookup'
+  expected:12
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:'cow'
+ )
+ (
+  description:'object: last variable lookup'
+  expected:34
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:'dog'
+ )
+ (
+  description:'object: multiple variables lookup'
+  expected:23 12
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:(
+   'sheep'
+   'cow'
+  )
+ )
+ (
+  description:'object: all variables in order'
+  expected:12 23 34
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:(
+   'cow'
+   'sheep'
+   'dog'
+  )
+ )
+ (
+  description:'object: all variables in reverse order'
+  expected:34 23 12
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:(
+   'dog'
+   'sheep'
+   'cow'
+  )
+ )
+ (
+  description:'object: duplicate variables in lookup'
+  expected:23 23 12
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:(
+   'sheep'
+   'sheep'
+   'cow'
+  )
+ )
+ (
+  description:'object: outrange variable returns zero'
+  expected:0
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:'cat'
+ )
+ (
+  description:'object: outrange variables return zeros'
+  expected:0 0
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:(
+   'cat'
+   'mouse'
+  )
+ )
+ (
+  description:'object: mixed valid and outrange variables'
+  expected:23 0
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:(
+   'sheep'
+   'cat'
+  )
+ )
+ (
+  description:'object: mixed outrange and valid variables'
+  expected:0 23
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:(
+   'cat'
+   'sheep'
+  )
+ )
+ (
+  description:'object: multiple mixed valid/outrange variables'
+  expected:0 23 0 34
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:(
+   'cat'
+   'sheep'
+   'mouse'
+   'dog'
+  )
+ )
+ (
+  description:'object: string values'
+  expected:'green'
+  larg:(
+   stop:'red'
+   go:'green'
+   sky:'blue'
+  )
+  rarg:'go'
+ )
+ (
+  description:'object: string values, multiple variables'
+  expected:(
+   'blue'
+   'red'
+  )
+  larg:(
+   stop:'red'
+   go:'green'
+   sky:'blue'
+  )
+  rarg:(
+   'sky'
+   'stop'
+  )
+ )
+ (
+  description:'object: string values, outrange variable'
+  expected:' '
+  larg:(
+   stop:'red'
+   go:'green'
+   sky:'blue'
+  )
+  rarg:'caution'
+ )
+ (
+  description:'object: numeric vector values'
+  expected:4 5 6
+  larg:(
+   a:1 2 3
+   b:4 5 6
+   c:7 8
+  )
+  rarg:'b'
+ )
+ (
+  description:'object: numeric vector values, multiple variables'
+  expected:(
+   7 8
+   1 2 3
+  )
+  larg:(
+   a:1 2 3
+   b:4 5 6
+   c:7 8
+  )
+  rarg:(
+   'c'
+   'a'
+  )
+ )
+ (
+  description:'object: nested array values'
+  larg:(
+   key1:'x'
+   key2:[
+    1 2
+    3 4
+   ]
+   key3:'foo'
+  )
+  rarg:'key2'
+  expected:[
+   1 2
+   3 4
+  ]
+ )
+ (
+  description:'object: single variable'
+  larg:(
+   answer:42
+  )
+  rarg:'answer'
+  expected:42
+ )
+ (
+  description:'object: single variable, outrange'
+  larg:(
+   answer:42
+  )
+  rarg:'question'
+  expected:0
+ )
+ (
+  description:'object: variable with spaces in name'
+  larg:(
+   firstName:10
+   lastName:20
+   age:30
+  )
+  rarg:'lastName'
+  expected:20
+ )
+ (
+  description:'object: unicode variable names'
+  larg:(
+   café:1
+   naïve:2
+   résumé:3
+  )
+  rarg:'naïve'
+  expected:2
+ )
+ (
+  description:'object: case-sensitive variable lookup'
+  larg:(
+   abc:1
+   ABC:2
+  )
+  rarg:'abc'
+  expected:1
+ )
+ (
+  description:'object: case-sensitive different case'
+  larg:(
+   abc:1
+   ABC:2
+  )
+  rarg:'ABC'
+  expected:2
+ )
+ (
+  description:'object: case-sensitive outrange'
+  larg:(
+   abc:1
+   ABC:2
+  )
+  rarg:'Abc'
+  expected:0
+ )
+ (
+  description:'object: scalar string variable (single char)'
+  larg:(
+   x:10
+   y:20
+   z:30
+  )
+  rarg:'y'
+  expected:20
+ )
+ (
+  description:'object: multiple single-char variable names'
+  larg:(
+   a:10
+   b:20
+   c:30
+  )
+  rarg:(
+   'c'
+   'a'
+   'b'
+  )
+  expected:30 10 20
+ )
+ (
+  description:'object: matrix variable names produce matrix result'
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:[
+   (
+    'sheep'
+    'cow'
+   )
+   (
+    'dog'
+    'sheep'
+   )
+  ]
+  expected:[
+   23 12
+   34 23
+  ]
+ )
+ (
+  description:'object: 3x3 matrix variable names'
+  larg:(
+   a:10
+   b:20
+   c:30
+  )
+  rarg:[
+   (
+    'a'
+    'b'
+    'c'
+   )
+   (
+    'b'
+    'a'
+    'c'
+   )
+   (
+    'c'
+    'a'
+    'b'
+   )
+  ]
+  expected:[
+   10 20 30
+   20 10 30
+   30 10 20
+  ]
+ )
+ (
+  description:'object: matrix with outrange variables'
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:[
+   (
+    'sheep'
+    'cat'
+    'dog'
+   )
+   (
+    'cow'
+    'mouse'
+    'sheep'
+   )
+  ]
+  expected:[
+   23 0 34
+   12 0 23
+  ]
+ )
+ (
+  description:'object: scalar variable produces scalar result'
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:'sheep'
+  expected:23
+ )
+ (
+  description:'object: rank-3 array variable names'
+  larg:(
+   a:1
+   b:2
+   c:3
+  )
+  rarg:[
+   [
+    (
+     'a'
+     'b'
+    )
+    (
+     'c'
+     'a'
+    )
+   ]
+   [
+    (
+     'b'
+     'c'
+    )
+    (
+     'a'
+     'b'
+    )
+   ]
+  ]
+  expected:[
+   [
+    1 2
+    3 1
+   ]
+   [
+    2 3
+    1 2
+   ]
+  ]
+ )
+ (
+  description:'object: vector of length 1'
+  larg:(
+   cow:12
+   sheep:23
+   dog:34
+  )
+  rarg:('sheep' ⋄)
+  expected:(23 ⋄)
+ )
+ (
+  description:'object: long variable names'
+  larg:(
+   veryLongVariableNameOne:1
+   veryLongVariableNameTwo:2
+   veryLongVariableNameThree:3
+  )
+  rarg:'veryLongVariableNameTwo'
+  expected:2
+ )
+ (
+  description:'object: nested object value'
+  larg:(
+   inner:(
+    x:1
+    y:2
+   )
+   outer:3
+  )
+  rarg:'inner'
+  expected:(
+   x:1
+   y:2
+  )
+ )
+ (
+  description:'object: mixed types of values'
+  larg:(
+   count:5
+   label:'test'
+   values:1 2 3
+   flag:1
+  )
+  rarg:(
+   'label'
+   'count'
+  )
+  expected:(
+   'test'
+   5
+  )
+ )
+ (
+  description:'object: empty object'
+  larg:(
+  )
+  rarg:'anything'
+  expected:0
+ )
+ (
+  breaks:11
+  description:'domain error: object right argument not a string'
+  larg:(
+   x:1
+   y:2
+  )
+  rarg:123
+ )
+ (
+  breaks:11
+  description:'domain error: object right argument is numeric vector'
+  larg:(
+   x:1
+   y:2
+  )
+  rarg:1 2 3
  )
 )

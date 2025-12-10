@@ -51,3 +51,150 @@ PASS - domain error: right argument not a string
 PASS - domain error: right argument is numeric vector
 PASS - domain error: left argument not a dictionary
 PASS - domain error: left argument is not a dictionary
+PASS - dictionary: empty (num, chars)
+PASS - dictionary: empty (num, strings)
+PASS - dictionary: empty (strings, chars)
+PASS - dictionary: empty (strings, strings)
+PASS - dictionary: duplicate keys, first occurrence wins
+PASS - dictionary: duplicate keys, multiple lookups
+PASS - dictionary: all keys duplicated
+PASS - dictionary: outrange with vector values, no default
+PASS - dictionary: outrange with nested vector values
+PASS - dictionary: outrange with string values, no default
+PASS - dictionary: outrange with nested strings, no default
+PASS - dictionary: default preserves vector shape
+PASS - dictionary: default preserves nested structure
+PASS - dictionary: default preserves string type
+PASS - domain error: keys/values length mismatch (more values)
+PASS - domain error: keys/values length mismatch (more keys)
+PASS - domain error: keys not strings
+PASS - domain error: keys is numeric scalar
+PASS - domain error: keys mixed types
+PASS - domain error: dictionary with matrix keys
+FAIL - object: single variable lookup
+    Expected: 23
+    Got: not a dictionary
+FAIL - object: first variable lookup
+    Expected: 12
+    Got: not a dictionary
+FAIL - object: last variable lookup
+    Expected: 34
+    Got: not a dictionary
+FAIL - object: multiple variables lookup
+    Expected: 23 12
+    Got: not a dictionary
+FAIL - object: all variables in order
+    Expected: 12 23 34
+    Got: not a dictionary
+FAIL - object: all variables in reverse order
+    Expected: 34 23 12
+    Got: not a dictionary
+FAIL - object: duplicate variables in lookup
+    Expected: 23 23 12
+    Got: not a dictionary
+FAIL - object: outrange variable returns zero
+    Expected: 0
+    Got: not a dictionary
+FAIL - object: outrange variables return zeros
+    Expected: 0 0
+    Got: not a dictionary
+FAIL - object: mixed valid and outrange variables
+    Expected: 23 0
+    Got: not a dictionary
+FAIL - object: mixed outrange and valid variables
+    Expected: 0 23
+    Got: not a dictionary
+FAIL - object: multiple mixed valid/outrange variables
+    Expected: 0 23 0 34
+    Got: not a dictionary
+FAIL - object: string values
+    Expected: green
+    Got: not a dictionary
+FAIL - object: string values, multiple variables
+    Expected:  blue  red 
+    Got: not a dictionary
+FAIL - object: string values, outrange variable
+    Expected: 
+ 
+    Got: not a dictionary
+FAIL - object: numeric vector values
+    Expected: 4 5 6
+    Got: not a dictionary
+FAIL - object: numeric vector values, multiple variables
+    Expected:  7 8  1 2 3 
+    Got: not a dictionary
+FAIL - object: nested array values
+    Expected: 
+1 2
+3 4
+    Got: not a dictionary
+FAIL - object: single variable
+    Expected: 42
+    Got: not a dictionary
+FAIL - object: single variable, outrange
+    Expected: 0
+    Got: not a dictionary
+FAIL - object: variable with spaces in name
+    Expected: 20
+    Got: not a dictionary
+FAIL - object: unicode variable names
+    Expected: 2
+    Got: not a dictionary
+FAIL - object: case-sensitive variable lookup
+    Expected: 1
+    Got: not a dictionary
+FAIL - object: case-sensitive different case
+    Expected: 2
+    Got: not a dictionary
+FAIL - object: case-sensitive outrange
+    Expected: 0
+    Got: not a dictionary
+FAIL - object: scalar string variable (single char)
+    Expected: 20
+    Got: not a dictionary
+FAIL - object: multiple single-char variable names
+    Expected: 30 10 20
+    Got: not a dictionary
+FAIL - object: matrix variable names produce matrix result
+    Expected: 
+23 12
+34 23
+    Got: not a dictionary
+FAIL - object: 3x3 matrix variable names
+    Expected: 
+10 20 30
+20 10 30
+30 10 20
+    Got: not a dictionary
+FAIL - object: matrix with outrange variables
+    Expected: 
+23 0 34
+12 0 23
+    Got: not a dictionary
+FAIL - object: scalar variable produces scalar result
+    Expected: 23
+    Got: not a dictionary
+FAIL - object: rank-3 array variable names
+    Expected: 
+1 2
+3 1
+2 3
+1 2
+    Got: not a dictionary
+FAIL - object: vector of length 1
+    Expected: 23
+    Got: not a dictionary
+FAIL - object: long variable names
+    Expected: 2
+    Got: not a dictionary
+FAIL - object: nested object value
+    Expected: #.aipltest.tests.[Namespace]
+    Got: not a dictionary
+FAIL - object: mixed types of values
+    Expected:  test  5
+    Got: not a dictionary
+FAIL - object: empty object
+    Expected: 0
+    Got: not a dictionary
+PASS - domain error: object right argument not a string
+PASS - domain error: object right argument is numeric vector
