@@ -1224,7 +1224,7 @@
  )
  (
   description:'object: string values, outrange variable'
-  expected:' '
+  expected:'     '
   larg:(
    stop:'red'
    go:'green'

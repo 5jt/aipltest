@@ -16,8 +16,12 @@ PASS - dictionary: with default, multiple outrange keys
 PASS - dictionary: with default, mixed valid/outrange
 PASS - dictionary: string values
 PASS - dictionary: string values, multiple keys
-PASS - dictionary: string values, outrange key
-PASS - dictionary: numeric vector values
+FAIL - dictionary: string values, outrange key
+    Expected:      
+    Got:    
+FAIL - dictionary: numeric vector values
+    Expected: 4 5 6
+    Got:  4 5 6 
 PASS - dictionary: numeric vector values, multiple keys
 PASS - dictionary: nested array values
 PASS - dictionary: single key/value pair
@@ -27,7 +31,9 @@ PASS - dictionary: keys with spaces
 PASS - dictionary: keys with special characters
 PASS - dictionary: unicode keys
 PASS - dictionary: emoji keys
-PASS - dictionary: mixed unicode/emoji keys
+FAIL - dictionary: mixed unicode/emoji keys
+    Expected: 20 10
+    Got: 0 10
 PASS - dictionary: case-sensitive key lookup
 PASS - dictionary: case-sensitive different case
 PASS - dictionary: case-sensitive outrange
@@ -35,7 +41,9 @@ PASS - dictionary: implicit zero default value
 PASS - dictionary: explicit zero default value
 PASS - dictionary: negative default value
 PASS - dictionary: string default value
-PASS - dictionary: complex nested default
+FAIL - dictionary: complex nested default
+    Expected:  5 6  7 8 
+    Got:   5 6  7 8  
 PASS - dictionary: scalar string key (single char)
 PASS - dictionary: multiple single-char keys
 PASS - dictionary: matrix keys produce matrix result
@@ -47,14 +55,22 @@ PASS - dictionary: rank-3 array keys
 PASS - dictionary: vector of length 1
 PASS - dictionary: numeric keys (coerced to strings)
 PASS - dictionary: long keys
-PASS - domain error: right argument not a string
-PASS - domain error: right argument is numeric vector
+FAIL - domain error: right argument not a string
+    Expected: DOMAIN ERROR
+    Got: 0
+FAIL - domain error: right argument is numeric vector
+    Expected: DOMAIN ERROR
+    Got: 0 0 0
 PASS - domain error: left argument not a dictionary
 PASS - domain error: left argument is not a dictionary
 PASS - dictionary: empty (num, chars)
 PASS - dictionary: empty (num, strings)
-PASS - dictionary: empty (strings, chars)
-PASS - dictionary: empty (strings, strings)
+FAIL - dictionary: empty (strings, chars)
+    Expected:                                 
+    Got:                 
+FAIL - dictionary: empty (strings, strings)
+    Expected:   
+    Got: 
 PASS - dictionary: duplicate keys, first occurrence wins
 PASS - dictionary: duplicate keys, multiple lookups
 PASS - dictionary: all keys duplicated
@@ -64,137 +80,136 @@ PASS - dictionary: outrange with string values, no default
 PASS - dictionary: outrange with nested strings, no default
 PASS - dictionary: default preserves vector shape
 PASS - dictionary: default preserves nested structure
-PASS - dictionary: default preserves string type
+FAIL - dictionary: default preserves string type
+    Expected: unknown
+    Got:  unknown 
 PASS - domain error: keys/values length mismatch (more values)
 PASS - domain error: keys/values length mismatch (more keys)
-PASS - domain error: keys not strings
+FAIL - domain error: keys not strings
+    Expected: DOMAIN ERROR
+    Got: 0
 PASS - domain error: keys is numeric scalar
 PASS - domain error: keys mixed types
 PASS - domain error: dictionary with matrix keys
 FAIL - object: single variable lookup
     Expected: 23
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: first variable lookup
     Expected: 12
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: last variable lookup
     Expected: 34
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: multiple variables lookup
     Expected: 23 12
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: all variables in order
     Expected: 12 23 34
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: all variables in reverse order
     Expected: 34 23 12
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: duplicate variables in lookup
     Expected: 23 23 12
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: outrange variable returns zero
     Expected: 0
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: outrange variables return zeros
     Expected: 0 0
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: mixed valid and outrange variables
     Expected: 23 0
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: mixed outrange and valid variables
     Expected: 0 23
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: multiple mixed valid/outrange variables
     Expected: 0 23 0 34
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: string values
     Expected: green
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: string values, multiple variables
     Expected:  blue  red 
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: string values, outrange variable
-    Expected: 
- 
-    Got: not a dictionary
+    Expected:      
+    Got: DOMAIN ERROR
 FAIL - object: numeric vector values
     Expected: 4 5 6
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: numeric vector values, multiple variables
     Expected:  7 8  1 2 3 
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: nested array values
     Expected: 
 1 2
 3 4
-    Got: not a dictionary
-FAIL - object: single variable
-    Expected: 42
-    Got: not a dictionary
-FAIL - object: single variable, outrange
-    Expected: 0
-    Got: not a dictionary
+    Got: DOMAIN ERROR
+PASS - object: single variable
+PASS - object: single variable, outrange
 FAIL - object: variable with spaces in name
     Expected: 20
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: unicode variable names
     Expected: 2
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: case-sensitive variable lookup
     Expected: 1
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: case-sensitive different case
     Expected: 2
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: case-sensitive outrange
     Expected: 0
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: scalar string variable (single char)
     Expected: 20
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: multiple single-char variable names
     Expected: 30 10 20
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: matrix variable names produce matrix result
     Expected: 
 23 12
 34 23
-    Got: not a dictionary
+    Got: RANK ERROR
 FAIL - object: 3x3 matrix variable names
     Expected: 
 10 20 30
 20 10 30
 30 10 20
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: matrix with outrange variables
     Expected: 
 23 0 34
 12 0 23
-    Got: not a dictionary
+    Got: RANK ERROR
 FAIL - object: scalar variable produces scalar result
     Expected: 23
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: rank-3 array variable names
     Expected: 
 1 2
 3 1
 2 3
 1 2
-    Got: not a dictionary
+    Got: RANK ERROR
 FAIL - object: vector of length 1
     Expected: 23
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: long variable names
     Expected: 2
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: nested object value
     Expected: #.aipltest.tests.[Namespace]
-    Got: not a dictionary
+    Got: not a dictionary or object
 FAIL - object: mixed types of values
     Expected:  test  5
-    Got: not a dictionary
+    Got: DOMAIN ERROR
 FAIL - object: empty object
     Expected: 0
-    Got: not a dictionary
+    Got: INDEX ERROR
 PASS - domain error: object right argument not a string
 PASS - domain error: object right argument is numeric vector

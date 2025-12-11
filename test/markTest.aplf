@@ -1,5 +1,9 @@
  markTest←{
      ×⍵.breaks:=/⍵.(breaks en) ⍝ broke as expected?
      ×⍵.en:0 ⍝ broke unexpectedly
-     ⍵.result≡⍵.expected
+     ≡/⍵.(result expected)
+    ⍝ re←⍵.(result expected)
+    ⍝  9 9≢⌊⍵.⎕NC'result' 'expected':≡/re
+    ⍝  ≢/nms←re.⎕NL-2:0
+    ⍝  ≡/re ⎕VGET¨nms
  }

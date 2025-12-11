@@ -100,7 +100,7 @@ This aims to maximise consistency of a result that includes outrange values.
 
 ### Object `X`:
 
-`sel` is an object with keys `Y` with values derived from corresponding keys in `X`.
+`sel` is an array of values derived from corresponding keys in `X`.
 
 The outrange value is implicit and derived from the values list.
 The values list for an object is given by `{⍵ ⎕VGET ⍵.⎕NL 2}`.

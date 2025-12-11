@@ -1,15 +1,31 @@
  at←{
-     ⍝ Functional indexing for dictionaries
-     ⍝ later: objects, tables, and xrefs
-     ⍝ Syntax: sel ← dict at keys
-     ⍝ Returns values for keys; outrange keys return default or ⊃0⍴⊃⊃dict
+    ⍝ Functional indexing for dictionaries and objects
+    ⍝ with explicit or implicit outrange values
+    ⍝ later: tables, xrefs and arrays
+    ⍝ Syntax: sel ← ⍺ at keys
+    ⍝ Returns values for keys
+    ⍝ A dictionary can have an explicit default outrange value
+    ⍝ Otherwise, outrange keys return prototype values
+     dat←{v k←⍺ ⋄ v[k⍳⍵]} ⍝ dictionary at ⍵
+     stringly←{
+         isString ⍵:⊃⍺ ⍺⍺⊂,⍵  ⍝ string  → value
+         isStrings ⍵:⍺ ⍺⍺,¨⍵  ⍝ strings → values
+         ⍺ ⍺⍺ ⍵
+     }
      isDict ⍺:⍺{
          (v k)←⍺
          dv←pt v ⍝ default value
-         83∧.=⎕DR¨k ⍵:(v,dv)[k⍳⍵]
-         ⍲/isStrung¨k ⍵:'invalid key/s'⎕SIGNAL 11
-         s←k{0=≢⍴⍵:1 ⋄ (isStrings ⍺)∧isString ⍵}⍵
-         ⊃⍣s⊢(v,⊂dv)[k⍳⊆⍣s⊢⍵]
+         simple←{∧/isString¨⍵:1 ⋄ 83∧.=⎕DR¨⍵}k ⍵
+         simple:(v,dv)[k⍳⍵]
+         (v,dv ⋄ k)dat stringly ⍵
      }⍵
-     'not a dictionary'⎕SIGNAL 11
+     isObj ⍺:⍺{
+         ~isStrung ⍵:'indices not string/s'⎕SIGNAL 11
+         ¯1∊⎕NC ⍵:'indices not valid names'⎕SIGNAL 11
+         k←⍺.⎕NL-2                   ⍝ keys (variable names)
+         v←⍺ ⎕VGET k                 ⍝ values
+         dv←⍺{≢⍺.⎕NL 2:pt ⍵ ⋄ ''}v   ⍝ default value
+         (v,dv ⋄ k)dat stringly ⍵
+     }⍵
+     'not a dictionary or object'⎕SIGNAL 11
  }
