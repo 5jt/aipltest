@@ -1,380 +1,524 @@
 (
  (
   description:'replace space with dash'
-  larg:' -'
   expected:'abc-def-ghi'
+  larg:' -'
+  number:1
   rarg:'abc def ghi'
  )
  (
   description:'replace slash with dash'
-  larg:'/-'
   expected:'path-to-file'
+  larg:'/-'
+  number:2
   rarg:'path/to/file'
  )
  (
   description:'replace dash with underscore'
-  larg:'-_'
   expected:'my_file_name'
+  larg:'-_'
+  number:3
   rarg:'my-file-name'
  )
  (
   description:'replace with same character (no change)'
-  larg:'aa'
   expected:'abc'
+  larg:'aa'
+  number:4
   rarg:'abc'
  )
  (
   description:'replace character not in string'
-  larg:'xz'
   expected:'abc'
+  larg:'xz'
+  number:5
   rarg:'abc'
  )
  (
   description:'replace all occurrences'
-  larg:'oe'
   expected:'helleee'
+  larg:'oe'
+  number:6
   rarg:'hellooo'
  )
  (
   description:'replace in empty string'
-  larg:'ab'
   expected:''
+  larg:'ab'
+  number:7
   rarg:''
  )
  (
   description:'replace with empty string (no-op)'
-  larg:''
   expected:'hello world'
+  larg:''
+  number:8
   rarg:'hello world'
  )
  (
   description:'replace with empty pair (no-op)'
-  larg:('' ⋄ '')
   expected:'hello world'
+  larg:(
+   ''
+   ''
+  )
+  number:9
   rarg:'hello world'
  )
  (
   description:'replace first char with last char'
-  larg:'az'
   expected:'zbcdefghy'
+  larg:'az'
+  number:10
   rarg:'abcdefghy'
  )
  (
+  breaks:11
   description:'domain error: left argument not a string'
   larg:12
+  number:11
   rarg:'abc'
-  breaks:11
  )
  (
+  breaks:11
   description:'domain error: left argument not a pair (single character)'
   larg:'a'
+  number:12
   rarg:'abc'
-  breaks:11
  )
  (
+  breaks:11
   description:'domain error: left argument not a pair (3+ characters)'
   larg:'abc'
+  number:13
   rarg:'test'
-  breaks:11
  )
  (
+  breaks:11
   description:'domain error: right argument not a string'
   larg:'ab'
-  rarg:('abc' ⋄ 'def')
-  breaks:11
+  number:14
+  rarg:(
+   'abc'
+   'def'
+  )
  )
  (
+  breaks:11
   description:'domain error: right argument is numeric'
   larg:'ab'
+  number:15
   rarg:1 2 3
-  breaks:11
  )
  (
   description:'replace tab with space'
-  larg:(⎕UCS 9),' '
   expected:'hello world test'
+  larg:(⎕UCS 9),' '
+  number:16
   rarg:'hello',(⎕UCS 9),'world',(⎕UCS 9),'test'
  )
  (
   description:'replace newline with space'
-  larg:(⎕UCS 10),' '
   expected:'line1 line2 line3'
+  larg:(⎕UCS 10),' '
+  number:17
   rarg:'line1',(⎕UCS 10),'line2',(⎕UCS 10),'line3'
  )
  (
   description:'replace with unicode character'
-  larg:'-•'
   expected:'item1•item2•item3'
+  larg:'-•'
+  number:18
   rarg:'item1-item2-item3'
  )
  (
   description:'replace unicode character'
-  larg:'é*'
   expected:'caf*'
+  larg:'é*'
+  number:19
   rarg:'café'
  )
  (
   description:'replace in string with emoji'
-  larg:' -'
   expected:'hello-👍-world'
+  larg:' -'
+  number:20
   rarg:'hello 👍 world'
  )
  (
   description:'replace emoji with character'
-  larg:'👍+'
   expected:'hello+world'
+  larg:'👍+'
+  number:21
   rarg:'hello👍world'
  )
  (
   description:'replace character with emoji'
-  larg:'*🔸'
-  rarg:'a*b*c'
   expected:'a🔸b🔸c'
+  larg:'*🔸'
+  number:22
+  rarg:'a*b*c'
  )
  (
   description:'replace preserves other unicode'
-  larg:'e_'
   expected:'café naïv_ résumé'
+  larg:'e_'
+  number:23
   rarg:'café naïve résumé'
  )
  (
   description:'replace special character with alphanumeric'
-  larg:'@a'
   expected:'emailaexample.com'
+  larg:'@a'
+  number:24
   rarg:'email@example.com'
  )
  (
   description:'replace in string with mixed unicode'
-  larg:' |'
   expected:'Hello|世界|🌍'
+  larg:' |'
+  number:25
   rarg:'Hello 世界 🌍'
  )
  (
   description:'Phase 4: replace string with string'
-  larg:('//' ⋄ '/')
   expected:'path/to/file'
+  larg:(
+   '//'
+   '/'
+  )
+  number:26
   rarg:'path//to//file'
  )
  (
   description:'Phase 4: replace multi-char with multi-char'
-  larg:('old' ⋄ 'new')
   expected:'Make it new'
+  larg:(
+   'old'
+   'new'
+  )
+  number:27
   rarg:'Make it old'
  )
  (
   description:'Phase 4: replace word with different word'
-  larg:(' and ' ⋄ ' or ')
   expected:'cats or dogs or birds'
+  larg:(
+   ' and '
+   ' or '
+  )
+  number:28
   rarg:'cats and dogs and birds'
  )
  (
   description:'Phase 4: replace HTML tag'
-  larg:('<br>' ⋄ '<br/>')
   expected:'line1<br/>line2<br/>line3'
+  larg:(
+   '<br>'
+   '<br/>'
+  )
+  number:29
   rarg:'line1<br>line2<br>line3'
  )
  (
   description:'Phase 4: replace empty string (no change)'
-  larg:('' ⋄ 'x')
   expected:'abc'
+  larg:(
+   ''
+   'x'
+  )
+  number:30
   rarg:'abc'
  )
  (
   description:'Phase 4: replace with empty string (removal)'
-  larg:('OLD' ⋄ '')
   expected:'This is  text'
+  larg:(
+   'OLD'
+   ''
+  )
+  number:31
   rarg:'This is OLD text'
  )
  (
   description:'Phase 4: replace string not found'
-  larg:('xyz' ⋄ 'abc')
   expected:'hello world'
+  larg:(
+   'xyz'
+   'abc'
+  )
+  number:32
   rarg:'hello world'
  )
  (
   description:'Phase 4: replace overlapping pattern'
-  larg:('aaa' ⋄ 'b')
   expected:'baa'
+  larg:(
+   'aaa'
+   'b'
+  )
+  number:33
   rarg:'aaaaa'
  )
  (
   description:'Phase 4: replace single char with multi-char'
-  larg:('-' ⋄ ' - ')
   expected:'one - two - three'
+  larg:(
+   '-'
+   ' - '
+  )
+  number:34
   rarg:'one-two-three'
  )
  (
   description:'Phase 4: replace multi-char with single char'
-  larg:('  ' ⋄ ' ')
   expected:'hello world test'
+  larg:(
+   '  '
+   ' '
+  )
+  number:35
   rarg:'hello  world  test'
  )
  (
   description:'Phase 4: replace unicode string'
-  larg:('café' ⋄ 'coffee')
   expected:'I like coffee'
+  larg:(
+   'café'
+   'coffee'
+  )
+  number:36
   rarg:'I like café'
  )
  (
   description:'Phase 4: replace emoji string'
-  larg:('👍👍' ⋄ '✓')
   expected:'done✓'
+  larg:(
+   '👍👍'
+   '✓'
+  )
+  number:37
   rarg:'done👍👍'
  )
  (
   description:'Phase 4: replace in empty string'
-  larg:('old' ⋄ 'new')
   expected:''
+  larg:(
+   'old'
+   'new'
+  )
+  number:38
   rarg:''
  )
  (
   description:'RegEx metachar: replace period (literal)'
-  larg:('.' ⋄ ',')
   expected:'one,two,three'
+  larg:'.,'
+  number:39
   rarg:'one.two.three'
  )
  (
   description:'RegEx metachar: replace asterisk (literal)'
-  larg:('*' ⋄ 'x')
   expected:'2 x 3 = 6'
+  larg:'*x'
+  number:40
   rarg:'2 * 3 = 6'
  )
  (
   description:'RegEx metachar: replace plus sign (literal)'
-  larg:('+' ⋄ '-')
   expected:'a-b-c'
+  larg:'+-'
+  number:41
   rarg:'a+b+c'
  )
  (
   description:'RegEx metachar: replace question mark (literal)'
-  larg:('?' ⋄ '!')
   expected:'Really!'
+  larg:'?!'
+  number:42
   rarg:'Really?'
  )
  (
   description:'RegEx metachar: replace square bracket (literal)'
-  larg:('[' ⋄ '(')
   expected:'item(1]'
+  larg:'[('
+  number:43
   rarg:'item[1]'
  )
  (
   description:'RegEx metachar: replace closing bracket (literal)'
-  larg:(']' ⋄ ')')
   expected:'arr)0)'
+  larg:'])'
+  number:44
   rarg:'arr]0)'
  )
  (
   description:'RegEx metachar: replace curly braces (literal)'
-  larg:('{' ⋄ '<')
   expected:'<set<'
+  larg:'{<'
+  number:45
   rarg:'{set{'
  )
  (
   description:'RegEx metachar: replace closing brace (literal)'
-  larg:('}' ⋄ '>')
   expected:'obj.val>'
+  larg:'}>'
+  number:46
   rarg:'obj.val}'
  )
  (
   description:'RegEx metachar: replace parentheses (literal)'
-  larg:('(' ⋄ '[')
   expected:'func[arg]'
+  larg:'(['
+  number:47
   rarg:'func(arg]'
  )
  (
   description:'RegEx metachar: replace closing paren (literal)'
-  larg:(')' ⋄ ']')
   expected:'call[x]'
+  larg:')]'
+  number:48
   rarg:'call[x)'
  )
  (
   description:'RegEx metachar: replace caret (literal)'
-  larg:('^' ⋄ 'ˆ')
   expected:'2ˆ8 = 256'
+  larg:'^ˆ'
+  number:49
   rarg:'2^8 = 256'
  )
  (
   description:'RegEx metachar: replace dollar sign (literal)'
-  larg:('$' ⋄ 'USD')
   expected:'Price: USD100'
+  larg:(
+   '$'
+   'USD'
+  )
+  number:50
   rarg:'Price: $100'
  )
  (
   description:'RegEx metachar: replace pipe (literal)'
-  larg:('|' ⋄ '/')
   expected:'a/b/c'
+  larg:'|/'
+  number:51
   rarg:'a|b|c'
  )
  (
   description:'RegEx metachar: replace backslash (literal)'
-  larg:('\' ⋄ '/')
   expected:'C:/path/file'
+  larg:'\/'
+  number:52
   rarg:'C:\path\file'
  )
  (
   description:'RegEx metachar: replace dot in multi-char string'
-  larg:('...' ⋄ '…')
   expected:'Wait…'
+  larg:(
+   '...'
+   '…'
+  )
+  number:53
   rarg:'Wait...'
  )
  (
   description:'RegEx metachar: replace asterisk in multi-char string'
-  larg:('***' ⋄ '—')
   expected:'Section — End'
+  larg:(
+   '***'
+   '—'
+  )
+  number:54
   rarg:'Section *** End'
  )
  (
   description:'RegEx metachar: replace pattern with brackets'
-  larg:('[0]' ⋄ '[1]')
   expected:'arr[1] + arr[1]'
+  larg:(
+   '[0]'
+   '[1]'
+  )
+  number:55
   rarg:'arr[0] + arr[0]'
  )
  (
   description:'RegEx metachar: replace pattern with parens'
-  larg:('(x)' ⋄ '(y)')
   expected:'f(y) = (y)*2'
+  larg:(
+   '(x)'
+   '(y)'
+  )
+  number:56
   rarg:'f(x) = (x)*2'
  )
  (
   description:'RegEx metachar: replace pattern with braces'
-  larg:('{a}' ⋄ '{b}')
   expected:'var{b} = {b}val'
+  larg:(
+   '{a}'
+   '{b}'
+  )
+  number:57
   rarg:'var{a} = {a}val'
  )
  (
   description:'RegEx metachar: replace complex pattern with metachars'
-  larg:('$(.*?)' ⋄ 'VALUE')
   expected:'str = VALUE'
+  larg:(
+   '$(.*?)'
+   'VALUE'
+  )
+  number:58
   rarg:'str = $(.*?)'
  )
  (
   description:'RegEx metachar: replace mixed metachars in source'
-  larg:('.*' ⋄ 'X')
   expected:'file X txt'
+  larg:(
+   '.*'
+   'X'
+  )
+  number:59
   rarg:'file .* txt'
  )
  (
   description:'RegEx metachar: replace regex-like pattern'
-  larg:('[a-z]+' ⋄ 'WORD')
   expected:'match WORD here'
+  larg:(
+   '[a-z]+'
+   'WORD'
+  )
+  number:60
   rarg:'match [a-z]+ here'
  )
  (
   description:'RegEx metachar: backslash escapes in multi-char'
-  larg:('\\n' ⋄ 'NEWLINE')
   expected:'text NEWLINEmore'
+  larg:(
+   '\\n'
+   'NEWLINE'
+  )
+  number:61
   rarg:'text \\nmore'
  )
  (
   description:'RegEx metachar: dot-star pattern literal'
-  larg:('.*?' ⋄ 'ANY')
   expected:'regex: ANY is lazy'
+  larg:(
+   '.*?'
+   'ANY'
+  )
+  number:62
   rarg:'regex: .*? is lazy'
  )
  (
   description:'RegEx metachar: replace all regex operators'
-  larg:('.+*?[]{}()^$|\\' ⋄ 'ALL')
   expected:'Special: ALL chars'
+  larg:(
+   '.+*?[]{}()^$|\\'
+   'ALL'
+  )
+  number:63
   rarg:'Special: .+*?[]{}()^$|\\ chars'
  )
 )

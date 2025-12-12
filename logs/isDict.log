@@ -1,27 +1,27 @@
-PASS - numeric values, string keys
-PASS - string values, numeric keys
-PASS - string keys and values
-PASS - empty dictionary (two empty vectors)
-PASS - single key-value pair
-PASS - string (vector but not 2-element)
-PASS - numeric vector (not 2-element nested)
-PASS - empty vector (not 2 elements)
-PASS - 3-element nested vector
-PASS - 1-element vector
-PASS - scalar number
-PASS - first element is matrix not vector
-PASS - second element is nested not simple vector
-PASS - 3 string keys, 3 values (valid N:N)
-PASS - 3 string keys, 4 values (valid N:N+1 with default)
-PASS - 3 numeric keys, 3 values (valid N:N)
-PASS - 3 numeric keys, 4 values (valid N:N+1 with default)
-PASS - 1 string key, 1 value (valid N:N)
-PASS - 1 string key, 2 values (valid N:N+1 with default)
-PASS - 1 numeric key, 1 value (valid N:N)
-PASS - 1 numeric key, 2 values (valid N:N+1 with default)
-PASS - 3 string keys, 2 values (invalid: too few values)
-PASS - 3 numeric keys, 2 values (invalid: too few values)
-PASS - 3 string keys, 5 values (invalid: too many values)
-PASS - 2 numeric keys, 4 values (invalid: N+2 values)
-PASS - 0 keys, 0 values (valid empty dictionary)
-PASS - 0 keys, 1 value (invalid: empty keys with default)
+PASS - [1] numeric values, string keys
+PASS - [2] string values, numeric keys
+PASS - [3] string keys and values
+PASS - [4] empty dictionary (two empty vectors)
+PASS - [5] single key-value pair
+PASS - [6] string (vector but not 2-element)
+PASS - [7] numeric vector (not 2-element nested)
+PASS - [8] empty vector (not 2 elements)
+PASS - [9] 3-element nested vector
+PASS - [10] 1-element vector
+PASS - [11] scalar number
+PASS - [12] first element is matrix not vector
+PASS - [13] second element is nested not simple vector
+PASS - [14] 3 string keys, 3 values (valid N:N)
+PASS - [15] 3 string keys, 4 values (valid N:N+1 with default)
+PASS - [16] 3 numeric keys, 3 values (valid N:N)
+PASS - [17] 3 numeric keys, 4 values (valid N:N+1 with default)
+PASS - [18] 1 string key, 1 value (valid N:N)
+PASS - [19] 1 string key, 2 values (valid N:N+1 with default)
+PASS - [20] 1 numeric key, 1 value (valid N:N)
+PASS - [21] 1 numeric key, 2 values (valid N:N+1 with default)
+PASS - [22] 3 string keys, 2 values (invalid: too few values)
+PASS - [23] 3 numeric keys, 2 values (invalid: too few values)
+PASS - [24] 3 string keys, 5 values (invalid: too many values)
+PASS - [25] 2 numeric keys, 4 values (invalid: N+2 values)
+PASS - [26] 0 keys, 0 values (valid empty dictionary)
+PASS - [27] 0 keys, 1 value (invalid: empty keys with default)

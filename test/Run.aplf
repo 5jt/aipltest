@@ -13,6 +13,12 @@
      TESTNS←##.tests
      FUNNS←##.fun
 
+    ⍝ renumber the tests in each list in order
+     lot←{⍵ ⎕VGET ⍵.⎕NL 2}TESTNS ⍝ lists of tests
+     _←{⍵ ⎕VSET¨{⊂'number'⍵}¨⍳≢⍵}¨lot
+     cfg←(arrays:1 ⋄ overwrite:1)
+     _←cfg ⎕SE.Link.Export(TESTNS ⋄ ROOTDIR,'tests')
+
     ⍝ Identify functions with tests
      fns←(⊃∩/FUNNS TESTNS{⍺.⎕NL ⍵}¨-3 2){
          0=≢⍵:⍺

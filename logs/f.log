@@ -1,15 +1,15 @@
-PASS - no interpolation needed
-PASS - single variable substitution
-PASS - multiple variable substitutions
-PASS - undefined variable remains unchanged
-PASS - bare expression evaluation
-PASS - expression evaluation with variables
-PASS - string variable substitution
-PASS - failed expression remains unchanged
-PASS - index-based: single substitution
-PASS - index-based: multiple substitutions
-PASS - index-based: no expression evaluation
-PASS - index-based: out of range remains unchanged
-PASS - index-based: single string larg treated as 1-item strings
-PASS - empty string with no substitutions
-PASS - nested braces in quotes
+PASS - [1] no interpolation needed
+PASS - [2] single variable substitution
+PASS - [3] multiple variable substitutions
+PASS - [4] undefined variable remains unchanged
+PASS - [5] bare expression evaluation
+PASS - [6] expression evaluation with variables
+PASS - [7] string variable substitution
+PASS - [8] failed expression remains unchanged
+PASS - [9] index-based: single substitution
+PASS - [10] index-based: multiple substitutions
+PASS - [11] index-based: no expression evaluation
+PASS - [12] index-based: out of range remains unchanged
+PASS - [13] index-based: single string larg treated as 1-item strings
+PASS - [14] empty string with no substitutions
+PASS - [15] nested braces in quotes

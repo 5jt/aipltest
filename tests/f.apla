@@ -2,6 +2,7 @@
  (
   description:'no interpolation needed'
   expected:'hullo world'
+  number:1
   rarg:'hullo world'
  )
  (
@@ -10,6 +11,7 @@
   larg:(
    x:42
   )
+  number:2
   rarg:'value is ${x}'
  )
  (
@@ -19,6 +21,7 @@
    x:10
    y:20
   )
+  number:3
   rarg:'x is ${x}, y is ${y}'
  )
  (
@@ -27,11 +30,13 @@
   larg:(
    x:10
   )
+  number:4
   rarg:'x is ${x}, z is ${z}'
  )
  (
   description:'bare expression evaluation'
   expected:'product is 42'
+  number:5
   rarg:'product is ${6×7}'
  )
  (
@@ -41,6 +46,7 @@
    x:10
    y:20
   )
+  number:6
   rarg:'sum is ${x+y}'
  )
  (
@@ -49,6 +55,7 @@
   larg:(
    name:'Alice'
   )
+  number:7
   rarg:'name is ${name}'
  )
  (
@@ -58,6 +65,7 @@
    x:10
    z:0
   )
+  number:8
   rarg:'result is ${x÷z}'
  )
  (
@@ -67,6 +75,7 @@
    'dog'
    'fox'
   )
+  number:9
   rarg:'The lazy ${1}'
  )
  (
@@ -76,6 +85,7 @@
    'dog'
    'fox'
   )
+  number:10
   rarg:'The ${2} jumps over the ${1}'
  )
  (
@@ -85,6 +95,7 @@
    'dog'
    'fox'
   )
+  number:11
   rarg:'The ${+/1 1} jumps over the ${1}'
  )
  (
@@ -94,17 +105,20 @@
    'dog'
    'fox'
   )
+  number:12
   rarg:'The ${1} and ${3}'
  )
  (
   description:'index-based: single string larg treated as 1-item strings'
   expected:'The lazy dog'
   larg:'dog'
+  number:13
   rarg:'The lazy ${1}'
  )
  (
   description:'empty string with no substitutions'
   expected:''
+  number:14
   rarg:''
  )
  (
@@ -113,6 +127,7 @@
   larg:(
    result:'value'
   )
+  number:15
   rarg:'result is ${result}'
  )
 )

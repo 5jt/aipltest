@@ -10,6 +10,7 @@
     'dog'
    )
   )
+  number:1
   rarg:'sheep'
  )
  (
@@ -23,6 +24,7 @@
     'dog'
    )
   )
+  number:2
   rarg:'cow'
  )
  (
@@ -36,6 +38,7 @@
     'dog'
    )
   )
+  number:3
   rarg:'dog'
  )
  (
@@ -49,6 +52,7 @@
     'dog'
    )
   )
+  number:4
   rarg:(
    'sheep'
    'cow'
@@ -65,6 +69,7 @@
     'dog'
    )
   )
+  number:5
   rarg:(
    'cow'
    'sheep'
@@ -82,6 +87,7 @@
     'dog'
    )
   )
+  number:6
   rarg:(
    'dog'
    'sheep'
@@ -99,6 +105,7 @@
     'dog'
    )
   )
+  number:7
   rarg:(
    'sheep'
    'sheep'
@@ -116,6 +123,7 @@
     'dog'
    )
   )
+  number:8
   rarg:'cat'
  )
  (
@@ -129,6 +137,7 @@
     'dog'
    )
   )
+  number:9
   rarg:(
    'cat'
    'mouse'
@@ -145,6 +154,7 @@
     'dog'
    )
   )
+  number:10
   rarg:(
    'sheep'
    'cat'
@@ -161,6 +171,7 @@
     'dog'
    )
   )
+  number:11
   rarg:(
    'cat'
    'sheep'
@@ -177,6 +188,7 @@
     'dog'
    )
   )
+  number:12
   rarg:(
    'cat'
    'sheep'
@@ -195,6 +207,7 @@
     'dog'
    )
   )
+  number:13
   rarg:'sheep'
  )
  (
@@ -208,6 +221,7 @@
     'dog'
    )
   )
+  number:14
   rarg:'cat'
  )
  (
@@ -221,6 +235,7 @@
     'dog'
    )
   )
+  number:15
   rarg:(
    'cat'
    'mouse'
@@ -237,6 +252,7 @@
     'dog'
    )
   )
+  number:16
   rarg:(
    'sheep'
    'cat'
@@ -257,6 +273,7 @@
     'sky'
    )
   )
+  number:17
   rarg:'go'
  )
  (
@@ -277,6 +294,7 @@
     'sky'
    )
   )
+  number:18
   rarg:(
    'sky'
    'stop'
@@ -297,6 +315,7 @@
     'sky'
    )
   )
+  number:19
   rarg:'caution'
  )
  (
@@ -310,6 +329,7 @@
    )
    'abc'
   )
+  number:20
   rarg:'b'
  )
  (
@@ -326,10 +346,15 @@
    )
    'abc'
   )
+  number:21
   rarg:'ca'
  )
-(
+ (
   description:'dictionary: nested array values'
+  expected:[
+   1 2
+   3 4
+  ]
   larg:(
    (
     'x'
@@ -345,117 +370,119 @@
     'key3'
    )
   )
+  number:22
   rarg:'key2'
-  expected:[
-   1 2
-   3 4
-  ]
  )
  (
   description:'dictionary: single key/value pair'
-  larg:(
-   (42 ⋄ )
-   ('answer'⋄ )
-   )
-  rarg:'answer'
   expected:42
+  larg:(
+   (42⋄)
+   (
+    'answer'
+   )
+  )
+  number:23
+  rarg:'answer'
  )
  (
   description:'dictionary: single key/value, outrange'
+  expected:0
   larg:(
    (42⋄)
-   ('answer'⋄ )
+   (
+    'answer'
    )
+  )
+  number:24
   rarg:'question'
-  expected:0
  )
  (
   description:'dictionary: empty string key'
+  expected:1
   larg:(
    1 2 3
    (
-       ''
-       'a'
-       'b'
+    ''
+    'a'
+    'b'
    )
   )
+  number:25
   rarg:''
-  expected:1
  )
  (
   description:'dictionary: keys with spaces'
+  expected:20
   larg:(
    10 20 30
    (
-       'first name'
-       'last name'
-       'age'
+    'first name'
+    'last name'
+    'age'
    )
   )
+  number:26
   rarg:'last name'
-  expected:20
  )
  (
   description:'dictionary: keys with special characters'
-  larg:(
-   1 2 3
-   'x.y' 'a/b' 'p*q'
-  )
-  rarg:'a/b'
   expected:2
- )
- (
-  description:'dictionary: unicode keys'
   larg:(
    1 2 3
    (
-       'café'
-       'naïve'
-       'résumé'
+    'x.y'
+    'a/b'
+    'p*q'
    )
   )
-  rarg:'naïve'
+  number:27
+  rarg:'a/b'
+ )
+ (
+  description:'dictionary: unicode keys'
   expected:2
+  larg:(
+   1 2 3
+   (
+    'café'
+    'naïve'
+    'résumé'
+   )
+  )
+  number:28
+  rarg:'naïve'
  )
  (
   description:'dictionary: emoji keys'
+  expected:2
   larg:(
    1 2 3
    '🐄🐑🐕'
   )
+  number:29
   rarg:'🐑'
-  expected:2
  )
  (
   description:'dictionary: mixed unicode/emoji keys'
+  expected:20 10
   larg:(
    10 20 30
    (
-       'café'
-       '🍕'
-       'naïve'
+    'café'
+    '🍕'
+    'naïve'
    )
   )
+  number:30
   rarg:(
-      '🍕'
-      'café'
+   '🍕'
+   'café'
   )
-  expected:20 10
  )
  (
   description:'dictionary: case-sensitive key lookup'
-  larg:(
-   1 2
-   (
-   'abc'
-   'ABC'
-   )
-  )
-  rarg:'abc'
   expected:1
- )
-(
-  description:'dictionary: case-sensitive different case'
   larg:(
    1 2
    (
@@ -463,11 +490,25 @@
     'ABC'
    )
   )
-  rarg:'ABC'
+  number:31
+  rarg:'abc'
+ )
+ (
+  description:'dictionary: case-sensitive different case'
   expected:2
+  larg:(
+   1 2
+   (
+    'abc'
+    'ABC'
+   )
+  )
+  number:32
+  rarg:'ABC'
  )
  (
   description:'dictionary: case-sensitive outrange'
+  expected:0
   larg:(
    1 2
    (
@@ -475,38 +516,42 @@
     'ABC'
    )
   )
+  number:33
   rarg:'Abc'
-  expected:0
  )
  (
   description:'dictionary: implicit zero default value'
+  expected:0
   larg:(
    1 2 3
    'abc'
   )
+  number:34
   rarg:'d'
-  expected:0
  )
  (
   description:'dictionary: explicit zero default value'
+  expected:0
   larg:(
    1 2 3 0
    'abc'
   )
+  number:35
   rarg:'d'
-  expected:0
  )
  (
   description:'dictionary: negative default value'
+  expected:¯1
   larg:(
    1 2 3 ¯1
    'abc'
   )
+  number:36
   rarg:'d'
-  expected:¯1
  )
  (
   description:'dictionary: string default value'
+  expected:'unknown'
   larg:(
    (
     'red'
@@ -517,13 +562,18 @@
    (
     'stop'
     'go'
-    'sky')
+    'sky'
+   )
   )
+  number:37
   rarg:'caution'
-  expected:'unknown'
  )
  (
   description:'dictionary: complex nested default'
+  expected:(
+   5 6
+   7 8
+  )
   larg:(
    (
     1 2
@@ -535,32 +585,35 @@
    )
    'ab'
   )
+  number:38
   rarg:'c'
-  expected:(
-    5 6
-    7 8
-  )
  )
  (
   description:'dictionary: scalar string key (single char)'
+  expected:20
   larg:(
    10 20 30
    'abc'
   )
+  number:39
   rarg:'b'
-  expected:20
  )
  (
   description:'dictionary: multiple single-char keys'
+  expected:30 10 20
   larg:(
    10 20 30
    'abc'
   )
+  number:40
   rarg:'cab'
-  expected:30 10 20
  )
  (
   description:'dictionary: matrix keys produce matrix result'
+  expected:[
+   23 12
+   34 23
+  ]
   larg:(
    12 23 34
    (
@@ -569,40 +622,36 @@
     'dog'
    )
   )
+  number:41
   rarg:[
-   (
-    'sheep'
-    'cow'
-   )
-   (
-    'dog'
-    'sheep'
-   )
-  ]
-  expected:[
-   23 12
-   34 23
+   'sheep' 'cow'
+   'dog'   'sheep'
   ]
  )
  (
   description:'dictionary: 3x3 matrix keys'
-  larg:(
-   10 20 30
-   'abc'
-  )
-  rarg:[
-   'abc'
-   'bac'
-   'cab'
-   ]
   expected:[
    10 20 30
    20 10 30
    30 10 20
   ]
+  larg:(
+   10 20 30
+   'abc'
+  )
+  number:42
+  rarg:[
+   'abc'
+   'bac'
+   'cab'
+  ]
  )
  (
   description:'dictionary: matrix with outrange keys'
+  expected:[
+   23 0 34
+   12 0 23
+  ]
   larg:(
    12 23 34
    (
@@ -611,25 +660,18 @@
     'dog'
    )
   )
+  number:43
   rarg:[
-   (
-    'sheep'
-    'cat'
-    'dog'
-   )
-   (
-    'cow'
-    'mouse'
-    'sheep'
-   )
-  ]
-  expected:[
-   23 0 34
-   12 0 23
+   'sheep' 'cat'   'dog'
+   'cow'   'mouse' 'sheep'
   ]
  )
  (
   description:'dictionary: matrix with default value'
+  expected:[
+   23 99
+   34 99
+  ]
   larg:(
    12 23 34 99
    (
@@ -638,23 +680,15 @@
     'dog'
    )
   )
+  number:44
   rarg:[
-   (
-    'sheep'
-    'cat'
-   )
-   (
-    'dog'
-    'mouse'
-   )
-  ]
-  expected:[
-   23 99
-   34 99
+   'sheep' 'cat'
+   'dog'   'mouse'
   ]
  )
  (
   description:'dictionary: scalar key produces scalar result'
+  expected:23
   larg:(
    12 23 34
    (
@@ -663,25 +697,11 @@
     'dog'
    )
   )
+  number:45
   rarg:'sheep'
-  expected:23
  )
  (
   description:'dictionary: rank-3 array keys'
-  larg:(
-   1 2 3
-   'abc'
-  )
-  rarg:[
-   [
-    'ab'
-    'ca'
-   ]
-   [
-    'bc'
-    'ab'
-   ]
-  ]
   expected:[
    [
     1 2
@@ -692,9 +712,25 @@
     1 2
    ]
   ]
+  larg:(
+   1 2 3
+   'abc'
+  )
+  number:46
+  rarg:[
+   [
+    'ab'
+    'ca'
+   ]
+   [
+    'bc'
+    'ab'
+   ]
+  ]
  )
  (
   description:'dictionary: vector of length 1'
+  expected:(23⋄)
   larg:(
    12 23 34
    (
@@ -703,20 +739,24 @@
     'dog'
    )
   )
-  rarg:('sheep' ⋄)
-  expected:(23 ⋄)
+  number:47
+  rarg:(
+   'sheep'
+  )
  )
  (
   description:'dictionary: numeric keys (coerced to strings)'
+  expected:200
   larg:(
    100 200 300
    '123'
   )
+  number:48
   rarg:'2'
-  expected:200
  )
  (
   description:'dictionary: long keys'
+  expected:2
   larg:(
    1 2 3
    (
@@ -725,8 +765,8 @@
     'very-long-key-name-three'
    )
   )
+  number:49
   rarg:'very-long-key-name-two'
-  expected:2
  )
  (
   breaks:11
@@ -739,6 +779,7 @@
     'dog'
    )
   )
+  number:50
   rarg:123
  )
  (
@@ -752,49 +793,47 @@
     'dog'
    )
   )
+  number:51
   rarg:1 2 3
  )
  (
   breaks:11
   description:'domain error: left argument not a dictionary'
   larg:1 2 3
+  number:52
   rarg:'a'
  )
  (
   breaks:11
   description:'domain error: left argument is not a dictionary'
   larg:'abc'
+  number:53
   rarg:'a'
  )
  (
   description:'dictionary: empty (num, chars)'
+  expected:0 0 0 0 0 0 0 0
   larg:(
    ⍬
-    ''
+   ''
   )
+  number:54
   rarg:'anything'
-  expected:0 0 0 0 0 0 0 0
  )
  (
   description:'dictionary: empty (num, strings)'
+  expected:0
   larg:(
    ⍬
    0⌿(
     ''
    )
   )
+  number:55
   rarg:'anything'
-  expected:0
  )
  (
   description:'dictionary: empty (strings, chars)'
-  larg:(
-   0⌿(
-    ''
-   )
-    ''
-  )
-  rarg:'anything'
   expected:(
    ⊂''
    ⊂''
@@ -805,9 +844,18 @@
    ⊂''
    ⊂''
   )
+  larg:(
+   0⌿(
+    ''
+   )
+   ''
+  )
+  number:56
+  rarg:'anything'
  )
  (
   description:'dictionary: empty (strings, strings)'
+  expected:⊂''
   larg:(
    0⌿(
     ''
@@ -816,20 +864,17 @@
     ''
    )
   )
+  number:57
   rarg:'anything'
-  expected:⊂''
  )
  (
   description:'dictionary: duplicate keys, first occurrence wins'
   expected:10
   larg:(
    10 20 30
-   (
-    'a'
-    'b'
-    'a'
-   )
+   'aba'
   )
+  number:58
   rarg:'a'
  )
  (
@@ -837,34 +882,20 @@
   expected:10 20 10
   larg:(
    10 20 30
-   (
-    'a'
-    'b'
-    'a'
-   )
+   'aba'
   )
-  rarg:(
-   'a'
-   'b'
-   'a'
-  )
+  number:59
+  rarg:'aba'
  )
  (
   description:'dictionary: all keys duplicated'
   expected:10 20
   larg:(
    10 20 30 40
-   (
-    'x'
-    'y'
-    'x'
-    'y'
-   )
+   'xyxy'
   )
-  rarg:(
-   'x'
-   'y'
-  )
+  number:60
+  rarg:'xy'
  )
  (
   description:'dictionary: outrange with vector values, no default'
@@ -877,6 +908,7 @@
    )
    'abc'
   )
+  number:61
   rarg:'d'
  )
  (
@@ -898,6 +930,7 @@
    )
    'ab'
   )
+  number:62
   rarg:'c'
  )
  (
@@ -911,6 +944,7 @@
    )
    'abc'
   )
+  number:63
   rarg:'d'
  )
  (
@@ -932,6 +966,7 @@
    )
    'ab'
   )
+  number:64
   rarg:'c'
  )
  (
@@ -945,6 +980,7 @@
    )
    'abc'
   )
+  number:65
   rarg:'d'
  )
  (
@@ -970,6 +1006,7 @@
    )
    'abc'
   )
+  number:66
   rarg:'d'
  )
  (
@@ -984,6 +1021,7 @@
    )
    'abc'
   )
+  number:67
   rarg:'d'
  )
  (
@@ -993,6 +1031,7 @@
    1 2 3 4 5
    'abc'
   )
+  number:68
   rarg:'a'
  )
  (
@@ -1002,6 +1041,7 @@
    1 2
    'abc'
   )
+  number:69
   rarg:'a'
  )
  (
@@ -1011,6 +1051,7 @@
    10 20 30
    1 2 3
   )
+  number:70
   rarg:'a'
  )
  (
@@ -1020,6 +1061,7 @@
    10 20 30
    42
   )
+  number:71
   rarg:'a'
  )
  (
@@ -1027,12 +1069,9 @@
   description:'domain error: keys mixed types'
   larg:(
    1 2 3
-   (
-    'a'
-    42
-    'c'
-   )
+   'a' 42 'c'
   )
+  number:72
   rarg:'a'
  )
  (
@@ -1045,6 +1084,7 @@
     'cd'
    ]
   )
+  number:73
   rarg:'a'
  )
  (
@@ -1052,9 +1092,10 @@
   expected:23
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:74
   rarg:'sheep'
  )
  (
@@ -1062,9 +1103,10 @@
   expected:12
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:75
   rarg:'cow'
  )
  (
@@ -1072,9 +1114,10 @@
   expected:34
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:76
   rarg:'dog'
  )
  (
@@ -1082,9 +1125,10 @@
   expected:23 12
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:77
   rarg:(
    'sheep'
    'cow'
@@ -1095,9 +1139,10 @@
   expected:12 23 34
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:78
   rarg:(
    'cow'
    'sheep'
@@ -1109,9 +1154,10 @@
   expected:34 23 12
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:79
   rarg:(
    'dog'
    'sheep'
@@ -1123,9 +1169,10 @@
   expected:23 23 12
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:80
   rarg:(
    'sheep'
    'sheep'
@@ -1137,9 +1184,10 @@
   expected:0
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:81
   rarg:'cat'
  )
  (
@@ -1147,9 +1195,10 @@
   expected:0 0
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:82
   rarg:(
    'cat'
    'mouse'
@@ -1160,9 +1209,10 @@
   expected:23 0
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:83
   rarg:(
    'sheep'
    'cat'
@@ -1173,9 +1223,10 @@
   expected:0 23
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:84
   rarg:(
    'cat'
    'sheep'
@@ -1186,9 +1237,10 @@
   expected:0 23 0 34
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:85
   rarg:(
    'cat'
    'sheep'
@@ -1200,10 +1252,11 @@
   description:'object: string values'
   expected:'green'
   larg:(
-   stop:'red'
    go:'green'
    sky:'blue'
+   stop:'red'
   )
+  number:86
   rarg:'go'
  )
  (
@@ -1213,10 +1266,11 @@
    'red'
   )
   larg:(
-   stop:'red'
    go:'green'
    sky:'blue'
+   stop:'red'
   )
+  number:87
   rarg:(
    'sky'
    'stop'
@@ -1226,10 +1280,11 @@
   description:'object: string values, outrange variable'
   expected:'     '
   larg:(
-   stop:'red'
    go:'green'
    sky:'blue'
+   stop:'red'
   )
+  number:88
   rarg:'caution'
  )
  (
@@ -1240,6 +1295,7 @@
    b:4 5 6
    c:7 8
   )
+  number:89
   rarg:'b'
  )
  (
@@ -1253,13 +1309,15 @@
    b:4 5 6
    c:7 8
   )
-  rarg:(
-   'c'
-   'a'
-  )
+  number:90
+  rarg:'ca'
  )
  (
   description:'object: nested array values'
+  expected:[
+   1 2
+   3 4
+  ]
   larg:(
    key1:'x'
    key2:[
@@ -1268,214 +1326,167 @@
    ]
    key3:'foo'
   )
+  number:91
   rarg:'key2'
-  expected:[
-   1 2
-   3 4
-  ]
  )
  (
   description:'object: single variable'
+  expected:42
   larg:(
    answer:42
   )
+  number:92
   rarg:'answer'
-  expected:42
  )
  (
   description:'object: single variable, outrange'
+  expected:0
   larg:(
    answer:42
   )
+  number:93
   rarg:'question'
-  expected:0
  )
  (
   description:'object: variable with spaces in name'
+  expected:20
   larg:(
+   age:30
    firstName:10
    lastName:20
-   age:30
   )
+  number:94
   rarg:'lastName'
-  expected:20
  )
  (
   description:'object: unicode variable names'
+  expected:2
   larg:(
    café:1
    naïve:2
    résumé:3
   )
+  number:95
   rarg:'naïve'
-  expected:2
  )
  (
   description:'object: case-sensitive variable lookup'
-  larg:(
-   abc:1
-   ABC:2
-  )
-  rarg:'abc'
   expected:1
+  larg:(
+   ABC:2
+   abc:1
+  )
+  number:96
+  rarg:'abc'
  )
  (
   description:'object: case-sensitive different case'
-  larg:(
-   abc:1
-   ABC:2
-  )
-  rarg:'ABC'
   expected:2
+  larg:(
+   ABC:2
+   abc:1
+  )
+  number:97
+  rarg:'ABC'
  )
  (
   description:'object: case-sensitive outrange'
-  larg:(
-   abc:1
-   ABC:2
-  )
-  rarg:'Abc'
   expected:0
+  larg:(
+   ABC:2
+   abc:1
+  )
+  number:98
+  rarg:'Abc'
  )
  (
   description:'object: scalar string variable (single char)'
+  expected:20
   larg:(
    x:10
    y:20
    z:30
   )
+  number:99
   rarg:'y'
-  expected:20
  )
  (
   description:'object: multiple single-char variable names'
+  expected:30 10 20
   larg:(
    a:10
    b:20
    c:30
   )
-  rarg:(
-   'c'
-   'a'
-   'b'
-  )
-  expected:30 10 20
+  number:100
+  rarg:'cab'
  )
  (
   description:'object: matrix variable names produce matrix result'
-  larg:(
-   cow:12
-   sheep:23
-   dog:34
-  )
-  rarg:[
-   (
-    'sheep'
-    'cow'
-   )
-   (
-    'dog'
-    'sheep'
-   )
-  ]
   expected:[
    23 12
    34 23
   ]
+  larg:(
+   cow:12
+   dog:34
+   sheep:23
+  )
+  number:101
+  rarg:[
+   'sheep' 'cow'
+   'dog'   'sheep'
+  ]
  )
  (
   description:'object: 3x3 matrix variable names'
-  larg:(
-   a:10
-   b:20
-   c:30
-  )
-  rarg:[
-   (
-    'a'
-    'b'
-    'c'
-   )
-   (
-    'b'
-    'a'
-    'c'
-   )
-   (
-    'c'
-    'a'
-    'b'
-   )
-  ]
   expected:[
    10 20 30
    20 10 30
    30 10 20
   ]
+  larg:(
+   a:10
+   b:20
+   c:30
+  )
+  number:102
+  rarg:[
+   'abc'
+   'bac'
+   'cab'
+  ]
  )
  (
   description:'object: matrix with outrange variables'
-  larg:(
-   cow:12
-   sheep:23
-   dog:34
-  )
-  rarg:[
-   (
-    'sheep'
-    'cat'
-    'dog'
-   )
-   (
-    'cow'
-    'mouse'
-    'sheep'
-   )
-  ]
   expected:[
    23 0 34
    12 0 23
   ]
+  larg:(
+   cow:12
+   dog:34
+   sheep:23
+  )
+  number:103
+  rarg:[
+   'sheep' 'cat'   'dog'
+   'cow'   'mouse' 'sheep'
+  ]
  )
  (
   description:'object: scalar variable produces scalar result'
+  expected:23
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
+  number:104
   rarg:'sheep'
-  expected:23
  )
  (
   description:'object: rank-3 array variable names'
-  larg:(
-   a:1
-   b:2
-   c:3
-  )
-  rarg:[
-   [
-    (
-     'a'
-     'b'
-    )
-    (
-     'c'
-     'a'
-    )
-   ]
-   [
-    (
-     'b'
-     'c'
-    )
-    (
-     'a'
-     'b'
-    )
-   ]
-  ]
   expected:[
    [
     1 2
@@ -1486,29 +1497,53 @@
     1 2
    ]
   ]
+  larg:(
+   a:1
+   b:2
+   c:3
+  )
+  number:105
+  rarg:[
+   [
+    'ab'
+    'ca'
+   ]
+   [
+    'bc'
+    'ab'
+   ]
+  ]
  )
  (
   description:'object: vector of length 1'
+  expected:(23⋄)
   larg:(
    cow:12
-   sheep:23
    dog:34
+   sheep:23
   )
-  rarg:('sheep' ⋄)
-  expected:(23 ⋄)
+  number:106
+  rarg:(
+   'sheep'
+  )
  )
  (
   description:'object: long variable names'
+  expected:2
   larg:(
    veryLongVariableNameOne:1
-   veryLongVariableNameTwo:2
    veryLongVariableNameThree:3
+   veryLongVariableNameTwo:2
   )
+  number:107
   rarg:'veryLongVariableNameTwo'
-  expected:2
  )
  (
   description:'object: nested object value'
+  expected:(
+   x:1
+   y:2
+  )
   larg:(
    inner:(
     x:1
@@ -1516,35 +1551,34 @@
    )
    outer:3
   )
+  number:108
   rarg:'inner'
-  expected:(
-   x:1
-   y:2
-  )
  )
  (
   description:'object: mixed types of values'
-  larg:(
-   count:5
-   label:'test'
-   values:1 2 3
-   flag:1
-  )
-  rarg:(
-   'label'
-   'count'
-  )
   expected:(
    'test'
    5
   )
+  larg:(
+   count:5
+   flag:1
+   label:'test'
+   values:1 2 3
+  )
+  number:109
+  rarg:(
+   'label'
+   'count'
+  )
  )
  (
   description:'object: empty object'
+  expected:0
   larg:(
   )
+  number:110
   rarg:'anything'
-  expected:0
  )
  (
   breaks:11
@@ -1553,6 +1587,7 @@
    x:1
    y:2
   )
+  number:111
   rarg:123
  )
  (
@@ -1562,6 +1597,7 @@
    x:1
    y:2
   )
+  number:112
   rarg:1 2 3
  )
 )

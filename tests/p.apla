@@ -6,6 +6,7 @@
    'brown'
    'fox'
   )
+  number:1
   rarg:'quick brown fox'
  )
  (
@@ -15,6 +16,7 @@
    'def'
   )
   larg:' '
+  number:2
   rarg:'abc def'
  )
  (
@@ -25,6 +27,7 @@
    'file'
   )
   larg:'/'
+  number:3
   rarg:'path/to/file'
  )
  (
@@ -35,6 +38,7 @@
    ('c'⋄)
   )
   larg:'-'
+  number:4
   rarg:'a-b-c'
  )
  (
@@ -43,6 +47,7 @@
    'no-separator-here'
   )
   larg:'/'
+  number:5
   rarg:'no-separator-here'
  )
  (
@@ -50,6 +55,7 @@
   expected:0⌿(
    ''
   )
+  number:6
   rarg:''
  )
  (
@@ -58,12 +64,14 @@
    ''
   )
   larg:' '
+  number:7
   rarg:''
  )
  (
   description:'partition with empty separator (no-op)'
   expected:'abc def ghi'
   larg:''
+  number:8
   rarg:'abc def ghi'
  )
  (
@@ -74,6 +82,7 @@
    'def'
   )
   larg:'/'
+  number:9
   rarg:'abc//def'
  )
  (
@@ -83,6 +92,7 @@
    'abc'
   )
   larg:'-'
+  number:10
   rarg:'-abc'
  )
  (
@@ -93,6 +103,7 @@
    'abc'
   )
   larg:'-'
+  number:11
   rarg:'--abc'
  )
  (
@@ -102,6 +113,7 @@
    ''
   )
   larg:'-'
+  number:12
   rarg:'abc-'
  )
  (
@@ -112,18 +124,21 @@
    ''
   )
   larg:'-'
+  number:13
   rarg:'abc--'
  )
  (
   breaks:11
   description:'domain error: separator not a string'
   larg:123
+  number:14
   rarg:'abc def'
  )
  (
   breaks:11
   description:'domain error: right argument not a string'
   larg:' '
+  number:15
   rarg:(
    'abc'
    'def'
@@ -133,6 +148,7 @@
   breaks:11
   description:'domain error: right argument is numeric'
   larg:' '
+  number:16
   rarg:1 2 3
  )
  (
@@ -143,6 +159,7 @@
    'third'
   )
   larg:⎕UCS 9
+  number:17
   rarg:'first',(⎕UCS 9),'second',(⎕UCS 9),'third'
  )
  (
@@ -153,6 +170,7 @@
    'line3'
   )
   larg:⎕UCS 10
+  number:18
   rarg:'line1',(⎕UCS 10),'line2',(⎕UCS 10),'line3'
  )
  (
@@ -163,6 +181,7 @@
    'item3'
   )
   larg:'•'
+  number:19
   rarg:'item1•item2•item3'
  )
  (
@@ -173,6 +192,7 @@
    'world'
   )
   larg:' '
+  number:20
   rarg:'hello 👍 world'
  )
  (
@@ -183,6 +203,7 @@
    'part3'
   )
   larg:'🔸'
+  number:21
   rarg:'part1🔸part2🔸part3'
  )
  (
@@ -193,6 +214,7 @@
    'z=3'
   )
   larg:';'
+  number:22
   rarg:'x=1;y=2;z=3'
  )
  (
@@ -203,6 +225,7 @@
    ' how are you'
   )
   larg:','
+  number:23
   rarg:'hello, world, how are you'
  )
  (
@@ -212,6 +235,7 @@
    'aa'
   )
   larg:'aaa'
+  number:24
   rarg:'aaaaa'
  )
  (
@@ -222,6 +246,7 @@
    'résumé'
   )
   larg:' '
+  number:25
   rarg:'café naïve résumé'
  )
  (
@@ -232,6 +257,7 @@
    'file'
   )
   larg:'//'
+  number:26
   rarg:'path//to//file'
  )
  (
@@ -242,6 +268,7 @@
    'ghi'
   )
   larg:'<>'
+  number:27
   rarg:'abc<>def<>ghi'
  )
  (
@@ -252,6 +279,7 @@
    'three'
   )
   larg:' and '
+  number:28
   rarg:'one and two and three'
  )
  (
@@ -260,6 +288,7 @@
    ''
   )
   larg:'//'
+  number:29
   rarg:''
  )
  (
@@ -268,6 +297,7 @@
    'no-separator-here'
   )
   larg:'//'
+  number:30
   rarg:'no-separator-here'
  )
  (
@@ -278,6 +308,7 @@
    'def'
   )
   larg:'::'
+  number:31
   rarg:'abc::::def'
  )
  (
@@ -287,6 +318,7 @@
    'abc'
   )
   larg:'--'
+  number:32
   rarg:'--abc'
  )
  (
@@ -296,6 +328,7 @@
    ''
   )
   larg:'--'
+  number:33
   rarg:'abc--'
  )
  (
@@ -306,6 +339,7 @@
    'item3'
   )
   larg:'••'
+  number:34
   rarg:'item1••item2••item3'
  )
  (
@@ -315,6 +349,7 @@
    'part2'
   )
   larg:'🔸🔸'
+  number:35
   rarg:'part1🔸🔸part2'
  )
  (
@@ -324,26 +359,29 @@
    'txt'
   )
   larg:'.'
+  number:36
   rarg:'file.txt'
  )
  (
   description:'RegEx metachar: partition on asterisk (literal)'
   expected:(
-   ('2' ⋄)
-   ('3' ⋄)
-   ('4' ⋄)
+   ('2'⋄)
+   ('3'⋄)
+   ('4'⋄)
   )
   larg:'*'
+  number:37
   rarg:'2*3*4'
  )
  (
   description:'RegEx metachar: partition on plus sign (literal)'
   expected:(
-   ('a' ⋄)
-   ('b' ⋄)
-   ('c' ⋄)
+   ('a'⋄)
+   ('b'⋄)
+   ('c'⋄)
   )
   larg:'+'
+  number:38
   rarg:'a+b+c'
  )
  (
@@ -354,6 +392,7 @@
    'When'
   )
   larg:'?'
+  number:39
   rarg:'What?Who?When'
  )
  (
@@ -363,6 +402,7 @@
    ('0'⋄)
   )
   larg:'['
+  number:40
   rarg:'arr[0'
  )
  (
@@ -373,6 +413,7 @@
    ''
   )
   larg:']'
+  number:41
   rarg:'list]1]'
  )
  (
@@ -383,6 +424,7 @@
    ''
   )
   larg:'{'
+  number:42
   rarg:'set{a,b{'
  )
  (
@@ -392,6 +434,7 @@
    'key'
   )
   larg:'}'
+  number:43
   rarg:'obj}key'
  )
  (
@@ -401,6 +444,7 @@
    'arg)'
   )
   larg:'('
+  number:44
   rarg:'func(arg)'
  )
  (
@@ -410,6 +454,7 @@
    ''
   )
   larg:')'
+  number:45
   rarg:'call(x)'
  )
  (
@@ -419,6 +464,7 @@
    ('8'⋄)
   )
   larg:'^'
+  number:46
   rarg:'2^8'
  )
  (
@@ -428,6 +474,7 @@
    '100'
   )
   larg:'$'
+  number:47
   rarg:'Price:$100'
  )
  (
@@ -438,6 +485,7 @@
    ('c'⋄)
   )
   larg:'|'
+  number:48
   rarg:'a|b|c'
  )
  (
@@ -448,6 +496,7 @@
    'file'
   )
   larg:'\'
+  number:49
   rarg:'C:\path\file'
  )
  (
@@ -458,6 +507,7 @@
    'three'
   )
   larg:'...'
+  number:50
   rarg:'one...two...three'
  )
  (
@@ -468,6 +518,7 @@
    'end'
   )
   larg:'***'
+  number:51
   rarg:'begin***middle***end'
  )
  (
@@ -477,6 +528,7 @@
    'after'
   )
   larg:'[]'
+  number:52
   rarg:'before[]after'
  )
  (
@@ -486,6 +538,7 @@
    'finish'
   )
   larg:'()'
+  number:53
   rarg:'start()finish'
  )
  (
@@ -495,6 +548,7 @@
    'post'
   )
   larg:'{}'
+  number:54
   rarg:'pre{}post'
  )
  (
@@ -504,6 +558,7 @@
    'more'
   )
   larg:'[a-z]+'
+  number:55
   rarg:'text[a-z]+more'
  )
  (
@@ -513,6 +568,7 @@
    'after'
   )
   larg:'$(.*?)'
+  number:56
   rarg:'before$(.*?)after'
  )
  (
@@ -522,6 +578,7 @@
    'end'
   )
   larg:'.*'
+  number:57
   rarg:'start.*end'
  )
  (
@@ -531,6 +588,7 @@
    'line2'
   )
   larg:'\\n'
+  number:58
   rarg:'line1\\nline2'
  )
  (
@@ -540,6 +598,7 @@
    ('B'⋄)
   )
   larg:'.+*?[]{}()^$|\\'
+  number:59
   rarg:'A.+*?[]{}()^$|\\B'
  )
  (
@@ -550,6 +609,7 @@
    ('y'⋄)
   )
   larg:'*'
+  number:60
   rarg:'x**y'
  )
  (
@@ -559,6 +619,7 @@
    'data'
   )
   larg:'+'
+  number:61
   rarg:'+data'
  )
  (
@@ -568,6 +629,7 @@
    ''
   )
   larg:'?'
+  number:62
   rarg:'data?'
  )
 )

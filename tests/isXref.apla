@@ -2,155 +2,217 @@
  (
   description:'3x2 mixed type xref'
   expected:1
+  number:1
   rarg:(
    [
     21 'blue'
     32 'green'
     43 'brown'
    ]
-   ('age' ⋄ 'eye')
-   ('Bob' ⋄ 'Ted' ⋄ 'Carol')
+   (
+    'age'
+    'eye'
+   )
+   (
+    'Bob'
+    'Ted'
+    'Carol'
+   )
   )
  )
  (
   description:'2x2 numeric xref'
   expected:1
+  number:2
   rarg:(
    [
     1 2
     3 4
    ]
-   ('col1' ⋄ 'col2')
-   ('row1' ⋄ 'row2')
+   (
+    'col1'
+    'col2'
+   )
+   (
+    'row1'
+    'row2'
+   )
   )
  )
  (
   description:'1x1 single cell xref'
   expected:1
+  number:3
   rarg:(
    [
     5
    ]
-   ,⊂'value'
-   ,⊂'item'
+   (
+    'value'
+   )
+   (
+    'item'
+   )
   )
  )
  (
   description:'1x3 single row xref'
   expected:1
+  number:4
   rarg:(
    [
     1 2 3
    ]
-   ('a' ⋄ 'b' ⋄ 'c')
-   ,⊂'row'
+   'abc'
+   (
+    'row'
+   )
   )
  )
  (
   description:'3x1 single column xref'
   expected:1
+  number:5
   rarg:(
    [
     1
     2
     3
    ]
-   ,⊂'col'
-   ('r1' ⋄ 'r2' ⋄ 'r3')
+   (
+    'col'
+   )
+   (
+    'r1'
+    'r2'
+    'r3'
+   )
   )
  )
  (
   description:'string'
   expected:0
+  number:6
   rarg:'not an xref'
  )
  (
   description:'numeric vector'
   expected:0
+  number:7
   rarg:1 2 3
  )
  (
   description:'empty vector (not 3 elements)'
   expected:0
+  number:8
   rarg:⍬
  )
  (
   description:'only 2 elements (missing row names)'
   expected:0
+  number:9
   rarg:(
    [
     1 2
    ]
-   ('a' ⋄ 'b')
+   'ab'
   )
  )
  (
   description:'4 elements (too many)'
   expected:0
+  number:10
   rarg:(
    [
     1 2
     3 4
    ]
-   ('a' ⋄ 'b')
-   ('r1' ⋄ 'r2')
-   ,⊂'extra'
+   'ab'
+   (
+    'r1'
+    'r2'
+   )
+   (
+    'extra'
+   )
   )
  )
  (
   description:'first element is vector not matrix'
   expected:0
+  number:11
   rarg:(
    1 2 3
-   ('a' ⋄ 'b' ⋄ 'c')
-   ('r1' ⋄ 'r2' ⋄ 'r3')
+   'abc'
+   (
+    'r1'
+    'r2'
+    'r3'
+   )
   )
  )
  (
   description:'column count mismatch (2 cols, 3 names)'
   expected:0
+  number:12
   rarg:(
    [
     1 2
     3 4
    ]
-   ('a' ⋄ 'b' ⋄ 'c')
-   ('r1' ⋄ 'r2')
+   'abc'
+   (
+    'r1'
+    'r2'
+   )
   )
  )
  (
   description:'row count mismatch (2 rows, 3 names)'
   expected:0
+  number:13
   rarg:(
    [
     1 2
     3 4
    ]
-   ('a' ⋄ 'b')
-   ('r1' ⋄ 'r2' ⋄ 'r3')
+   'ab'
+   (
+    'r1'
+    'r2'
+    'r3'
+   )
   )
  )
  (
   description:'column names are numbers not strings'
   expected:0
+  number:14
   rarg:(
    [
     1 2
     3 4
    ]
    1 2
-   ('r1' ⋄ 'r2')
+   (
+    'r1'
+    'r2'
+   )
   )
  )
  (
   description:'row names are numbers not strings'
   expected:0
+  number:15
   rarg:(
    [
     1 2
     3 4
    ]
-   ('c1' ⋄ 'c2')
+   (
+    'c1'
+    'c2'
+   )
    1 2
   )
  )

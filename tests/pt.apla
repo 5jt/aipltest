@@ -2,21 +2,31 @@
  (
   description:'numeric vector'
   expected:0
+  number:1
+  rarg:1 2 3
+ )
+ (
+  description:'numeric vector'
+  expected:0
+  number:2
   rarg:1 2 3
  )
  (
   description:'numeric scalar'
   expected:0
+  number:3
   rarg:42
  )
  (
   description:'empty numeric vector'
   expected:0
+  number:4
   rarg:⍬
  )
  (
   description:'numeric matrix'
   expected:0 0 0
+  number:5
   rarg:[
    1 2 3
    4 5 6
@@ -28,6 +38,7 @@
    0 0
    0 0
   ]
+  number:6
   rarg:[
    [
     1 2
@@ -42,26 +53,31 @@
  (
   description:'single element numeric vector'
   expected:0
+  number:7
   rarg:(42⋄)
  )
  (
   description:'character vector (string)'
   expected:' '
+  number:8
   rarg:'hello'
  )
  (
   description:'single character'
   expected:' '
+  number:9
   rarg:'x'
  )
  (
   description:'empty string'
   expected:' '
+  number:10
   rarg:''
  )
  (
   description:'character matrix'
   expected:'   '
+  number:11
   rarg:[
    'abc'
    'def'
@@ -70,9 +86,10 @@
  (
   description:'character rank-3 array'
   expected:[
-    '  '
-    '  '
-   ]
+   '  '
+   '  '
+  ]
+  number:12
   rarg:[
    [
     'ab'
@@ -87,11 +104,13 @@
  (
   description:'single element string'
   expected:' '
+  number:13
   rarg:('x'⋄)
  )
  (
   description:'nested numeric vectors'
   expected:⊂0 0 0
+  number:14
   rarg:(
    1 2 3
    4 5 6
@@ -101,6 +120,7 @@
  (
   description:'nested single elements'
   expected:⊂(0⋄)
+  number:15
   rarg:(
    (42⋄)
    (99⋄)
@@ -109,6 +129,7 @@
  (
   description:'nested strings'
   expected:⊂'   '
+  number:16
   rarg:(
    'red'
    'green'
@@ -118,6 +139,7 @@
  (
   description:'nested empty and non-empty'
   expected:⊂⍬
+  number:17
   rarg:(
    ⍬
    1 2 3
@@ -129,6 +151,7 @@
    0 0
    0 0
   ]
+  number:18
   rarg:(
    [
     1 2
@@ -143,6 +166,7 @@
  (
   description:'vector of strings of different lengths'
   expected:' '
+  number:19
   rarg:(
    'a'
    'ab'
@@ -152,9 +176,10 @@
  (
   description:'matrix of vectors'
   expected:(
-    0 0 0
-    0 0 0
+   0 0 0
+   0 0 0
   )
+  number:20
   rarg:[
    (
     1 2 3
@@ -169,16 +194,19 @@
  (
   description:'negative numbers'
   expected:0
+  number:21
   rarg:¯1 ¯2 ¯3
  )
  (
   description:'decimal numbers'
   expected:0
+  number:22
   rarg:1.5 2.7 3.9
  )
  (
   description:'mixed positive and negative'
   expected:0
+  number:23
   rarg:¯5 0 5
  )
  (
@@ -187,29 +215,25 @@
    '   '
    '   '
   )
+  number:24
   rarg:[
-   (
-    'one'
-    'two'
-   )
-   (
-    'three'
-    'four'
-   )
+   'one'   'two'
+   'three' 'four'
   ]
  )
  (
   description:'deeply nested numeric'
   expected:⊂(
- (
-  0 0
-  0 0
- )
- (
-  0 0
-  0 0
- )
-)
+   (
+    0 0
+    0 0
+   )
+   (
+    0 0
+    0 0
+   )
+  )
+  number:25
   rarg:(
    (
     (
@@ -236,6 +260,7 @@
  (
   description:'empty nested vector'
   expected:⊂''
+  number:26
   rarg:0⌿(
    ''
   )
@@ -243,6 +268,7 @@
  (
   description:'vector with single string'
   expected:⊂'     '
+  number:27
   rarg:(
    'hello'
   )
@@ -250,8 +276,7 @@
  (
   description:'vector with single number'
   expected:0
-  rarg:(
-   42
-  )
+  number:28
+  rarg:(42⋄)
  )
 )

@@ -3,7 +3,7 @@
      exp←'    Expected: ',line{×⍵.breaks:⎕EM ⍵.breaks ⋄ ⍵.expected}⍵
      got←'    Got: ',line(⍵.result ⋄ {⍵↓⍨'⍎'=⊃⍵}⊃⍵.dm)⊃⍨1+×⍵.en
      num←{2=⍵.⎕NC'number':'[',(⍕⍵.number),'] '  ''}⍵
-     r,←⊂('FAIL' 'PASS'⊃⍨1+⍵.pass),' - ',num,⍵.description
+     r←⊂('FAIL' 'PASS'⊃⍨1+⍵.pass),' - ',num,⍵.description
      r,←⍵.pass{⍺:'' ⋄ ⍵}exp got
      ∊r,¨⊂⎕UCS 13 10
  }

@@ -2,6 +2,7 @@
  (
   description:'multiple strings'
   expected:1
+  number:1
   rarg:(
    'abc'
    'def'
@@ -11,6 +12,7 @@
  (
   description:'single string in vector'
   expected:1
+  number:2
   rarg:(
    'hello'
   )
@@ -18,6 +20,7 @@
  (
   description:'multiple empty strings'
   expected:1
+  number:3
   rarg:(
    ''
    ''
@@ -27,6 +30,7 @@
  (
   description:'mix of empty and non-empty strings'
   expected:1
+  number:4
   rarg:(
    'abc'
    ''
@@ -36,6 +40,7 @@
  (
   description:'three strings'
   expected:1
+  number:5
   rarg:(
    'quick'
    'brown'
@@ -45,11 +50,13 @@
  (
   description:'single string (not nested)'
   expected:0
+  number:6
   rarg:'abc'
  )
  (
   description:'empty list of strings'
   expected:1
+  number:7
   rarg:0⌿(
    ''
   )
@@ -57,21 +64,25 @@
  (
   description:'empty string (not nested)'
   expected:0
+  number:8
   rarg:''
  )
  (
   description:'empty numeric vector'
   expected:0
+  number:9
   rarg:⍬
  )
  (
   description:'numeric vector'
   expected:0
+  number:10
   rarg:1 2 3
  )
  (
   description:'nested numeric vectors'
   expected:0
+  number:11
   rarg:(
    1 2
    3 4
@@ -80,11 +91,13 @@
  (
   description:'scalar number'
   expected:0
+  number:12
   rarg:42
  )
  (
   description:'mixed types (string and number)'
   expected:0
+  number:13
   rarg:(
    'abc'
    123
@@ -93,30 +106,34 @@
  (
   description:'2x3 matrix of strings'
   expected:1
+  number:14
   rarg:[
-    'abc' 'def' 'ghi'
-    'jkl' 'mno' 'pqr'
- ]
+   'abc' 'def' 'ghi'
+   'jkl' 'mno' 'pqr'
+  ]
  )
  (
   description:'3x2 matrix of strings with empty strings'
   expected:1
+  number:15
   rarg:[
    'hello' ''
    'world' 'foo'
-   '' 'bar'
+   ''      'bar'
   ]
  )
  (
   description:'1x3 matrix of strings (single row)'
   expected:1
+  number:16
   rarg:[
-    'alpha' 'beta' 'gamma'
+   'alpha' 'beta' 'gamma'
   ]
  )
  (
   description:'3x1 matrix of strings (single column)'
   expected:1
+  number:17
   rarg:[
    (
     'one'
@@ -132,14 +149,16 @@
  (
   description:'2x2 matrix with mixed types'
   expected:0
+  number:18
   rarg:[
-    'abc' 123
-    'def' 456
+   'abc' 123
+   'def' 456
   ]
  )
  (
   description:'empty char matrix (0x0)'
   expected:0
+  number:19
   rarg:0⌿[
    ''
   ]
@@ -147,6 +166,7 @@
  (
   description:'empty char matrix (0x3)'
   expected:0
+  number:20
   rarg:0⌿[
    '   '
   ]
@@ -154,15 +174,15 @@
  (
   description:'empty char matrix (3x0)'
   expected:0
+  number:21
   rarg:0⌿[
-   ''
-   ''
    ''
   ]
  )
  (
   description:'empty string matrix (0x0)'
   expected:1
+  number:22
   rarg:0⌿[
    0⌿(
     ''
@@ -172,6 +192,7 @@
  (
   description:'empty string matrix (0x3)'
   expected:1
+  number:23
   rarg:0⌿[
    (
     ''
@@ -183,6 +204,7 @@
  (
   description:'empty string matrix (3x0)'
   expected:1
+  number:24
   rarg:[
    0⌿(
     ''

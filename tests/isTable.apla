@@ -2,6 +2,7 @@
  (
   description:'2x3 numeric table'
   expected:1
+  number:1
   rarg:(
    [
     1 2 3
@@ -17,6 +18,7 @@
  (
   description:'mixed type table'
   expected:1
+  number:2
   rarg:(
    [
     'Bob' 21 'blue'
@@ -32,6 +34,7 @@
  (
   description:'single column table'
   expected:1
+  number:3
   rarg:(
    [
     1
@@ -46,6 +49,7 @@
  (
   description:'single row table; strings key'
   expected:1
+  number:4
   rarg:(
    [
     1 2 3
@@ -60,6 +64,7 @@
  (
   description:'single row table; string key'
   expected:0
+  number:5
   rarg:(
    [
     1 2 3
@@ -70,6 +75,7 @@
  (
   description:'empty table, strings key'
   expected:1
+  number:6
   rarg:(
    [
     ⍬
@@ -82,6 +88,7 @@
  (
   description:'empty table, string key'
   expected:0
+  number:7
   rarg:(
    [
     ⍬
@@ -92,21 +99,25 @@
  (
   description:'string'
   expected:0
+  number:8
   rarg:'not a table'
  )
  (
   description:'numeric vector'
   expected:0
+  number:9
   rarg:1 2 3
  )
  (
   description:'empty vector (not 2 elements)'
   expected:0
+  number:10
   rarg:⍬
  )
  (
   description:'first element is vector not matrix'
   expected:0
+  number:11
   rarg:(
    1 2 3
    'ab'
@@ -115,6 +126,7 @@
  (
   description:'second element is string not strings'
   expected:0
+  number:12
   rarg:(
    [
     1 2
@@ -126,6 +138,7 @@
  (
   description:'dimension mismatch (3 cols, 2 names)'
   expected:0
+  number:13
   rarg:(
    [
     1 2 3
@@ -137,6 +150,7 @@
  (
   description:'dimension mismatch (2 cols, 3 names)'
   expected:0
+  number:14
   rarg:(
    [
     1 2
@@ -148,6 +162,7 @@
  (
   description:'column names are numbers not strings'
   expected:0
+  number:15
   rarg:(
    [
     1 2 3

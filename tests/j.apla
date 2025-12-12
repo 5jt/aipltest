@@ -2,6 +2,7 @@
  (
   description:'join with default space separator (monadic)'
   expected:'abc def'
+  number:1
   rarg:(
    'abc'
    'def'
@@ -11,6 +12,7 @@
   description:'join with space separator (dyadic)'
   expected:'abc def'
   larg:' '
+  number:2
   rarg:(
    'abc'
    'def'
@@ -20,6 +22,7 @@
   description:'join with dash separator'
   expected:'abc-def'
   larg:'-'
+  number:3
   rarg:(
    'abc'
    'def'
@@ -29,12 +32,14 @@
   description:'join with multi-char separator'
   expected:'a::b::c'
   larg:'::'
+  number:4
   rarg:'abc'
  )
  (
   description:'join three strings'
   expected:'quick brown fox'
   larg:' '
+  number:5
   rarg:(
    'quick'
    'brown'
@@ -45,6 +50,7 @@
   description:'join with empty string'
   expected:'abcdef'
   larg:''
+  number:6
   rarg:(
    'abc'
    'def'
@@ -54,6 +60,7 @@
   breaks:11
   description:'join with zilde'
   larg:⍬
+  number:7
   rarg:(
    'abc'
    'def'
@@ -63,6 +70,7 @@
   description:'join single string'
   expected:'alone'
   larg:'-'
+  number:8
   rarg:(
    'alone'
   )
@@ -71,18 +79,21 @@
   breaks:11
   description:'join empty numeric vector'
   larg:'-'
+  number:9
   rarg:⍬
  )
  (
   description:'join empty strings vector'
   expected:''
   larg:'-'
+  number:10
   rarg:''
  )
  (
   breaks:11
   description:'domain error: separator not a string'
   larg:123
+  number:11
   rarg:(
    'abc'
    'def'
@@ -91,24 +102,28 @@
  (
   description:'string right argument'
   expected:'a b c'
+  number:12
   rarg:'abc'
  )
  (
   description:'string right argument'
   expected:'a--b--c'
   larg:'--'
+  number:13
   rarg:'abc'
  )
  (
   breaks:11
   description:'domain error: right argument is numeric vector'
   larg:' '
+  number:14
   rarg:1 2 3
  )
  (
   breaks:11
   description:'domain error: right argument mixed types'
   larg:' '
+  number:15
   rarg:(
    'abc'
    123

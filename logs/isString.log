@@ -1,10 +1,10 @@
-PASS - simple string
-PASS - simple strings
-PASS - 160 strings
-PASS - 320 strings
-PASS - empty string
-PASS - numeric vector
-PASS - empty numeric vector
-PASS - dyadic call (left argument ignored)
-PASS - dataype 160
-PASS - dataype 320
+PASS - [1] simple string
+PASS - [2] simple strings
+PASS - [3] 160 strings
+PASS - [4] 320 strings
+PASS - [5] empty string
+PASS - [6] numeric vector
+PASS - [7] empty numeric vector
+PASS - [8] dyadic call (left argument ignored)
+PASS - [9] dataype 160
+PASS - [10] dataype 320

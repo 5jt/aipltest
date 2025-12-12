@@ -1,15 +1,15 @@
-PASS - 2x3 numeric table
-PASS - mixed type table
-PASS - single column table
-PASS - single row table; strings key
-PASS - single row table; string key
-PASS - empty table, strings key
-PASS - empty table, string key
-PASS - string
-PASS - numeric vector
-PASS - empty vector (not 2 elements)
-PASS - first element is vector not matrix
-PASS - second element is string not strings
-PASS - dimension mismatch (3 cols, 2 names)
-PASS - dimension mismatch (2 cols, 3 names)
-PASS - column names are numbers not strings
+PASS - [1] 2x3 numeric table
+PASS - [2] mixed type table
+PASS - [3] single column table
+PASS - [4] single row table; strings key
+PASS - [5] single row table; string key
+PASS - [6] empty table, strings key
+PASS - [7] empty table, string key
+PASS - [8] string
+PASS - [9] numeric vector
+PASS - [10] empty vector (not 2 elements)
+PASS - [11] first element is vector not matrix
+PASS - [12] second element is string not strings
+PASS - [13] dimension mismatch (3 cols, 2 names)
+PASS - [14] dimension mismatch (2 cols, 3 names)
+PASS - [15] column names are numbers not strings

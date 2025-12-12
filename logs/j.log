@@ -1,15 +1,15 @@
-PASS - join with default space separator (monadic)
-PASS - join with space separator (dyadic)
-PASS - join with dash separator
-PASS - join with multi-char separator
-PASS - join three strings
-PASS - join with empty string
-PASS - join with zilde
-PASS - join single string
-PASS - join empty numeric vector
-PASS - join empty strings vector
-PASS - domain error: separator not a string
-PASS - string right argument
-PASS - string right argument
-PASS - domain error: right argument is numeric vector
-PASS - domain error: right argument mixed types
+PASS - [1] join with default space separator (monadic)
+PASS - [2] join with space separator (dyadic)
+PASS - [3] join with dash separator
+PASS - [4] join with multi-char separator
+PASS - [5] join three strings
+PASS - [6] join with empty string
+PASS - [7] join with zilde
+PASS - [8] join single string
+PASS - [9] join empty numeric vector
+PASS - [10] join empty strings vector
+PASS - [11] domain error: separator not a string
+PASS - [12] string right argument
+PASS - [13] string right argument
+PASS - [14] domain error: right argument is numeric vector
+PASS - [15] domain error: right argument mixed types

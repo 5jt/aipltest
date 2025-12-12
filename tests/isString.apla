@@ -2,11 +2,13 @@
  (
   description:'simple string'
   expected:1
+  number:1
   rarg:'hello'
  )
  (
   description:'simple strings'
   expected:0
+  number:2
   rarg:(
    'hello'
    'there'
@@ -15,6 +17,7 @@
  (
   description:'160 strings'
   expected:0
+  number:3
   rarg:(
    'hello'
    'there≢'
@@ -23,6 +26,7 @@
  (
   description:'320 strings'
   expected:0
+  number:4
   rarg:(
    'hello'
    'there≢ 👍'
@@ -31,34 +35,40 @@
  (
   description:'empty string'
   expected:1
+  number:5
   rarg:''
  )
  (
   description:'numeric vector'
   expected:0
+  number:6
   rarg:1 2 3
  )
  (
   description:'empty numeric vector'
   expected:0
+  number:7
   rarg:⍬
  )
  (
   description:'dyadic call (left argument ignored)'
   expected:1
   larg:'ignored'
+  number:8
   rarg:'hello'
  )
  (
   description:'dataype 160'
   expected:1
   larg:'ignored'
+  number:9
   rarg:'hello ≢'
  )
  (
   description:'dataype 320'
   expected:1
   larg:'ignored'
+  number:10
   rarg:'hello 👍'
  )
 )

@@ -1,63 +1,63 @@
-PASS - replace space with dash
-PASS - replace slash with dash
-PASS - replace dash with underscore
-PASS - replace with same character (no change)
-PASS - replace character not in string
-PASS - replace all occurrences
-PASS - replace in empty string
-PASS - replace with empty string (no-op)
-PASS - replace with empty pair (no-op)
-PASS - replace first char with last char
-PASS - domain error: left argument not a string
-PASS - domain error: left argument not a pair (single character)
-PASS - domain error: left argument not a pair (3+ characters)
-PASS - domain error: right argument not a string
-PASS - domain error: right argument is numeric
-PASS - replace tab with space
-PASS - replace newline with space
-PASS - replace with unicode character
-PASS - replace unicode character
-PASS - replace in string with emoji
-PASS - replace emoji with character
-PASS - replace character with emoji
-PASS - replace preserves other unicode
-PASS - replace special character with alphanumeric
-PASS - replace in string with mixed unicode
-PASS - Phase 4: replace string with string
-PASS - Phase 4: replace multi-char with multi-char
-PASS - Phase 4: replace word with different word
-PASS - Phase 4: replace HTML tag
-PASS - Phase 4: replace empty string (no change)
-PASS - Phase 4: replace with empty string (removal)
-PASS - Phase 4: replace string not found
-PASS - Phase 4: replace overlapping pattern
-PASS - Phase 4: replace single char with multi-char
-PASS - Phase 4: replace multi-char with single char
-PASS - Phase 4: replace unicode string
-PASS - Phase 4: replace emoji string
-PASS - Phase 4: replace in empty string
-PASS - RegEx metachar: replace period (literal)
-PASS - RegEx metachar: replace asterisk (literal)
-PASS - RegEx metachar: replace plus sign (literal)
-PASS - RegEx metachar: replace question mark (literal)
-PASS - RegEx metachar: replace square bracket (literal)
-PASS - RegEx metachar: replace closing bracket (literal)
-PASS - RegEx metachar: replace curly braces (literal)
-PASS - RegEx metachar: replace closing brace (literal)
-PASS - RegEx metachar: replace parentheses (literal)
-PASS - RegEx metachar: replace closing paren (literal)
-PASS - RegEx metachar: replace caret (literal)
-PASS - RegEx metachar: replace dollar sign (literal)
-PASS - RegEx metachar: replace pipe (literal)
-PASS - RegEx metachar: replace backslash (literal)
-PASS - RegEx metachar: replace dot in multi-char string
-PASS - RegEx metachar: replace asterisk in multi-char string
-PASS - RegEx metachar: replace pattern with brackets
-PASS - RegEx metachar: replace pattern with parens
-PASS - RegEx metachar: replace pattern with braces
-PASS - RegEx metachar: replace complex pattern with metachars
-PASS - RegEx metachar: replace mixed metachars in source
-PASS - RegEx metachar: replace regex-like pattern
-PASS - RegEx metachar: backslash escapes in multi-char
-PASS - RegEx metachar: dot-star pattern literal
-PASS - RegEx metachar: replace all regex operators
+PASS - [1] replace space with dash
+PASS - [2] replace slash with dash
+PASS - [3] replace dash with underscore
+PASS - [4] replace with same character (no change)
+PASS - [5] replace character not in string
+PASS - [6] replace all occurrences
+PASS - [7] replace in empty string
+PASS - [8] replace with empty string (no-op)
+PASS - [9] replace with empty pair (no-op)
+PASS - [10] replace first char with last char
+PASS - [11] domain error: left argument not a string
+PASS - [12] domain error: left argument not a pair (single character)
+PASS - [13] domain error: left argument not a pair (3+ characters)
+PASS - [14] domain error: right argument not a string
+PASS - [15] domain error: right argument is numeric
+PASS - [16] replace tab with space
+PASS - [17] replace newline with space
+PASS - [18] replace with unicode character
+PASS - [19] replace unicode character
+PASS - [20] replace in string with emoji
+PASS - [21] replace emoji with character
+PASS - [22] replace character with emoji
+PASS - [23] replace preserves other unicode
+PASS - [24] replace special character with alphanumeric
+PASS - [25] replace in string with mixed unicode
+PASS - [26] Phase 4: replace string with string
+PASS - [27] Phase 4: replace multi-char with multi-char
+PASS - [28] Phase 4: replace word with different word
+PASS - [29] Phase 4: replace HTML tag
+PASS - [30] Phase 4: replace empty string (no change)
+PASS - [31] Phase 4: replace with empty string (removal)
+PASS - [32] Phase 4: replace string not found
+PASS - [33] Phase 4: replace overlapping pattern
+PASS - [34] Phase 4: replace single char with multi-char
+PASS - [35] Phase 4: replace multi-char with single char
+PASS - [36] Phase 4: replace unicode string
+PASS - [37] Phase 4: replace emoji string
+PASS - [38] Phase 4: replace in empty string
+PASS - [39] RegEx metachar: replace period (literal)
+PASS - [40] RegEx metachar: replace asterisk (literal)
+PASS - [41] RegEx metachar: replace plus sign (literal)
+PASS - [42] RegEx metachar: replace question mark (literal)
+PASS - [43] RegEx metachar: replace square bracket (literal)
+PASS - [44] RegEx metachar: replace closing bracket (literal)
+PASS - [45] RegEx metachar: replace curly braces (literal)
+PASS - [46] RegEx metachar: replace closing brace (literal)
+PASS - [47] RegEx metachar: replace parentheses (literal)
+PASS - [48] RegEx metachar: replace closing paren (literal)
+PASS - [49] RegEx metachar: replace caret (literal)
+PASS - [50] RegEx metachar: replace dollar sign (literal)
+PASS - [51] RegEx metachar: replace pipe (literal)
+PASS - [52] RegEx metachar: replace backslash (literal)
+PASS - [53] RegEx metachar: replace dot in multi-char string
+PASS - [54] RegEx metachar: replace asterisk in multi-char string
+PASS - [55] RegEx metachar: replace pattern with brackets
+PASS - [56] RegEx metachar: replace pattern with parens
+PASS - [57] RegEx metachar: replace pattern with braces
+PASS - [58] RegEx metachar: replace complex pattern with metachars
+PASS - [59] RegEx metachar: replace mixed metachars in source
+PASS - [60] RegEx metachar: replace regex-like pattern
+PASS - [61] RegEx metachar: backslash escapes in multi-char
+PASS - [62] RegEx metachar: dot-star pattern literal
+PASS - [63] RegEx metachar: replace all regex operators

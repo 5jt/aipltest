@@ -1,24 +1,24 @@
-PASS - multiple strings
-PASS - single string in vector
-PASS - multiple empty strings
-PASS - mix of empty and non-empty strings
-PASS - three strings
-PASS - single string (not nested)
-PASS - empty list of strings
-PASS - empty string (not nested)
-PASS - empty numeric vector
-PASS - numeric vector
-PASS - nested numeric vectors
-PASS - scalar number
-PASS - mixed types (string and number)
-PASS - 2x3 matrix of strings
-PASS - 3x2 matrix of strings with empty strings
-PASS - 1x3 matrix of strings (single row)
-PASS - 3x1 matrix of strings (single column)
-PASS - 2x2 matrix with mixed types
-PASS - empty char matrix (0x0)
-PASS - empty char matrix (0x3)
-PASS - empty char matrix (3x0)
-PASS - empty string matrix (0x0)
-PASS - empty string matrix (0x3)
-PASS - empty string matrix (3x0)
+PASS - [1] multiple strings
+PASS - [2] single string in vector
+PASS - [3] multiple empty strings
+PASS - [4] mix of empty and non-empty strings
+PASS - [5] three strings
+PASS - [6] single string (not nested)
+PASS - [7] empty list of strings
+PASS - [8] empty string (not nested)
+PASS - [9] empty numeric vector
+PASS - [10] numeric vector
+PASS - [11] nested numeric vectors
+PASS - [12] scalar number
+PASS - [13] mixed types (string and number)
+PASS - [14] 2x3 matrix of strings
+PASS - [15] 3x2 matrix of strings with empty strings
+PASS - [16] 1x3 matrix of strings (single row)
+PASS - [17] 3x1 matrix of strings (single column)
+PASS - [18] 2x2 matrix with mixed types
+PASS - [19] empty char matrix (0x0)
+PASS - [20] empty char matrix (0x3)
+PASS - [21] empty char matrix (3x0)
+PASS - [22] empty string matrix (0x0)
+PASS - [23] empty string matrix (0x3)
+PASS - [24] empty string matrix (3x0)

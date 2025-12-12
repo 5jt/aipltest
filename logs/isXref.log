@@ -1,15 +1,15 @@
-PASS - 3x2 mixed type xref
-PASS - 2x2 numeric xref
-PASS - 1x1 single cell xref
-PASS - 1x3 single row xref
-PASS - 3x1 single column xref
-PASS - string
-PASS - numeric vector
-PASS - empty vector (not 3 elements)
-PASS - only 2 elements (missing row names)
-PASS - 4 elements (too many)
-PASS - first element is vector not matrix
-PASS - column count mismatch (2 cols, 3 names)
-PASS - row count mismatch (2 rows, 3 names)
-PASS - column names are numbers not strings
-PASS - row names are numbers not strings
+PASS - [1] 3x2 mixed type xref
+PASS - [2] 2x2 numeric xref
+PASS - [3] 1x1 single cell xref
+PASS - [4] 1x3 single row xref
+PASS - [5] 3x1 single column xref
+PASS - [6] string
+PASS - [7] numeric vector
+PASS - [8] empty vector (not 3 elements)
+PASS - [9] only 2 elements (missing row names)
+PASS - [10] 4 elements (too many)
+PASS - [11] first element is vector not matrix
+PASS - [12] column count mismatch (2 cols, 3 names)
+PASS - [13] row count mismatch (2 rows, 3 names)
+PASS - [14] column names are numbers not strings
+PASS - [15] row names are numbers not strings
