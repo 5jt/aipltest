@@ -302,7 +302,7 @@
  )
  (
   description:'dictionary: string values, outrange key'
-  expected:⊂'   '
+  expected:'   '
   larg:(
    (
     'red'
@@ -769,8 +769,8 @@
   rarg:'very-long-key-name-two'
  )
  (
-  breaks:11
-  description:'domain error: right argument not a string'
+  description:'dictionary: string keys, right arg is numeric vector'
+  expected:0
   larg:(
    12 23 34
    (
@@ -783,8 +783,8 @@
   rarg:123
  )
  (
-  breaks:11
-  description:'domain error: right argument is numeric vector'
+  description:'dictionary: string keys, right arg is numeric vector'
+  expected:0
   larg:(
    12 23 34
    (
@@ -835,14 +835,14 @@
  (
   description:'dictionary: empty (strings, chars)'
   expected:(
-   ⊂''
-   ⊂''
-   ⊂''
-   ⊂''
-   ⊂''
-   ⊂''
-   ⊂''
-   ⊂''
+   ''
+   ''
+   ''
+   ''
+   ''
+   ''
+   ''
+   ''
   )
   larg:(
    0⌿(
@@ -855,7 +855,7 @@
  )
  (
   description:'dictionary: empty (strings, strings)'
-  expected:⊂''
+  expected:''
   larg:(
    0⌿(
     ''
@@ -899,7 +899,7 @@
  )
  (
   description:'dictionary: outrange with vector values, no default'
-  expected:⊂0 0 0
+  expected:0 0 0
   larg:(
    (
     1 2 3
@@ -913,7 +913,7 @@
  )
  (
   description:'dictionary: outrange with nested vector values'
-  expected:⊂(
+  expected:(
    0 0
    0 0
   )
@@ -935,7 +935,7 @@
  )
  (
   description:'dictionary: outrange with string values, no default'
-  expected:⊂'   '
+  expected:'   '
   larg:(
    (
     'red'
@@ -949,7 +949,7 @@
  )
  (
   description:'dictionary: outrange with nested strings, no default'
-  expected:⊂(
+  expected:(
    '   '
    '   '
   )
@@ -971,7 +971,7 @@
  )
  (
   description:'dictionary: default preserves vector shape'
-  expected:⊂0 0 0
+  expected:0 0 0
   larg:(
    (
     1 2 3
@@ -985,7 +985,7 @@
  )
  (
   description:'dictionary: default preserves nested structure'
-  expected:⊂(
+  expected:(
    0 0
    0 0
   )
@@ -1045,8 +1045,8 @@
   rarg:'a'
  )
  (
-  breaks:11
-  description:'domain error: keys not strings'
+  description:'dictionary: numeric keys, outrange index'
+  expected:0
   larg:(
    10 20 30
    1 2 3
@@ -1056,35 +1056,12 @@
  )
  (
   breaks:11
-  description:'domain error: keys is numeric scalar'
-  larg:(
-   10 20 30
-   42
-  )
-  number:71
-  rarg:'a'
- )
- (
-  breaks:11
-  description:'domain error: keys mixed types'
+  description:'dictionary: keys mixed types'
   larg:(
    1 2 3
    'a' 42 'c'
   )
-  number:72
-  rarg:'a'
- )
- (
-  breaks:11
-  description:'domain error: dictionary with matrix keys'
-  larg:(
-   1 2 3 4
-   [
-    'ab'
-    'cd'
-   ]
-  )
-  number:73
+  number:71
   rarg:'a'
  )
  (
@@ -1095,7 +1072,7 @@
    dog:34
    sheep:23
   )
-  number:74
+  number:72
   rarg:'sheep'
  )
  (
@@ -1106,7 +1083,7 @@
    dog:34
    sheep:23
   )
-  number:75
+  number:73
   rarg:'cow'
  )
  (
@@ -1117,7 +1094,7 @@
    dog:34
    sheep:23
   )
-  number:76
+  number:74
   rarg:'dog'
  )
  (
@@ -1128,7 +1105,7 @@
    dog:34
    sheep:23
   )
-  number:77
+  number:75
   rarg:(
    'sheep'
    'cow'
@@ -1142,7 +1119,7 @@
    dog:34
    sheep:23
   )
-  number:78
+  number:76
   rarg:(
    'cow'
    'sheep'
@@ -1157,7 +1134,7 @@
    dog:34
    sheep:23
   )
-  number:79
+  number:77
   rarg:(
    'dog'
    'sheep'
@@ -1172,7 +1149,7 @@
    dog:34
    sheep:23
   )
-  number:80
+  number:78
   rarg:(
    'sheep'
    'sheep'
@@ -1187,7 +1164,7 @@
    dog:34
    sheep:23
   )
-  number:81
+  number:79
   rarg:'cat'
  )
  (
@@ -1198,7 +1175,7 @@
    dog:34
    sheep:23
   )
-  number:82
+  number:80
   rarg:(
    'cat'
    'mouse'
@@ -1212,7 +1189,7 @@
    dog:34
    sheep:23
   )
-  number:83
+  number:81
   rarg:(
    'sheep'
    'cat'
@@ -1226,7 +1203,7 @@
    dog:34
    sheep:23
   )
-  number:84
+  number:82
   rarg:(
    'cat'
    'sheep'
@@ -1240,7 +1217,7 @@
    dog:34
    sheep:23
   )
-  number:85
+  number:83
   rarg:(
    'cat'
    'sheep'
@@ -1256,7 +1233,7 @@
    sky:'blue'
    stop:'red'
   )
-  number:86
+  number:84
   rarg:'go'
  )
  (
@@ -1270,7 +1247,7 @@
    sky:'blue'
    stop:'red'
   )
-  number:87
+  number:85
   rarg:(
    'sky'
    'stop'
@@ -1284,7 +1261,7 @@
    sky:'blue'
    stop:'red'
   )
-  number:88
+  number:86
   rarg:'caution'
  )
  (
@@ -1295,8 +1272,19 @@
    b:4 5 6
    c:7 8
   )
-  number:89
+  number:87
   rarg:'b'
+ )
+ (
+  description:'object: numeric vector values, multiple variables'
+  expected:0 0 0
+  larg:(
+   a:1 2 3
+   b:4 5 6
+   c:7 8
+  )
+  number:88
+  rarg:'ca'
  )
  (
   description:'object: numeric vector values, multiple variables'
@@ -1309,8 +1297,11 @@
    b:4 5 6
    c:7 8
   )
-  number:90
-  rarg:'ca'
+  number:89
+  rarg:(
+   ('c'⋄)
+   ('a'⋄)
+  )
  )
  (
   description:'object: nested array values'
@@ -1326,7 +1317,7 @@
    ]
    key3:'foo'
   )
-  number:91
+  number:90
   rarg:'key2'
  )
  (
@@ -1335,7 +1326,7 @@
   larg:(
    answer:42
   )
-  number:92
+  number:91
   rarg:'answer'
  )
  (
@@ -1344,7 +1335,7 @@
   larg:(
    answer:42
   )
-  number:93
+  number:92
   rarg:'question'
  )
  (
@@ -1355,7 +1346,7 @@
    firstName:10
    lastName:20
   )
-  number:94
+  number:93
   rarg:'lastName'
  )
  (
@@ -1366,7 +1357,7 @@
    naïve:2
    résumé:3
   )
-  number:95
+  number:94
   rarg:'naïve'
  )
  (
@@ -1376,7 +1367,7 @@
    ABC:2
    abc:1
   )
-  number:96
+  number:95
   rarg:'abc'
  )
  (
@@ -1386,7 +1377,7 @@
    ABC:2
    abc:1
   )
-  number:97
+  number:96
   rarg:'ABC'
  )
  (
@@ -1396,7 +1387,7 @@
    ABC:2
    abc:1
   )
-  number:98
+  number:97
   rarg:'Abc'
  )
  (
@@ -1407,7 +1398,7 @@
    y:20
    z:30
   )
-  number:99
+  number:98
   rarg:'y'
  )
  (
@@ -1418,7 +1409,7 @@
    b:20
    c:30
   )
-  number:100
+  number:99
   rarg:'cab'
  )
  (
@@ -1432,7 +1423,7 @@
    dog:34
    sheep:23
   )
-  number:101
+  number:100
   rarg:[
    'sheep' 'cow'
    'dog'   'sheep'
@@ -1450,7 +1441,7 @@
    b:20
    c:30
   )
-  number:102
+  number:101
   rarg:[
    'abc'
    'bac'
@@ -1468,7 +1459,7 @@
    dog:34
    sheep:23
   )
-  number:103
+  number:102
   rarg:[
    'sheep' 'cat'   'dog'
    'cow'   'mouse' 'sheep'
@@ -1482,7 +1473,7 @@
    dog:34
    sheep:23
   )
-  number:104
+  number:103
   rarg:'sheep'
  )
  (
@@ -1502,7 +1493,7 @@
    b:2
    c:3
   )
-  number:105
+  number:104
   rarg:[
    [
     'ab'
@@ -1522,7 +1513,7 @@
    dog:34
    sheep:23
   )
-  number:106
+  number:105
   rarg:(
    'sheep'
   )
@@ -1535,7 +1526,7 @@
    veryLongVariableNameThree:3
    veryLongVariableNameTwo:2
   )
-  number:107
+  number:106
   rarg:'veryLongVariableNameTwo'
  )
  (
@@ -1551,7 +1542,7 @@
    )
    outer:3
   )
-  number:108
+  number:107
   rarg:'inner'
  )
  (
@@ -1566,7 +1557,7 @@
    label:'test'
    values:1 2 3
   )
-  number:109
+  number:108
   rarg:(
    'label'
    'count'
@@ -1574,10 +1565,10 @@
  )
  (
   description:'object: empty object'
-  expected:0
+  expected:''
   larg:(
   )
-  number:110
+  number:109
   rarg:'anything'
  )
  (
@@ -1587,7 +1578,7 @@
    x:1
    y:2
   )
-  number:111
+  number:110
   rarg:123
  )
  (
@@ -1597,7 +1588,7 @@
    x:1
    y:2
   )
-  number:112
+  number:111
   rarg:1 2 3
  )
 )

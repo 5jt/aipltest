@@ -1,28 +1,27 @@
 PASS - [1] numeric vector
-PASS - [2] numeric vector
-PASS - [3] numeric scalar
-PASS - [4] empty numeric vector
-PASS - [5] numeric matrix
-PASS - [6] numeric rank-3 array
-PASS - [7] single element numeric vector
-PASS - [8] character vector (string)
-PASS - [9] single character
-PASS - [10] empty string
-PASS - [11] character matrix
-PASS - [12] character rank-3 array
-PASS - [13] single element string
-PASS - [14] nested numeric vectors
-PASS - [15] nested single elements
-PASS - [16] nested strings
-PASS - [17] nested empty and non-empty
-PASS - [18] vector of matrices
-PASS - [19] vector of strings of different lengths
-PASS - [20] matrix of vectors
-PASS - [21] negative numbers
-PASS - [22] decimal numbers
-PASS - [23] mixed positive and negative
-PASS - [24] nested strings matrix
-PASS - [25] deeply nested numeric
-PASS - [26] empty nested vector
-PASS - [27] vector with single string
-PASS - [28] vector with single number
+PASS - [2] numeric scalar
+PASS - [3] empty numeric vector
+PASS - [4] numeric matrix
+PASS - [5] numeric rank-3 array
+PASS - [6] single element numeric vector
+PASS - [7] character vector (string)
+PASS - [8] single character
+PASS - [9] empty string
+PASS - [10] character matrix
+PASS - [11] character rank-3 array
+PASS - [12] single element string
+PASS - [13] nested numeric vectors
+PASS - [14] nested single elements
+PASS - [15] nested strings
+PASS - [16] nested empty and non-empty
+PASS - [17] vector of matrices
+PASS - [18] vector of strings of different lengths
+PASS - [19] matrix of vectors
+PASS - [20] negative numbers
+PASS - [21] decimal numbers
+PASS - [22] mixed positive and negative
+PASS - [23] nested strings matrix
+PASS - [24] deeply nested numeric
+PASS - [25] empty nested vector
+PASS - [26] vector with single string
+PASS - [27] vector with single number

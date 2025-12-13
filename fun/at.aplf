@@ -6,26 +6,24 @@
     ⍝ Returns values for keys
     ⍝ A dictionary can have an explicit default outrange value
     ⍝ Otherwise, outrange keys return prototype values
-     dat←{v k←⍺ ⋄ v[k⍳⍵]} ⍝ dictionary at ⍵
-     stringly←{
-         isString ⍵:⊃⍺ ⍺⍺⊂,⍵  ⍝ string  → value
-         isStrings ⍵:⍺ ⍺⍺,¨⍵  ⍝ strings → values
-         ⍺ ⍺⍺ ⍵
-     }
      isDict ⍺:⍺{
          (v k)←⍺
-         dv←pt v ⍝ default value
-         simple←{∧/isString¨⍵:1 ⋄ 83∧.=⎕DR¨⍵}k ⍵
-         simple:(v,dv)[k⍳⍵]
-         (v,dv ⋄ k)dat stringly ⍵
+         V←v,pt v ⍝ with outrange value
+         nestedKey←1≠≡k
+         singleIndex←nestedKey{0=≢⍴⍵:1 ⋄ ⍺:1=≡⍵ ⋄ 0=≡⍵}⍵
+         i←k⍳⊂⍣(nestedKey∧singleIndex∧1=≡⍵)⊢⍵
+         singleIndex:i⊃V
+         V[i]
      }⍵
      isObj ⍺:⍺{
          ~isStrung ⍵:'indices not string/s'⎕SIGNAL 11
          ¯1∊⎕NC ⍵:'indices not valid names'⎕SIGNAL 11
-         k←⍺.⎕NL-2                   ⍝ keys (variable names)
-         v←⍺ ⎕VGET k                 ⍝ values
-         dv←⍺{≢⍺.⎕NL 2:pt ⍵ ⋄ ''}v   ⍝ default value
-         (v,dv ⋄ k)dat stringly ⍵
+         v←⍺ ⎕VGET k←⍺.⎕NL-2          ⍝ keys and values
+         V←v,k{×≢⍺:pt ⍵ ⋄ ''}v  ⍝ with outrange value
+         singleIndex←0 1∊⍨≡⍵
+         i←k⍳(⊂∘,)⍣singleIndex⊢⍵
+         singleIndex:i⊃V
+         V[i]
      }⍵
      'not a dictionary or object'⎕SIGNAL 11
  }
