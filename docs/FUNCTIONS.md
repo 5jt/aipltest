@@ -43,16 +43,57 @@ For this, we enclose an array *along its leading axis*, reshape to length 0, and
 Indexing with `at`
 ------------------
 
-	at           indexes dictionary, object, table or xref (c.f. @ in q language)
+	at           indexes dictionary, object, table, xref or list (c.f. @ in q language)
 
 Syntax: `sel ← X at Y`
 
 Functional indexing: where
 
--   `X` is a dictionary, table or xref
--   `Y` is a key or keys to `X`
+-   `X` is a dictionary, object, table, xref or array
+-   `Y` is a key (index) or keys to `X`
 
-return `sel`, a selection of values from `X`, as follows:
+The indices of
+
+-   a dictionary are its keys
+-   an object are its variable nemes
+-   a table are its row numbers and column names
+-   an xref are its row and column names
+-   a list are integers in the range `⍳≢list`
+
+The result `sel` has the same shape as `Y`
+**except** where the indices of `X` are nested and index `Y` is not:
+in this case, a single value is returned.
+For example:
+
+```apl
+      ('abcdef' ⋄ 3 4 2 5 7) at 2 3⍴'cd'
+2 5 2
+5 2 5
+      ('ab' 'cd' 'ef' ⋄ 3 4 2) at 'cd'
+4
+      ≢⍴('ab' 'cd' 'ef' ⋄ 3 4 2) at 'cd'
+0
+      ('ab' 'cd' 'ef' ⋄ 3 4 2) at 2 3⍴'cd' 'ab'
+4 3 4
+3 4 3
+      (ab:3 ⋄ cd:4 ⋄ ef:2) at 'cd'
+4
+      (ab:3 ⋄ cd:4 ⋄ ef:2) at 2 3⍴'cd' 'ab'
+4 3 4
+3 4 3
+```
+
+Outrange indices get explicit outrange values (dictionaries only) or implicit values derived from the list of values.
+
+```apl
+      ('abcde' ⋄ 3 4 2 5 7) at 'deaf'     ⍝ implicit
+5 7 3 0
+      ('abcde' ⋄ 3 4 2 5 7 99) at 'deaf'  ⍝ explicit
+5 7 3 99
+```
+
+Only dictionaries can specify an outrange value.
+For all other `X` the
 
 ### Dictionary `X`:
 
