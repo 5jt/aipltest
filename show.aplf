@@ -1,0 +1,14 @@
+ show←{
+     _←'scalar' 'vector' 'matrix'⊃⍨1+≢⍴⍵
+     _,←' depth ',⍕≡⍵
+     _,←', shape ',{⍬≡⍵:'⍬' ⋄ ⍕⍵}⍴⍵
+     _,←', tally ',⍕≢⍵
+     t←{
+         ⍵∊80 160 320:'char'
+         ⍵≡83:'numeric'
+         ⍕⍵
+     }⎕DR ⍵
+     _,←', type ',t
+     ⎕←_
+     ⍵
+ }
