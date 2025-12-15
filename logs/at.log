@@ -110,3 +110,197 @@ PASS - [109] object: mixed types of values
 PASS - [110] object: empty object
 PASS - [111] domain error: object right argument not a string
 PASS - [112] domain error: object right argument is numeric vector
+FAIL - [113] table: single row index (scalar) returns dictionary
+    Expected:   Bob  21  blue    name  age  eye  
+    Got: not a dictionary or object
+FAIL - [114] table: single row index (vector) returns table
+    Expected: 
+  Ted  32  green    name  age  eye  
+    Got: not a dictionary or object
+FAIL - [115] table: first row index
+    Expected:   Bob  21  blue    name  age  eye  
+    Got: not a dictionary or object
+FAIL - [116] table: last row index
+    Expected:   Carol  43  brown    name  age  eye  
+    Got: not a dictionary or object
+FAIL - [117] table: multiple rows in order
+    Expected: 
+  Bob  21  blue     name  age  eye  
+  Ted  32  green                    
+    Got: not a dictionary or object
+FAIL - [118] table: multiple rows reverse order
+    Expected: 
+  Carol  43  brown    name  age  eye  
+  Bob    21  blue                     
+    Got: not a dictionary or object
+FAIL - [119] table: all rows in order
+    Expected: 
+  Bob    21  blue     name  age  eye  
+  Ted    32  green                    
+  Carol  43  brown                    
+    Got: not a dictionary or object
+FAIL - [120] table: duplicate row indices
+    Expected: 
+  Ted  32  green    name  age  eye  
+  Ted  32  green                    
+  Bob  21  blue                     
+    Got: not a dictionary or object
+FAIL - [121] table: single column by name returns vector
+    Expected: 21 32 43
+    Got: not a dictionary or object
+FAIL - [122] table: multiple columns by name
+    Expected: 
+  blue   Bob      eye  name  
+  green  Ted                 
+  brown  Carol               
+    Got: not a dictionary or object
+FAIL - [123] table: all columns in order
+    Expected: 
+  Bob    21  blue     name  age  eye  
+  Ted    32  green                    
+  Carol  43  brown                    
+    Got: not a dictionary or object
+FAIL - [124] table: all columns reverse order
+    Expected: 
+  blue   43  Bob      eye  age  name  
+  green  32  Ted                      
+  brown  21  Carol                    
+    Got: not a dictionary or object
+FAIL - [125] table: duplicate column names
+    Expected: 
+ 21 21  Bob      age  age  name  
+ 32 32  Ted                      
+ 43 43  Carol                    
+    Got: not a dictionary or object
+FAIL - [126] table: rows and columns combined
+    Expected: 
+  brown  Carol    eye  name  
+  blue   Bob                 
+    Got: not a dictionary or object
+FAIL - [127] table: single row (scalar) and single column returns dictionary
+    Expected:   Ted    name  
+    Got: not a dictionary or object
+FAIL - [128] table: single row (scalar) and multiple columns returns dictionary
+    Expected:   green  32   eye  age  
+    Got: not a dictionary or object
+FAIL - [129] table: multiple rows and single column
+    Expected: 
+ brown   eye  
+ blue         
+    Got: not a dictionary or object
+FAIL - [130] table: outrange row returns cells with ⊃0⍴
+    Expected: 
+        0          name  age  eye  
+  Bob  21  blue                    
+    Got: not a dictionary or object
+FAIL - [131] table: multiple outrange rows
+    Expected: 
+    0      name  age  eye  
+    0                      
+    Got: not a dictionary or object
+FAIL - [132] table: outrange row (scalar) returns dictionary with ⊃0⍴
+    Expected:     0      name  age  eye  
+    Got: not a dictionary or object
+FAIL - [133] table: mixed valid and outrange rows
+    Expected: 
+  Ted  32  green    name  age  eye  
+        0                           
+  Bob  21  blue                     
+    Got: not a dictionary or object
+FAIL - [134] index error: outrange column name
+    Expected: INDEX ERROR
+    Got: not a dictionary or object
+FAIL - [135] index error: single outrange column name
+    Expected: INDEX ERROR
+    Got: not a dictionary or object
+FAIL - [136] index error: outrange column with valid rows
+    Expected: INDEX ERROR
+    Got: not a dictionary or object
+FAIL - [137] table: single row, single column table
+    Expected:   value    col  
+    Got: not a dictionary or object
+FAIL - [138] table: single row table, column access
+    Expected: 42
+    Got: not a dictionary or object
+FAIL - [139] table: single column table, row access
+    Expected: 
+ 10   value  
+ 20          
+ 30          
+    Got: not a dictionary or object
+FAIL - [140] table: numeric values only
+    Expected: 
+ 20 30  yz 
+ 50 60     
+    Got: not a dictionary or object
+FAIL - [141] table: string values only
+    Expected: 
+  red    blue      color1  color2  
+  green  yellow                    
+    Got: not a dictionary or object
+FAIL - [142] table: mixed numeric and string columns
+    Expected: 
+  Alice  30   name  age  
+  Bob    25              
+    Got: not a dictionary or object
+FAIL - [143] table: column name with spaces
+    Expected: 25 35
+    Got: not a dictionary or object
+FAIL - [144] table: empty column name
+    Expected: 1 2 3
+    Got: not a dictionary or object
+FAIL - [145] table: row index 0 (outrange)
+    Expected: 
+        0          name  age  eye  
+  Bob  21  blue                    
+    Got: not a dictionary or object
+FAIL - [146] table: negative row index (outrange)
+    Expected: 
+        0          name  age  eye  
+  Bob  21  blue                    
+    Got: not a dictionary or object
+FAIL - [147] table: case-sensitive column names
+    Expected: 1 2 3
+    Got: not a dictionary or object
+FAIL - [148] table: case-sensitive different case column
+    Expected: 10 20 30
+    Got: not a dictionary or object
+FAIL - [149] index error: case-sensitive column mismatch
+    Expected: INDEX ERROR
+    Got: not a dictionary or object
+FAIL - [150] table: unicode column names
+    Expected: 2 3
+    Got: not a dictionary or object
+FAIL - [151] table: emoji column names
+    Expected: 20 30
+    Got: not a dictionary or object
+FAIL - [152] table: single row vector index with 1 element
+    Expected: 
+  Carol  43  brown    name  age  eye  
+    Got: not a dictionary or object
+FAIL - [153] table: nested vector values in cells
+    Expected: 
+ 1 2 3   values  
+ 4 5 6           
+    Got: not a dictionary or object
+PASS - [154] domain error: table left arg, right arg not int or string
+PASS - [155] domain error: table left arg, nested incompatible right arg
+FAIL - [156] table: empty row selection returns empty table
+    Expected: 
+         name  age  eye  
+    Got: not a dictionary or object
+FAIL - [157] table: empty column selection returns zero-column table
+    Expected: 
+    
+    
+    
+    Got: not a dictionary or object
+FAIL - [158] table: outrange scalar row with column selection returns  dictionary
+    Expected:  0   age  
+    Got: not a dictionary or object
+FAIL - [159] table: outrange vector rows with column selection
+    Expected: 
+  0   age  
+ 21        
+    Got: not a dictionary or object
+PASS - [160] domain error: numeric column selector

@@ -1603,4 +1603,1229 @@
   number:112
   rarg:1 2 3
  )
+ (
+  description:'table: single row index (scalar) returns dictionary'
+  expected:(
+   (
+    'Bob'
+    21
+    'blue'
+   )
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:113
+  rarg:1
+ )
+ (
+  description:'table: single row index (vector) returns table'
+  expected:(
+   [
+    'Ted' 32 'green'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:114
+  rarg:(2⋄)
+ )
+ (
+  description:'table: first row index'
+  expected:(
+   (
+    'Bob'
+    21
+    'blue'
+   )
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:115
+  rarg:1
+ )
+ (
+  description:'table: last row index'
+  expected:(
+   (
+    'Carol'
+    43
+    'brown'
+   )
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:116
+  rarg:3
+ )
+ (
+  description:'table: multiple rows in order'
+  expected:(
+   [
+    'Bob' 21 'blue'
+    'Ted' 32 'green'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:117
+  rarg:1 2
+ )
+ (
+  description:'table: multiple rows reverse order'
+  expected:(
+   [
+    'Carol' 43 'brown'
+    'Bob'   21 'blue'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:118
+  rarg:3 1
+ )
+ (
+  description:'table: all rows in order'
+  expected:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:119
+  rarg:1 2 3
+ )
+ (
+  description:'table: duplicate row indices'
+  expected:(
+   [
+    'Ted' 32 'green'
+    'Ted' 32 'green'
+    'Bob' 21 'blue'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:120
+  rarg:2 2 1
+ )
+ (
+  description:'table: single column by name returns vector'
+  expected:21 32 43
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:121
+  rarg:'age'
+ )
+ (
+  description:'table: multiple columns by name'
+  expected:(
+   [
+    'blue'  'Bob'
+    'green' 'Ted'
+    'brown' 'Carol'
+   ]
+   (
+    'eye'
+    'name'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:122
+  rarg:(
+   'eye'
+   'name'
+  )
+ )
+ (
+  description:'table: all columns in order'
+  expected:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:123
+  rarg:(
+   'name'
+   'age'
+   'eye'
+  )
+ )
+ (
+  description:'table: all columns reverse order'
+  expected:(
+   [
+    'blue'  43 'Bob'
+    'green' 32 'Ted'
+    'brown' 21 'Carol'
+   ]
+   (
+    'eye'
+    'age'
+    'name'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:124
+  rarg:(
+   'eye'
+   'age'
+   'name'
+  )
+ )
+ (
+  description:'table: duplicate column names'
+  expected:(
+   [
+    21 21 'Bob'
+    32 32 'Ted'
+    43 43 'Carol'
+   ]
+   (
+    'age'
+    'age'
+    'name'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:125
+  rarg:(
+   'age'
+   'age'
+   'name'
+  )
+ )
+ (
+  description:'table: rows and columns combined'
+  expected:(
+   [
+    'brown' 'Carol'
+    'blue'  'Bob'
+   ]
+   (
+    'eye'
+    'name'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:126
+  rarg:(
+   3 1
+   (
+    'eye'
+    'name'
+   )
+  )
+ )
+ (
+  description:'table: single row (scalar) and single column returns dictionary'
+  expected:(
+   (
+    'Ted'
+   )
+   (
+    'name'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:127
+  rarg:(
+   2
+   (
+    'name'
+   )
+  )
+ )
+ (
+  description:'table: single row (scalar) and multiple columns returns dictionary'
+  expected:(
+   (
+    'green'
+    32
+   )
+   (
+    'eye'
+    'age'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:128
+  rarg:(
+   2
+   (
+    'eye'
+    'age'
+   )
+  )
+ )
+ (
+  description:'table: multiple rows and single column'
+  expected:(
+   [
+    'brown'
+    'blue '
+   ]
+   (
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:129
+  rarg:(
+   3 1
+   (
+    'eye'
+   )
+  )
+ )
+ (
+  description:'table: outrange row returns cells with ⊃0⍴'
+  expected:(
+   [
+    ''    0  ''
+    'Bob' 21 'blue'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:130
+  rarg:4 1
+ )
+ (
+  description:'table: multiple outrange rows'
+  expected:(
+   [
+    '' 0 ''
+    '' 0 ''
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:131
+  rarg:4 5
+ )
+ (
+  description:'table: outrange row (scalar) returns dictionary with ⊃0⍴'
+  expected:(
+   (
+    ''
+    0
+    ''
+   )
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:132
+  rarg:4
+ )
+ (
+  description:'table: mixed valid and outrange rows'
+  expected:(
+   [
+    'Ted' 32 'green'
+    ''    0  ''
+    'Bob' 21 'blue'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:133
+  rarg:2 5 1
+ )
+ (
+  breaks:3
+  description:'index error: outrange column name'
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:134
+  rarg:(
+   'age'
+   'sex'
+  )
+ )
+ (
+  breaks:3
+  description:'index error: single outrange column name'
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:135
+  rarg:'sex'
+ )
+ (
+  breaks:3
+  description:'index error: outrange column with valid rows'
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:136
+  rarg:(
+   1 2
+   (
+    'age'
+    'sex'
+   )
+  )
+ )
+ (
+  description:'table: single row, single column table'
+  expected:(
+   (
+    'value'
+   )
+   (
+    'col'
+   )
+  )
+  larg:(
+   [
+    (
+     'value'
+    )
+   ]
+   (
+    'col'
+   )
+  )
+  number:137
+  rarg:1
+ )
+ (
+  description:'table: single row table, column access'
+  expected:42
+  larg:(
+   [
+    'test' 42 99
+   ]
+   (
+    'name'
+    'x'
+    'y'
+   )
+  )
+  number:138
+  rarg:'x'
+ )
+ (
+  description:'table: single column table, row access'
+  expected:(
+   [
+    10
+    20
+    30
+   ]
+   (
+    'value'
+   )
+  )
+  larg:(
+   [
+    10
+    20
+    30
+   ]
+   (
+    'value'
+   )
+  )
+  number:139
+  rarg:1 2 3
+ )
+ (
+  description:'table: numeric values only'
+  expected:(
+   [
+    20 30
+    50 60
+   ]
+   'yz'
+  )
+  larg:(
+   [
+    10 20 30
+    40 50 60
+    70 80 90
+   ]
+   (
+    ('x'⋄)
+    ('y'⋄)
+    ('z'⋄)
+   )
+  )
+  number:140
+  rarg:(
+   1 2
+   'yz'
+  )
+ )
+ (
+  description:'table: string values only'
+  expected:(
+   [
+    'red'   'blue'
+    'green' 'yellow'
+   ]
+   (
+    'color1'
+    'color2'
+   )
+  )
+  larg:(
+   [
+    'red'    'blue'
+    'green'  'yellow'
+    'orange' 'purple'
+   ]
+   (
+    'color1'
+    'color2'
+   )
+  )
+  number:141
+  rarg:1 2
+ )
+ (
+  description:'table: mixed numeric and string columns'
+  expected:(
+   [
+    'Alice' 30
+    'Bob'   25
+   ]
+   (
+    'name'
+    'age'
+   )
+  )
+  larg:(
+   [
+    'Alice' 30 'Engineer'
+    'Bob'   25 'Designer'
+    'Carol' 35 'Manager'
+   ]
+   (
+    'name'
+    'age'
+    'role'
+   )
+  )
+  number:142
+  rarg:1 2
+ )
+ (
+  description:'table: column name with spaces'
+  expected:25 35
+  larg:(
+   [
+    'Alice' 30 'Engineer'
+    'Bob'   25 'Designer'
+    'Carol' 35 'Manager'
+   ]
+   (
+    'name'
+    'age value'
+    'role'
+   )
+  )
+  number:143
+  rarg:'age value'
+ )
+ (
+  description:'table: empty column name'
+  expected:1 2 3
+  larg:(
+   [
+    1 10
+    2 20
+    3 30
+   ]
+   (
+    ''
+    'value'
+   )
+  )
+  number:144
+  rarg:''
+ )
+ (
+  description:'table: row index 0 (outrange)'
+  expected:(
+   [
+    ''    0  ''
+    'Bob' 21 'blue'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:145
+  rarg:0 1
+ )
+ (
+  description:'table: negative row index (outrange)'
+  expected:(
+   [
+    ''    0  ''
+    'Bob' 21 'blue'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:146
+  rarg:¯1 1
+ )
+ (
+  description:'table: case-sensitive column names'
+  expected:1 2 3
+  larg:(
+   [
+    1 10
+    2 20
+    3 30
+   ]
+   (
+    'Name'
+    'name'
+   )
+  )
+  number:147
+  rarg:'Name'
+ )
+ (
+  description:'table: case-sensitive different case column'
+  expected:10 20 30
+  larg:(
+   [
+    1 10
+    2 20
+    3 30
+   ]
+   (
+    'Name'
+    'name'
+   )
+  )
+  number:148
+  rarg:'name'
+ )
+ (
+  breaks:3
+  description:'index error: case-sensitive column mismatch'
+  larg:(
+   [
+    1 10
+    2 20
+    3 30
+   ]
+   (
+    'Name'
+    'name'
+   )
+  )
+  number:149
+  rarg:'NAME'
+ )
+ (
+  description:'table: unicode column names'
+  expected:2 3
+  larg:(
+   [
+    1 2 3
+    4 5 6
+   ]
+   (
+    ('α'⋄)
+    ('β'⋄)
+    ('γ'⋄)
+   )
+  )
+  number:150
+  rarg:'βγ'
+ )
+ (
+  description:'table: emoji column names'
+  expected:20 30
+  larg:(
+   [
+    10 20 30
+    40 50 60
+   ]
+   (
+    ('🐄'⋄)
+    ('🐑'⋄)
+    ('🐕'⋄)
+   )
+  )
+  number:151
+  rarg:'🐑🐕'
+ )
+ (
+  description:'table: single row vector index with 1 element'
+  expected:(
+   [
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:152
+  rarg:(3⋄)
+ )
+ (
+  description:'table: nested vector values in cells'
+  expected:(
+   [
+    1 2 3
+    4 5 6
+   ]
+   (
+    'values'
+   )
+  )
+  larg:(
+   [
+    (
+     [
+      1 2 3
+      4 5 6
+      7 8 9
+     ]
+    )
+   ]
+   (
+    'values'
+   )
+  )
+  number:153
+  rarg:1 2
+ )
+ (
+  breaks:11
+  description:'domain error: table left arg, right arg not int or string'
+  larg:(
+   [
+    'Bob' 21 'blue'
+    'Ted' 32 'green'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:154
+  rarg:1.5
+ )
+ (
+  breaks:11
+  description:'domain error: table left arg, nested incompatible right arg'
+  larg:(
+   [
+    'Bob' 21 'blue'
+    'Ted' 32 'green'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:155
+  rarg:(
+   1 2
+   1.5
+  )
+ )
+ (
+  description:'table: empty row selection returns empty table'
+  expected:(
+   0⌿[
+    0 0 0
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:156
+  rarg:⍬
+ )
+ (
+  description:'table: empty column selection returns zero-column table'
+  expected:(
+   [
+    ⍬
+    ⍬
+    ⍬
+   ]
+   0⌿(
+    ''
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:157
+  rarg:0⌿(
+   ''
+  )
+ )
+ (
+  description:'table: outrange scalar row with column selection returns  dictionary'
+  expected:(
+   (0⋄)
+   (
+    'age'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:158
+  rarg:(
+   4
+   (
+    'age'
+   )
+  )
+ )
+ (
+  description:'table: outrange vector rows with column selection'
+  expected:(
+   [
+     0
+    21
+   ]
+   (
+    'age'
+   )
+  )
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:159
+  rarg:(
+   4 1
+   (
+    'age'
+   )
+  )
+ )
+ (
+  breaks:11
+  description:'domain error: numeric column selector'
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:160
+  rarg:1
+ )
 )
