@@ -96,41 +96,17 @@ PASS - [95] object: case-sensitive variable lookup
 PASS - [96] object: case-sensitive different case
 PASS - [97] object: case-sensitive outrange
 PASS - [98] object: scalar string variable (single char)
-FAIL - [99] object: multiple single-char variable names
-    Expected: 30 10 20
-    Got: 0
-FAIL - [100] object: matrix variable names produce matrix result
-    Expected: 
-23 12
-34 23
-    Got: RANK ERROR
-FAIL - [101] object: 3x3 matrix variable names
-    Expected: 
-10 20 30
-20 10 30
-30 10 20
-    Got: 0
-FAIL - [102] object: matrix with outrange variables
-    Expected: 
-23 0 34
-12 0 23
-    Got: RANK ERROR
-PASS - [103] object: scalar variable produces scalar result
-FAIL - [104] object: rank-3 array variable names
-    Expected: 
-1 2
-3 1
-2 3
-1 2
-    Got: RANK ERROR
-PASS - [105] object: vector of length 1
-PASS - [106] object: long variable names
-FAIL - [107] object: nested object value
-    Expected: #.aipltest.tests.[Namespace]
-    Got: not a dictionary or object
-PASS - [108] object: mixed types of values
-FAIL - [109] object: empty object
-    Expected: 
-    Got: INDEX ERROR
-PASS - [110] domain error: object right argument not a string
-PASS - [111] domain error: object right argument is numeric vector
+PASS - [99] object: multiple single-char variable names
+PASS - [100] object: multiple single-char variable names
+PASS - [101] object: matrix variable names produce matrix result
+PASS - [102] object: 3x3 matrix variable names
+PASS - [103] object: matrix with outrange variables
+PASS - [104] object: scalar variable produces scalar result
+PASS - [105] object: rank-3 array variable names
+PASS - [106] object: vector of length 1
+PASS - [107] object: long variable names
+PASS - [108] object: nested object value
+PASS - [109] object: mixed types of values
+PASS - [110] object: empty object
+PASS - [111] domain error: object right argument not a string
+PASS - [112] domain error: object right argument is numeric vector

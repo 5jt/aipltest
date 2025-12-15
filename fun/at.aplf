@@ -17,9 +17,9 @@
      }⍵
      isObj ⍺:⍺{
          ~isStrung ⍵:'indices not string/s'⎕SIGNAL 11
-         ¯1∊⎕NC ⍵:'indices not valid names'⎕SIGNAL 11
+         ¯1∊⎕NC,⍵:'indices not valid names'⎕SIGNAL 11
          v←⍺ ⎕VGET k←⍺.⎕NL-2          ⍝ keys and values
-         V←v,k{×≢⍺:pt ⍵ ⋄ ''}v  ⍝ with outrange value
+         V←v,k{×≢⍺:pt ⍵ ⋄ ⊂''}v  ⍝ with outrange value
          singleIndex←0 1∊⍨≡⍵
          i←k⍳(⊂∘,)⍣singleIndex⊢⍵
          singleIndex:i⊃V

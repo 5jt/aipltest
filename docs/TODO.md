@@ -59,11 +59,11 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 6: Index objects
 
-- [ ] Write tests for `at` with objects
-- [ ] Seek approval for tests
-- [ ] Extend `at` for objects
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Write tests for `at` with objects
+- [x] Seek approval for tests
+- [x] Extend `at` for objects
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 7: Index tables
 

@@ -1403,7 +1403,7 @@
  )
  (
   description:'object: multiple single-char variable names'
-  expected:30 10 20
+  expected:0
   larg:(
    a:10
    b:20
@@ -1411,6 +1411,21 @@
   )
   number:99
   rarg:'cab'
+ )
+ (
+  description:'object: multiple single-char variable names'
+  expected:30 10 20
+  larg:(
+   a:10
+   b:20
+   c:30
+  )
+  number:100
+  rarg:(
+   ('c'⋄)
+   ('a'⋄)
+   ('b'⋄)
+  )
  )
  (
   description:'object: matrix variable names produce matrix result'
@@ -1423,7 +1438,7 @@
    dog:34
    sheep:23
   )
-  number:100
+  number:101
   rarg:[
    'sheep' 'cow'
    'dog'   'sheep'
@@ -1441,11 +1456,11 @@
    b:20
    c:30
   )
-  number:101
+  number:102
   rarg:[
-   'abc'
-   'bac'
-   'cab'
+   ('a'⋄) ('b'⋄) ('c'⋄)
+   ('b'⋄) ('a'⋄) ('c'⋄)
+   ('c'⋄) ('a'⋄) ('b'⋄)
   ]
  )
  (
@@ -1459,7 +1474,7 @@
    dog:34
    sheep:23
   )
-  number:102
+  number:103
   rarg:[
    'sheep' 'cat'   'dog'
    'cow'   'mouse' 'sheep'
@@ -1473,7 +1488,7 @@
    dog:34
    sheep:23
   )
-  number:103
+  number:104
   rarg:'sheep'
  )
  (
@@ -1493,15 +1508,15 @@
    b:2
    c:3
   )
-  number:104
+  number:105
   rarg:[
    [
-    'ab'
-    'ca'
+    ('a'⋄) ('b'⋄)
+    ('c'⋄) ('a'⋄)
    ]
    [
-    'bc'
-    'ab'
+    ('b'⋄) ('c'⋄)
+    ('a'⋄) ('b'⋄)
    ]
   ]
  )
@@ -1513,7 +1528,7 @@
    dog:34
    sheep:23
   )
-  number:105
+  number:106
   rarg:(
    'sheep'
   )
@@ -1526,15 +1541,12 @@
    veryLongVariableNameThree:3
    veryLongVariableNameTwo:2
   )
-  number:106
+  number:107
   rarg:'veryLongVariableNameTwo'
  )
  (
+  breaks:11
   description:'object: nested object value'
-  expected:(
-   x:1
-   y:2
-  )
   larg:(
    inner:(
     x:1
@@ -1542,7 +1554,7 @@
    )
    outer:3
   )
-  number:107
+  number:108
   rarg:'inner'
  )
  (
@@ -1557,7 +1569,7 @@
    label:'test'
    values:1 2 3
   )
-  number:108
+  number:109
   rarg:(
    'label'
    'count'
@@ -1568,7 +1580,7 @@
   expected:''
   larg:(
   )
-  number:109
+  number:110
   rarg:'anything'
  )
  (
@@ -1578,7 +1590,7 @@
    x:1
    y:2
   )
-  number:110
+  number:111
   rarg:123
  )
  (
@@ -1588,7 +1600,7 @@
    x:1
    y:2
   )
-  number:111
+  number:112
   rarg:1 2 3
  )
 )
