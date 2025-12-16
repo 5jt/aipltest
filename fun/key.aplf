@@ -1,0 +1,1 @@
+ key←{⎕SIGNAL⊂('EN' 999)('Message' 'NOT YET IMPLEMENTED')}

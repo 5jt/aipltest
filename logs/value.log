@@ -1,0 +1,70 @@
+FAIL - [1] dictionary: numeric values
+    Expected: 12 23 34
+    Got: ERROR 999
+FAIL - [2] dictionary: string values
+    Expected: abc
+    Got: ERROR 999
+FAIL - [3] dictionary: mixed values
+    Expected:  cow  23  dog 
+    Got: ERROR 999
+FAIL - [4] dictionary: single value
+    Expected: 42
+    Got: ERROR 999
+FAIL - [5] dictionary: with explicit default (N+1) - excludes default
+    Expected: 12 23 34
+    Got: ERROR 999
+FAIL - [6] dictionary: empty
+    Expected: 
+    Got: ERROR 999
+FAIL - [7] object: single variable
+    Expected: 12
+    Got: ERROR 999
+FAIL - [8] object: multiple variables (alphabetical order by name)
+    Expected: 12 34 23
+    Got: ERROR 999
+FAIL - [9] object: unsorted input becomes sorted by name
+    Expected: 1 2 3
+    Got: ERROR 999
+FAIL - [10] object: mixed types in values
+    Expected: 10  hello   1 2 3  
+    Got: ERROR 999
+FAIL - [11] table: values matrix
+    Expected: 
+ Bob    21  blue  
+ Ted    32  green 
+ Carol  43  brown 
+    Got: ERROR 999
+FAIL - [12] table: single column
+    Expected: 
+Bob  
+Ted  
+Carol
+    Got: ERROR 999
+FAIL - [13] table: two columns
+    Expected: 
+ Bob  21
+ Ted  32
+    Got: ERROR 999
+FAIL - [14] table: single row
+    Expected: 
+ Bob  21  blue 
+    Got: ERROR 999
+FAIL - [15] xref: values matrix
+    Expected: 
+21  blue  
+32  green 
+43  brown 
+    Got: ERROR 999
+FAIL - [16] xref: single cell
+    Expected: 
+21
+    Got: ERROR 999
+FAIL - [17] xref: multiple rows, single column
+    Expected: 
+21
+32
+    Got: ERROR 999
+FAIL - [18] xref: single row, multiple columns
+    Expected: 
+21  blue 
+    Got: ERROR 999

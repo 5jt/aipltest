@@ -1,0 +1,45 @@
+FAIL - [1] dictionary: string keys
+    Expected:  cow  sheep  dog 
+    Got: ERROR 999
+FAIL - [2] dictionary: numeric keys
+    Expected: 10 20 30
+    Got: ERROR 999
+FAIL - [3] dictionary: single key
+    Expected:  answer 
+    Got: ERROR 999
+FAIL - [4] dictionary: with explicit default (N+1 values)
+    Expected:  cow  sheep  dog 
+    Got: ERROR 999
+FAIL - [5] dictionary: empty
+    Expected: 
+    Got: ERROR 999
+FAIL - [6] object: single variable
+    Expected:  cow 
+    Got: ERROR 999
+FAIL - [7] object: multiple variables (alphabetically sorted)
+    Expected:  cow  dog  sheep 
+    Got: ERROR 999
+FAIL - [8] object: unsorted input becomes sorted output
+    Expected: abc
+    Got: ERROR 999
+FAIL - [9] table: column names
+    Expected:  name  age  eye 
+    Got: ERROR 999
+FAIL - [10] table: single column
+    Expected:  name 
+    Got: ERROR 999
+FAIL - [11] table: two columns
+    Expected:  name  age 
+    Got: ERROR 999
+FAIL - [12] xref: row and column names
+    Expected:   Bob  Ted  Carol    age  eye  
+    Got: ERROR 999
+FAIL - [13] xref: single row and column
+    Expected:   Bob    age  
+    Got: ERROR 999
+FAIL - [14] xref: multiple rows, single column
+    Expected:   Bob  Ted    age  
+    Got: ERROR 999
+FAIL - [15] xref: single row, multiple columns
+    Expected:   Bob    age  eye  
+    Got: ERROR 999

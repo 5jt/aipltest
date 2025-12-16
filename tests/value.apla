@@ -1,0 +1,278 @@
+(
+ (
+  description:'dictionary: numeric values'
+  expected:12 23 34
+  number:1
+  rarg:(
+   12 23 34
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+ )
+ (
+  description:'dictionary: string values'
+  expected:'abc'
+  number:2
+  rarg:(
+   'abc'
+   10 20 30
+  )
+ )
+ (
+  description:'dictionary: mixed values'
+  expected:(
+   'cow'
+   23
+   'dog'
+  )
+  number:3
+  rarg:(
+   (
+    'cow'
+    23
+    'dog'
+   )
+   'abc'
+  )
+ )
+ (
+  description:'dictionary: single value'
+  expected:(42⋄)
+  number:4
+  rarg:(
+   (42⋄)
+   (
+    'answer'
+   )
+  )
+ )
+ (
+  description:'dictionary: with explicit default (N+1) - excludes default'
+  expected:12 23 34
+  number:5
+  rarg:(
+   12 23 34 99
+   (
+    'cow'
+    'sheep'
+    'dog'
+   )
+  )
+ )
+ (
+  description:'dictionary: empty'
+  expected:⍬
+  number:6
+  rarg:(
+   ⍬
+   ⍬
+  )
+ )
+ (
+  description:'object: single variable'
+  expected:12
+  number:7
+  rarg:(
+   cow:12
+  )
+ )
+ (
+  description:'object: multiple variables (alphabetical order by name)'
+  expected:12 34 23
+  number:8
+  rarg:(
+   cow:12
+   dog:34
+   sheep:23
+  )
+ )
+ (
+  description:'object: unsorted input becomes sorted by name'
+  expected:1 2 3
+  number:9
+  rarg:(
+   a:1
+   b:2
+   c:3
+  )
+ )
+ (
+  description:'object: mixed types in values'
+  expected:(
+   10
+   'hello'
+   (
+    1 2 3
+   )
+  )
+  number:10
+  rarg:(
+   a:10
+   b:'hello'
+   c:(
+    1 2 3
+   )
+  )
+ )
+ (
+  description:'table: values matrix'
+  expected:[
+   'Bob'   21 'blue'
+   'Ted'   32 'green'
+   'Carol' 43 'brown'
+  ]
+  number:11
+  rarg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+ )
+ (
+  description:'table: single column'
+  expected:[
+   'Bob  '
+   'Ted  '
+   'Carol'
+  ]
+  number:12
+  rarg:(
+   [
+    'Bob  '
+    'Ted  '
+    'Carol'
+   ]
+   (
+    'name'
+   )
+  )
+ )
+ (
+  description:'table: two columns'
+  expected:[
+   'Bob' 21
+   'Ted' 32
+  ]
+  number:13
+  rarg:(
+   [
+    'Bob' 21
+    'Ted' 32
+   ]
+   (
+    'name'
+    'age'
+   )
+  )
+ )
+ (
+  description:'table: single row'
+  expected:[
+   'Bob' 21 'blue'
+  ]
+  number:14
+  rarg:(
+   [
+    'Bob' 21 'blue'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+ )
+ (
+  description:'xref: values matrix'
+  expected:[
+   21 'blue'
+   32 'green'
+   43 'brown'
+  ]
+  number:15
+  rarg:(
+   [
+    21 'blue'
+    32 'green'
+    43 'brown'
+   ]
+   (
+    'Bob'
+    'Ted'
+    'Carol'
+   )
+   (
+    'age'
+    'eye'
+   )
+  )
+ )
+ (
+  description:'xref: single cell'
+  expected:[
+   21
+  ]
+  number:16
+  rarg:(
+   [
+    21
+   ]
+   (
+    'Bob'
+   )
+   (
+    'age'
+   )
+  )
+ )
+ (
+  description:'xref: multiple rows, single column'
+  expected:[
+   21
+   32
+  ]
+  number:17
+  rarg:(
+   [
+    21
+    32
+   ]
+   (
+    'Bob'
+    'Ted'
+   )
+   (
+    'age'
+   )
+  )
+ )
+ (
+  description:'xref: single row, multiple columns'
+  expected:[
+   21 'blue'
+  ]
+  number:18
+  rarg:(
+   [
+    21 'blue'
+   ]
+   (
+    'Bob'
+   )
+   (
+    'age'
+    'eye'
+   )
+  )
+ )
+)
