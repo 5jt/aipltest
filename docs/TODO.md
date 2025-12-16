@@ -62,26 +62,10 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 - [x] Write tests for `at` with objects
 - [x] Seek approval for tests
 - [x] Extend `at` for objects
-- [x] Run complete test suite
-- [x] Verify no regressions
-
-## Phase 7: Index tables
-
-- [ ] Write tests for `at` with tables
-- [ ] Seek approval for tests
-- [ ] Extend `at` for tables
 - [ ] Run complete test suite
 - [ ] Verify no regressions
 
-## Phase 8: Index xrefs
-
-- [ ] Write tests for `at` with xrefs
-- [ ] Seek approval for tests
-- [ ] Extend `at` for xrefs
-- [ ] Run complete test suite
-- [ ] Verify no regressions
-
-## Phase 9: Component extraction functions
+## Phase 7: Component extraction functions
 
 - [ ] Write tests for `key` and `value`
 - [ ] Seek approval for tests
@@ -89,7 +73,7 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 - [ ] Run complete test suite
 - [ ] Verify no regressions
 
-## Phase 10: Refactor `at` for new spec (remove outrange handling)
+## Phase 8: Refactor `at` for new spec (remove outrange handling)
 
 - [ ] Revise `at` tests to expect INDEX ERROR for outrange values
 - [ ] Revise `at` tests to preserve explicit defaults in dictionaries
@@ -98,6 +82,22 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 - [ ] Refactor `at` to signal INDEX ERROR (except dict explicit defaults)
 - [ ] Run complete test suite
 - [ ] Verify all tests pass
+
+## Phase 9: Extend `at` to tables
+
+- [ ] Write tests for `at` with tables (using new spec)
+- [ ] Seek approval for tests
+- [ ] Implement `at` for tables (using `key` and `value`)
+- [ ] Run complete test suite
+- [ ] Verify no regressions
+
+## Phase 10: Extend `at` to xrefs
+
+- [ ] Write tests for `at` with xrefs (using new spec)
+- [ ] Seek approval for tests
+- [ ] Implement `at` for xrefs (using `key` and `value`)
+- [ ] Run complete test suite
+- [ ] Verify no regressions
 
 ## Phase 11: Implement `select`
 
