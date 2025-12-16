@@ -81,3 +81,37 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 - [ ] Run complete test suite
 - [ ] Verify no regressions
 
+## Phase 9: Component extraction functions
+
+- [ ] Write tests for `key` and `value`
+- [ ] Seek approval for tests
+- [ ] Implement `key` and `value`
+- [ ] Run complete test suite
+- [ ] Verify no regressions
+
+## Phase 10: Refactor `at` for new spec (remove outrange handling)
+
+- [ ] Revise `at` tests to expect INDEX ERROR for outrange values
+- [ ] Revise `at` tests to preserve explicit defaults in dictionaries
+- [ ] Seek approval for revised tests
+- [ ] Refactor `at` implementation to use `key` and `value`
+- [ ] Refactor `at` to signal INDEX ERROR (except dict explicit defaults)
+- [ ] Run complete test suite
+- [ ] Verify all tests pass
+
+## Phase 11: Implement `select`
+
+- [ ] Write tests for `select` with all data types
+- [ ] Seek approval for tests
+- [ ] Implement `select` (using `key` and `value`)
+- [ ] Run complete test suite
+- [ ] Verify no regressions
+
+## Phase 12: Implement `outr` operator
+
+- [ ] Write tests for `outr` with all data types (both `at` and `select`)
+- [ ] Seek approval for tests
+- [ ] Implement `outr` operator
+- [ ] Run complete test suite
+- [ ] Verify no regressions
+

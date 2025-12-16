@@ -65,6 +65,33 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 2. Expose stable function signatures in skeletons
 3. Always include unit tests alongside code changes
 
+### Array Notation syntax
+
+**CRITICAL: Array Notation `[...]` uses row-major order**
+
+The `⋄` separator divides **rows**, not columns. Each segment between `⋄` separators is a complete row.
+
+**Correct** (row-major):
+```apl
+['Bob' 21 'blue' ⋄ 'Ted' 32 'green' ⋄ 'Carol' 43 'brown']
+⍝ Row 1: Bob, 21, blue
+⍝ Row 2: Ted, 32, green
+⍝ Row 3: Carol, 43, brown
+```
+
+**Incorrect** (column-major - DO NOT USE):
+```apl
+['Bob' 'Ted' 'Carol' ⋄ 21 32 43 ⋄ 'blue' 'green' 'brown']
+⍝ This is WRONG - treats data as columns
+```
+
+This applies to:
+- Table values: `(['Bob' 21 'blue' ⋄ ...] ⋄ 'name' 'age' 'eye')`
+- Xref values: `([21 'blue' ⋄ 32 'green'] ⋄ ...)`
+- Any matrix literal using Array Notation
+
+When writing or reviewing tests, documentation, or code with matrices in Array Notation, always verify row-major order is used.
+
 ### Process
 - Don't back files up by copying! We use git for versioning.
 - For each new development stage, create a new git branch first.

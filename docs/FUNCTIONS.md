@@ -43,256 +43,477 @@ For this, we enclose an array *along its leading axis*, reshape to length 0, and
 Indexing with `at`
 ------------------
 
-	at           indexes dictionary, object, table, xref or list (c.f. @ in q language)
+	at           extract values from dictionary, object, table, xref or array
 
-Syntax: `sel ← X at Y`
+**Purpose**: Extract values from structured data types, preserving the shape of the index argument.
 
-Functional indexing: where
+Syntax: `values ← X at Y`
 
--   `X` is a dictionary, object, table, xref or array
--   `Y` is a key (index) or keys to `X`
+Where:
+-   `X` is a dictionary, object, table, xref, or array
+-   `Y` is an index or array of indices
+-   `values` has the same shape as `Y` (with exceptions noted for tables)
 
-The indices of
+The function returns only the values, not the structure. For extracting substructures that preserve the data type, use `select`.
 
--   a dictionary are its keys
--   an object are its variable nemes
--   a table are its row numbers and column names
--   an xref are its row and column names
--   a list are integers in the range `⍳≢list`
+### Index error behavior
 
-The result `sel` has the same shape as `Y`
-**except** where the indices of `X` are nested and index `Y` is not:
-in this case, a single value is returned.
-For example:
+`at` signals an INDEX ERROR for out-of-range indices or invalid keys/names, **except** for dictionaries that have an explicit outrange value (N+1 element in the values vector).
 
-```apl
-      ('abcdef' ⋄ 3 4 2 5 7) at 2 3⍴'cd'
-2 5 2
-5 2 5
-      ('ab' 'cd' 'ef' ⋄ 3 4 2) at 'cd'
-4
-      ≢⍴('ab' 'cd' 'ef' ⋄ 3 4 2) at 'cd'
-0
-      ('ab' 'cd' 'ef' ⋄ 3 4 2) at 2 3⍴'cd' 'ab'
-4 3 4
-3 4 3
-      (ab:3 ⋄ cd:4 ⋄ ef:2) at 'cd'
-4
-      (ab:3 ⋄ cd:4 ⋄ ef:2) at 2 3⍴'cd' 'ab'
-4 3 4
-3 4 3
-```
+For handling outrange values without errors, use the `outr` operator (described below).
 
-Outrange indices get explicit outrange values (dictionaries only) or implicit values derived from the list of values.
 
-```apl
-      ('abcde' ⋄ 3 4 2 5 7) at 'deaf'     ⍝ implicit
-5 7 3 0
-      ('abcde' ⋄ 3 4 2 5 7 99) at 'deaf'  ⍝ explicit
-5 7 3 99
-```
-
-Only dictionaries can specify an outrange value.
-For all other `X` the
-
-### Dictionary `X`:
+### Dictionary `X`
 
 A dictionary is a 2-element vector `(values ⋄ keys)` where:
-- `values` is a vector with N or N+1 elements (if N+1, the last element is the default for outrange keys)
-- `keys` is a vector with N elements (strings or integers)
+-   `values` is a vector with N or N+1 elements (if N+1, the last element is the default for outrange keys)
+-   `keys` is a vector with N elements (strings or integers)
 
-`Y` is one or more keys to `X`; `sel` is the corresponding values with the same shape as `Y`, e.g.
-
-```apl
-      d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
-      23 ≡ d at 'sheep'  ⍝ scalar key → scalar result
-1
-      23 12 ≡ d at 'sheep' 'cow'  ⍝ vector keys → vector result
-1
-      (2 2⍴23 12 34 23) ≡ d at 2 2⍴'sheep' 'cow' 'dog' 'sheep'  ⍝ matrix keys → matrix result
-1
-```
-
-Outrange examples:
-
-```apl
-      d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
-      0 ≡ d at 'cat' ⍝ ⊃0⍴⊃⊃d
-1
-      23 0 ≡ d at 'sheep' 'cat'
-1
-      e ← (12 23 34 99 ⋄ 'cow' 'sheep' 'dog') ⍝ 99 is default
-      99 ≡ d at 'cat'
-1
-      23 99 ≡ d at 'sheep' 'cat'
-1
-```
-
-Where not supplied as N+1 value, the implicit outrange value is
-
-```apl
-{∊⍵⊣⎕ML←0}0⍴values
-```
-
-That is to say, the Type of the prototype of the values list.
-
-This aims to maximise consistency of a result that includes outrange values.
-
-
-### Object `X`:
-
-`sel` is an array of values derived from corresponding keys in `X`.
-
-The outrange value is implicit and derived from the values list.
-The values list for an object is given by `{⍵ ⎕VGET ⍵.⎕NL 2}`.
-Note that the type of the outrange value is determined by the type of the value for the alphabetically lowest key.
-
-The outrange value for an empty object is `''`.
-
-
-### Table `X`:
-
-`sel` is a table or dictionary. `Y` is one of:
-
-1.  integer vector | `X{ (v k)←⍺ ⋄ (v[⍵;] ⋄ k) }Y`
-2.  strings        | `X{ (v k)←⍺ ⋄ (v[;k⍳⍵] ⋄ ⍵) }Y`
-3.  both the above
-
-In the last case the table returned has the selected rows and columns of `X`.
-
-If the row selection in (1) or (3) is a scalar, then the result is a dictionary, not a table. (A table is equivalent to a list of dictionaries.)
+**Shape preservation**: The shape of `Y` determines the shape of the result.
 
 Examples:
 
 ```apl
-      ⊢t ← (⍉['Bob' 'Ted' 'Carol' ⋄ 21 32 43 ⋄ 'blue' 'green' 'brown'] ⋄ 'name' 'age' 'eye')
-┌────────────────┬──────────────┐
-│┌─────┬──┬─────┐│┌────┬───┬───┐│
-││Bob  │21│blue │││name│age│eye││
-│├─────┼──┼─────┤│└────┴───┴───┘│
-││Ted  │32│green││              │
-│├─────┼──┼─────┤│              │
-││Carol│43│brown││              │
-│└─────┴──┴─────┘│              │
-└────────────────┴──────────────┘
-      ⍝ indexing with integers
-      t at 2 ⍝ dictionary, not table
-┌──────────────┬──────────────┐
-│┌───┬──┬─────┐│┌────┬───┬───┐│
-││Ted│32│Green│││name│age│eye││
-│└───┴──┴─────┘│└────┴───┴───┘│
-└──────────────┴──────────────┘
-      ≢⍴⊃t at 2 ⍝ dictionary, not table
+      d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
+      23 ≡ d at 'sheep'  ⍝ scalar key → scalar value
 1
-      t at ,2 ⍝ table, not dictionary
-2
-      t at 3 1
-┌────────────────┬──────────────┐
-│┌─────┬──┬─────┐│┌────┬───┬───┐│
-││Carol│43│brown│││name│age│eye││
-│├─────┼──┼─────┤│└────┴───┴───┘│
-││Bob  │21│blue ││              │
-│└─────┴──┴─────┘│              │
-└────────────────┴──────────────┘
-
-      ⍝ indexing with strings returns table
-      t at 'eye' 'name'
-┌──────────┬──────────┐
-│┌─────┬──┐│┌───┬────┐│
-││blue │21│││eye│name││
-│├─────┼──┤│└───┴────┘│
-││green│32││          │
-│├─────┼──┤│          │
-││brown│43││          │
-│└─────┴──┘│          │
-└──────────┴──────────┘
-      ⍝ indexing with string returns 1 column
-      t at 'age'
-21 32 43
-
-      ⍝ indexing with integers and strings
-      t at (3 1 ⋄ 'eye' 'name')
-┌─────────────┬──────────┐
-│┌─────┬─────┐│┌───┬────┐│
-││brown│Carol│││eye│name││
-│├─────┼─────┤│└───┴────┘│
-││blue │Bob  ││          │
-│└─────┴─────┘│          │
-└─────────────┴──────────┘
+      23 12 ≡ d at 'sheep' 'cow'  ⍝ vector keys → vector values
+1
+      (2 2⍴23 12 34 23) ≡ d at 2 2⍴'sheep' 'cow' 'dog' 'sheep'  ⍝ matrix keys → matrix values
+1
 ```
 
-Outrange rows are represented in the result by `⊃0⍴` on each cell:
+Invalid keys signal INDEX ERROR:
 
 ```apl
-      t at 4 1
-┌─────────────┬──────────────┐
-│┌───┬──┬────┐│┌────┬───┬───┐│
-││   │0 │    │││name│age│eye││
-│├───┼──┼────┤│└────┴───┴───┘│
-││Bob│21│blue││              │
-│└───┴──┴────┘│              │
-└─────────────┴──────────────┘
-```
-
-Outrange columns signal an index error:
-
-```apl
-      t at 'age' 'sex'
+      d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
+      d at 'cat'
 INDEX ERROR
-      t at 'age' 'sex'
+      d at 'cat'
         ^
 ```
 
-### Xref `X`
-
-An xref is a matrix with string keys for both axes.
-The result `sel` is an
-
--   xref if each index is strings
--   a row or column of the matrix if one index is a string
--   a cell of the matrix if each index is a string
-
-Example:
+With explicit default (N+1 element), invalid keys return the default instead:
 
 ```apl
-      ⊢x←(⍉[21 32 43 ⋄ 'blue' 'green' 'brown'] ⋄ 'Bob' 'Ted' 'Carol' ⋄ 'name' 'age' 'eye')
-┌──────────┬───────────────┬─────────┐
-│┌──┬─────┐│┌───┬───┬─────┐│┌───┬───┐│
-││21│blue │││Bob│Ted│Carol│││age│eye││
-│├──┼─────┤│└───┴───┴─────┘│└───┴───┘│
-││32│green││               │         │
-│├──┼─────┤│               │         │
-││43│brown││               │         │
-│└──┴─────┘│               │         │
-└──────────┴───────────────┴─────────┘
-      ⍝ each index is strings
-      x at ('Carol' 'Bob' ⋄ 'eye' 'age')
-┌──────────┬─────────┐
-│┌─────┬──┐│┌───┬───┐│
-││brown│43│││eye│age││
-│├─────┼──┤│└───┴───┘│
-││blue │21││         │
-│└─────┴──┘│         │
-└──────────┴─────────┘
-      ⍝ one index is a string
-      x at ('Carol' 'Bob' ⋄ 'age')
-43 21
-      ⍝ each index is a string
-      x at ('Bob' ⋄ 'age')
-21
+      e ← (12 23 34 99 ⋄ 'cow' 'sheep' 'dog')
+      99 ≡ e at 'cat'
+1
+      23 99 ≡ e at 'sheep' 'cat'
+1
 ```
 
 
-### Array `X`:
+### Object `X`
 
-If `X` is  none of the above synthesised datatypes, it is just an array.
+An object is a namespace containing only variables.
 
-`at` indexes along the leading axis. The implicit outrange value is derived  by `pt`.
+**Shape preservation**: The shape of `Y` (variable names) determines the shape of the result.
+
+Examples:
+
+```apl
+      obj ← (cow:12 ⋄ dog:34 ⋄ sheep:23)
+      23 ≡ obj at 'sheep'  ⍝ scalar name → scalar value
+1
+      23 12 ≡ obj at 'sheep' 'cow'  ⍝ vector names → vector values
+1
+      (2 2⍴23 12 34 23) ≡ obj at 2 2⍴'sheep' 'cow' 'dog' 'sheep'  ⍝ matrix names → matrix values
+1
+```
+
+Invalid variable names signal INDEX ERROR:
+
+```apl
+      obj at 'cat'
+INDEX ERROR
+      obj at 'cat'
+        ^
+```
 
 
-### Scalar `X`:
+### Table `X`
 
-If `X` has no dimensions, signal a rank error.
+A table is a 2-element vector `(values ⋄ columnNames)` where `values` is a matrix and `columnNames` is a vector of strings.
+
+`Y` can be:
+1.  **Row indices** (integers): Returns rows from the values matrix
+2.  **Column names** (strings): Returns columns from the values matrix
+3.  **Both** `(rowIndices ⋄ columnNames)`: Returns cells from the intersection
+
+**Row indexing**:
+-   Scalar index: returns a vector (one row of values)
+-   Vector index: returns a matrix (selected rows, all columns)
+-   Higher rank: each position contains a row vector
+
+**Column indexing**:
+-   Scalar: returns a vector (one column of values)
+-   Vector: returns a matrix (all rows, selected columns)
+
+**Combined indexing** `(rows ⋄ cols)`:
+-   `(scalar ⋄ scalar)`: returns scalar value
+-   `(scalar ⋄ vector)`: returns vector of values
+-   `(vector ⋄ scalar)`: returns vector of values
+-   `(vector ⋄ vector)`: returns matrix of values
+
+Examples:
+
+```apl
+      t ← (['Bob' 21 'blue' ⋄ 'Ted' 32 'green' ⋄ 'Carol' 43 'brown'] ⋄ 'name' 'age' 'eye')
+
+      ⍝ Row indexing
+      'Ted' 32 'green' ≡ t at 2  ⍝ scalar → vector (one row)
+1
+      (1 3⍴'Ted' 32 'green') ≡ t at ,2  ⍝ 1-row matrix
+1
+      (2 3⍴'Carol' 43 'brown' 'Bob' 21 'blue') ≡ t at 3 1  ⍝ 2 rows
+1
+
+      ⍝ Column indexing
+      21 32 43 ≡ t at 'age'  ⍝ returns the age column
+1
+      (3 2⍴'blue' 'Bob' 'green' 'Ted' 'brown' 'Carol') ≡ t at 'eye' 'name'
+1
+
+      ⍝ Combined indexing
+      32 ≡ t at (2 ⋄ 'age')  ⍝ scalar row, scalar col → scalar value
+1
+      32 'green' ≡ t at (2 ⋄ 'age' 'eye')  ⍝ scalar row, vector cols → vector
+1
+      21 43 ≡ t at (1 3 ⋄ 'age')  ⍝ vector rows, scalar col → vector
+1
+      (2 2⍴21 'blue' 43 'brown') ≡ t at (1 3 ⋄ 'age' 'eye')  ⍝ vector×vector → matrix
+1
+```
+
+Out-of-range row indices signal INDEX ERROR:
+
+```apl
+      t at 4
+INDEX ERROR
+      t at 4
+        ^
+```
+
+Invalid column names signal INDEX ERROR:
+
+```apl
+      t at 'sex'
+INDEX ERROR
+      t at 'sex'
+        ^
+```
+
+
+### Xref `X`
+
+An xref is a 3-element vector `(values ⋄ rowNames ⋄ columnNames)` where `values` is a matrix and both `rowNames` and `columnNames` are vectors of strings.
+
+`Y` is `(rowNames ⋄ columnNames)` where each can be scalar or vector strings.
+
+Shape behavior follows the outer product of row and column index shapes:
+-   `(scalar ⋄ scalar)`: returns scalar value
+-   `(scalar ⋄ vector)`: returns vector
+-   `(vector ⋄ scalar)`: returns vector
+-   `(vector ⋄ vector)`: returns matrix
+
+Examples:
+
+```apl
+      x ← ([21 'blue' ⋄ 32 'green' ⋄ 43 'brown'] ⋄ 'Bob' 'Ted' 'Carol' ⋄ 'age' 'eye')
+
+      21 ≡ x at ('Bob' ⋄ 'age')  ⍝ scalar × scalar → scalar
+1
+      21 'blue' ≡ x at ('Bob' ⋄ 'age' 'eye')  ⍝ scalar × vector → vector
+1
+      21 32 ≡ x at ('Bob' 'Ted' ⋄ 'age')  ⍝ vector × scalar → vector
+1
+      (2 2⍴43 'brown' 21 'blue') ≡ x at ('Carol' 'Bob' ⋄ 'age' 'eye')  ⍝ vector × vector → matrix
+1
+```
+
+Invalid row or column names signal INDEX ERROR:
+
+```apl
+      x at ('Alice' ⋄ 'age')
+INDEX ERROR
+      x at ('Alice' ⋄ 'age')
+        ^
+```
+
+
+### Array `X`
+
+If `X` is none of the above structured datatypes, it is just an array.
+
+`at` indexes along the leading axis.
+
+Examples:
+
+```apl
+      'abc' ≡ 'abcdef' at 1 2 3
+1
+```
+
+Out-of-range indices signal INDEX ERROR:
+
+```apl
+      (10 20 30) at 1 2 4
+INDEX ERROR
+      (10 20 30) at 1 2 4
+                ^
+```
+
+
+### Scalar `X`
+
+If `X` has no dimensions, signal a RANK ERROR.
+
+
+Selecting with `select`
+-----------------------
+
+	select       extract substructure from dictionary, object, table, or xref
+
+**Purpose**: Extract substructures maintaining the original data type.
+
+Syntax: `subset ← X select Y`
+
+Where:
+-   `X` is a dictionary, object, table, or xref
+-   `Y` specifies which elements to select
+-   `subset` has the same type as `X`
+
+Unlike `at`, which returns values, `select` returns a structure of the same type as the input.
+
+### Index error behavior
+
+`select` signals an INDEX ERROR for out-of-range indices or invalid keys/names, **except** for dictionaries that have an explicit outrange value (N+1 element in the values vector).
+
+For handling outrange values without errors, use the `outr` operator (described below).
+
+
+### Dictionary
+
+Returns a dictionary containing only the selected keys and their values.
+
+```apl
+      d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
+      (23 34 ⋄ 'sheep' 'dog') ≡ d select 'sheep' 'dog'
+1
+```
+
+
+### Object
+
+Returns a new namespace containing only the selected variables.
+
+```apl
+      obj ← (cow:12 ⋄ dog:34 ⋄ sheep:23)
+      obj2 ← obj select 'sheep' 'dog'
+      ⍝ obj2 is a namespace containing only sheep:23 and dog:34
+```
+
+
+### Table
+
+`Y` can be:
+-   Row indices (integers): returns table with those rows
+-   Column names (strings): returns table with those columns
+-   `(rowIndices ⋄ columnNames)`: returns table with selected rows and columns
+
+```apl
+      t ← (['Bob' 21 'blue' ⋄ 'Ted' 32 'green' ⋄ 'Carol' 43 'brown'] ⋄ 'name' 'age' 'eye')
+
+      ⍝ Select rows
+      (['Bob' 21 'blue' ⋄ 'Carol' 43 'brown'] ⋄ 'name' 'age' 'eye') ≡ t select 1 3
+1
+
+      ⍝ Select columns
+      (['Bob' 21 ⋄ 'Ted' 32 ⋄ 'Carol' 43] ⋄ 'name' 'age') ≡ t select 'name' 'age'
+1
+
+      ⍝ Select both
+      (['Bob' 21 ⋄ 'Carol' 43] ⋄ 'name' 'age') ≡ t select (1 3 ⋄ 'name' 'age')
+1
+```
+
+
+### Xref
+
+Returns an xref with selected rows and columns.
+
+```apl
+      x ← ([21 'blue' ⋄ 32 'green' ⋄ 43 'brown'] ⋄ 'Bob' 'Ted' 'Carol' ⋄ 'age' 'eye')
+      ([21 ⋄ 43] ⋄ 'Bob' 'Carol' ⋄ ⊂'age') ≡ x select ('Bob' 'Carol' ⋄ 'age')
+1
+```
+
+
+Handling outrange values with `outr`
+-------------------------------------
+
+	outr         operator that wraps `at` or `select` to handle outrange values
+
+**Purpose**: Enable `at` or `select` to return outrange values instead of signaling INDEX ERROR.
+
+Syntax: `result ← X (F outr) Y`
+
+Where:
+-   `X` is a dictionary, object, table, xref, or array
+-   `F` is `at` or `select`
+-   `Y` is an index or array of indices
+-   `result` is what `F` would return, with outrange values substituted for invalid indices
+
+The `outr` operator calculates appropriate outrange values for the left argument `X` and modifies both `X` and the indices `Y` so that `at` or `select` can return results without signaling errors.
+
+
+### How outrange values are calculated
+
+**Dictionary**:
+-   If the dictionary has N+1 elements in its values vector, the (N+1)th element is the explicit outrange value
+-   Otherwise, use the prototype of the values: `{∊⍵⊣⎕ML←0}0⍴values`
+
+**Object**:
+-   Use the prototype of the alphabetically first variable's value
+-   For an empty object, use `''`
+
+**Table**:
+-   For out-of-range rows: calculate the prototype for each column using `{⊃0⍴⊂⍤(0⌈r-1)⊢⍵}` where `r` is the rank of that column
+-   Invalid column names signal INDEX ERROR (cannot be handled by `outr`)
+
+**Xref**:
+-   For invalid row names: calculate prototypes for each column as with tables
+-   For invalid column names: calculate prototypes for each row similarly
+-   The intersection of invalid row and column uses the overall prototype
+
+**Array**:
+-   Use the prototype of the array: `{⊃0⍴⊂⍤(0⌈r-1)⊢⍵}` where `r` is the rank
+
+
+### Examples
+
+Dictionary with implicit default:
+
+```apl
+      d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
+      0 ≡ d (at outr) 'cat'  ⍝ prototype of numeric values
+1
+      23 0 ≡ d (at outr) 'sheep' 'cat'
+1
+```
+
+Dictionary with explicit default:
+
+```apl
+      e ← (12 23 34 99 ⋄ 'cow' 'sheep' 'dog')
+      99 ≡ e (at outr) 'cat'
+1
+      23 99 ≡ e (at outr) 'sheep' 'cat'
+1
+```
+
+Object:
+
+```apl
+      obj ← (cow:12 ⋄ dog:34 ⋄ sheep:23)
+      0 ≡ obj (at outr) 'cat'  ⍝ prototype from first variable (cow)
+1
+```
+
+Table with out-of-range rows:
+
+```apl
+      t ← (['Bob' 21 'blue' ⋄ 'Ted' 32 'green' ⋄ 'Carol' 43 'brown'] ⋄ 'name' 'age' 'eye')
+      '   ' 0 '    ' ≡ t (at outr) 4  ⍝ prototypes for each column
+1
+      (2 3⍴'   ' 0 '    ' 'Bob' 21 'blue') ≡ t (at outr) 4 1
+1
+```
+
+Array:
+
+```apl
+      0 ≡ (10 20 30) (at outr) 4
+1
+      10 20 0 ≡ (10 20 30) (at outr) 1 2 4
+1
+```
+
+
+Extracting components with `key` and `value`
+---------------------------------------------
+
+	key          extract keys/names from dictionary, object, table, or xref
+	value        extract values from dictionary, object, table, or xref
+
+**Purpose**: Extract the component parts of structured data types.
+
+
+### `key` - Extract keys/names
+
+Syntax: `keys ← key X`
+
+Returns:
+-   **Dictionary**: the keys vector
+-   **Object**: variable names (sorted alphabetically)
+-   **Table**: column names
+-   **Xref**: `(rowNames ⋄ columnNames)`
+
+Examples:
+
+```apl
+      d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
+      'cow' 'sheep' 'dog' ≡ key d
+1
+
+      obj ← (cow:12 ⋄ dog:34 ⋄ sheep:23)
+      'cow' 'dog' 'sheep' ≡ key obj  ⍝ alphabetically sorted
+1
+
+      t ← (['Bob' 'Ted' ⋄ 21 32 ⋄ 'blue' 'green'] ⋄ 'name' 'age' 'eye')
+      'name' 'age' 'eye' ≡ key t
+1
+
+      x ← ([21 'blue' ⋄ 32 'green'] ⋄ 'Bob' 'Ted' ⋄ 'age' 'eye')
+      ('Bob' 'Ted' ⋄ 'age' 'eye') ≡ key x
+1
+```
+
+
+### `value` - Extract values
+
+Syntax: `vals ← value X`
+
+Returns:
+-   **Dictionary**: the values vector (N elements, excluding default if present)
+-   **Object**: variable values in alphabetical order by name
+-   **Table**: the values matrix
+-   **Xref**: the values matrix
+
+Examples:
+
+```apl
+      d ← (12 23 34 ⋄ 'cow' 'sheep' 'dog')
+      12 23 34 ≡ value d
+1
+
+      d2 ← (12 23 34 99 ⋄ 'cow' 'sheep' 'dog')  ⍝ with default
+      12 23 34 ≡ value d2  ⍝ excludes the default
+1
+
+      obj ← (cow:12 ⋄ dog:34 ⋄ sheep:23)
+      12 34 23 ≡ value obj  ⍝ values in alphabetical order by name
+1
+
+      t ← (['Bob' 'Ted' ⋄ 21 32 ⋄ 'blue' 'green'] ⋄ 'name' 'age' 'eye')
+      (['Bob' 'Ted' ⋄ 21 32 ⋄ 'blue' 'green']) ≡ value t
+1
+
+      x ← ([21 'blue' ⋄ 32 'green'] ⋄ 'Bob' 'Ted' ⋄ 'age' 'eye')
+      ([21 'blue' ⋄ 32 'green']) ≡ value x
+1
+```
 
 
 
