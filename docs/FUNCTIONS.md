@@ -207,9 +207,9 @@ INDEX ERROR
 
 ### Xref `X`
 
-An xref is a 3-element vector `(values ⋄ rowNames ⋄ columnNames)` where `values` is a matrix and both `rowNames` and `columnNames` are vectors of strings.
+An xref is a 3-element vector `(values ⋄ columnNames ⋄ rowNames)` where `values` is a matrix and both `columnNames` and `rowNames` are vectors of strings.
 
-`Y` is `(rowNames ⋄ columnNames)` where each can be scalar or vector strings.
+`Y` is `(columnNames ⋄ rowNames)` where each can be scalar or vector strings.
 
 Shape behavior follows the outer product of row and column index shapes:
 -   `(scalar ⋄ scalar)`: returns scalar value
@@ -220,24 +220,24 @@ Shape behavior follows the outer product of row and column index shapes:
 Examples:
 
 ```apl
-      x ← ([21 'blue' ⋄ 32 'green' ⋄ 43 'brown'] ⋄ 'Bob' 'Ted' 'Carol' ⋄ 'age' 'eye')
+      x ← ([21 'blue' ⋄ 32 'green' ⋄ 43 'brown'] ⋄ 'age' 'eye' ⋄ 'Bob' 'Ted' 'Carol')
 
-      21 ≡ x at ('Bob' ⋄ 'age')  ⍝ scalar × scalar → scalar
+      21 ≡ x at ('age' ⋄ 'Bob')  ⍝ scalar × scalar → scalar
 1
-      21 'blue' ≡ x at ('Bob' ⋄ 'age' 'eye')  ⍝ scalar × vector → vector
+      21 'blue' ≡ x at ('age' 'eye' ⋄ 'Bob')  ⍝ vector × scalar → vector
 1
-      21 32 ≡ x at ('Bob' 'Ted' ⋄ 'age')  ⍝ vector × scalar → vector
+      21 32 ≡ x at ('age' ⋄ 'Bob' 'Ted')  ⍝ scalar × vector → vector
 1
-      (2 2⍴43 'brown' 21 'blue') ≡ x at ('Carol' 'Bob' ⋄ 'age' 'eye')  ⍝ vector × vector → matrix
+      (2 2⍴43 'brown' 21 'blue') ≡ x at ('age' 'eye' ⋄ 'Carol' 'Bob')  ⍝ vector × vector → matrix
 1
 ```
 
 Invalid row or column names signal INDEX ERROR:
 
 ```apl
-      x at ('Alice' ⋄ 'age')
+      x at ('sex' ⋄ 'Bob')
 INDEX ERROR
-      x at ('Alice' ⋄ 'age')
+      x at ('sex' ⋄ 'Bob')
         ^
 ```
 
@@ -344,8 +344,8 @@ Returns a new namespace containing only the selected variables.
 Returns an xref with selected rows and columns.
 
 ```apl
-      x ← ([21 'blue' ⋄ 32 'green' ⋄ 43 'brown'] ⋄ 'Bob' 'Ted' 'Carol' ⋄ 'age' 'eye')
-      ([21 ⋄ 43] ⋄ 'Bob' 'Carol' ⋄ ⊂'age') ≡ x select ('Bob' 'Carol' ⋄ 'age')
+      x ← ([21 'blue' ⋄ 32 'green' ⋄ 43 'brown'] ⋄ 'age' 'eye' ⋄ 'Bob' 'Ted' 'Carol')
+      ([21 ⋄ 43] ⋄ ⊂'age' ⋄ 'Bob' 'Carol') ≡ x select (⊂'age' ⋄ 'Bob' 'Carol')
 1
 ```
 
@@ -458,7 +458,7 @@ Returns:
 -   **Dictionary**: the keys vector
 -   **Object**: variable names (sorted alphabetically)
 -   **Table**: column names
--   **Xref**: `(rowNames ⋄ columnNames)`
+-   **Xref**: `(columnNames ⋄ rowNames)`
 
 Examples:
 
@@ -475,8 +475,8 @@ Examples:
       'name' 'age' 'eye' ≡ key t
 1
 
-      x ← ([21 'blue' ⋄ 32 'green'] ⋄ 'Bob' 'Ted' ⋄ 'age' 'eye')
-      ('Bob' 'Ted' ⋄ 'age' 'eye') ≡ key x
+      x ← ([21 'blue' ⋄ 32 'green'] ⋄ 'age' 'eye' ⋄ 'Bob' 'Ted')
+      ('age' 'eye' ⋄ 'Bob' 'Ted') ≡ key x
 1
 ```
 
@@ -510,7 +510,7 @@ Examples:
       (['Bob' 'Ted' ⋄ 21 32 ⋄ 'blue' 'green']) ≡ value t
 1
 
-      x ← ([21 'blue' ⋄ 32 'green'] ⋄ 'Bob' 'Ted' ⋄ 'age' 'eye')
+      x ← ([21 'blue' ⋄ 32 'green'] ⋄ 'age' 'eye' ⋄ 'Bob' 'Ted')
       ([21 'blue' ⋄ 32 'green']) ≡ value x
 1
 ```

@@ -1,1 +1,26 @@
- value←{⎕SIGNAL⊂('EN' 999)('Message' 'NOT YET IMPLEMENTED')}
+ value←{
+     ⍝ Extract values from Ddictionary, Object, Table, Xref or Array
+     ⍝ Returns:
+     ⍝   Dictionary: values vector (N elements, excluding default if present)
+     ⍝   Object: variable values (alphabetically sorted by name)
+     ⍝   Table: values matrix
+     ⍝   Xref: values matrix
+     ⍝   Array: the array itself
+
+     0=≢⍴⍵:⎕SIGNAL 4        ⍝ cannot index a scalar
+
+     isDict ⍵:{
+         (vals keys)←⍵
+         vals↑⍨≢keys        ⍝ Take first N elements (excludes N+1 default)
+     }⍵
+
+     isObj ⍵:⍵ ⎕VGET key ⍵  ⍝ Object: get values in alphabetical order
+
+     isTable ⍵:1⊃⍵          ⍝ Table: return values matrix
+
+     isXref ⍵:1⊃⍵           ⍝ Xref: return values matrix
+
+     2=⎕NC'⍵':⍵             ⍝ Array: return the array itself
+
+     'argument must be dict, obj, table, xref or array' ⎕SIGNAL 11
+ }

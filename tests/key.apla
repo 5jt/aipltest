@@ -90,7 +90,11 @@
  )
  (
   description:'object: unsorted input becomes sorted output'
-  expected:'abc'
+  expected:(
+   ('a'⋄)
+   ('b'⋄)
+   ('c'⋄)
+  )
   number:8
   rarg:(
    a:1
@@ -127,9 +131,15 @@
   number:10
   rarg:(
    [
-    'Bob  '
-    'Ted  '
-    'Carol'
+    (
+     'Bob'
+    )
+    (
+     'Ted'
+    )
+    (
+     'Carol'
+    )
    ]
    (
     'name'
@@ -155,16 +165,16 @@
   )
  )
  (
-  description:'xref: row and column names'
+  description:'xref: column and row names'
   expected:(
+   (
+    'age'
+    'eye'
+   )
    (
     'Bob'
     'Ted'
     'Carol'
-   )
-   (
-    'age'
-    'eye'
    )
   )
   number:12
@@ -175,24 +185,24 @@
     43 'brown'
    ]
    (
+    'age'
+    'eye'
+   )
+   (
     'Bob'
     'Ted'
     'Carol'
    )
-   (
-    'age'
-    'eye'
-   )
   )
  )
  (
-  description:'xref: single row and column'
+  description:'xref: single column and row'
   expected:(
    (
-    'Bob'
+    'age'
    )
    (
-    'age'
+    'Bob'
    )
   )
   number:13
@@ -201,22 +211,22 @@
     21
    ]
    (
-    'Bob'
+    'age'
    )
    (
-    'age'
+    'Bob'
    )
   )
  )
  (
-  description:'xref: multiple rows, single column'
+  description:'xref: single column, multiple rows'
   expected:(
+   (
+    'age'
+   )
    (
     'Bob'
     'Ted'
-   )
-   (
-    'age'
    )
   )
   number:14
@@ -226,23 +236,23 @@
     32
    ]
    (
-    'Bob'
-    'Ted'
+    'age'
    )
    (
-    'age'
+    'Bob'
+    'Ted'
    )
   )
  )
  (
-  description:'xref: single row, multiple columns'
+  description:'xref: multiple columns, single row'
   expected:(
-   (
-    'Bob'
-   )
    (
     'age'
     'eye'
+   )
+   (
+    'Bob'
    )
   )
   number:15
@@ -251,11 +261,11 @@
     21 'blue'
    ]
    (
-    'Bob'
-   )
-   (
     'age'
     'eye'
+   )
+   (
+    'Bob'
    )
   )
  )

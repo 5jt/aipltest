@@ -1,1 +1,19 @@
- key←{⎕SIGNAL⊂('EN' 999)('Message' 'NOT YET IMPLEMENTED')}
+ key←{
+     ⍝ Extract keys/names from dictionary, object, table, or xref
+     ⍝ Returns:
+     ⍝   Dictionary: keys vector
+     ⍝   Object: variable names (alphabetically sorted)
+     ⍝   Table: column names
+     ⍝   Xref: (rowNames ⋄ columnNames)
+     ⍝   Array: indices of leading axis
+
+     isDict ⍵:2⊃⍵         ⍝ Dictionary: return keys
+     isObj ⍵:⍵.⎕NL-2      ⍝ Object: return variable names (sorted)
+     isTable ⍵:2⊃⍵        ⍝ Table: return column names
+     isXref ⍵:(2⊃⍵)(3⊃⍵)  ⍝ Xref: return (rowNames ⋄ columnNames)
+     2≠⎕NC'⍵':⎕SIGNAL 11  ⍝ ufo
+     0=≢⍴⍵:⎕SIGNAL 4      ⍝ scalar has no key
+     ⍳≢⍵                  ⍝ Array
+
+     'argument must be dict, obj, table, xref or array'⎕SIGNAL 11
+ }

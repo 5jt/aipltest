@@ -131,12 +131,7 @@ PASS - [130] table: outrange row returns cells with ⊃0⍴
 PASS - [131] table: multiple outrange rows
 PASS - [132] table: outrange row (scalar) returns dictionary with ⊃0⍴
 PASS - [133] table: mixed valid and outrange rows
-FAIL - [134] index error: outrange column name
-    Expected: INDEX ERROR
-    Got: 
- 21      age  sex  
- 32                
- 43                
+PASS - [134] index error: outrange column name
 FAIL - [135] index error: single outrange column name
     Expected: INDEX ERROR
     Got:       

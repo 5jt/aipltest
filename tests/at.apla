@@ -2216,15 +2216,18 @@
   rarg:2 5 1
  )
  (
+  description:'index error: outrange column name'
   expected:(
    [
-   21 ''
-   32 ''
-   43 ''
+    21 ''
+    32 ''
+    43 ''
    ]
-   ('age' 'sex')
+   (
+    'age'
+    'sex'
+   )
   )
-  description:'index error: outrange column name'
   larg:(
    [
     'Bob'   21 'blue'

@@ -207,13 +207,13 @@
     43 'brown'
    ]
    (
+    'age'
+    'eye'
+   )
+   (
     'Bob'
     'Ted'
     'Carol'
-   )
-   (
-    'age'
-    'eye'
    )
   )
  )
@@ -228,15 +228,15 @@
     21
    ]
    (
-    'Bob'
+    'age'
    )
    (
-    'age'
+    'Bob'
    )
   )
  )
  (
-  description:'xref: multiple rows, single column'
+  description:'xref: single column, multiple rows'
   expected:[
    21
    32
@@ -248,16 +248,16 @@
     32
    ]
    (
-    'Bob'
-    'Ted'
+    'age'
    )
    (
-    'age'
+    'Bob'
+    'Ted'
    )
   )
  )
  (
-  description:'xref: single row, multiple columns'
+  description:'xref: multiple columns, single row'
   expected:[
    21 'blue'
   ]
@@ -267,11 +267,11 @@
     21 'blue'
    ]
    (
-    'Bob'
-   )
-   (
     'age'
     'eye'
+   )
+   (
+    'Bob'
    )
   )
  )
