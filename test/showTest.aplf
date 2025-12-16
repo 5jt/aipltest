@@ -1,0 +1,11 @@
+ showTest←{
+     ⍺←1
+     _←⊂⍵.number
+     _,←⍺{~⍺:'' ⋄ 2=⍵.⎕NC'larg':⊂⍵.larg ⋄ ⊂''}⍵
+     _,←⊂⍵.rarg
+     _,{
+         2=⍵.⎕NC'expected':show ⍵.expected
+         2=⍵.⎕NC'breaks':('SIGNAL ',⍕⍵.breaks ⋄ '')
+         '**MALFORMED TEST**' ''
+     }⍵
+ }
