@@ -25,5 +25,30 @@
          singleIndex:i⊃V
          V[i]
      }⍵
-     'not a dictionary or object'⎕SIGNAL 11
+     isTable ⍺:⍺{
+         (mat nms)←⍺ ⍝ value matrix; col names
+        ⍝ outrange column cell is ⊂'' unless numeric mat
+         occ←{(2=≡⍵)∧83 645∊⍨⎕DR ⍵:0 ⋄ ⊂''}mat
+         Mc←mat,⍤1⊢occ ⍝ with outrange column
+         Mr←mat⍪pt⍤1⊢⍉mat ⍝ with outrange row
+         Mb←Mr,⍤1⊢occ ⍝ with both
+        ⍝ interpret ⍵ as row/col index or indices
+         (rcb ir ic)←nms{
+             83=⎕DR ⍵:('row','s'/⍨1=≢⍴⍵ ⋄ ⍵ ⋄ ⍳≢⍺)           ⍝ row/s
+             isStrung ⍵:('col','s'/⍨isStrings ⍵ ⋄ ⍬ ⋄ ⍺⍳⊆⍵)  ⍝ col name/s
+             2≠≢⍵:⎕SIGNAL 11
+             (ri ci)←⍵
+             (83=⎕DR ri)⍲isStrung ci:⎕SIGNAL 11
+             (0=≢⍴ri)∧isString ci:('cell' ⋄ ri ⋄ ⍺⍳⊂ci)      ⍝ row & col
+             ('rc' ⋄ ri ⋄ ⍺⍳⊆ci)                             ⍝ rows & cols
+         }⍵
+         ir⌊←≢Mr ⍝ outrange row index
+         rcb≡'row':(Mr[⊃ir;] ⋄ nms) ⍝ dictionary
+         rcb≡'rows':(Mr[ir;] ⋄ nms) ⍝ table
+         rcb≡'col':Mc[;ic] ⍝ column vector
+         rcb≡'cols':(Mc[;ic] ⋄ ⍵) ⍝ table
+         rcb≡'cell':⊃Mb[ir;ic] ⍝ single value
+         rcb≡'rc':(Mb[ir;ic] ⋄ 2⊃⍵) ⍝ table
+     }⍵
+     'not dictionary, object or table'⎕SIGNAL 11
  }
