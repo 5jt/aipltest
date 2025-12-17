@@ -7,20 +7,18 @@
      ⍝   Xref: values matrix
      ⍝   Array: the array itself
 
-     0=≢⍴⍵:⎕SIGNAL 4        ⍝ cannot index a scalar
-
      isDict ⍵:{
          (vals keys)←⍵
-         vals↑⍨≢keys        ⍝ Take first N elements (excludes N+1 default)
+         vals↑⍨≢keys              ⍝ 1st N elements (excludes N+1 default)
      }⍵
 
-     isObj ⍵:⍵ ⎕VGET key ⍵  ⍝ Object: get values in alphabetical order
+     isObj ⍵:⍵ ⎕VGET key ⍵        ⍝ Object: values in alpha order
 
-     isTable ⍵:1⊃⍵          ⍝ Table: return values matrix
+     isTable ⍵:1⊃⍵                ⍝ Table: values matrix
 
-     isXref ⍵:1⊃⍵           ⍝ Xref: return values matrix
+     isXref ⍵:1⊃⍵                 ⍝ Xref: values matrix
 
-     2=⎕NC'⍵':⍵             ⍝ Array: return the array itself
+     2=⎕NC'⍵':⍵⊣⎕SIGNAL 4/⍨0=≢⍴⍵  ⍝ non-scalar array
 
-     'argument must be dict, obj, table, xref or array' ⎕SIGNAL 11
+     'argument must be dict, obj, table, xref or array'⎕SIGNAL 11
  }

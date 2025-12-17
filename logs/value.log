@@ -4,28 +4,12 @@ PASS - [3] dictionary: mixed values
 PASS - [4] dictionary: single value
 PASS - [5] dictionary: with explicit default (N+1) - excludes default
 PASS - [6] dictionary: empty
-FAIL - [7] object: single variable
-    Expected: 12
-    Got: RANK ERROR
-FAIL - [8] object: multiple variables (alphabetical order by name)
-    Expected: 12 34 23
-    Got: RANK ERROR
-FAIL - [9] object: unsorted input becomes sorted by name
-    Expected: 1 2 3
-    Got: RANK ERROR
-FAIL - [10] object: mixed types in values
-    Expected: 10  hello   1 2 3  
-    Got: RANK ERROR
+PASS - [7] object: single variable
+PASS - [8] object: multiple variables (alphabetical order by name)
+PASS - [9] object: unsorted input becomes sorted by name
+PASS - [10] object: mixed types in values
 PASS - [11] table: values matrix
-FAIL - [12] table: single column
-    Expected: 
-Bob  
-Ted  
-Carol
-    Got: 
- Bob     name  
- Ted           
- Carol         
+PASS - [12] table: single column
 PASS - [13] table: two columns
 PASS - [14] table: single row
 PASS - [15] xref: values matrix

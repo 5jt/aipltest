@@ -73,7 +73,7 @@
  )
  (
   description:'object: single variable'
-  expected:12
+  expected:(12⋄)
   number:7
   rarg:(
    cow:12
@@ -141,16 +141,28 @@
  (
   description:'table: single column'
   expected:[
-   'Bob  '
-   'Ted  '
-   'Carol'
+   (
+    'Bob'
+   )
+   (
+    'Ted'
+   )
+   (
+    'Carol'
+   )
   ]
   number:12
   rarg:(
    [
-    'Bob  '
-    'Ted  '
-    'Carol'
+    (
+     'Bob'
+    )
+    (
+     'Ted'
+    )
+    (
+     'Carol'
+    )
    ]
    (
     'name'

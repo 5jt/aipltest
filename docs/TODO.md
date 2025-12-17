@@ -67,11 +67,11 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 7: Component extraction functions
 
-- [ ] Write tests for `key` and `value`
-- [ ] Seek approval for tests
-- [ ] Implement `key` and `value`
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Write tests for `key` and `value`
+- [x] Seek approval for tests
+- [x] Implement `key` and `value`
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 8: Refactor `at` for new spec (remove outrange handling)
 

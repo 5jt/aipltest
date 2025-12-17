@@ -85,6 +85,33 @@ The `⋄` separator divides **rows**, not columns. Each segment between `⋄` se
 ⍝ This is WRONG - treats data as columns
 ```
 
+**Newlines separate rows; single-element rows need parentheses**:
+
+In Array Notation, both `⋄` and newlines can separate rows. For single-element rows, both parentheses and diamonds are required to prevent treating elements as a stranded vector:
+
+```apl
+⍝ WRONG - creates a 3×5 char matrix, not a 3×1 string matrix:
+[
+ 'Bob'
+ 'Ted'
+ 'Carol'
+]
+
+⍝ CORRECT - creates a 3×1 string matrix:
+[
+ ('Bob' ⋄)
+ ('Ted' ⋄)
+ ('Carol' ⋄)
+]
+
+⍝ Multi-element rows need neither parentheses nor diamonds (strand forms the row):
+[
+ 'Bob' 21
+ 'Ted' 32
+]
+⍝ This correctly creates a 2×2 matrix
+```
+
 This applies to:
 - Table values: `(['Bob' 21 'blue' ⋄ ...] ⋄ 'name' 'age' 'eye')`
 - Xref values: `([21 'blue' ⋄ 32 'green'] ⋄ ...)`
