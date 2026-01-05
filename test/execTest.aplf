@@ -1,5 +1,5 @@
  execTest←{
-     ns←(breaks:0)⎕VSET{(n←⍵.⎕NL⍳16 ⋄ ⍵ ⎕VGET n)}⍵ ⍝ deep copy
+     ns←(breaks:0)⎕VSET{n←⍵.⎕NL⍳16 ⋄ (n ⋄ ⍵ ⎕VGET n)}⍵ ⍝ deep copy
      expn←'larg '/⍨×|ns.⎕NC'larg' ⍝ dyadic?
      expn,←'##.##.fun.',⍺,' rarg' ⍝ fun and tests are siblings
     ⍝ ⎕←'[',⍺,'] ',⍵.description
