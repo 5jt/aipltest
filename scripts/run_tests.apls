@@ -1,0 +1,29 @@
+#!/usr/local/bin/dyalogscript DYALOG_INITSESSION=1 ENABLE_CEF=0
+⎕←⎕EN
+⎕←⎕DM
+
+⎕←dyalog←2 ⎕NQ # 'GetEnvironment' 'DYALOG'
+⎕←link←2 ⎕NQ # 'GetEnvironment' 'DYALOGLINK'
+
+'this text will not be seen'
+⎕←'Name class of ⎕SE.Link: ',⍕⎕SE.⎕NC 'Link'
+⎕←'Names in ⎕SE.Link: ',∊⎕SE.Link.⎕NL-⍳16
+⎕←'Name class of ⎕SE.Link.Import: ',⍕⎕SE.⎕NC 'Link.Import'
+⍝
+⍝⎕←cwd←⊃1 ⎕NPARTS '' ⍝ current working directory
+⍝
+⍝
+⍝⍝⎕SE.Link.Import # cwd ⍝ load app
+⍝
+⍝⍝ report any load error
+⍝⎕←'Did we ',{⎕←⍵}' write to ⎕ within a dfn?'
+⍝confirm←{⍵:⎕←⍺ ⋄ ⎕←⎕DM ⋄ ⎕OFF}
+⍝⎕←'Name class of `confirm`: ',⍕⎕NC 'confirm'
+⍝_←'Import complete' confirm ⎕EN=0
+⍝
+⍝⍝ check argument
+⍝cla←2 ⎕NQ # 'GetCommandLineArgs'
+⍝_←'Command-line argument found' confirm 2≥≢cla
+⍝
+⍝⍝ run test
+⍝⎕←test.Run cla[2]

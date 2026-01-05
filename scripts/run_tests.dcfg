@@ -1,0 +1,8 @@
+{
+  Settings: {
+    // Explicitly define the path for macOS
+    DYALOG: "/Applications/Dyalog-20.0.app/Contents/Resources/Dyalog",
+    // Reference the defined variable
+    DyalogStartupSE: "[DYALOG]/StartupSession"
+  }
+}
