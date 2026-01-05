@@ -1,14 +1,18 @@
  show←{
-     _←'scalar' 'vector' 'matrix'⊃⍨1+≢⍴⍵
-     _,←' depth ',⍕≡⍵
-     _,←', shape ',{⍬≡⍵:'⍬' ⋄ ⍕⍵}⍴⍵
-     _,←', tally ',⍕≢⍵
-     t←{
+     dep←≡⍵
+     rnk←≢shp←⍴⍵
+     tly←≢⍵
+     _←'scalar' 'vector' 'matrix'⊃⍨1+rnk
+     _,←' depth ',⍕dep
+     _,←', shape ',{⍬≡⍵:'⍬' ⋄ ⍕⍵}shp
+     _,←', tally ',⍕tly
+     typ←{
          ⍵∊80 160 320:'char'
          ⍵≡83:'numeric'
          ⍕⍵
      }⎕DR ⍵
-     _,←', type ',t
+     _,←', type ',typ
      ⎕←_
-     ⍵
+     rnk dep shp tly≢0 0 ⍬ 1:⍵
+     ↑n{⍺ ⍵}¨⍵ ⎕VGET n←⍵.⎕NL-2
  }
