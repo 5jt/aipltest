@@ -15,6 +15,7 @@ Datatype tests
 
 
 An object here is a namespace containing only variables.
+Each variable’s value must itself be a variable (simple value) or another namespace (object).
 
 
 Prototype of an array
@@ -59,6 +60,8 @@ The function returns only the values, not the structure. For extracting substruc
 ### Index error behavior
 
 `at` signals an INDEX ERROR for out-of-range indices or invalid keys/names, **except** for dictionaries that have an explicit outrange value (N+1 element in the values vector).
+
+Apart from dictionaries with an explicit default, outrange indices always signal INDEX ERROR unless wrapped with `outr`, which substitutes implicit prototype defaults instead of errors.
 
 For handling outrange values without errors, use the `outr` operator (described below).
 
@@ -290,6 +293,8 @@ Unlike `at`, which returns values, `select` returns a structure of the same type
 
 `select` signals an INDEX ERROR for out-of-range indices or invalid keys/names, **except** for dictionaries that have an explicit outrange value (N+1 element in the values vector).
 
+Apart from dictionaries with an explicit default, outrange indices always signal INDEX ERROR unless wrapped with `outr`, which substitutes implicit prototype defaults instead of errors.
+
 For handling outrange values without errors, use the `outr` operator (described below).
 
 
@@ -303,6 +308,8 @@ Returns a dictionary containing only the selected keys and their values.
 1
 ```
 
+If the source dictionary has an explicit default value (N+1 values), the selected dictionary retains that default unchanged, even when `Y` contains only in-range keys.
+
 
 ### Object
 
@@ -314,12 +321,14 @@ Returns a new namespace containing only the selected variables.
       ⍝ obj2 is a namespace containing only sheep:23 and dog:34
 ```
 
+Objects follow APL’s `⎕NL` alphabetical ordering; `key` and `value` reflect this ordering.
+
 
 ### Table
 
 `Y` can be:
--   Row indices (integers): returns table with those rows
--   Column names (strings): returns table with those columns
+-   Row indices (integers, scalar or vector): returns table with those rows
+-   Column names (strings, scalar or vector): returns table with those columns
 -   `(rowIndices ⋄ columnNames)`: returns table with selected rows and columns
 
 ```apl
@@ -338,6 +347,8 @@ Returns a new namespace containing only the selected variables.
 1
 ```
 
+Row and column selections preserve the order and duplicates provided in `Y`. Under `select outr`, outrange rows are filled with prototype rows in the requested order; invalid column names still signal INDEX ERROR.
+
 
 ### Xref
 
@@ -348,6 +359,8 @@ Returns an xref with selected rows and columns.
       ([21 ⋄ 43] ⋄ ⊂'age' ⋄ 'Bob' 'Carol') ≡ x select (⊂'age' ⋄ 'Bob' 'Carol')
 1
 ```
+
+Row and column indices must be scalar or vector. Selections preserve the order and duplicates provided in `Y`. Under `select outr`, outrange rows or columns are filled with prototype rows/columns in the requested order.
 
 
 Handling outrange values with `outr`
@@ -621,4 +634,3 @@ Where the left argument is a list of values, each escaped expressions must be an
       'dog' 'fox'f'The quick, brown ${2} jumps ${3} the lazy ${1}.'
 The quick, brown fox jumps ${3} the lazy dog.
 ```
-
