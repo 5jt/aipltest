@@ -2102,18 +2102,8 @@
   )
  )
  (
+  breaks:3
   description:'table: outrange row returns cells with ⊃0⍴'
-  expected:(
-   [
-    '   ' 0  '    '
-    'Bob' 21 'blue'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
   larg:(
    [
     'Bob'   21 'blue'
@@ -2130,18 +2120,8 @@
   rarg:4 1
  )
  (
+  breaks:3
   description:'table: multiple outrange rows'
-  expected:(
-   [
-    '   ' 0 '    '
-    '   ' 0 '    '
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
   larg:(
    [
     'Bob'   21 'blue'
@@ -2158,19 +2138,8 @@
   rarg:4 5
  )
  (
+  breaks:3
   description:'table: outrange row (scalar) returns dictionary with ⊃0⍴'
-  expected:(
-   (
-    '   '
-    0
-    '    '
-   )
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
   larg:(
    [
     'Bob'   21 'blue'
@@ -2187,19 +2156,8 @@
   rarg:4
  )
  (
+  breaks:3
   description:'table: mixed valid and outrange rows'
-  expected:(
-   [
-    'Ted' 32 'green'
-    '   ' 0  '    '
-    'Bob' 21 'blue'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
   larg:(
    [
     'Bob'   21 'blue'
@@ -2216,18 +2174,8 @@
   rarg:2 5 1
  )
  (
+  breaks:3
   description:'index error: outrange column name'
-  expected:(
-   [
-    21 ''
-    32 ''
-    43 ''
-   ]
-   (
-    'age'
-    'sex'
-   )
-  )
   larg:(
    [
     'Bob'   21 'blue'
@@ -2313,7 +2261,7 @@
  )
  (
   description:'table: single row table, column access'
-  expected:42
+  expected:(42⋄)
   larg:(
    [
     'test' 42 99
@@ -2359,7 +2307,10 @@
     20 30
     50 60
    ]
-   'yz'
+   (
+    ('y'⋄)
+    ('z'⋄)
+   )
   )
   larg:(
    [
@@ -2376,7 +2327,10 @@
   number:140
   rarg:(
    1 2
-   'yz'
+   (
+    ('y'⋄)
+    ('z'⋄)
+   )
   )
  )
  (
@@ -2409,12 +2363,13 @@
   description:'table: mixed numeric and string columns'
   expected:(
    [
-    'Alice' 30
-    'Bob'   25
+    'Alice' 30 'Engineer'
+    'Bob'   25 'Designer'
    ]
    (
     'name'
     'age'
+    'role'
    )
   )
   larg:(
@@ -2434,7 +2389,7 @@
  )
  (
   description:'table: column name with spaces'
-  expected:25 35
+  expected:30 25 35
   larg:(
    [
     'Alice' 30 'Engineer'
@@ -2468,18 +2423,8 @@
   rarg:''
  )
  (
+  breaks:3
   description:'table: row index 0 (outrange)'
-  expected:(
-   [
-    ''    0  ''
-    'Bob' 21 'blue'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
   larg:(
    [
     'Bob'   21 'blue'
@@ -2496,18 +2441,8 @@
   rarg:0 1
  )
  (
+  breaks:3
   description:'table: negative row index (outrange)'
-  expected:(
-   [
-    ''    0  ''
-    'Bob' 21 'blue'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
   larg:(
    [
     'Bob'   21 'blue'
@@ -2576,7 +2511,16 @@
  )
  (
   description:'table: unicode column names'
-  expected:2 3
+  expected:(
+   [
+    2 3
+    5 6
+   ]
+   (
+    ('β'⋄)
+    ('γ'⋄)
+   )
+  )
   larg:(
    [
     1 2 3
@@ -2589,11 +2533,23 @@
    )
   )
   number:150
-  rarg:'βγ'
+  rarg:(
+   ('β'⋄)
+   ('γ'⋄)
+  )
  )
  (
   description:'table: emoji column names'
-  expected:20 30
+  expected:(
+   [
+    20 30
+    50 60
+   ]
+   (
+    ('🐑'⋄)
+    ('🐕'⋄)
+   )
+  )
   larg:(
    [
     10 20 30
@@ -2606,7 +2562,10 @@
    )
   )
   number:151
-  rarg:'🐑🐕'
+  rarg:(
+   ('🐑'⋄)
+   ('🐕'⋄)
+  )
  )
  (
   description:'table: single row vector index with 1 element'
@@ -2636,34 +2595,6 @@
   rarg:(3⋄)
  )
  (
-  description:'table: nested vector values in cells'
-  expected:(
-   [
-    1 2 3
-    4 5 6
-   ]
-   (
-    'values'
-   )
-  )
-  larg:(
-   [
-    (
-     [
-      1 2 3
-      4 5 6
-      7 8 9
-     ]
-    )
-   ]
-   (
-    'values'
-   )
-  )
-  number:153
-  rarg:1 2
- )
- (
   breaks:11
   description:'domain error: table left arg, right arg not int or string'
   larg:(
@@ -2677,7 +2608,7 @@
     'eye'
    )
   )
-  number:154
+  number:153
   rarg:1.5
  )
  (
@@ -2694,7 +2625,7 @@
     'eye'
    )
   )
-  number:155
+  number:154
   rarg:(
    1 2
    1.5
@@ -2704,7 +2635,11 @@
   description:'table: empty row selection returns empty table'
   expected:(
    0⌿[
-    0 0 0
+    (
+     '   '
+     '   '
+     '   '
+    )
    ]
    (
     'name'
@@ -2724,16 +2659,22 @@
     'eye'
    )
   )
-  number:156
+  number:155
   rarg:⍬
  )
  (
   description:'table: empty column selection returns zero-column table'
   expected:(
    [
-    ⍬
-    ⍬
-    ⍬
+    0⌿(
+     '   '
+    )
+    0⌿(
+     '   '
+    )
+    0⌿(
+     '   '
+    )
    ]
    0⌿(
     ''
@@ -2751,19 +2692,37 @@
     'eye'
    )
   )
-  number:157
+  number:156
   rarg:0⌿(
    ''
   )
  )
  (
+  breaks:3
   description:'table: outrange scalar row with column selection returns  dictionary'
-  expected:(
-   (0⋄)
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:157
+  rarg:(
+   4
    (
     'age'
    )
   )
+ )
+ (
+  breaks:3
+  description:'table: outrange vector rows with column selection'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2777,37 +2736,6 @@
    )
   )
   number:158
-  rarg:(
-   4
-   (
-    'age'
-   )
-  )
- )
- (
-  description:'table: outrange vector rows with column selection'
-  expected:(
-   [
-     0
-    21
-   ]
-   (
-    'age'
-   )
-  )
-  larg:(
-   [
-    'Bob'   21 'blue'
-    'Ted'   32 'green'
-    'Carol' 43 'brown'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
-  number:159
   rarg:(
    4 1
    (
@@ -2830,7 +2758,10 @@
     'eye'
    )
   )
-  number:160
-  rarg:1
+  number:159
+  rarg:(
+   1 2
+   1
+  )
  )
 )

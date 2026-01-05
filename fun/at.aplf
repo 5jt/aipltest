@@ -28,13 +28,13 @@
      isTable ⍺:⍺{
          (mat nms)←⍺ ⍝ value matrix; col names
         ⍝ outrange column cell is ⊂'' unless numeric mat
-         occ←{(2=≡⍵)∧83 645∊⍨⎕DR ⍵:0 ⋄ ⊂''}mat
-         Mc←mat,⍤1⊢occ ⍝ with outrange column
-         Mr←mat⍪pt⍤1⊢⍉mat ⍝ with outrange row
-         Mb←Mr,⍤1⊢occ ⍝ with both
+        ⍝  occ←{(2=≡⍵)∧83 645∊⍨⎕DR ⍵:0 ⋄ ⊂''}mat
+        ⍝  Mc←mat,⍤1⊢occ ⍝ with outrange column
+        ⍝  Mr←mat⍪pt⍤1⊢⍉mat ⍝ with outrange row
+        ⍝  Mb←Mr,⍤1⊢occ ⍝ with both
         ⍝ interpret ⍵ as row/col index or indices
          (rcb ir ic)←nms{
-             83=⎕DR ⍵:('row','s'/⍨1=≢⍴⍵ ⋄ ⍵ ⋄ ⍳≢⍺)           ⍝ row/s
+             11 83∨.=⎕DR ⍵:('row','s'/⍨1=≢⍴⍵ ⋄ ⍵ ⋄ ⍳≢⍺)      ⍝ row/s
              isStrung ⍵:('col','s'/⍨isStrings ⍵ ⋄ ⍬ ⋄ ⍺⍳⊆⍵)  ⍝ col name/s
              2≠≢⍵:⎕SIGNAL 11
              (ri ci)←⍵
@@ -42,13 +42,15 @@
              (0=≢⍴ri)∧isString ci:('cell' ⋄ ri ⋄ ⍺⍳⊂ci)      ⍝ row & col
              ('rc' ⋄ ri ⋄ ⍺⍳⊆ci)                             ⍝ rows & cols
          }⍵
-         ir⌊←≢Mr ⍝ outrange row index
-         rcb≡'row':(Mr[⊃ir;] ⋄ nms) ⍝ dictionary
-         rcb≡'rows':(Mr[ir;] ⋄ nms) ⍝ table
-         rcb≡'col':Mc[;ic] ⍝ column vector
-         rcb≡'cols':(Mc[;ic] ⋄ ⍵) ⍝ table
-         rcb≡'cell':⊃Mb[ir;ic] ⍝ single value
-         rcb≡'rc':(Mb[ir;ic] ⋄ 2⊃⍵) ⍝ table
+        ⍝  ir⌊←≢Mr ⍝ outrange row index
+        ⍝ assert: ∧/∊ir ic ≤¨⍴M
+         3::⎕SIGNAL 3 ⍝ propagate index error
+         rcb≡'row':(mat[⊃ir;] ⋄ nms) ⍝ dictionary
+         rcb≡'rows':(mat[ir;] ⋄ nms) ⍝ table
+         rcb≡'col':mat[;ic] ⍝ column vector
+         rcb≡'cols':(mat[;ic] ⋄ ⍵) ⍝ table
+         rcb≡'cell':⊃mat[ir;ic] ⍝ single value
+         rcb≡'rc':(mat[ir;ic] ⋄ 2⊃⍵) ⍝ table
      }⍵
      'not dictionary, object or table'⎕SIGNAL 11
  }

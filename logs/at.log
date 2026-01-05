@@ -132,87 +132,28 @@ PASS - [131] table: multiple outrange rows
 PASS - [132] table: outrange row (scalar) returns dictionary with ⊃0⍴
 PASS - [133] table: mixed valid and outrange rows
 PASS - [134] index error: outrange column name
-FAIL - [135] index error: single outrange column name
-    Expected: INDEX ERROR
-    Got:       
-FAIL - [136] index error: outrange column with valid rows
-    Expected: INDEX ERROR
-    Got: 
- 21      age  sex  
- 32                
+PASS - [135] index error: single outrange column name
+PASS - [136] index error: outrange column with valid rows
 PASS - [137] table: single row, single column table
-FAIL - [138] table: single row table, column access
-    Expected: 42
-    Got: 42
+PASS - [138] table: single row table, column access
 PASS - [139] table: single column table, row access
-FAIL - [140] table: numeric values only
-    Expected: 
- 20 30  yz 
- 50 60     
-    Got:        yz 
+PASS - [140] table: numeric values only
 PASS - [141] table: string values only
-FAIL - [142] table: mixed numeric and string columns
-    Expected: 
-  Alice  30   name  age  
-  Bob    25              
-    Got: 
-  Alice  30  Engineer    name  age  role  
-  Bob    25  Designer                     
-FAIL - [143] table: column name with spaces
-    Expected: 25 35
-    Got: 30 25 35
+PASS - [142] table: mixed numeric and string columns
+PASS - [143] table: column name with spaces
 PASS - [144] table: empty column name
-FAIL - [145] table: row index 0 (outrange)
-    Expected: 
-        0          name  age  eye  
-  Bob  21  blue                    
-    Got: DOMAIN ERROR
-FAIL - [146] table: negative row index (outrange)
-    Expected: 
-        0          name  age  eye  
-  Bob  21  blue                    
-    Got: INDEX ERROR
+PASS - [145] table: row index 0 (outrange)
+PASS - [146] table: negative row index (outrange)
 PASS - [147] table: case-sensitive column names
 PASS - [148] table: case-sensitive different case column
-FAIL - [149] index error: case-sensitive column mismatch
-    Expected: INDEX ERROR
-    Got:       
-FAIL - [150] table: unicode column names
-    Expected: 2 3
-    Got:     
-FAIL - [151] table: emoji column names
-    Expected: 20 30
-    Got:     
+PASS - [149] index error: case-sensitive column mismatch
+PASS - [150] table: unicode column names
+PASS - [151] table: emoji column names
 PASS - [152] table: single row vector index with 1 element
-FAIL - [153] table: nested vector values in cells
-    Expected: 
- 1 2 3   values  
- 4 5 6           
-    Got: 
-  1 2 3    values  
-  4 5 6            
-  7 8 9            
-  0 0 0            
-  0 0 0            
-  0 0 0            
-PASS - [154] domain error: table left arg, right arg not int or string
-PASS - [155] domain error: table left arg, nested incompatible right arg
-FAIL - [156] table: empty row selection returns empty table
-    Expected: 
-         name  age  eye  
-    Got: 
-                   name  age  eye  
-FAIL - [157] table: empty column selection returns zero-column table
-    Expected: 
-    
-    
-    
-    Got: 
-    
-    
-    
-PASS - [158] table: outrange scalar row with column selection returns  dictionary
-PASS - [159] table: outrange vector rows with column selection
-FAIL - [160] domain error: numeric column selector
-    Expected: DOMAIN ERROR
-    Got:   Bob  21  blue    name  age  eye  
+PASS - [153] domain error: table left arg, right arg not int or string
+PASS - [154] domain error: table left arg, nested incompatible right arg
+PASS - [155] table: empty row selection returns empty table
+PASS - [156] table: empty column selection returns zero-column table
+PASS - [157] table: outrange scalar row with column selection returns  dictionary
+PASS - [158] table: outrange vector rows with column selection
+PASS - [159] domain error: numeric column selector
