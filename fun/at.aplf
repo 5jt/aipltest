@@ -5,49 +5,48 @@
     ⍝ Syntax: sel ← ⍺ at keys
     ⍝ Returns values for keys
     ⍝ A dictionary can have an explicit default outrange value
-    ⍝ Otherwise, outrange keys return prototype values
-     isDict ⍺:⍺{
-         (v k)←⍺
-         nestedKey←1≠≡k
-         singleIndex←nestedKey{0=≢⍴⍵:1 ⋄ ⍺:1=≡⍵ ⋄ 0=≡⍵}⍵
-         i←k⍳⊂⍣(nestedKey∧singleIndex∧1=≡⍵)⊢⍵
-         singleIndex:i⊃v
-         v[i]
-     }⍵
-     isObj ⍺:⍺{
-         ~isStrung ⍵:'indices not string/s'⎕SIGNAL 11
-         ¯1∊⎕NC,⍵:'indices not valid names'⎕SIGNAL 11
-         v←⍺ ⎕VGET k←⍺.⎕NL-2          ⍝ keys and values
-         singleIndex←0 1∊⍨≡⍵
-         i←k⍳(⊂∘,)⍣singleIndex⊢⍵
-         singleIndex:i⊃v
-         v[i]
-     }⍵
-     isTable ⍺:⍺{
-         (mat nms)←⍺ ⍝ value matrix; col names
-        ⍝ outrange column cell is ⊂'' unless numeric mat
-        ⍝  occ←{(2=≡⍵)∧83 645∊⍨⎕DR ⍵:0 ⋄ ⊂''}mat
-        ⍝  Mc←mat,⍤1⊢occ ⍝ with outrange column
-        ⍝  Mr←mat⍪pt⍤1⊢⍉mat ⍝ with outrange row
-        ⍝  Mb←Mr,⍤1⊢occ ⍝ with both
-        ⍝ interpret ⍵ as row/col index or indices
-         (rcb ir ic)←nms{
-             11 83∨.=⎕DR ⍵:('row','s'/⍨1=≢⍴⍵ ⋄ ⍵ ⋄ ⍳≢⍺)      ⍝ row/s
-             isStrung ⍵:('col','s'/⍨isStrings ⍵ ⋄ ⍬ ⋄ ⍺⍳⊆⍵)  ⍝ col name/s
-             2≠≢⍵:⎕SIGNAL 11
-             (ri ci)←⍵
-             (83=⎕DR ri)⍲isStrung ci:⎕SIGNAL 11
-             (0=≢⍴ri)∧isString ci:('cell' ⋄ ri ⋄ ⍺⍳⊂ci)      ⍝ row & col
-             ('rc' ⋄ ri ⋄ ⍺⍳⊆ci)                             ⍝ rows & cols
+    ⍝ Otherwise, outrange keys signal idex errors
+     (val ind)←⍺{
+         isDict ⍺:⍺{
+             (v k)←⍺
+             nestedKey←1≠≡k
+             singleIndex←nestedKey{0=≢⍴⍵:1 ⋄ ⍺:1=≡⍵ ⋄ 0=≡⍵}⍵
+             w←⊂⍣(nestedKey∧singleIndex∧1=≡⍵)⊢⍵
+             i←⊃⍣singleIndex⊢k⍳w
+             (v i)
          }⍵
-        ⍝  ir⌊←≢Mr ⍝ outrange row index
-        ⍝ assert: ∧/∊ir ic ≤¨⍴M
-         rcb≡'row':mat[⊃ir;] ⍝ dictionary
-         rcb≡'rows':mat[ir;] ⍝ table
-         rcb≡'col':mat[;ic] ⍝ column vector
-         rcb≡'cols':mat[;ic] ⍝ table
-         rcb≡'cell':⊃mat[ir;ic] ⍝ single value
-         rcb≡'rc':mat[ir;ic] ⍝ table
+         isObj ⍺:⍺{
+             ~isStrung ⍵:'indices not string/s'⎕SIGNAL 11
+             ¯1∊⎕NC,⍵:'indices not valid names'⎕SIGNAL 11
+             v←⍺ ⎕VGET k←⍺.⎕NL-2          ⍝ keys and values
+             singleIndex←0 1∊⍨≡⍵
+             w←(⊂∘,)⍣singleIndex⊢⍵
+             i←⊃⍣singleIndex⊢k⍳w
+             (v i)
+         }⍵
+         isTable ⍺:⍺{
+             (ir ic)←⍺{
+                 (mat nms)←⍺ ⍝ value matrix; col names
+                 11 83∨.=⎕DR ⍵:(⍵ ⋄ ⍳≢nms)             ⍝ row/s
+                 isStrung ⍵:(⍳≢mat ⋄ nms⍳⊆⍵)               ⍝ col name/s
+                 2≠≢⍵:⎕SIGNAL 11
+                 (ri ci)←⍵
+                 (83=⎕DR ri)⍲isStrung ci:⎕SIGNAL 11
+                ⍝  (0=≢⍴ri)∧isString ci:(ri ⋄ nms⍳⊂ci)   ⍝ row & col
+                 (ri ⋄ nms⍳⊆ci)                        ⍝ rows & cols
+             }⍵
+             mat←⊃⍺
+            ⍝ assert: ∧/∊ir ic ≤¨⍴mat
+             i←(⍴mat){
+                 ⎕IO←0
+                 c←⊃∘.,/⍵
+                 1∊∊⍺∘<¨c:⎕SIGNAL 3
+                 s←+/≢∘⍴¨⍵
+                ⊃⍣(s=0)⊢,⍣(s=1)⊢1+⍺∘⊥¨c-1
+             }ir ic
+             (,⊃⍺ ⋄ i)
+         }⍵
+         'not dictionary, object or table'⎕SIGNAL 11
      }⍵
-     'not dictionary, object or table'⎕SIGNAL 11
+     ⊃⍣(0=≢⍴ind)⊢val[ind]
  }
