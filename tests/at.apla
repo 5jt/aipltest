@@ -684,20 +684,6 @@
   ]
  )
  (
-  description:'dictionary: scalar key produces scalar result'
-  expected:23
-  larg:(
-   12 23 34
-   (
-    'cow'
-    'sheep'
-    'dog'
-   )
-  )
-  number:45
-  rarg:'sheep'
- )
- (
   description:'dictionary: rank-3 array keys'
   expected:[
    [
@@ -713,7 +699,7 @@
    1 2 3
    'abc'
   )
-  number:46
+  number:45
   rarg:[
    [
     'ab'
@@ -736,7 +722,7 @@
     'dog'
    )
   )
-  number:47
+  number:46
   rarg:(
    'sheep'
   )
@@ -748,7 +734,7 @@
    100 200 300
    '123'
   )
-  number:48
+  number:47
   rarg:'2'
  )
  (
@@ -762,7 +748,7 @@
     'very-long-key-name-three'
    )
   )
-  number:49
+  number:48
   rarg:'very-long-key-name-two'
  )
  (
@@ -776,7 +762,7 @@
     'dog'
    )
   )
-  number:50
+  number:49
   rarg:123
  )
  (
@@ -790,21 +776,21 @@
     'dog'
    )
   )
-  number:51
+  number:50
   rarg:1 2 3
  )
  (
   breaks:11
   description:'domain error: left argument not a dictionary'
   larg:1 2 3
-  number:52
+  number:51
   rarg:'a'
  )
  (
   breaks:11
   description:'domain error: left argument is not a dictionary'
   larg:'abc'
-  number:53
+  number:52
   rarg:'a'
  )
  (
@@ -814,7 +800,7 @@
    ⍬
    ''
   )
-  number:54
+  number:53
   rarg:'anything'
  )
  (
@@ -826,7 +812,7 @@
     ''
    )
   )
-  number:55
+  number:54
   rarg:'anything'
  )
  (
@@ -838,7 +824,7 @@
    )
    ''
   )
-  number:56
+  number:55
   rarg:'anything'
  )
  (
@@ -852,7 +838,7 @@
     ''
    )
   )
-  number:57
+  number:56
   rarg:'anything'
  )
  (
@@ -862,7 +848,7 @@
    10 20 30
    'aba'
   )
-  number:58
+  number:57
   rarg:'a'
  )
  (
@@ -872,7 +858,7 @@
    10 20 30
    'aba'
   )
-  number:59
+  number:58
   rarg:'aba'
  )
  (
@@ -882,7 +868,7 @@
    10 20 30 40
    'xyxy'
   )
-  number:60
+  number:59
   rarg:'xy'
  )
  (
@@ -896,7 +882,7 @@
    )
    'abc'
   )
-  number:61
+  number:60
   rarg:'d'
  )
  (
@@ -915,7 +901,7 @@
    )
    'ab'
   )
-  number:62
+  number:61
   rarg:'c'
  )
  (
@@ -929,7 +915,7 @@
    )
    'abc'
   )
-  number:63
+  number:62
   rarg:'d'
  )
  (
@@ -948,7 +934,7 @@
    )
    'ab'
   )
-  number:64
+  number:63
   rarg:'c'
  )
  (
@@ -962,7 +948,7 @@
    )
    'abc'
   )
-  number:65
+  number:64
   rarg:'d'
  )
  (
@@ -985,7 +971,7 @@
    )
    'abc'
   )
-  number:66
+  number:65
   rarg:'d'
  )
  (
@@ -1000,7 +986,7 @@
    )
    'abc'
   )
-  number:67
+  number:66
   rarg:'d'
  )
  (
@@ -1010,7 +996,7 @@
    1 2 3 4 5
    'abc'
   )
-  number:68
+  number:67
   rarg:'a'
  )
  (
@@ -1020,7 +1006,7 @@
    1 2
    'abc'
   )
-  number:69
+  number:68
   rarg:'a'
  )
  (
@@ -1030,7 +1016,7 @@
    10 20 30
    1 2 3
   )
-  number:70
+  number:69
   rarg:'a'
  )
  (
@@ -1040,7 +1026,7 @@
    1 2 3
    'a' 42 'c'
   )
-  number:71
+  number:70
   rarg:'a'
  )
  (
@@ -1051,7 +1037,7 @@
    dog:34
    sheep:23
   )
-  number:72
+  number:71
   rarg:'sheep'
  )
  (
@@ -1062,7 +1048,7 @@
    dog:34
    sheep:23
   )
-  number:73
+  number:72
   rarg:'cow'
  )
  (
@@ -1073,7 +1059,7 @@
    dog:34
    sheep:23
   )
-  number:74
+  number:73
   rarg:'dog'
  )
  (
@@ -1084,7 +1070,7 @@
    dog:34
    sheep:23
   )
-  number:75
+  number:74
   rarg:(
    'sheep'
    'cow'
@@ -1098,7 +1084,7 @@
    dog:34
    sheep:23
   )
-  number:76
+  number:75
   rarg:(
    'cow'
    'sheep'
@@ -1113,7 +1099,7 @@
    dog:34
    sheep:23
   )
-  number:77
+  number:76
   rarg:(
    'dog'
    'sheep'
@@ -1128,7 +1114,7 @@
    dog:34
    sheep:23
   )
-  number:78
+  number:77
   rarg:(
    'sheep'
    'sheep'
@@ -1143,7 +1129,7 @@
    dog:34
    sheep:23
   )
-  number:79
+  number:78
   rarg:'cat'
  )
  (
@@ -1154,7 +1140,7 @@
    dog:34
    sheep:23
   )
-  number:80
+  number:79
   rarg:(
    'cat'
    'mouse'
@@ -1168,7 +1154,7 @@
    dog:34
    sheep:23
   )
-  number:81
+  number:80
   rarg:(
    'sheep'
    'cat'
@@ -1182,7 +1168,7 @@
    dog:34
    sheep:23
   )
-  number:82
+  number:81
   rarg:(
    'cat'
    'sheep'
@@ -1196,7 +1182,7 @@
    dog:34
    sheep:23
   )
-  number:83
+  number:82
   rarg:(
    'cat'
    'sheep'
@@ -1212,7 +1198,7 @@
    sky:'blue'
    stop:'red'
   )
-  number:84
+  number:83
   rarg:'go'
  )
  (
@@ -1226,7 +1212,7 @@
    sky:'blue'
    stop:'red'
   )
-  number:85
+  number:84
   rarg:(
    'sky'
    'stop'
@@ -1240,7 +1226,7 @@
    sky:'blue'
    stop:'red'
   )
-  number:86
+  number:85
   rarg:'caution'
  )
  (
@@ -1251,7 +1237,7 @@
    b:4 5 6
    c:7 8
   )
-  number:87
+  number:86
   rarg:'b'
  )
  (
@@ -1262,7 +1248,7 @@
    b:4 5 6
    c:7 8
   )
-  number:88
+  number:87
   rarg:'ca'
  )
  (
@@ -1276,7 +1262,7 @@
    b:4 5 6
    c:7 8
   )
-  number:89
+  number:88
   rarg:(
    ('c'⋄)
    ('a'⋄)
@@ -1296,7 +1282,7 @@
    ]
    key3:'foo'
   )
-  number:90
+  number:89
   rarg:'key2'
  )
  (
@@ -1305,7 +1291,7 @@
   larg:(
    answer:42
   )
-  number:91
+  number:90
   rarg:'answer'
  )
  (
@@ -1314,7 +1300,7 @@
   larg:(
    answer:42
   )
-  number:92
+  number:91
   rarg:'question'
  )
  (
@@ -1325,7 +1311,7 @@
    firstName:10
    lastName:20
   )
-  number:93
+  number:92
   rarg:'lastName'
  )
  (
@@ -1336,7 +1322,7 @@
    naïve:2
    résumé:3
   )
-  number:94
+  number:93
   rarg:'naïve'
  )
  (
@@ -1346,7 +1332,7 @@
    ABC:2
    abc:1
   )
-  number:95
+  number:94
   rarg:'abc'
  )
  (
@@ -1356,7 +1342,7 @@
    ABC:2
    abc:1
   )
-  number:96
+  number:95
   rarg:'ABC'
  )
  (
@@ -1366,7 +1352,7 @@
    ABC:2
    abc:1
   )
-  number:97
+  number:96
   rarg:'Abc'
  )
  (
@@ -1377,7 +1363,7 @@
    y:20
    z:30
   )
-  number:98
+  number:97
   rarg:'y'
  )
  (
@@ -1388,7 +1374,7 @@
    b:20
    c:30
   )
-  number:99
+  number:98
   rarg:'cab'
  )
  (
@@ -1399,7 +1385,7 @@
    b:20
    c:30
   )
-  number:100
+  number:99
   rarg:(
    ('c'⋄)
    ('a'⋄)
@@ -1417,7 +1403,7 @@
    dog:34
    sheep:23
   )
-  number:101
+  number:100
   rarg:[
    'sheep' 'cow'
    'dog'   'sheep'
@@ -1435,7 +1421,7 @@
    b:20
    c:30
   )
-  number:102
+  number:101
   rarg:[
    ('a'⋄) ('b'⋄) ('c'⋄)
    ('b'⋄) ('a'⋄) ('c'⋄)
@@ -1450,22 +1436,11 @@
    dog:34
    sheep:23
   )
-  number:103
+  number:102
   rarg:[
    'sheep' 'cat'   'dog'
    'cow'   'mouse' 'sheep'
   ]
- )
- (
-  description:'object: scalar variable produces scalar result'
-  expected:23
-  larg:(
-   cow:12
-   dog:34
-   sheep:23
-  )
-  number:104
-  rarg:'sheep'
  )
  (
   description:'object: rank-3 array variable names'
@@ -1484,7 +1459,7 @@
    b:2
    c:3
   )
-  number:105
+  number:103
   rarg:[
    [
     ('a'⋄) ('b'⋄)
@@ -1504,7 +1479,7 @@
    dog:34
    sheep:23
   )
-  number:106
+  number:104
   rarg:(
    'sheep'
   )
@@ -1517,7 +1492,7 @@
    veryLongVariableNameThree:3
    veryLongVariableNameTwo:2
   )
-  number:107
+  number:105
   rarg:'veryLongVariableNameTwo'
  )
  (
@@ -1530,7 +1505,7 @@
    )
    outer:3
   )
-  number:108
+  number:106
   rarg:'inner'
  )
  (
@@ -1545,7 +1520,7 @@
    label:'test'
    values:1 2 3
   )
-  number:109
+  number:107
   rarg:(
    'label'
    'count'
@@ -1556,7 +1531,7 @@
   description:'object: empty object'
   larg:(
   )
-  number:110
+  number:108
   rarg:'anything'
  )
  (
@@ -1566,7 +1541,7 @@
    x:1
    y:2
   )
-  number:111
+  number:109
   rarg:123
  )
  (
@@ -1576,7 +1551,7 @@
    x:1
    y:2
   )
-  number:112
+  number:110
   rarg:1 2 3
  )
  (
@@ -1598,7 +1573,7 @@
     'eye'
    )
   )
-  number:113
+  number:111
   rarg:1
  )
  (
@@ -1618,30 +1593,8 @@
     'eye'
    )
   )
-  number:114
+  number:112
   rarg:(2⋄)
- )
- (
-  description:'table: first row index returns vector'
-  expected:(
-   'Bob'
-   21
-   'blue'
-  )
-  larg:(
-   [
-    'Bob'   21 'blue'
-    'Ted'   32 'green'
-    'Carol' 43 'brown'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
-  number:115
-  rarg:1
  )
  (
   description:'table: last row index returns vector'
@@ -1662,7 +1615,7 @@
     'eye'
    )
   )
-  number:116
+  number:113
   rarg:3
  )
  (
@@ -1683,7 +1636,7 @@
     'eye'
    )
   )
-  number:117
+  number:114
   rarg:1 2
  )
  (
@@ -1704,7 +1657,7 @@
     'eye'
    )
   )
-  number:118
+  number:115
   rarg:3 1
  )
  (
@@ -1726,7 +1679,7 @@
     'eye'
    )
   )
-  number:119
+  number:116
   rarg:1 2 3
  )
  (
@@ -1748,7 +1701,7 @@
     'eye'
    )
   )
-  number:120
+  number:117
   rarg:2 2 1
  )
  (
@@ -1766,7 +1719,7 @@
     'eye'
    )
   )
-  number:121
+  number:118
   rarg:'age'
  )
  (
@@ -1788,7 +1741,7 @@
     'eye'
    )
   )
-  number:122
+  number:119
   rarg:(
    'eye'
    'name'
@@ -1813,7 +1766,7 @@
     'eye'
    )
   )
-  number:123
+  number:120
   rarg:(
    'name'
    'age'
@@ -1839,7 +1792,7 @@
     'eye'
    )
   )
-  number:124
+  number:121
   rarg:(
    'eye'
    'age'
@@ -1865,7 +1818,7 @@
     'eye'
    )
   )
-  number:125
+  number:122
   rarg:(
    'age'
    'age'
@@ -1890,7 +1843,7 @@
     'eye'
    )
   )
-  number:126
+  number:123
   rarg:(
    3 1
    (
@@ -1914,7 +1867,7 @@
     'eye'
    )
   )
-  number:127
+  number:124
   rarg:(
    2
    'name'
@@ -1938,7 +1891,7 @@
     'eye'
    )
   )
-  number:128
+  number:125
   rarg:(
    2
    (
@@ -1969,7 +1922,7 @@
     'eye'
    )
   )
-  number:129
+  number:126
   rarg:(
    3 1
    (
@@ -1992,7 +1945,7 @@
     'eye'
    )
   )
-  number:130
+  number:127
   rarg:4 1
  )
  (
@@ -2010,7 +1963,7 @@
     'eye'
    )
   )
-  number:131
+  number:128
   rarg:4 5
  )
  (
@@ -2028,7 +1981,7 @@
     'eye'
    )
   )
-  number:132
+  number:129
   rarg:4
  )
  (
@@ -2046,7 +1999,7 @@
     'eye'
    )
   )
-  number:133
+  number:130
   rarg:2 5 1
  )
  (
@@ -2064,7 +2017,7 @@
     'eye'
    )
   )
-  number:134
+  number:131
   rarg:(
    'age'
    'sex'
@@ -2085,7 +2038,7 @@
     'eye'
    )
   )
-  number:135
+  number:132
   rarg:'sex'
  )
  (
@@ -2103,7 +2056,7 @@
     'eye'
    )
   )
-  number:136
+  number:133
   rarg:(
    1 2
    (
@@ -2127,7 +2080,7 @@
     'col'
    )
   )
-  number:137
+  number:134
   rarg:1
  )
  (
@@ -2143,7 +2096,7 @@
     'y'
    )
   )
-  number:138
+  number:135
   rarg:'x'
  )
  (
@@ -2163,7 +2116,7 @@
     'value'
    )
   )
-  number:139
+  number:136
   rarg:1 2 3
  )
  (
@@ -2184,7 +2137,7 @@
     ('z'⋄)
    )
   )
-  number:140
+  number:137
   rarg:(
    1 2
    (
@@ -2210,7 +2163,7 @@
     'color2'
    )
   )
-  number:141
+  number:138
   rarg:1 2
  )
  (
@@ -2231,7 +2184,7 @@
     'role'
    )
   )
-  number:142
+  number:139
   rarg:1 2
  )
  (
@@ -2249,7 +2202,7 @@
     'role'
    )
   )
-  number:143
+  number:140
   rarg:'age value'
  )
  (
@@ -2266,7 +2219,7 @@
     'value'
    )
   )
-  number:144
+  number:141
   rarg:''
  )
  (
@@ -2284,7 +2237,7 @@
     'eye'
    )
   )
-  number:145
+  number:142
   rarg:0 1
  )
  (
@@ -2302,7 +2255,7 @@
     'eye'
    )
   )
-  number:146
+  number:143
   rarg:¯1 1
  )
  (
@@ -2319,7 +2272,7 @@
     'name'
    )
   )
-  number:147
+  number:144
   rarg:'Name'
  )
  (
@@ -2336,7 +2289,7 @@
     'name'
    )
   )
-  number:148
+  number:145
   rarg:'name'
  )
  (
@@ -2353,7 +2306,7 @@
     'name'
    )
   )
-  number:149
+  number:146
   rarg:'NAME'
  )
  (
@@ -2373,7 +2326,7 @@
     ('γ'⋄)
    )
   )
-  number:150
+  number:147
   rarg:(
    ('β'⋄)
    ('γ'⋄)
@@ -2396,7 +2349,7 @@
     ('🐕'⋄)
    )
   )
-  number:151
+  number:148
   rarg:(
    ('🐑'⋄)
    ('🐕'⋄)
@@ -2419,7 +2372,7 @@
     'eye'
    )
   )
-  number:152
+  number:149
   rarg:(3⋄)
  )
  (
@@ -2436,7 +2389,7 @@
     'eye'
    )
   )
-  number:153
+  number:150
   rarg:1.5
  )
  (
@@ -2453,7 +2406,7 @@
     'eye'
    )
   )
-  number:154
+  number:151
   rarg:(
    1 2
    1.5
@@ -2480,7 +2433,7 @@
     'eye'
    )
   )
-  number:155
+  number:152
   rarg:⍬
  )
  (
@@ -2508,7 +2461,7 @@
     'eye'
    )
   )
-  number:156
+  number:153
   rarg:0⌿(
    ''
   )
@@ -2528,7 +2481,7 @@
     'eye'
    )
   )
-  number:157
+  number:154
   rarg:(
    4
    (
@@ -2551,7 +2504,7 @@
     'eye'
    )
   )
-  number:158
+  number:155
   rarg:(
    4 1
    (
@@ -2574,7 +2527,7 @@
     'eye'
    )
   )
-  number:159
+  number:156
   rarg:(
    1 2
    1
@@ -2595,7 +2548,7 @@
     'eye'
    )
   )
-  number:160
+  number:157
   rarg:(
    2
    'sex'
@@ -2616,7 +2569,7 @@
     'eye'
    )
   )
-  number:161
+  number:158
   rarg:(
    1 2
    'sex'
