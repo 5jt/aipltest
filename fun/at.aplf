@@ -8,22 +8,20 @@
     ⍝ Otherwise, outrange keys return prototype values
      isDict ⍺:⍺{
          (v k)←⍺
-         V←v,pt v ⍝ with outrange value
          nestedKey←1≠≡k
          singleIndex←nestedKey{0=≢⍴⍵:1 ⋄ ⍺:1=≡⍵ ⋄ 0=≡⍵}⍵
          i←k⍳⊂⍣(nestedKey∧singleIndex∧1=≡⍵)⊢⍵
-         singleIndex:i⊃V
-         V[i]
+         singleIndex:i⊃v
+         v[i]
      }⍵
      isObj ⍺:⍺{
          ~isStrung ⍵:'indices not string/s'⎕SIGNAL 11
          ¯1∊⎕NC,⍵:'indices not valid names'⎕SIGNAL 11
          v←⍺ ⎕VGET k←⍺.⎕NL-2          ⍝ keys and values
-         V←v,k{×≢⍺:pt ⍵ ⋄ ⊂''}v  ⍝ with outrange value
          singleIndex←0 1∊⍨≡⍵
          i←k⍳(⊂∘,)⍣singleIndex⊢⍵
-         singleIndex:i⊃V
-         V[i]
+         singleIndex:i⊃v
+         v[i]
      }⍵
      isTable ⍺:⍺{
          (mat nms)←⍺ ⍝ value matrix; col names
@@ -44,13 +42,12 @@
          }⍵
         ⍝  ir⌊←≢Mr ⍝ outrange row index
         ⍝ assert: ∧/∊ir ic ≤¨⍴M
-         3::⎕SIGNAL 3 ⍝ propagate index error
-         rcb≡'row':(mat[⊃ir;] ⋄ nms) ⍝ dictionary
-         rcb≡'rows':(mat[ir;] ⋄ nms) ⍝ table
+         rcb≡'row':mat[⊃ir;] ⍝ dictionary
+         rcb≡'rows':mat[ir;] ⍝ table
          rcb≡'col':mat[;ic] ⍝ column vector
-         rcb≡'cols':(mat[;ic] ⋄ ⍵) ⍝ table
+         rcb≡'cols':mat[;ic] ⍝ table
          rcb≡'cell':⊃mat[ir;ic] ⍝ single value
-         rcb≡'rc':(mat[ir;ic] ⋄ 2⊃⍵) ⍝ table
+         rcb≡'rc':mat[ir;ic] ⍝ table
      }⍵
      'not dictionary, object or table'⎕SIGNAL 11
  }

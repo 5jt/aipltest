@@ -113,8 +113,8 @@
   )
  )
  (
-  description:'dictionary: outrange key returns zero'
-  expected:0
+  breaks:3
+  description:'index error: dictionary outrange key without default'
   larg:(
    12 23 34
    (
@@ -127,8 +127,8 @@
   rarg:'cat'
  )
  (
-  description:'dictionary: outrange keys return zeros'
-  expected:0 0
+  breaks:3
+  description:'index error: dictionary multiple outrange keys without default'
   larg:(
    12 23 34
    (
@@ -144,8 +144,8 @@
   )
  )
  (
-  description:'dictionary: mixed valid and outrange keys'
-  expected:23 0
+  breaks:3
+  description:'index error: dictionary mixed valid and outrange keys'
   larg:(
    12 23 34
    (
@@ -161,8 +161,8 @@
   )
  )
  (
-  description:'dictionary: mixed outrange and valid keys'
-  expected:0 23
+  breaks:3
+  description:'index error: dictionary mixed outrange and valid keys'
   larg:(
    12 23 34
    (
@@ -178,8 +178,8 @@
   )
  )
  (
-  description:'dictionary: multiple mixed valid/outrange keys'
-  expected:0 23 0 34
+  breaks:3
+  description:'index error: dictionary multiple mixed valid/outrange keys'
   larg:(
    12 23 34
    (
@@ -301,8 +301,8 @@
   )
  )
  (
-  description:'dictionary: string values, outrange key'
-  expected:'   '
+  breaks:3
+  description:'index error: dictionary string values, outrange key'
   larg:(
    (
     'red'
@@ -386,8 +386,8 @@
   rarg:'answer'
  )
  (
-  description:'dictionary: single key/value, outrange'
-  expected:0
+  breaks:3
+  description:'index error: dictionary single key/value, outrange'
   larg:(
    (42⋄)
    (
@@ -507,8 +507,8 @@
   rarg:'ABC'
  )
  (
-  description:'dictionary: case-sensitive outrange'
-  expected:0
+  breaks:3
+  description:'index error: dictionary case-sensitive outrange'
   larg:(
    1 2
    (
@@ -520,8 +520,8 @@
   rarg:'Abc'
  )
  (
-  description:'dictionary: implicit zero default value'
-  expected:0
+  breaks:3
+  description:'index error: dictionary outrange, no explicit default'
   larg:(
    1 2 3
    'abc'
@@ -647,11 +647,8 @@
   ]
  )
  (
-  description:'dictionary: matrix with outrange keys'
-  expected:[
-   23 0 34
-   12 0 23
-  ]
+  breaks:3
+  description:'index error: dictionary matrix with outrange keys'
   larg:(
    12 23 34
    (
@@ -769,8 +766,8 @@
   rarg:'very-long-key-name-two'
  )
  (
-  description:'dictionary: string keys, right arg is numeric vector'
-  expected:0
+  breaks:3
+  description:'index error: dictionary string keys, numeric scalar right arg'
   larg:(
    12 23 34
    (
@@ -783,8 +780,8 @@
   rarg:123
  )
  (
-  description:'dictionary: string keys, right arg is numeric vector'
-  expected:0
+  breaks:3
+  description:'index error: dictionary string keys, numeric vector right arg'
   larg:(
    12 23 34
    (
@@ -811,8 +808,8 @@
   rarg:'a'
  )
  (
+  breaks:3
   description:'dictionary: empty (num, chars)'
-  expected:0 0 0 0 0 0 0 0
   larg:(
    ⍬
    ''
@@ -821,8 +818,8 @@
   rarg:'anything'
  )
  (
+  breaks:3
   description:'dictionary: empty (num, strings)'
-  expected:0
   larg:(
    ⍬
    0⌿(
@@ -833,17 +830,8 @@
   rarg:'anything'
  )
  (
+  breaks:3
   description:'dictionary: empty (strings, chars)'
-  expected:(
-   ''
-   ''
-   ''
-   ''
-   ''
-   ''
-   ''
-   ''
-  )
   larg:(
    0⌿(
     ''
@@ -854,8 +842,8 @@
   rarg:'anything'
  )
  (
+  breaks:3
   description:'dictionary: empty (strings, strings)'
-  expected:''
   larg:(
    0⌿(
     ''
@@ -898,8 +886,8 @@
   rarg:'xy'
  )
  (
-  description:'dictionary: outrange with vector values, no default'
-  expected:0 0 0
+  breaks:3
+  description:'index error: dictionary outrange with vector values, no default'
   larg:(
    (
     1 2 3
@@ -912,11 +900,8 @@
   rarg:'d'
  )
  (
-  description:'dictionary: outrange with nested vector values'
-  expected:(
-   0 0
-   0 0
-  )
+  breaks:3
+  description:'index error: dictionary outrange with nested vector values'
   larg:(
    (
     (
@@ -934,8 +919,8 @@
   rarg:'c'
  )
  (
-  description:'dictionary: outrange with string values, no default'
-  expected:'   '
+  breaks:3
+  description:'index error: dictionary outrange with string values, no default'
   larg:(
    (
     'red'
@@ -948,11 +933,8 @@
   rarg:'d'
  )
  (
-  description:'dictionary: outrange with nested strings, no default'
-  expected:(
-   '   '
-   '   '
-  )
+  breaks:3
+  description:'index error: dictionary outrange with nested strings, no default'
   larg:(
    (
     (
@@ -970,8 +952,8 @@
   rarg:'c'
  )
  (
+  breaks:3
   description:'dictionary: default preserves vector shape'
-  expected:0 0 0
   larg:(
    (
     1 2 3
@@ -984,11 +966,8 @@
   rarg:'d'
  )
  (
+  breaks:3
   description:'dictionary: default preserves nested structure'
-  expected:(
-   0 0
-   0 0
-  )
   larg:(
    (
     (
@@ -1045,8 +1024,8 @@
   rarg:'a'
  )
  (
-  description:'dictionary: numeric keys, outrange index'
-  expected:0
+  breaks:3
+  description:'index error: dictionary numeric keys, outrange string key'
   larg:(
    10 20 30
    1 2 3
@@ -1157,8 +1136,8 @@
   )
  )
  (
-  description:'object: outrange variable returns zero'
-  expected:0
+  breaks:3
+  description:'index error: object outrange variable name'
   larg:(
    cow:12
    dog:34
@@ -1168,8 +1147,8 @@
   rarg:'cat'
  )
  (
-  description:'object: outrange variables return zeros'
-  expected:0 0
+  breaks:3
+  description:'index error: object multiple outrange variables'
   larg:(
    cow:12
    dog:34
@@ -1182,8 +1161,8 @@
   )
  )
  (
-  description:'object: mixed valid and outrange variables'
-  expected:23 0
+  breaks:3
+  description:'index error: object mixed valid and outrange variables'
   larg:(
    cow:12
    dog:34
@@ -1196,8 +1175,8 @@
   )
  )
  (
-  description:'object: mixed outrange and valid variables'
-  expected:0 23
+  breaks:3
+  description:'index error: object mixed outrange and valid variables'
   larg:(
    cow:12
    dog:34
@@ -1210,8 +1189,8 @@
   )
  )
  (
-  description:'object: multiple mixed valid/outrange variables'
-  expected:0 23 0 34
+  breaks:3
+  description:'index error: object multiple mixed valid/outrange variables'
   larg:(
    cow:12
    dog:34
@@ -1254,8 +1233,8 @@
   )
  )
  (
-  description:'object: string values, outrange variable'
-  expected:'     '
+  breaks:3
+  description:'index error: object string values, outrange variable'
   larg:(
    go:'green'
    sky:'blue'
@@ -1276,8 +1255,8 @@
   rarg:'b'
  )
  (
-  description:'object: numeric vector values, multiple variables'
-  expected:0 0 0
+  breaks:3
+  description:'index error: object outrange with vector lookup'
   larg:(
    a:1 2 3
    b:4 5 6
@@ -1330,8 +1309,8 @@
   rarg:'answer'
  )
  (
-  description:'object: single variable, outrange'
-  expected:0
+  breaks:3
+  description:'index error: object single variable, outrange'
   larg:(
    answer:42
   )
@@ -1381,8 +1360,8 @@
   rarg:'ABC'
  )
  (
-  description:'object: case-sensitive outrange'
-  expected:0
+  breaks:3
+  description:'index error: object case-sensitive outrange'
   larg:(
    ABC:2
    abc:1
@@ -1402,8 +1381,8 @@
   rarg:'y'
  )
  (
-  description:'object: multiple single-char variable names'
-  expected:0
+  breaks:3
+  description:'index error: object vector lookup treated as single name'
   larg:(
    a:10
    b:20
@@ -1464,11 +1443,8 @@
   ]
  )
  (
-  description:'object: matrix with outrange variables'
-  expected:[
-   23 0 34
-   12 0 23
-  ]
+  breaks:3
+  description:'index error: object matrix with outrange variables'
   larg:(
    cow:12
    dog:34
@@ -1576,8 +1552,8 @@
   )
  )
  (
+  breaks:3
   description:'object: empty object'
-  expected:''
   larg:(
   )
   number:110
@@ -1604,18 +1580,11 @@
   rarg:1 2 3
  )
  (
-  description:'table: single row index (scalar) returns dictionary'
+  description:'table: single row index (scalar) returns vector'
   expected:(
-   (
-    'Bob'
-    21
-    'blue'
-   )
-   (
-    'name'
-    'age'
-    'eye'
-   )
+   'Bob'
+   21
+   'blue'
   )
   larg:(
    [
@@ -1633,17 +1602,10 @@
   rarg:1
  )
  (
-  description:'table: single row index (vector) returns table'
-  expected:(
-   [
-    'Ted' 32 'green'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
+  description:'table: single row index (vector) returns matrix'
+  expected:[
+   'Ted' 32 'green'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1660,18 +1622,11 @@
   rarg:(2⋄)
  )
  (
-  description:'table: first row index'
+  description:'table: first row index returns vector'
   expected:(
-   (
-    'Bob'
-    21
-    'blue'
-   )
-   (
-    'name'
-    'age'
-    'eye'
-   )
+   'Bob'
+   21
+   'blue'
   )
   larg:(
    [
@@ -1689,18 +1644,11 @@
   rarg:1
  )
  (
-  description:'table: last row index'
+  description:'table: last row index returns vector'
   expected:(
-   (
-    'Carol'
-    43
-    'brown'
-   )
-   (
-    'name'
-    'age'
-    'eye'
-   )
+   'Carol'
+   43
+   'brown'
   )
   larg:(
    [
@@ -1718,18 +1666,11 @@
   rarg:3
  )
  (
-  description:'table: multiple rows in order'
-  expected:(
-   [
-    'Bob' 21 'blue'
-    'Ted' 32 'green'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
+  description:'table: multiple rows in order returns matrix'
+  expected:[
+   'Bob' 21 'blue'
+   'Ted' 32 'green'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1746,18 +1687,11 @@
   rarg:1 2
  )
  (
-  description:'table: multiple rows reverse order'
-  expected:(
-   [
-    'Carol' 43 'brown'
-    'Bob'   21 'blue'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
+  description:'table: multiple rows reverse order returns matrix'
+  expected:[
+   'Carol' 43 'brown'
+   'Bob'   21 'blue'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1774,19 +1708,12 @@
   rarg:3 1
  )
  (
-  description:'table: all rows in order'
-  expected:(
-   [
-    'Bob'   21 'blue'
-    'Ted'   32 'green'
-    'Carol' 43 'brown'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
+  description:'table: all rows in order returns matrix'
+  expected:[
+   'Bob'   21 'blue'
+   'Ted'   32 'green'
+   'Carol' 43 'brown'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1803,19 +1730,12 @@
   rarg:1 2 3
  )
  (
-  description:'table: duplicate row indices'
-  expected:(
-   [
-    'Ted' 32 'green'
-    'Ted' 32 'green'
-    'Bob' 21 'blue'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
+  description:'table: duplicate row indices returns matrix'
+  expected:[
+   'Ted' 32 'green'
+   'Ted' 32 'green'
+   'Bob' 21 'blue'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1850,18 +1770,12 @@
   rarg:'age'
  )
  (
-  description:'table: multiple columns by name'
-  expected:(
-   [
-    'blue'  'Bob'
-    'green' 'Ted'
-    'brown' 'Carol'
-   ]
-   (
-    'eye'
-    'name'
-   )
-  )
+  description:'table: multiple columns by name returns matrix'
+  expected:[
+   'blue'  'Bob'
+   'green' 'Ted'
+   'brown' 'Carol'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1881,19 +1795,12 @@
   )
  )
  (
-  description:'table: all columns in order'
-  expected:(
-   [
-    'Bob'   21 'blue'
-    'Ted'   32 'green'
-    'Carol' 43 'brown'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
+  description:'table: all columns in order returns matrix'
+  expected:[
+   'Bob'   21 'blue'
+   'Ted'   32 'green'
+   'Carol' 43 'brown'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1914,19 +1821,12 @@
   )
  )
  (
-  description:'table: all columns reverse order'
-  expected:(
-   [
-    'blue'  21 'Bob'
-    'green' 32 'Ted'
-    'brown' 43 'Carol'
-   ]
-   (
-    'eye'
-    'age'
-    'name'
-   )
-  )
+  description:'table: all columns reverse order returns matrix'
+  expected:[
+   'blue'  21 'Bob'
+   'green' 32 'Ted'
+   'brown' 43 'Carol'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1947,19 +1847,12 @@
   )
  )
  (
-  description:'table: duplicate column names'
-  expected:(
-   [
-    21 21 'Bob'
-    32 32 'Ted'
-    43 43 'Carol'
-   ]
-   (
-    'age'
-    'age'
-    'name'
-   )
-  )
+  description:'table: duplicate column names returns matrix'
+  expected:[
+   21 21 'Bob'
+   32 32 'Ted'
+   43 43 'Carol'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -1980,17 +1873,11 @@
   )
  )
  (
-  description:'table: rows and columns combined'
-  expected:(
-   [
-    'brown' 'Carol'
-    'blue'  'Bob'
-   ]
-   (
-    'eye'
-    'name'
-   )
-  )
+  description:'table: rows and columns combined returns matrix'
+  expected:[
+   'brown' 'Carol'
+   'blue'  'Bob'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -2013,7 +1900,7 @@
   )
  )
  (
-  description:'table: single row (scalar) and single column returns cell value'
+  description:'table: single row (scalar) and single column returns scalar'
   expected:'Ted'
   larg:(
    [
@@ -2034,16 +1921,10 @@
   )
  )
  (
-  description:'table: single row (scalar) and multiple columns returns dictionary'
+  description:'table: single row (scalar) and multiple columns returns vector'
   expected:(
-   (
-    'green'
-    32
-   )
-   (
-    'eye'
-    'age'
-   )
+   'green'
+   32
   )
   larg:(
    [
@@ -2067,20 +1948,15 @@
   )
  )
  (
-  description:'table: multiple rows and single column'
-  expected:(
-   [
-    (
-     'brown'
-    )
-    (
-     'blue'
-    )
-   ]
+  description:'table: multiple rows and single column returns vector'
+  expected:[
    (
-    'eye'
+    'brown'
    )
-  )
+   (
+    'blue'
+   )
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -2103,7 +1979,7 @@
  )
  (
   breaks:3
-  description:'table: outrange row returns cells with ⊃0⍴'
+  description:'index error: table outrange row in vector'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2121,7 +1997,7 @@
  )
  (
   breaks:3
-  description:'table: multiple outrange rows'
+  description:'index error: table multiple outrange rows'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2139,7 +2015,7 @@
  )
  (
   breaks:3
-  description:'table: outrange row (scalar) returns dictionary with ⊃0⍴'
+  description:'index error: table outrange row (scalar)'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2157,7 +2033,7 @@
  )
  (
   breaks:3
-  description:'table: mixed valid and outrange rows'
+  description:'index error: table mixed valid and outrange rows'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2237,14 +2113,9 @@
   )
  )
  (
-  description:'table: single row, single column table'
+  description:'table: single row, single column table returns vector'
   expected:(
-   (
-    'value'
-   )
-   (
-    'col'
-   )
+   'value'
   )
   larg:(
    [
@@ -2276,17 +2147,12 @@
   rarg:'x'
  )
  (
-  description:'table: single column table, row access'
-  expected:(
-   [
-    10
-    20
-    30
-   ]
-   (
-    'value'
-   )
-  )
+  description:'table: single column table, row access returns matrix'
+  expected:[
+   10
+   20
+   30
+  ]
   larg:(
    [
     10
@@ -2301,17 +2167,11 @@
   rarg:1 2 3
  )
  (
-  description:'table: numeric values only'
-  expected:(
-   [
-    20 30
-    50 60
-   ]
-   (
-    ('y'⋄)
-    ('z'⋄)
-   )
-  )
+  description:'table: numeric values only returns matrix'
+  expected:[
+   20 30
+   50 60
+  ]
   larg:(
    [
     10 20 30
@@ -2334,17 +2194,11 @@
   )
  )
  (
-  description:'table: string values only'
-  expected:(
-   [
-    'red'   'blue'
-    'green' 'yellow'
-   ]
-   (
-    'color1'
-    'color2'
-   )
-  )
+  description:'table: string values only returns matrix'
+  expected:[
+   'red'   'blue'
+   'green' 'yellow'
+  ]
   larg:(
    [
     'red'    'blue'
@@ -2360,18 +2214,11 @@
   rarg:1 2
  )
  (
-  description:'table: mixed numeric and string columns'
-  expected:(
-   [
-    'Alice' 30 'Engineer'
-    'Bob'   25 'Designer'
-   ]
-   (
-    'name'
-    'age'
-    'role'
-   )
-  )
+  description:'table: mixed numeric and string columns returns matrix'
+  expected:[
+   'Alice' 30 'Engineer'
+   'Bob'   25 'Designer'
+  ]
   larg:(
    [
     'Alice' 30 'Engineer'
@@ -2424,7 +2271,7 @@
  )
  (
   breaks:3
-  description:'table: row index 0 (outrange)'
+  description:'index error: table row index 0 (outrange)'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2442,7 +2289,7 @@
  )
  (
   breaks:3
-  description:'table: negative row index (outrange)'
+  description:'index error: table negative row index (outrange)'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2510,17 +2357,11 @@
   rarg:'NAME'
  )
  (
-  description:'table: unicode column names'
-  expected:(
-   [
-    2 3
-    5 6
-   ]
-   (
-    ('β'⋄)
-    ('γ'⋄)
-   )
-  )
+  description:'table: unicode column names returns matrix'
+  expected:[
+   2 3
+   5 6
+  ]
   larg:(
    [
     1 2 3
@@ -2539,17 +2380,11 @@
   )
  )
  (
-  description:'table: emoji column names'
-  expected:(
-   [
-    20 30
-    50 60
-   ]
-   (
-    ('🐑'⋄)
-    ('🐕'⋄)
-   )
-  )
+  description:'table: emoji column names returns matrix'
+  expected:[
+   20 30
+   50 60
+  ]
   larg:(
    [
     10 20 30
@@ -2568,17 +2403,10 @@
   )
  )
  (
-  description:'table: single row vector index with 1 element'
-  expected:(
-   [
-    'Carol' 43 'brown'
-   ]
-   (
-    'name'
-    'age'
-    'eye'
-   )
-  )
+  description:'table: single row vector index with 1 element returns matrix'
+  expected:[
+   'Carol' 43 'brown'
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -2632,21 +2460,14 @@
   )
  )
  (
-  description:'table: empty row selection returns empty table'
-  expected:(
-   0⌿[
-    (
-     '   '
-     '   '
-     '   '
-    )
-   ]
+  description:'table: empty row selection returns empty matrix'
+  expected:0⌿[
    (
-    'name'
-    'age'
-    'eye'
+    '   '
+    '   '
+    '   '
    )
-  )
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -2663,23 +2484,18 @@
   rarg:⍬
  )
  (
-  description:'table: empty column selection returns zero-column table'
-  expected:(
-   [
-    0⌿(
-     '   '
-    )
-    0⌿(
-     '   '
-    )
-    0⌿(
-     '   '
-    )
-   ]
+  description:'table: empty column selection returns empty matrix'
+  expected:[
    0⌿(
-    ''
+    '   '
    )
-  )
+   0⌿(
+    '   '
+   )
+   0⌿(
+    '   '
+   )
+  ]
   larg:(
    [
     'Bob'   21 'blue'
@@ -2699,7 +2515,7 @@
  )
  (
   breaks:3
-  description:'table: outrange scalar row with column selection returns  dictionary'
+  description:'index error: table outrange scalar row with column selection'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2722,7 +2538,7 @@
  )
  (
   breaks:3
-  description:'table: outrange vector rows with column selection'
+  description:'index error: table outrange vector rows with column selection'
   larg:(
    [
     'Bob'   21 'blue'
@@ -2762,6 +2578,48 @@
   rarg:(
    1 2
    1
+  )
+ )
+ (
+  breaks:3
+  description:'index error: table scalar row with invalid column name'
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:160
+  rarg:(
+   2
+   'sex'
+  )
+ )
+ (
+  breaks:3
+  description:'index error: table vector rows with invalid column name'
+  larg:(
+   [
+    'Bob'   21 'blue'
+    'Ted'   32 'green'
+    'Carol' 43 'brown'
+   ]
+   (
+    'name'
+    'age'
+    'eye'
+   )
+  )
+  number:161
+  rarg:(
+   1 2
+   'sex'
   )
  )
 )
