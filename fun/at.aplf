@@ -5,24 +5,20 @@
     ⍝ Syntax: sel ← ⍺ at keys
     ⍝ Returns values for keys
     ⍝ A dictionary can have an explicit default outrange value
-    ⍝ Otherwise, outrange keys signal idex errors
-     (val ind)←⍺{
-         isDict ⍺:⍺{
-             (v k)←⍺
-             nestedKey←1≠≡k
+    ⍝ Otherwise, outrange keys signal index errors
+     ind←⍺{
+         isDict ⍺:(key ⍺){
+             nestedKey←1≠≡⍺
              singleIndex←nestedKey{0=≢⍴⍵:1 ⋄ ⍺:1=≡⍵ ⋄ 0=≡⍵}⍵
              w←⊂⍣(nestedKey∧singleIndex∧1=≡⍵)⊢⍵
-             i←⊃⍣singleIndex⊢k⍳w
-             (v i)
+             ⊃⍣singleIndex⊢⍺⍳w
          }⍵
-         isObj ⍺:⍺{
+         isObj ⍺:(key ⍺){
              ~isStrung ⍵:'indices not string/s'⎕SIGNAL 11
              ¯1∊⎕NC,⍵:'indices not valid names'⎕SIGNAL 11
-             v←⍺ ⎕VGET k←⍺.⎕NL-2          ⍝ keys and values
              singleIndex←0 1∊⍨≡⍵
              w←(⊂∘,)⍣singleIndex⊢⍵
-             i←⊃⍣singleIndex⊢k⍳w
-             (v i)
+             ⊃⍣singleIndex⊢⍺⍳w
          }⍵
          isTable ⍺:⍺{
              (ir ic)←⍺{
@@ -32,21 +28,17 @@
                  2≠≢⍵:⎕SIGNAL 11
                  (ri ci)←⍵
                  (83=⎕DR ri)⍲isStrung ci:⎕SIGNAL 11
-                ⍝  (0=≢⍴ri)∧isString ci:(ri ⋄ nms⍳⊂ci)   ⍝ row & col
                  (ri ⋄ nms⍳⊆ci)                        ⍝ rows & cols
              }⍵
-             mat←⊃⍺
-            ⍝ assert: ∧/∊ir ic ≤¨⍴mat
-             i←(⍴mat){
+             (⍴value ⍺){
                  ⎕IO←0
                  c←⊃∘.,/⍵
                  1∊∊⍺∘<¨c:⎕SIGNAL 3
                  s←+/≢∘⍴¨⍵
-                ⊃⍣(s=0)⊢,⍣(s=1)⊢1+⍺∘⊥¨c-1
+                 ⊃⍣(s=0)⊢,⍣(s=1)⊢1+⍺∘⊥¨c-1
              }ir ic
-             (,⊃⍺ ⋄ i)
          }⍵
          'not dictionary, object or table'⎕SIGNAL 11
      }⍵
-     ⊃⍣(0=≢⍴ind)⊢val[ind]
+    ⊃⍣(0=≢⍴ind)⊢(,value ⍺)[ind]
  }
