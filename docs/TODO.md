@@ -75,21 +75,21 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 8: Refactor `at` for new spec (remove outrange handling)
 
-- [ ] Revise `at` tests to expect INDEX ERROR for outrange values
-- [ ] Revise `at` tests to preserve explicit defaults in dictionaries
-- [ ] Seek approval for revised tests
-- [ ] Refactor `at` implementation to use `key` and `value`
-- [ ] Refactor `at` to signal INDEX ERROR (except dict explicit defaults)
-- [ ] Run complete test suite
-- [ ] Verify all tests pass
+- [x] Revise `at` tests to expect INDEX ERROR for outrange values
+- [x] Revise `at` tests to preserve explicit defaults in dictionaries
+- [x] Seek approval for revised tests
+- [x] Refactor `at` implementation to use `key` and `value`
+- [x] Refactor `at` to signal INDEX ERROR (except dict explicit defaults)
+- [x] Run complete test suite
+- [x] Verify all tests pass
 
 ## Phase 9: Extend `at` to tables
 
-- [ ] Write tests for `at` with tables (using new spec)
-- [ ] Seek approval for tests
-- [ ] Implement `at` for tables (using `key` and `value`)
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Write tests for `at` with tables (using new spec)
+- [x] Seek approval for tests
+- [x] Implement `at` for tables (using `key` and `value`)
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 10: Extend `at` to xrefs
 
