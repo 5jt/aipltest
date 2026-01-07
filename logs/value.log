@@ -2,7 +2,7 @@ PASS - [1] dictionary: numeric values
 PASS - [2] dictionary: string values
 PASS - [3] dictionary: mixed values
 PASS - [4] dictionary: single value
-PASS - [5] dictionary: with explicit default (N+1) - excludes default
+PASS - [5] dictionary: with explicit default (N+1) - includes default
 PASS - [6] dictionary: empty
 PASS - [7] object: single variable
 PASS - [8] object: multiple variables (alphabetical order by name)

@@ -7,10 +7,11 @@
      ⍝   Xref: values matrix
      ⍝   Array: the array itself
 
-     isDict ⍵:{
-         (vals keys)←⍵
-         vals↑⍨≢keys              ⍝ 1st N elements (excludes N+1 default)
-     }⍵
+    ⍝  isDict ⍵:{
+    ⍝      (vals keys)←⍵
+    ⍝      vals↑⍨≢keys              ⍝ 1st N elements (excludes N+1 default)
+    ⍝  }⍵
+     isDict ⍵:⊃⍵
 
      isObj ⍵:⍵ ⎕VGET key ⍵        ⍝ Object: values in alpha order
 

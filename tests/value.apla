@@ -50,8 +50,8 @@
   )
  )
  (
-  description:'dictionary: with explicit default (N+1) - excludes default'
-  expected:12 23 34
+  description:'dictionary: with explicit default (N+1) - includes default'
+  expected:12 23 34 99
   number:5
   rarg:(
    12 23 34 99
