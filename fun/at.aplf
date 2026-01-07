@@ -20,25 +20,40 @@
              w←(⊂∘,)⍣singleIndex⊢⍵
              ⊃⍣singleIndex⊢⍺⍳w
          }⍵
+         atm←{
+             ⎕IO←0
+             sv←⍴value ⍺
+             c←⊃∘.,/⍵
+             1∊∊sv∘<¨c:⎕SIGNAL 3
+             sr←+/≢∘⍴¨⍵
+             ⊃⍣(sr=0)⊢,⍣(sr=1)⊢1+sv∘⊥¨c-1
+         }
          isTable ⍺:⍺{
              (ir ic)←⍺{
-                 (mat nms)←⍺ ⍝ value matrix; col names
-                 11 83∨.=⎕DR ⍵:(⍵ ⋄ ⍳≢nms)             ⍝ row/s
-                 isStrung ⍵:(⍳≢mat ⋄ nms⍳⊆⍵)               ⍝ col name/s
+                 (mat cols)←⍺ ⍝ value matrix; col names
+                 11 83∨.=⎕DR ⍵:(⍵ ⋄ ⍳≢cols)             ⍝ row/s
+                 isStrung ⍵:(⍳≢mat ⋄ cols⍳⊆⍵)               ⍝ col name/s
                  2≠≢⍵:⎕SIGNAL 11
                  (ri ci)←⍵
                  (83=⎕DR ri)⍲isStrung ci:⎕SIGNAL 11
-                 (ri ⋄ nms⍳⊆ci)                        ⍝ rows & cols
+                 (ri ⋄ cols⍳⊆ci)                        ⍝ rows & cols
              }⍵
-             (⍴value ⍺){
-                 ⎕IO←0
-                 c←⊃∘.,/⍵
-                 1∊∊⍺∘<¨c:⎕SIGNAL 3
-                 s←+/≢∘⍴¨⍵
-                 ⊃⍣(s=0)⊢,⍣(s=1)⊢1+⍺∘⊥¨c-1
-             }ir ic
+             ⍺ atm ir ic
+         }⍵
+         isXref ⍺:⍺{
+             (ir ic)←⍺{
+                 (mat cols rows)←⍺
+                 2≠≢⍵:⎕SIGNAL 11
+                 1=≡⍵:⎕SIGNAL 11
+                 1 1≢isStrung¨⍵:⎕SIGNAL 11
+                 1∨.≠×≢¨⍵:⎕SIGNAL 3
+                 (ir ic)←rows cols⍳∘⊆∘,¨⍵
+                 ∨/∊ir ic>≢¨rows cols:⎕SIGNAL 3
+                 ir ic
+             }⍵
+             ⍺ atm ir ic
          }⍵
          'not dictionary, object or table'⎕SIGNAL 11
      }⍵
-    ⊃⍣(0=≢⍴ind)⊢(,value ⍺)[ind]
+     ⊃⍣(0=≢⍴ind)⊢(∊⍴∘⊆¨⍵)⍴(,value ⍺)[ind]
  }
