@@ -13,3 +13,5 @@ PASS - [12] column count mismatch (2 cols, 3 names)
 PASS - [13] row count mismatch (2 rows, 3 names)
 PASS - [14] column names are numbers not strings
 PASS - [15] row names are numbers not strings
+PASS - [16] empty row name
+PASS - [17] empty col name

@@ -63,7 +63,11 @@
    [
     1 2 3
    ]
-   'abc'
+   (
+    ('a'⋄)
+    ('b'⋄)
+    ('c'⋄)
+   )
    (
     'row'
    )
@@ -214,6 +218,44 @@
     'c2'
    )
    1 2
+  )
+ )
+ (
+  description:'empty row name'
+  expected:0
+  number:16
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   (
+    'c1'
+    'c2'
+   )
+   (
+    'row1'
+    ''
+   )
+  )
+ )
+ (
+  description:'empty col name'
+  expected:0
+  number:17
+  rarg:(
+   [
+    1 2
+    3 4
+   ]
+   (
+    ''
+    'c2'
+   )
+   (
+    'row1'
+    'row2'
+   )
   )
  )
 )
