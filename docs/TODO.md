@@ -62,8 +62,8 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 - [x] Write tests for `at` with objects
 - [x] Seek approval for tests
 - [x] Extend `at` for objects
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 7: Component extraction functions
 
@@ -93,11 +93,11 @@ Task tracking for aipltest development. See [PLAN.md](../PLAN.md) for phase deta
 
 ## Phase 10: Extend `at` to xrefs
 
-- [ ] Write tests for `at` with xrefs (using new spec)
-- [ ] Seek approval for tests
-- [ ] Implement `at` for xrefs (using `key` and `value`)
-- [ ] Run complete test suite
-- [ ] Verify no regressions
+- [x] Write tests for `at` with xrefs (using new spec)
+- [x] Seek approval for tests
+- [x] Implement `at` for xrefs (using `key` and `value`)
+- [x] Run complete test suite
+- [x] Verify no regressions
 
 ## Phase 11: Implement `select`
 
