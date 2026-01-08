@@ -1,18 +1,10 @@
 PASS - [1] dictionary: single key lookup
 PASS - [2] dictionary: first key lookup
 PASS - [3] dictionary: last key lookup
-FAIL - [4] dictionary: multiple keys lookup
-    Expected: 23 12
-    Got: 23
-FAIL - [5] dictionary: all keys in order
-    Expected: 12 23 34
-    Got: 12
-FAIL - [6] dictionary: all keys in reverse order
-    Expected: 34 23 12
-    Got: 34
-FAIL - [7] dictionary: duplicate keys in lookup
-    Expected: 23 23 12
-    Got: 23
+PASS - [4] dictionary: multiple keys lookup
+PASS - [5] dictionary: all keys in order
+PASS - [6] dictionary: all keys in reverse order
+PASS - [7] dictionary: duplicate keys in lookup
 PASS - [8] index error: dictionary outrange key without default
 PASS - [9] index error: dictionary multiple outrange keys without default
 PASS - [10] index error: dictionary mixed valid and outrange keys
@@ -20,21 +12,13 @@ PASS - [11] index error: dictionary mixed outrange and valid keys
 PASS - [12] index error: dictionary multiple mixed valid/outrange keys
 PASS - [13] dictionary: with default, valid key
 PASS - [14] dictionary: with default, outrange key returns default
-FAIL - [15] dictionary: with default, multiple outrange keys
-    Expected: 99 99
-    Got: 99
-FAIL - [16] dictionary: with default, mixed valid/outrange
-    Expected: 23 99
-    Got: 23
+PASS - [15] dictionary: with default, multiple outrange keys
+PASS - [16] dictionary: with default, mixed valid/outrange
 PASS - [17] dictionary: string values
-FAIL - [18] dictionary: string values, multiple keys
-    Expected:  blue  red 
-    Got:  blue 
+PASS - [18] dictionary: string values, multiple keys
 PASS - [19] index error: dictionary string values, outrange key
 PASS - [20] dictionary: numeric vector values
-FAIL - [21] dictionary: numeric vector values, multiple keys
-    Expected:  7 8  1 2 3 
-    Got:  7 8 
+PASS - [21] dictionary: numeric vector values, multiple keys
 PASS - [22] dictionary: nested array values
 PASS - [23] dictionary: single key/value pair
 PASS - [24] index error: dictionary single key/value, outrange
@@ -43,9 +27,7 @@ PASS - [26] dictionary: keys with spaces
 PASS - [27] dictionary: keys with special characters
 PASS - [28] dictionary: unicode keys
 PASS - [29] dictionary: emoji keys
-FAIL - [30] dictionary: mixed unicode/emoji keys
-    Expected: 20 10
-    Got: 20
+PASS - [30] dictionary: mixed unicode/emoji keys
 PASS - [31] dictionary: case-sensitive key lookup
 PASS - [32] dictionary: case-sensitive different case
 PASS - [33] index error: dictionary case-sensitive outrange
@@ -55,36 +37,13 @@ PASS - [36] dictionary: negative default value
 PASS - [37] dictionary: string default value
 PASS - [38] dictionary: complex nested default
 PASS - [39] dictionary: scalar string key (single char)
-FAIL - [40] dictionary: multiple single-char keys
-    Expected: 30 10 20
-    Got: 30
-FAIL - [41] dictionary: matrix keys produce matrix result
-    Expected: 
-23 12
-34 23
-    Got: 23
-FAIL - [42] dictionary: 3x3 matrix keys
-    Expected: 
-10 20 30
-20 10 30
-30 10 20
-    Got: 10
+PASS - [40] dictionary: multiple single-char keys
+PASS - [41] dictionary: matrix keys produce matrix result
+PASS - [42] dictionary: 3x3 matrix keys
 PASS - [43] index error: dictionary matrix with outrange keys
-FAIL - [44] dictionary: matrix with default value
-    Expected: 
-23 99
-34 99
-    Got: 23
-FAIL - [45] dictionary: rank-3 array keys
-    Expected: 
-1 2
-3 1
-2 3
-1 2
-    Got: 1
-FAIL - [46] dictionary: vector of length 1
-    Expected: 23
-    Got: 23
+PASS - [44] dictionary: matrix with default value
+PASS - [45] dictionary: rank-3 array keys
+PASS - [46] dictionary: vector of length 1
 PASS - [47] dictionary: numeric keys (coerced to strings)
 PASS - [48] dictionary: long keys
 PASS - [49] index error: dictionary string keys, numeric scalar right arg
@@ -96,12 +55,8 @@ PASS - [54] dictionary: empty (num, strings)
 PASS - [55] dictionary: empty (strings, chars)
 PASS - [56] dictionary: empty (strings, strings)
 PASS - [57] dictionary: duplicate keys, first occurrence wins
-FAIL - [58] dictionary: duplicate keys, multiple lookups
-    Expected: 10 20 10
-    Got: 10
-FAIL - [59] dictionary: all keys duplicated
-    Expected: 10 20
-    Got: 10
+PASS - [58] dictionary: duplicate keys, multiple lookups
+PASS - [59] dictionary: all keys duplicated
 PASS - [60] index error: dictionary outrange with vector values, no default
 PASS - [61] index error: dictionary outrange with nested vector values
 PASS - [62] index error: dictionary outrange with string values, no default
@@ -116,33 +71,21 @@ PASS - [70] dictionary: keys mixed types
 PASS - [71] object: single variable lookup
 PASS - [72] object: first variable lookup
 PASS - [73] object: last variable lookup
-FAIL - [74] object: multiple variables lookup
-    Expected: 23 12
-    Got: 23
-FAIL - [75] object: all variables in order
-    Expected: 12 23 34
-    Got: 12
-FAIL - [76] object: all variables in reverse order
-    Expected: 34 23 12
-    Got: 34
-FAIL - [77] object: duplicate variables in lookup
-    Expected: 23 23 12
-    Got: 23
+PASS - [74] object: multiple variables lookup
+PASS - [75] object: all variables in order
+PASS - [76] object: all variables in reverse order
+PASS - [77] object: duplicate variables in lookup
 PASS - [78] index error: object outrange variable name
 PASS - [79] index error: object multiple outrange variables
 PASS - [80] index error: object mixed valid and outrange variables
 PASS - [81] index error: object mixed outrange and valid variables
 PASS - [82] index error: object multiple mixed valid/outrange variables
 PASS - [83] object: string values
-FAIL - [84] object: string values, multiple variables
-    Expected:  blue  red 
-    Got:  blue 
+PASS - [84] object: string values, multiple variables
 PASS - [85] index error: object string values, outrange variable
 PASS - [86] object: numeric vector values
 PASS - [87] index error: object outrange with vector lookup
-FAIL - [88] object: numeric vector values, multiple variables
-    Expected:  7 8  1 2 3 
-    Got:  7 8 
+PASS - [88] object: numeric vector values, multiple variables
 PASS - [89] object: nested array values
 PASS - [90] object: single variable
 PASS - [91] index error: object single variable, outrange
@@ -153,110 +96,34 @@ PASS - [95] object: case-sensitive different case
 PASS - [96] index error: object case-sensitive outrange
 PASS - [97] object: scalar string variable (single char)
 PASS - [98] index error: object vector lookup treated as single name
-FAIL - [99] object: multiple single-char variable names
-    Expected: 30 10 20
-    Got: 30
-FAIL - [100] object: matrix variable names produce matrix result
-    Expected: 
-23 12
-34 23
-    Got: 23
-FAIL - [101] object: 3x3 matrix variable names
-    Expected: 
-10 20 30
-20 10 30
-30 10 20
-    Got: 10
+PASS - [99] object: multiple single-char variable names
+PASS - [100] object: matrix variable names produce matrix result
+PASS - [101] object: 3x3 matrix variable names
 PASS - [102] index error: object matrix with outrange variables
-FAIL - [103] object: rank-3 array variable names
-    Expected: 
-1 2
-3 1
-2 3
-1 2
-    Got: 1
-FAIL - [104] object: vector of length 1
-    Expected: 23
-    Got: 23
+PASS - [103] object: rank-3 array variable names
+PASS - [104] object: vector of length 1
 PASS - [105] object: long variable names
 PASS - [106] object: nested object value
-FAIL - [107] object: mixed types of values
-    Expected:  test  5
-    Got:  test 
+PASS - [107] object: mixed types of values
 PASS - [108] object: empty object
 PASS - [109] domain error: object right argument not a string
 PASS - [110] domain error: object right argument is numeric vector
-FAIL - [111] table: single row index (scalar) returns vector
-    Expected:  Bob  21  blue 
-    Got:  Bob 
-FAIL - [112] table: single row index (vector) returns matrix
-    Expected: 
- Ted  32  green 
-    Got:  Ted 
-FAIL - [113] table: last row index returns vector
-    Expected:  Carol  43  brown 
-    Got:  Carol 
-FAIL - [114] table: multiple rows in order returns matrix
-    Expected: 
- Bob  21  blue  
- Ted  32  green 
-    Got:  Bob 
-FAIL - [115] table: multiple rows reverse order returns matrix
-    Expected: 
- Carol  43  brown 
- Bob    21  blue  
-    Got:  Carol 
-FAIL - [116] table: all rows in order returns matrix
-    Expected: 
- Bob    21  blue  
- Ted    32  green 
- Carol  43  brown 
-    Got:  Bob 
-FAIL - [117] table: duplicate row indices returns matrix
-    Expected: 
- Ted  32  green 
- Ted  32  green 
- Bob  21  blue  
-    Got:  Ted 
-FAIL - [118] table: single column by name returns vector
-    Expected: 21 32 43
-    Got: 21
-FAIL - [119] table: multiple columns by name returns matrix
-    Expected: 
- blue   Bob   
- green  Ted   
- brown  Carol 
-    Got:  blue 
-FAIL - [120] table: all columns in order returns matrix
-    Expected: 
- Bob    21  blue  
- Ted    32  green 
- Carol  43  brown 
-    Got:  Bob 
-FAIL - [121] table: all columns reverse order returns matrix
-    Expected: 
- blue   21  Bob   
- green  32  Ted   
- brown  43  Carol 
-    Got:  blue 
-FAIL - [122] table: duplicate column names returns matrix
-    Expected: 
-21 21  Bob   
-32 32  Ted   
-43 43  Carol 
-    Got: 21
-FAIL - [123] table: rows and columns combined returns matrix
-    Expected: 
- brown  Carol 
- blue   Bob   
-    Got:  brown  Carol 
+PASS - [111] table: single row index (scalar) returns vector
+PASS - [112] table: single row index (vector) returns matrix
+PASS - [113] table: last row index returns vector
+PASS - [114] table: multiple rows in order returns matrix
+PASS - [115] table: multiple rows reverse order returns matrix
+PASS - [116] table: all rows in order returns matrix
+PASS - [117] table: duplicate row indices returns matrix
+PASS - [118] table: single column by name returns vector
+PASS - [119] table: multiple columns by name returns matrix
+PASS - [120] table: all columns in order returns matrix
+PASS - [121] table: all columns reverse order returns matrix
+PASS - [122] table: duplicate column names returns matrix
+PASS - [123] table: rows and columns combined returns matrix
 PASS - [124] table: single row (scalar) and single column returns scalar
 PASS - [125] table: single row (scalar) and multiple columns returns vector
-FAIL - [126] table: multiple rows and single column returns vector
-    Expected: 
- brown 
- blue  
-    Got:  brown 
+PASS - [126] table: multiple rows and single column returns vector
 PASS - [127] index error: table outrange row in vector
 PASS - [128] index error: table multiple outrange rows
 PASS - [129] index error: table outrange row (scalar)
@@ -264,73 +131,26 @@ PASS - [130] index error: table mixed valid and outrange rows
 PASS - [131] index error: outrange column name
 PASS - [132] index error: single outrange column name
 PASS - [133] index error: outrange column with valid rows
-FAIL - [134] table: single row, single column table returns vector
-    Expected:  value 
-    Got:  value 
-FAIL - [135] table: single row table, column access
-    Expected: 42
-    Got: 42
-FAIL - [136] table: single column table, row access returns matrix
-    Expected: 
-10
-20
-30
-    Got: 10
-FAIL - [137] table: numeric values only returns matrix
-    Expected: 
-20 30
-50 60
-    Got: 20 30
-FAIL - [138] table: string values only returns matrix
-    Expected: 
- red    blue   
- green  yellow 
-    Got:  red 
-FAIL - [139] table: mixed numeric and string columns returns matrix
-    Expected: 
- Alice  30  Engineer 
- Bob    25  Designer 
-    Got:  Alice 
-FAIL - [140] table: column name with spaces
-    Expected: 30 25 35
-    Got: 30
-FAIL - [141] table: empty column name
-    Expected: 1 2 3
-    Got: 1
+PASS - [134] table: single row, single column table returns vector
+PASS - [135] table: single row table, column access
+PASS - [136] table: single column table, row access returns matrix
+PASS - [137] table: numeric values only returns matrix
+PASS - [138] table: string values only returns matrix
+PASS - [139] table: mixed numeric and string columns returns matrix
+PASS - [140] table: column name with spaces
+PASS - [141] table: empty column name
 PASS - [142] index error: table row index 0 (outrange)
 PASS - [143] index error: table negative row index (outrange)
-FAIL - [144] table: case-sensitive column names
-    Expected: 1 2 3
-    Got: 1
-FAIL - [145] table: case-sensitive different case column
-    Expected: 10 20 30
-    Got: 10
+PASS - [144] table: case-sensitive column names
+PASS - [145] table: case-sensitive different case column
 PASS - [146] index error: case-sensitive column mismatch
-FAIL - [147] table: unicode column names returns matrix
-    Expected: 
-2 3
-5 6
-    Got: 2
-FAIL - [148] table: emoji column names returns matrix
-    Expected: 
-20 30
-50 60
-    Got: 20
-FAIL - [149] table: single row vector index with 1 element returns matrix
-    Expected: 
- Carol  43  brown 
-    Got:  Carol 
+PASS - [147] table: unicode column names returns matrix
+PASS - [148] table: emoji column names returns matrix
+PASS - [149] table: single row vector index with 1 element returns matrix
 PASS - [150] domain error: table left arg, right arg not int or string
 PASS - [151] domain error: table left arg, nested incompatible right arg
-FAIL - [152] table: empty row selection returns empty matrix
-    Expected: 
-    Got:      
-FAIL - [153] table: empty column selection returns empty matrix
-    Expected: 
-
-
-
-    Got:      
+PASS - [152] table: empty row selection returns empty matrix
+PASS - [153] table: empty column selection returns empty matrix
 PASS - [154] index error: table outrange scalar row with column selection
 PASS - [155] index error: table outrange vector rows with column selection
 PASS - [156] domain error: numeric column selector

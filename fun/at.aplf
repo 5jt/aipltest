@@ -1,24 +1,26 @@
  at←{
-    ⍝ Functional indexing for dictionaries and objects
+    ⍝ Functional indexing for dictionaries, objects, tables and xrefs
     ⍝ with explicit or implicit outrange values
-    ⍝ later: tables, xrefs and arrays
-    ⍝ Syntax: sel ← ⍺ at keys
-    ⍝ Returns values for keys
+    ⍝ later: arrays
+    ⍝ Syntax: values ← ⍺ at keys
+    ⍝
     ⍝ A dictionary can have an explicit default outrange value
     ⍝ Otherwise, outrange keys signal index errors
-     ind←⍺{
+     (ind shp)←⍺{
          isDict ⍺:(key ⍺){
              nestedKey←1≠≡⍺
-             singleIndex←nestedKey{0=≢⍴⍵:1 ⋄ ⍺:1=≡⍵ ⋄ 0=≡⍵}⍵
-             w←⊂⍣(nestedKey∧singleIndex∧1=≡⍵)⊢⍵
-             ⊃⍣singleIndex⊢⍺⍳w
+             singleIndex←(1 nestedKey)∨.∧0 1=≡⍵
+             w←⊂∘,⍣(nestedKey∧singleIndex)⊢⍵
+             s←singleIndex{⍺:⍬ ⋄ ⍴⍵}⍵
+             (⍺⍳w ⋄ s)
          }⍵
          isObj ⍺:(key ⍺){
              ~isStrung ⍵:'indices not string/s'⎕SIGNAL 11
              ¯1∊⎕NC,⍵:'indices not valid names'⎕SIGNAL 11
              singleIndex←0 1∊⍨≡⍵
              w←(⊂∘,)⍣singleIndex⊢⍵
-             ⊃⍣singleIndex⊢⍺⍳w
+             s←singleIndex{⍺:⍬ ⋄ ⍴⍵}⍵
+             (⍺⍳w ⋄ s)
          }⍵
          atm←{
              ⎕IO←0
@@ -32,13 +34,14 @@
              (ir ic)←⍺{
                  (mat cols)←⍺ ⍝ value matrix; col names
                  11 83∨.=⎕DR ⍵:(⍵ ⋄ ⍳≢cols)             ⍝ row/s
-                 isStrung ⍵:(⍳≢mat ⋄ cols⍳⊆⍵)               ⍝ col name/s
+                 isStrung ⍵:(⍳≢mat ⋄ cols⍳⊆⍵)           ⍝ col name/s
                  2≠≢⍵:⎕SIGNAL 11
                  (ri ci)←⍵
                  (83=⎕DR ri)⍲isStrung ci:⎕SIGNAL 11
                  (ri ⋄ cols⍳⊆ci)                        ⍝ rows & cols
              }⍵
-             ⍺ atm ir ic
+             i←⍺ atm ir ic
+             (i ⋄ ⍴i)
          }⍵
          isXref ⍺:⍺{
              (ir ic)←⍺{
@@ -47,13 +50,16 @@
                  1=≡⍵:⎕SIGNAL 11
                  1 1≢isStrung¨⍵:⎕SIGNAL 11
                  1∨.≠×≢¨⍵:⎕SIGNAL 3
-                 (ir ic)←rows cols⍳∘⊆∘,¨⍵
+                ⍝ row/col labels are all strings
+                ⍝ so treat string or char index x as ⊂,x
+                 (ir ic)←rows cols{s←(≡⍵)∊0 1 ⋄ ⍺⍳⊂∘,⍣s⊢⍵}¨⍵
                  ∨/∊ir ic>≢¨rows cols:⎕SIGNAL 3
                  ir ic
              }⍵
-             ⍺ atm ir ic
+             i←⍺ atm ir ic
+             (i ⋄ ⍴i)
          }⍵
-         'not dictionary, object or table'⎕SIGNAL 11
+         'not dictionary, object, table or xref'⎕SIGNAL 11
      }⍵
-     ⊃⍣(0=≢⍴ind)⊢(∊⍴∘⊆¨⍵)⍴(,value ⍺)[ind]
+     ⊃⍣(0=≢⍴ind)⊢shp⍴(,value ⍺)[ind]
  }
