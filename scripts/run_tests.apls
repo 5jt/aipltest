@@ -18,11 +18,11 @@ cwd↓⍨←¯1 ⍝ lose trailing slash
 
 ⍝ report any load error
 confirm←{⍵:⎕←⍺ ⋄ ⎕←'**ERROR ',⍕⎕EN ⋄ ⎕←⎕DM ⋄ ⎕OFF}
-_←'Import complete' confirm ⎕EN=0
+⍝_←'Import complete' confirm ⎕EN=0
 
 ⍝ check argument
 ⍝cla←2 ⎕NQ # 'GetCommandLineArgs'
 ⍝_←'Command-line argument found' confirm 2≥≢cla
 ⍝
 ⍝⍝ run test
-⍝⎕←test.Run cla[2]
+⎕←1 test.Run ⍬
