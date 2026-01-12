@@ -1,10 +1,39 @@
 aipltest
 ========
 
-![APL logo](docs/img/250px-APL_logo.png)
+![APL logo](docs/img/150px-APL_logo.png)
 ![Claude AI](docs/img/250px-claude-ai-logo.png)
 
-Collaborate with Claude.ai to develop a minimal testing framework that can be used for TDD (Test-Driven Development) on future Dyalog APL projects.
+This is a pilot project exploring how to collaborate with Claude.ai to develop a minimal APL testing framework that can be used for TDD (Test-Driven Development) on future projects.
+
+It also produces Dyalog APL utility function to replicate some of the functionality of the `@` and `?` operators in the [q programming language](https://code.kx.com/q).
+
+Indexing
+--------
+A foundational insight of k (the language from which q is derived) is that functions and arrays can both be considered as mappings from a domain to a range:
+
+-   A function maps from its argument/s to a result
+-   An array maps from its indices to its values
+
+A dictionary maps from its keys to its values; an array can be thought of as a dictionary in which the array indices are the keys.
+
+Similarly a table can be considered a matrix indexed by its row numbers and its column names.
+To this we add a new data structure, the Xref, a matrix indexed by row and column names.
+
+Programming in q awakens one to how many computations can be considered mappings from one domain to another, or even a series of such mappings.
+The syntax of q permits a series of mappings to be expressed as e.g.
+
+    h @ g @ f @ x
+
+or, as `@` may be elided
+
+    h g f x
+
+and this syntax holds whether `f`, `g`, and `h` are functions, arrays or dictionaries.
+
+The function `at` in this repository intends to do this for data structures
+with the `outr` operator to provide the values for outrange indices that are implicit in q.
+
 
 Products
 --------
@@ -14,23 +43,38 @@ The project produces and tests:
 
 A folder `fun` of APLF files defining functions:
 
-	at           indexes dictionary, object, table or xref (c.f. @ in q language)
-	f            interpolate string (c.f. Python)
-	isDict       whether ⍵ is a dictionary
-	isObj        whether ⍵ is an object
-	isString     whether ⍵ is a string
-	isStrings    whether ⍵ is strings
-	isTable      whether ⍵ is a table
-	isXref       whether ⍵ is an xref
-	j            join strings ⍺ with separator ⍵
-	p            partition string ⍵ on scalar separator ⍺ (default ' ')
-	r            `(o n) r s`: replace characters `o` in string `s` with char `n`
+	[-] at           indexes dictionary, object, table, xref or array (c.f. @ in q language)
+	[x] f            interpolate string (c.f. Python)
+	[x] isDict       whether ⍵ is a dictionary
+	[x] isObj        whether ⍵ is an object
+	[x] isString     whether ⍵ is a string
+	[x] isStrings    whether ⍵ is strings
+	[x] isTable      whether ⍵ is a table
+	[x] isXref       whether ⍵ is an xref
+	[x] j            join strings ⍺ with separator ⍵
+	[ ] outr         operator: return default values for outrange indices
+	[x] p            partition string ⍵ on scalar separator ⍺ (default ' ')
+	[x] r            `(o n) r s`: replace characters `o` in string `s` with char `n`
+	[ ] sel          syntax as `at` but result is same type as left argument
 
 See Data Structures below and also [FUNCTIONS.md](docs/FUNCTIONS.md).
 
 ### A testing framework
 
-A folder `test` containing a file `Run.aplf` that executes the tests defined in sibling folder `tests`, records detailed results in `tests/test.log` and prints a summary (passed, failed, broke) in the APL session.
+Function `test/Run.aplf` executes the tests defined in `tests/*.apla` for the functions `fun/*.aplf`, records detailed results in `logs/*.log` and returns a summary (passed, failed) as a 2-item vector.
+
+Its right argument is a list of strings naming the functions to be tested.
+If the list is empty, all functions found are tested.
+
+An optional left argument of 1 causes the result for each function to be printed in the APL session.
+
+Script `scripts/run_tests.apls` allows Claude Code to run tests:
+
+    ❯ ./scripts/run_tests.apls at isXref
+             pass  fail
+     at       212     0
+     isXref    17     0
+    229 0
 
 Programming language
 --------------------
@@ -40,7 +84,8 @@ This is a challenge for a large language model. The published codebase for APL i
 
 [Dyalog APL version 20 Language Reference Guide](https://docs.dyalog.com/20.0/language-reference-guide/)
 
-It may be possible to infer syntax from APL code in the project files.
+In practice, Claude Code performs well reading and analysing APL code.
+Its written APL looks more like translated Python, and requires close editing.
 
 
 Terminology
@@ -152,5 +197,6 @@ Project structure
 
     docs/          <-- Project plans, TODOs, reports...
     fun/           <-- Dyalog APL source for functions
+    scripts/       <-- Shell and Dyalog scripts
     test/          <-- Dyalog APL source for test framework
     tests/         <-- Unit tests go here
