@@ -1,28 +1,12 @@
 #!/usr/local/bin/dyalogscript DYALOG_INITSESSION=1 ENABLE_CEF=0
-⎕←⎕EN
-⎕←⎕DM
-
-⎕←dyalog←2 ⎕NQ # 'GetEnvironment' 'DYALOG'
-⎕←link←2 ⎕NQ # 'GetEnvironment' 'DYALOGLINK'
-
-'this text will not be seen'
-⎕←'Name class of ⎕SE.Link: ',⍕⎕SE.⎕NC 'Link'
-⍝⎕←'Names in ⎕SE.Link: ',∊⎕SE.Link.⎕NL-⍳16
-⎕←'Name class of ⎕SE.Link.Import: ',⍕⎕SE.⎕NC 'Link.Import'
-
 cwd←⊃1 ⎕NPARTS '' ⍝ current working directory
 cwd↓⍨←¯1 ⍝ lose trailing slash
-⎕←cwd
 
 ⎕SE.Link.Import # cwd ⍝ load app
 
-⍝ report any load error
-confirm←{⍵:⎕←⍺ ⋄ ⎕←'**ERROR ',⍕⎕EN ⋄ ⎕←⎕DM ⋄ ⎕OFF}
-⍝_←'Import complete' confirm ⎕EN=0
+⍝confirm←{⍵:⎕←⍺ ⋄ ⎕←'**ERROR ',⍕⎕EN ⋄ ⎕←⎕DM ⋄ ⎕OFF}
 
-⍝ check argument
-⍝cla←2 ⎕NQ # 'GetCommandLineArgs'
-⍝_←'Command-line argument found' confirm 2≥≢cla
+cla←2 ⎕NQ # 'GetCommandLineArgs'
 ⍝
 ⍝⍝ run test
-⎕←1 test.Run ⍬
+⎕←1 test.Run 1↓cla
