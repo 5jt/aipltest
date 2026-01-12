@@ -212,7 +212,7 @@ INDEX ERROR
 
 An xref is a 3-element vector `(values ⋄ columnNames ⋄ rowNames)` where `values` is a matrix and both `columnNames` and `rowNames` are vectors of strings.
 
-`Y` is `(columnNames ⋄ rowNames)` where each can be scalar or vector strings.
+`Y` is `(rowNames ⋄ columnNames)` where each can be scalar or vector strings.
 
 Shape behavior follows the outer product of row and column index shapes:
 -   `(scalar ⋄ scalar)`: returns scalar value
@@ -225,22 +225,22 @@ Examples:
 ```apl
       x ← ([21 'blue' ⋄ 32 'green' ⋄ 43 'brown'] ⋄ 'age' 'eye' ⋄ 'Bob' 'Ted' 'Carol')
 
-      21 ≡ x at ('age' ⋄ 'Bob')  ⍝ scalar × scalar → scalar
+      21 ≡ x at ('Bob' ⋄ 'age')  ⍝ scalar × scalar → scalar
 1
-      21 'blue' ≡ x at ('age' 'eye' ⋄ 'Bob')  ⍝ vector × scalar → vector
+      21 'blue' ≡ x at ('Bob' ⋄ 'age' 'eye')  ⍝ scalar × vector → vector
 1
-      21 32 ≡ x at ('age' ⋄ 'Bob' 'Ted')  ⍝ scalar × vector → vector
+      21 32 ≡ x at ('Bob' 'Ted' ⋄ 'age')  ⍝ vector × scalar → vector
 1
-      (2 2⍴43 'brown' 21 'blue') ≡ x at ('age' 'eye' ⋄ 'Carol' 'Bob')  ⍝ vector × vector → matrix
+      (2 2⍴43 'brown' 21 'blue') ≡ x at ('Carol' 'Bob' ⋄ 'age' 'eye')  ⍝ vector × vector → matrix
 1
 ```
 
 Invalid row or column names signal INDEX ERROR:
 
 ```apl
-      x at ('sex' ⋄ 'Bob')
+      x at ('Bob' ⋄ 'sex')
 INDEX ERROR
-      x at ('sex' ⋄ 'Bob')
+      x at ('Bob' ⋄ 'sex')
         ^
 ```
 

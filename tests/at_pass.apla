@@ -1,6 +1,5 @@
 (
  (
-  ⎕IO:0
   description:'dictionary: single key lookup'
   expected:23
   larg:(
@@ -15,7 +14,6 @@
   rarg:'sheep'
  )
  (
-  ⎕IO:0
   description:'dictionary: first key lookup'
   expected:12
   larg:(
@@ -30,7 +28,6 @@
   rarg:'cow'
  )
  (
-  ⎕IO:0
   description:'dictionary: last key lookup'
   expected:34
   larg:(
@@ -45,7 +42,6 @@
   rarg:'dog'
  )
  (
-  ⎕IO:0
   description:'dictionary: multiple keys lookup'
   expected:23 12
   larg:(
@@ -63,7 +59,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'dictionary: all keys in order'
   expected:12 23 34
   larg:(
@@ -82,7 +77,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'dictionary: all keys in reverse order'
   expected:34 23 12
   larg:(
@@ -101,7 +95,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'dictionary: duplicate keys in lookup'
   expected:23 23 12
   larg:(
@@ -120,7 +113,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary outrange key without default'
   larg:(
@@ -135,7 +127,6 @@
   rarg:'cat'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary multiple outrange keys without default'
   larg:(
@@ -153,7 +144,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary mixed valid and outrange keys'
   larg:(
@@ -171,7 +161,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary mixed outrange and valid keys'
   larg:(
@@ -189,7 +178,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary multiple mixed valid/outrange keys'
   larg:(
@@ -209,7 +197,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'dictionary: with default, valid key'
   expected:23
   larg:(
@@ -224,7 +211,6 @@
   rarg:'sheep'
  )
  (
-  ⎕IO:0
   description:'dictionary: with default, outrange key returns default'
   expected:99
   larg:(
@@ -239,7 +225,6 @@
   rarg:'cat'
  )
  (
-  ⎕IO:0
   description:'dictionary: with default, multiple outrange keys'
   expected:99 99
   larg:(
@@ -257,7 +242,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'dictionary: with default, mixed valid/outrange'
   expected:23 99
   larg:(
@@ -275,7 +259,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'dictionary: string values'
   expected:'green'
   larg:(
@@ -294,7 +277,6 @@
   rarg:'go'
  )
  (
-  ⎕IO:0
   description:'dictionary: string values, multiple keys'
   expected:(
    'blue'
@@ -319,7 +301,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary string values, outrange key'
   larg:(
@@ -338,7 +319,6 @@
   rarg:'caution'
  )
  (
-  ⎕IO:0
   description:'dictionary: numeric vector values'
   expected:4 5 6
   larg:(
@@ -353,7 +333,6 @@
   rarg:'b'
  )
  (
-  ⎕IO:0
   description:'dictionary: numeric vector values, multiple keys'
   expected:(
    7 8
@@ -371,7 +350,6 @@
   rarg:'ca'
  )
  (
-  ⎕IO:0
   description:'dictionary: nested array values'
   expected:[
    1 2
@@ -396,7 +374,6 @@
   rarg:'key2'
  )
  (
-  ⎕IO:0
   description:'dictionary: single key/value pair'
   expected:42
   larg:(
@@ -409,7 +386,6 @@
   rarg:'answer'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary single key/value, outrange'
   larg:(
@@ -422,7 +398,6 @@
   rarg:'question'
  )
  (
-  ⎕IO:0
   description:'dictionary: empty string key'
   expected:1
   larg:(
@@ -437,7 +412,6 @@
   rarg:''
  )
  (
-  ⎕IO:0
   description:'dictionary: keys with spaces'
   expected:20
   larg:(
@@ -452,7 +426,6 @@
   rarg:'last name'
  )
  (
-  ⎕IO:0
   description:'dictionary: keys with special characters'
   expected:2
   larg:(
@@ -467,7 +440,6 @@
   rarg:'a/b'
  )
  (
-  ⎕IO:0
   description:'dictionary: unicode keys'
   expected:2
   larg:(
@@ -482,7 +454,6 @@
   rarg:'naïve'
  )
  (
-  ⎕IO:0
   description:'dictionary: emoji keys'
   expected:2
   larg:(
@@ -493,7 +464,6 @@
   rarg:'🐑'
  )
  (
-  ⎕IO:0
   description:'dictionary: mixed unicode/emoji keys'
   expected:20 10
   larg:(
@@ -511,7 +481,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'dictionary: case-sensitive key lookup'
   expected:1
   larg:(
@@ -525,7 +494,6 @@
   rarg:'abc'
  )
  (
-  ⎕IO:0
   description:'dictionary: case-sensitive different case'
   expected:2
   larg:(
@@ -539,7 +507,6 @@
   rarg:'ABC'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary case-sensitive outrange'
   larg:(
@@ -553,7 +520,6 @@
   rarg:'Abc'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary outrange, no explicit default'
   larg:(
@@ -564,7 +530,6 @@
   rarg:'d'
  )
  (
-  ⎕IO:0
   description:'dictionary: explicit zero default value'
   expected:0
   larg:(
@@ -575,7 +540,6 @@
   rarg:'d'
  )
  (
-  ⎕IO:0
   description:'dictionary: negative default value'
   expected:¯1
   larg:(
@@ -586,7 +550,6 @@
   rarg:'d'
  )
  (
-  ⎕IO:0
   description:'dictionary: string default value'
   expected:'unknown'
   larg:(
@@ -606,7 +569,6 @@
   rarg:'caution'
  )
  (
-  ⎕IO:0
   description:'dictionary: complex nested default'
   expected:(
    5 6
@@ -627,7 +589,6 @@
   rarg:'c'
  )
  (
-  ⎕IO:0
   description:'dictionary: scalar string key (single char)'
   expected:20
   larg:(
@@ -638,7 +599,6 @@
   rarg:'b'
  )
  (
-  ⎕IO:0
   description:'dictionary: multiple single-char keys'
   expected:30 10 20
   larg:(
@@ -649,7 +609,6 @@
   rarg:'cab'
  )
  (
-  ⎕IO:0
   description:'dictionary: matrix keys produce matrix result'
   expected:[
    23 12
@@ -670,7 +629,6 @@
   ]
  )
  (
-  ⎕IO:0
   description:'dictionary: 3x3 matrix keys'
   expected:[
    10 20 30
@@ -689,7 +647,6 @@
   ]
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary matrix with outrange keys'
   larg:(
@@ -707,7 +664,6 @@
   ]
  )
  (
-  ⎕IO:0
   description:'dictionary: matrix with default value'
   expected:[
    23 99
@@ -728,7 +684,6 @@
   ]
  )
  (
-  ⎕IO:0
   description:'dictionary: rank-3 array keys'
   expected:[
    [
@@ -757,7 +712,6 @@
   ]
  )
  (
-  ⎕IO:0
   description:'dictionary: vector of length 1'
   expected:(23⋄)
   larg:(
@@ -774,7 +728,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'dictionary: numeric keys (coerced to strings)'
   expected:200
   larg:(
@@ -785,7 +738,6 @@
   rarg:'2'
  )
  (
-  ⎕IO:0
   description:'dictionary: long keys'
   expected:2
   larg:(
@@ -800,7 +752,6 @@
   rarg:'very-long-key-name-two'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary string keys, numeric scalar right arg'
   larg:(
@@ -815,7 +766,6 @@
   rarg:123
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary string keys, numeric vector right arg'
   larg:(
@@ -830,7 +780,6 @@
   rarg:1 2 3
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: left argument not a dictionary'
   larg:1 2 3
@@ -838,7 +787,6 @@
   rarg:'a'
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: left argument is not a dictionary'
   larg:'abc'
@@ -846,7 +794,6 @@
   rarg:'a'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'dictionary: empty (num, chars)'
   larg:(
@@ -857,7 +804,6 @@
   rarg:'anything'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'dictionary: empty (num, strings)'
   larg:(
@@ -870,7 +816,6 @@
   rarg:'anything'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'dictionary: empty (strings, chars)'
   larg:(
@@ -883,7 +828,6 @@
   rarg:'anything'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'dictionary: empty (strings, strings)'
   larg:(
@@ -898,7 +842,6 @@
   rarg:'anything'
  )
  (
-  ⎕IO:0
   description:'dictionary: duplicate keys, first occurrence wins'
   expected:10
   larg:(
@@ -909,7 +852,6 @@
   rarg:'a'
  )
  (
-  ⎕IO:0
   description:'dictionary: duplicate keys, multiple lookups'
   expected:10 20 10
   larg:(
@@ -920,7 +862,6 @@
   rarg:'aba'
  )
  (
-  ⎕IO:0
   description:'dictionary: all keys duplicated'
   expected:10 20
   larg:(
@@ -931,7 +872,6 @@
   rarg:'xy'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary outrange with vector values, no default'
   larg:(
@@ -946,7 +886,6 @@
   rarg:'d'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary outrange with nested vector values'
   larg:(
@@ -966,7 +905,6 @@
   rarg:'c'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary outrange with string values, no default'
   larg:(
@@ -981,7 +919,6 @@
   rarg:'d'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary outrange with nested strings, no default'
   larg:(
@@ -1001,7 +938,6 @@
   rarg:'c'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'dictionary: default preserves vector shape'
   larg:(
@@ -1016,7 +952,6 @@
   rarg:'d'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'dictionary: default preserves nested structure'
   larg:(
@@ -1040,7 +975,6 @@
   rarg:'d'
  )
  (
-  ⎕IO:0
   description:'dictionary: default preserves string type'
   expected:'unknown'
   larg:(
@@ -1056,7 +990,6 @@
   rarg:'d'
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: keys/values length mismatch (more values)'
   larg:(
@@ -1067,7 +1000,6 @@
   rarg:'a'
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: keys/values length mismatch (more keys)'
   larg:(
@@ -1078,7 +1010,6 @@
   rarg:'a'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: dictionary numeric keys, outrange string key'
   larg:(
@@ -1089,7 +1020,6 @@
   rarg:'a'
  )
  (
-  ⎕IO:0
   breaks:11
   description:'dictionary: keys mixed types'
   larg:(
@@ -1100,7 +1030,6 @@
   rarg:'a'
  )
  (
-  ⎕IO:0
   description:'object: single variable lookup'
   expected:23
   larg:(
@@ -1112,7 +1041,6 @@
   rarg:'sheep'
  )
  (
-  ⎕IO:0
   description:'object: first variable lookup'
   expected:12
   larg:(
@@ -1124,7 +1052,6 @@
   rarg:'cow'
  )
  (
-  ⎕IO:0
   description:'object: last variable lookup'
   expected:34
   larg:(
@@ -1136,7 +1063,6 @@
   rarg:'dog'
  )
  (
-  ⎕IO:0
   description:'object: multiple variables lookup'
   expected:23 12
   larg:(
@@ -1151,7 +1077,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'object: all variables in order'
   expected:12 23 34
   larg:(
@@ -1167,7 +1092,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'object: all variables in reverse order'
   expected:34 23 12
   larg:(
@@ -1183,7 +1107,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'object: duplicate variables in lookup'
   expected:23 23 12
   larg:(
@@ -1199,7 +1122,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object outrange variable name'
   larg:(
@@ -1211,7 +1133,6 @@
   rarg:'cat'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object multiple outrange variables'
   larg:(
@@ -1226,7 +1147,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object mixed valid and outrange variables'
   larg:(
@@ -1241,7 +1161,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object mixed outrange and valid variables'
   larg:(
@@ -1256,7 +1175,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object multiple mixed valid/outrange variables'
   larg:(
@@ -1273,7 +1191,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'object: string values'
   expected:'green'
   larg:(
@@ -1285,7 +1202,6 @@
   rarg:'go'
  )
  (
-  ⎕IO:0
   description:'object: string values, multiple variables'
   expected:(
    'blue'
@@ -1303,7 +1219,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object string values, outrange variable'
   larg:(
@@ -1315,7 +1230,6 @@
   rarg:'caution'
  )
  (
-  ⎕IO:0
   description:'object: numeric vector values'
   expected:4 5 6
   larg:(
@@ -1327,7 +1241,6 @@
   rarg:'b'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object outrange with vector lookup'
   larg:(
@@ -1339,7 +1252,6 @@
   rarg:'ca'
  )
  (
-  ⎕IO:0
   description:'object: numeric vector values, multiple variables'
   expected:(
    7 8
@@ -1357,7 +1269,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'object: nested array values'
   expected:[
    1 2
@@ -1375,7 +1286,6 @@
   rarg:'key2'
  )
  (
-  ⎕IO:0
   description:'object: single variable'
   expected:42
   larg:(
@@ -1385,7 +1295,6 @@
   rarg:'answer'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object single variable, outrange'
   larg:(
@@ -1395,7 +1304,6 @@
   rarg:'question'
  )
  (
-  ⎕IO:0
   description:'object: variable with spaces in name'
   expected:20
   larg:(
@@ -1407,7 +1315,6 @@
   rarg:'lastName'
  )
  (
-  ⎕IO:0
   description:'object: unicode variable names'
   expected:2
   larg:(
@@ -1419,7 +1326,6 @@
   rarg:'naïve'
  )
  (
-  ⎕IO:0
   description:'object: case-sensitive variable lookup'
   expected:1
   larg:(
@@ -1430,7 +1336,6 @@
   rarg:'abc'
  )
  (
-  ⎕IO:0
   description:'object: case-sensitive different case'
   expected:2
   larg:(
@@ -1441,7 +1346,6 @@
   rarg:'ABC'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object case-sensitive outrange'
   larg:(
@@ -1452,7 +1356,6 @@
   rarg:'Abc'
  )
  (
-  ⎕IO:0
   description:'object: scalar string variable (single char)'
   expected:20
   larg:(
@@ -1464,7 +1367,6 @@
   rarg:'y'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object vector lookup treated as single name'
   larg:(
@@ -1476,7 +1378,6 @@
   rarg:'cab'
  )
  (
-  ⎕IO:0
   description:'object: multiple single-char variable names'
   expected:30 10 20
   larg:(
@@ -1492,7 +1393,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'object: matrix variable names produce matrix result'
   expected:[
    23 12
@@ -1510,7 +1410,6 @@
   ]
  )
  (
-  ⎕IO:0
   description:'object: 3x3 matrix variable names'
   expected:[
    10 20 30
@@ -1530,7 +1429,6 @@
   ]
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: object matrix with outrange variables'
   larg:(
@@ -1545,7 +1443,6 @@
   ]
  )
  (
-  ⎕IO:0
   description:'object: rank-3 array variable names'
   expected:[
    [
@@ -1575,7 +1472,6 @@
   ]
  )
  (
-  ⎕IO:0
   description:'object: vector of length 1'
   expected:(23⋄)
   larg:(
@@ -1589,7 +1485,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'object: long variable names'
   expected:2
   larg:(
@@ -1601,7 +1496,6 @@
   rarg:'veryLongVariableNameTwo'
  )
  (
-  ⎕IO:0
   breaks:11
   description:'object: nested object value'
   larg:(
@@ -1615,7 +1509,6 @@
   rarg:'inner'
  )
  (
-  ⎕IO:0
   description:'object: mixed types of values'
   expected:(
    'test'
@@ -1634,7 +1527,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'object: empty object'
   larg:(
@@ -1643,7 +1535,6 @@
   rarg:'anything'
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: object right argument not a string'
   larg:(
@@ -1654,7 +1545,6 @@
   rarg:123
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: object right argument is numeric vector'
   larg:(
@@ -1665,7 +1555,6 @@
   rarg:1 2 3
  )
  (
-  ⎕IO:0
   description:'table: single row index (scalar) returns vector'
   expected:(
    'Bob'
@@ -1688,7 +1577,6 @@
   rarg:1
  )
  (
-  ⎕IO:0
   description:'table: single row index (vector) returns matrix'
   expected:[
    'Ted' 32 'green'
@@ -1709,7 +1597,6 @@
   rarg:(2⋄)
  )
  (
-  ⎕IO:0
   description:'table: last row index returns vector'
   expected:(
    'Carol'
@@ -1732,7 +1619,6 @@
   rarg:3
  )
  (
-  ⎕IO:0
   description:'table: multiple rows in order returns matrix'
   expected:[
    'Bob' 21 'blue'
@@ -1754,7 +1640,6 @@
   rarg:1 2
  )
  (
-  ⎕IO:0
   description:'table: multiple rows reverse order returns matrix'
   expected:[
    'Carol' 43 'brown'
@@ -1776,7 +1661,6 @@
   rarg:3 1
  )
  (
-  ⎕IO:0
   description:'table: all rows in order returns matrix'
   expected:[
    'Bob'   21 'blue'
@@ -1799,7 +1683,6 @@
   rarg:1 2 3
  )
  (
-  ⎕IO:0
   description:'table: duplicate row indices returns matrix'
   expected:[
    'Ted' 32 'green'
@@ -1822,7 +1705,6 @@
   rarg:2 2 1
  )
  (
-  ⎕IO:0
   description:'table: single column by name returns vector'
   expected:21 32 43
   larg:(
@@ -1841,7 +1723,6 @@
   rarg:'age'
  )
  (
-  ⎕IO:0
   description:'table: multiple columns by name returns matrix'
   expected:[
    'blue'  'Bob'
@@ -1867,7 +1748,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: all columns in order returns matrix'
   expected:[
    'Bob'   21 'blue'
@@ -1894,7 +1774,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: all columns reverse order returns matrix'
   expected:[
    'blue'  21 'Bob'
@@ -1921,7 +1800,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: duplicate column names returns matrix'
   expected:[
    21 21 'Bob'
@@ -1948,7 +1826,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: rows and columns combined returns matrix'
   expected:[
    'brown' 'Carol'
@@ -1976,7 +1853,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: single row (scalar) and single column returns scalar'
   expected:'Ted'
   larg:(
@@ -1998,7 +1874,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: single row (scalar) and multiple columns returns vector'
   expected:(
    'green'
@@ -2026,7 +1901,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: multiple rows and single column returns vector'
   expected:[
    (
@@ -2057,7 +1931,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table outrange row in vector'
   larg:(
@@ -2076,7 +1949,6 @@
   rarg:4 1
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table multiple outrange rows'
   larg:(
@@ -2095,7 +1967,6 @@
   rarg:4 5
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table outrange row (scalar)'
   larg:(
@@ -2114,7 +1985,6 @@
   rarg:4
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table mixed valid and outrange rows'
   larg:(
@@ -2133,7 +2003,6 @@
   rarg:2 5 1
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: outrange column name'
   larg:(
@@ -2155,7 +2024,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: single outrange column name'
   larg:(
@@ -2174,7 +2042,6 @@
   rarg:'sex'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: outrange column with valid rows'
   larg:(
@@ -2199,7 +2066,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: single row, single column table returns vector'
   expected:(
    'value'
@@ -2218,7 +2084,6 @@
   rarg:1
  )
  (
-  ⎕IO:0
   description:'table: single row table, column access'
   expected:(42⋄)
   larg:(
@@ -2235,7 +2100,6 @@
   rarg:'x'
  )
  (
-  ⎕IO:0
   description:'table: single column table, row access returns matrix'
   expected:[
    10
@@ -2256,7 +2120,6 @@
   rarg:1 2 3
  )
  (
-  ⎕IO:0
   description:'table: numeric values only returns matrix'
   expected:[
    20 30
@@ -2284,7 +2147,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: string values only returns matrix'
   expected:[
    'red'   'blue'
@@ -2305,7 +2167,6 @@
   rarg:1 2
  )
  (
-  ⎕IO:0
   description:'table: mixed numeric and string columns returns matrix'
   expected:[
    'Alice' 30 'Engineer'
@@ -2327,7 +2188,6 @@
   rarg:1 2
  )
  (
-  ⎕IO:0
   description:'table: column name with spaces'
   expected:30 25 35
   larg:(
@@ -2346,7 +2206,6 @@
   rarg:'age value'
  )
  (
-  ⎕IO:0
   description:'table: empty column name'
   expected:1 2 3
   larg:(
@@ -2364,7 +2223,6 @@
   rarg:''
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table row index 0 (outrange)'
   larg:(
@@ -2383,7 +2241,6 @@
   rarg:0 1
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table negative row index (outrange)'
   larg:(
@@ -2402,7 +2259,6 @@
   rarg:¯1 1
  )
  (
-  ⎕IO:0
   description:'table: case-sensitive column names'
   expected:1 2 3
   larg:(
@@ -2420,7 +2276,6 @@
   rarg:'Name'
  )
  (
-  ⎕IO:0
   description:'table: case-sensitive different case column'
   expected:10 20 30
   larg:(
@@ -2438,7 +2293,6 @@
   rarg:'name'
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: case-sensitive column mismatch'
   larg:(
@@ -2456,7 +2310,6 @@
   rarg:'NAME'
  )
  (
-  ⎕IO:0
   description:'table: unicode column names returns matrix'
   expected:[
    2 3
@@ -2480,7 +2333,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: emoji column names returns matrix'
   expected:[
    20 30
@@ -2504,7 +2356,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: single row vector index with 1 element returns matrix'
   expected:[
    'Carol' 43 'brown'
@@ -2525,7 +2376,6 @@
   rarg:(3⋄)
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: table left arg, right arg not int or string'
   larg:(
@@ -2543,7 +2393,6 @@
   rarg:1.5
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: table left arg, nested incompatible right arg'
   larg:(
@@ -2564,7 +2413,6 @@
   )
  )
  (
-  ⎕IO:0
   description:'table: empty row selection returns empty matrix'
   expected:0⌿[
    (
@@ -2589,7 +2437,6 @@
   rarg:⍬
  )
  (
-  ⎕IO:0
   description:'table: empty column selection returns empty matrix'
   expected:[
    0⌿(
@@ -2620,7 +2467,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table outrange scalar row with column selection'
   larg:(
@@ -2644,7 +2490,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table outrange vector rows with column selection'
   larg:(
@@ -2668,7 +2513,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:11
   description:'domain error: numeric column selector'
   larg:(
@@ -2690,7 +2534,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table scalar row with invalid column name'
   larg:(
@@ -2712,7 +2555,6 @@
   )
  )
  (
-  ⎕IO:0
   breaks:3
   description:'index error: table vector rows with invalid column name'
   larg:(
@@ -2731,1595 +2573,6 @@
   rarg:(
    1 2
    'sex'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: scalar col × scalar row returns scalar'
-  expected:21
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:159
-  rarg:(
-   'Bob'
-   'age'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: vector cols × scalar row returns vector'
-  expected:(
-   21
-   'blue'
-  )
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:160
-  rarg:(
-   'Bob'
-   (
-    'age'
-    'eye'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: scalar col × vector rows returns vector'
-  expected:21 32
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:161
-  rarg:(
-   (
-    'Bob'
-    'Ted'
-   )
-   'age'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: vector cols × vector rows returns matrix'
-  expected:[
-   43 'brown'
-   21 'blue'
-  ]
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:162
-  rarg:(
-   (
-    'Carol'
-    'Bob'
-   )
-   (
-    'age'
-    'eye'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: all columns × all rows returns matrix'
-  expected:[
-   21 'blue'
-   32 'green'
-   43 'brown'
-  ]
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:163
-  rarg:(
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-   (
-    'age'
-    'eye'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: reverse column order'
-  expected:[
-   'blue'  21
-   'green' 32
-   'brown' 43
-  ]
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:164
-  rarg:(
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-   (
-    'eye'
-    'age'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: reverse row order'
-  expected:[
-   43 'brown'
-   32 'green'
-   21 'blue'
-  ]
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:165
-  rarg:(
-   (
-    'Carol'
-    'Ted'
-    'Bob'
-   )
-   (
-    'age'
-    'eye'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: single column × single row'
-  expected:32
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:166
-  rarg:(
-   'Ted'
-   'age'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: duplicate columns'
-  expected:[
-   21 21 'blue'
-   32 32 'green'
-  ]
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:167
-  rarg:(
-   (
-    'Bob'
-    'Ted'
-   )
-   (
-    'age'
-    'age'
-    'eye'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: duplicate rows'
-  expected:[
-   21 'blue'
-   21 'blue'
-   32 'green'
-  ]
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:168
-  rarg:(
-   (
-    'Bob'
-    'Bob'
-    'Ted'
-   )
-   (
-    'age'
-    'eye'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: duplicate columns and rows'
-  expected:[
-   21 21
-   32 32
-   21 21
-  ]
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:169
-  rarg:(
-   (
-    'Bob'
-    'Ted'
-    'Bob'
-   )
-   (
-    'age'
-    'age'
-   )
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: invalid column name'
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:170
-  rarg:(
-   'Bob'
-   'sex'
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: invalid row name'
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:171
-  rarg:(
-   'Alice'
-   'age'
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: invalid column in vector'
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:172
-  rarg:(
-   'Bob'
-   (
-    'age'
-    'sex'
-   )
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: invalid row in vector'
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:173
-  rarg:(
-   (
-    'Bob'
-    'Alice'
-   )
-   'age'
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: mixed valid and invalid columns'
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:174
-  rarg:(
-   'Bob'
-   (
-    'age'
-    'sex'
-    'eye'
-   )
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: mixed valid and invalid rows'
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:175
-  rarg:(
-   (
-    'Bob'
-    'Alice'
-    'Ted'
-   )
-   'age'
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: both invalid column and row names'
-  larg:(
-   [
-    21 'blue'
-    32 'green'
-    43 'brown'
-   ]
-   (
-    'age'
-    'eye'
-   )
-   (
-    'Bob'
-    'Ted'
-    'Carol'
-   )
-  )
-  number:176
-  rarg:(
-   'Alice'
-   'sex'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: numeric values only'
-  expected:[
-   10 20
-   40 50
-  ]
-  larg:(
-   [
-    10 20 30
-    40 50 60
-    70 80 90
-   ]
-   (
-    ('x'⋄)
-    ('y'⋄)
-    ('z'⋄)
-   )
-   (
-    'r1'
-    'r2'
-    'r3'
-   )
-  )
-  number:177
-  rarg:(
-   (
-    'r1'
-    'r2'
-   )
-   (
-    ('x'⋄)
-    ('y'⋄)
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: string values only'
-  expected:[
-   'red'   'blue'
-   'green' 'yellow'
-  ]
-  larg:(
-   [
-    'red'    'blue'
-    'green'  'yellow'
-    'orange' 'purple'
-   ]
-   (
-    'color1'
-    'color2'
-   )
-   (
-    'p1'
-    'p2'
-    'p3'
-   )
-  )
-  number:178
-  rarg:(
-   (
-    'p1'
-    'p2'
-   )
-   (
-    'color1'
-    'color2'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: mixed numeric and string values'
-  expected:[
-   'Alice' 30
-   'Bob'   25
-  ]
-  larg:(
-   [
-    'Alice' 30 'Engineer'
-    'Bob'   25 'Designer'
-    'Carol' 35 'Manager'
-   ]
-   (
-    'name'
-    'age'
-    'role'
-   )
-   (
-    'emp1'
-    'emp2'
-    'emp3'
-   )
-  )
-  number:179
-  rarg:(
-   (
-    'emp1'
-    'emp2'
-   )
-   (
-    'name'
-    'age'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: single column xref'
-  expected:10 20 30
-  larg:(
-   [
-    10
-    20
-    30
-   ]
-   (
-    'value'
-   )
-   (
-    'r1'
-    'r2'
-    'r3'
-   )
-  )
-  number:180
-  rarg:(
-   (
-    'r1'
-    'r2'
-    'r3'
-   )
-   'value'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: single row xref'
-  expected:10 20 30
-  larg:(
-   [
-    10 20 30
-   ]
-   (
-    ('x'⋄)
-    ('y'⋄)
-    ('z'⋄)
-   )
-   (
-    'row1'
-   )
-  )
-  number:181
-  rarg:(
-   'row1'
-   (
-    ('x'⋄)
-    ('y'⋄)
-    ('z'⋄)
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: 1×1 xref'
-  expected:42
-  larg:(
-   [
-    42
-   ]
-   (
-    'value'
-   )
-   (
-    'key'
-   )
-  )
-  number:182
-  rarg:(
-   'key'
-   'value'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: case-sensitive column names'
-  expected:1
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'Col'
-    'col'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:183
-  rarg:(
-   'r1'
-   'Col'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: case-sensitive row names'
-  expected:1
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'Row'
-    'row'
-   )
-  )
-  number:184
-  rarg:(
-   'Row'
-   'c1'
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: case-sensitive column mismatch'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'Col'
-    'col'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:185
-  rarg:(
-   'r1'
-   'COL'
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: case-sensitive row mismatch'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'Row'
-    'row'
-   )
-  )
-  number:186
-  rarg:(
-   'c1'
-   'ROW'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: unicode column names'
-  expected:1 2
-  larg:(
-   [
-    1 2 3
-    4 5 6
-   ]
-   (
-    ('α'⋄)
-    ('β'⋄)
-    ('γ'⋄)
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:187
-  rarg:(
-   'r1'
-   (
-    ('α'⋄)
-    ('β'⋄)
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: unicode row names'
-  expected:1 2
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'café'
-    'naïve'
-   )
-  )
-  number:188
-  rarg:(
-   'café'
-   (
-    'c1'
-    'c2'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: emoji column names'
-  expected:1 2
-  larg:(
-   [
-    1 2 3
-    4 5 6
-   ]
-   (
-    ('🐄'⋄)
-    ('🐑'⋄)
-    ('🐕'⋄)
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:189
-  rarg:(
-   'r1'
-   (
-    ('🐄'⋄)
-    ('🐑'⋄)
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: emoji row names'
-  expected:1 2
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    ('🐄'⋄)
-    ('🐑'⋄)
-   )
-  )
-  number:190
-  rarg:(
-   '🐄'
-   (
-    'c1'
-    'c2'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: column names with spaces'
-  expected:10
-  larg:(
-   [
-    10 20 30
-    40 50 60
-   ]
-   (
-    'first name'
-    'last name'
-    'age'
-   )
-   (
-    'p1'
-    'p2'
-   )
-  )
-  number:191
-  rarg:(
-   'p1'
-   'first name'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: row names with spaces'
-  expected:10
-  larg:(
-   [
-    10 20
-    30 40
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'first person'
-    'second person'
-   )
-  )
-  number:192
-  rarg:(
-   'first person'
-   'c1'
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'xref: empty column name'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    ''
-    'col'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:193
-  rarg:(
-   'r1'
-   ''
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'xref: empty row name'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    ''
-    'row'
-   )
-  )
-  number:194
-  rarg:(
-   ''
-   'c1'
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: subset selection maintains order'
-  expected:[
-   60 50
-   30 20
-  ]
-  larg:(
-   [
-    10 20 30
-    40 50 60
-    70 80 90
-   ]
-   (
-    ('x'⋄)
-    ('y'⋄)
-    ('z'⋄)
-   )
-   (
-    'r1'
-    'r2'
-    'r3'
-   )
-  )
-  number:195
-  rarg:(
-   (
-    'r2'
-    'r1'
-   )
-   (
-    ('z'⋄)
-    ('y'⋄)
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: nested array values'
-  expected:[
-   1 2
-   3 4
-  ]
-  larg:(
-   [
-    (
-     [
-      1 2
-      3 4
-     ]
-    )
-    (
-     'text'
-    )
-   ]
-   (
-    'item'
-   )
-   (
-    'matrix'
-    'string'
-   )
-  )
-  number:196
-  rarg:(
-   'matrix'
-   'item'
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: empty column selection'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:197
-  rarg:(
-   'r1'
-   0⌿(
-    ''
-   )
-  )
- )
- (
-  ⎕IO:0
-  breaks:3
-  description:'index error: empty row selection'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:198
-  rarg:(
-   'c1'
-   0⌿(
-    ''
-   )
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'domain error: right arg not a pair'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:199
-  rarg:'c1'
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'domain error: right arg has 3 elements'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:200
-  rarg:(
-   'c1'
-   'r1'
-   'extra'
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'domain error: column selector is numeric'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:201
-  rarg:(
-   'r1'
-   1
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'domain error: row selector is numeric'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:202
-  rarg:(
-   'c1'
-   1
-  )
- )
- (
-  ⎕IO:0
-  description:'column selector is matrix'
-  expected:[
-   1 2
-   2 1
-  ]
-  larg:(
-   [
-    1 2
-    2 1
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:203
-  rarg:(
-   'r1'
-   [
-    'c1' 'c2'
-    'c2' 'c1'
-   ]
-  )
- )
- (
-  ⎕IO:0
-  description:'row selector is matrix'
-  expected:[
-   1 3
-   3 1
-  ]
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:204
-  rarg:(
-   [
-    'r1' 'r2'
-    'r2' 'r1'
-   ]
-   'c1'
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'domain error: column selector vector contains numeric'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:205
-  rarg:(
-   'r1'
-   (
-    'c1'
-    1
-   )
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'domain error: row selector vector contains numeric'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:206
-  rarg:(
-   'c1'
-   (
-    'r1'
-    2
-   )
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'domain error: column selector vector mixed types'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:207
-  rarg:(
-   'r1'
-   (
-    'c1'
-    1
-    'c2'
-   )
-  )
- )
- (
-  ⎕IO:0
-  breaks:11
-  description:'domain error: row selector vector mixed types'
-  larg:(
-   [
-    1 2
-    3 4
-   ]
-   (
-    'c1'
-    'c2'
-   )
-   (
-    'r1'
-    'r2'
-   )
-  )
-  number:208
-  rarg:(
-   'c1'
-   (
-    'r1'
-    2
-    'r2'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: large matrix lookup'
-  expected:[
-   21 22 23
-   41 42 43
-   61 62 63
-  ]
-  larg:(
-   [
-    11 12 13 14 15
-    21 22 23 24 25
-    31 32 33 34 35
-    41 42 43 44 45
-    51 52 53 54 55
-    61 62 63 64 65
-   ]
-   (
-    'c1'
-    'c2'
-    'c3'
-    'c4'
-    'c5'
-   )
-   (
-    'r1'
-    'r2'
-    'r3'
-    'r4'
-    'r5'
-    'r6'
-   )
-  )
-  number:209
-  rarg:(
-   (
-    'r2'
-    'r4'
-    'r6'
-   )
-   (
-    'c1'
-    'c2'
-    'c3'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: single element from vector selection'
-  expected:[
-   21
-  ]
-  larg:(
-   [
-    11 12 13
-    21 22 23
-    31 32 33
-   ]
-   (
-    'c1'
-    'c2'
-    'c3'
-   )
-   (
-    'r1'
-    'r2'
-    'r3'
-   )
-  )
-  number:210
-  rarg:(
-   (
-    'r2'
-   )
-   (
-    'c1'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: select single row'
-  expected:[
-   21 22 23
-  ]
-  larg:(
-   [
-    11 12 13
-    21 22 23
-    31 32 33
-   ]
-   (
-    'c1'
-    'c2'
-    'c3'
-   )
-   (
-    'r1'
-    'r2'
-    'r3'
-   )
-  )
-  number:211
-  rarg:(
-   (
-    'r2'
-   )
-   (
-    'c1'
-    'c2'
-    'c3'
-   )
-  )
- )
- (
-  ⎕IO:0
-  description:'xref: row vector from single column'
-  expected:[
-   11
-   21
-   31
-  ]
-  larg:(
-   [
-    11 12 13
-    21 22 23
-    31 32 33
-   ]
-   (
-    'c1'
-    'c2'
-    'c3'
-   )
-   (
-    'r1'
-    'r2'
-    'r3'
-   )
-  )
-  number:212
-  rarg:(
-   (
-    'r1'
-    'r2'
-    'r3'
-   )
-   (
-    'c1'
-   )
   )
  )
 )

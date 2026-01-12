@@ -1,6 +1,8 @@
  isXref←{
      3≠≢⍵:0
-     2 1 1≢≢¨s←⍴¨⍵:0
-     {⍵≢⌽⍵}∊s:0
-     ∧/isStrung¨1↓⍵
+     2 1 1≢≢¨s←⍴¨⍵:0 ⍝ matrix; list; list
+     {⍵≢⌽⍵}∊s:0 ⍝ all rows and cols have labels
+     cr←1↓⍵ ⍝ col and row labels
+     0∊isStrings¨cr:0 ⍝ labels are strings
+     ∧/×∊≢¨¨cr ⍝ no empty labels
  }

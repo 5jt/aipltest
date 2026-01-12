@@ -156,3 +156,57 @@ PASS - [155] index error: table outrange vector rows with column selection
 PASS - [156] domain error: numeric column selector
 PASS - [157] index error: table scalar row with invalid column name
 PASS - [158] index error: table vector rows with invalid column name
+PASS - [159] xref: scalar col × scalar row returns scalar
+PASS - [160] xref: vector cols × scalar row returns vector
+PASS - [161] xref: scalar col × vector rows returns vector
+PASS - [162] xref: vector cols × vector rows returns matrix
+PASS - [163] xref: all columns × all rows returns matrix
+PASS - [164] xref: reverse column order
+PASS - [165] xref: reverse row order
+PASS - [166] xref: single column × single row
+PASS - [167] xref: duplicate columns
+PASS - [168] xref: duplicate rows
+PASS - [169] xref: duplicate columns and rows
+PASS - [170] index error: invalid column name
+PASS - [171] index error: invalid row name
+PASS - [172] index error: invalid column in vector
+PASS - [173] index error: invalid row in vector
+PASS - [174] index error: mixed valid and invalid columns
+PASS - [175] index error: mixed valid and invalid rows
+PASS - [176] index error: both invalid column and row names
+PASS - [177] xref: numeric values only
+PASS - [178] xref: string values only
+PASS - [179] xref: mixed numeric and string values
+PASS - [180] xref: single column xref
+PASS - [181] xref: single row xref
+PASS - [182] xref: 1×1 xref
+PASS - [183] xref: case-sensitive column names
+PASS - [184] xref: case-sensitive row names
+PASS - [185] index error: case-sensitive column mismatch
+PASS - [186] index error: case-sensitive row mismatch
+PASS - [187] xref: unicode column names
+PASS - [188] xref: unicode row names
+PASS - [189] xref: emoji column names
+PASS - [190] xref: emoji row names
+PASS - [191] xref: column names with spaces
+PASS - [192] xref: row names with spaces
+PASS - [193] xref: empty column name
+PASS - [194] xref: empty row name
+PASS - [195] xref: subset selection maintains order
+PASS - [196] xref: nested array values
+PASS - [197] index error: empty column selection
+PASS - [198] index error: empty row selection
+PASS - [199] domain error: right arg not a pair
+PASS - [200] domain error: right arg has 3 elements
+PASS - [201] domain error: column selector is numeric
+PASS - [202] domain error: row selector is numeric
+PASS - [203] column selector is matrix
+PASS - [204] row selector is matrix
+PASS - [205] domain error: column selector vector contains numeric
+PASS - [206] domain error: row selector vector contains numeric
+PASS - [207] domain error: column selector vector mixed types
+PASS - [208] domain error: row selector vector mixed types
+PASS - [209] xref: large matrix lookup
+PASS - [210] xref: single element from vector selection
+PASS - [211] xref: select single row
+PASS - [212] xref: row vector from single column
