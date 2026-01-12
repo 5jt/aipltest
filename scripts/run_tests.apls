@@ -7,6 +7,7 @@ cwd↓⍨←¯1 ⍝ lose trailing slash
 ⍝confirm←{⍵:⎕←⍺ ⋄ ⎕←'**ERROR ',⍕⎕EN ⋄ ⎕←⎕DM ⋄ ⎕OFF}
 
 cla←2 ⎕NQ # 'GetCommandLineArgs'
+args←{×≢⍵:⍵ ⋄ ⍬}1↓cla
 ⍝
 ⍝⍝ run test
-⎕←1 test.Run 1↓cla
+⎕←1 test.Run args
